@@ -21,7 +21,7 @@ def p5_updateLayout():
         [dbc.Row( [
             dbc.Col(
             [leftSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#FF6400'},
+                style={'width': '100%', 'height': 500, 'background-color' : '#F427EE'},
             )],className='col-2', style ={'padding':20}),
             dbc.Col(
             [midSpace, html.Div(
