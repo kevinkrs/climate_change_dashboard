@@ -9,7 +9,7 @@ import csv
 
 def prepare_daily_report():
 
-    df_country_code = pd.read_csv('/Users/mati/Desktop/Dashboard/Data/data_situation2.csv')
+    df_country_code = pd.read_csv('../Data/data_situation2.csv')
     
     return(df_country_code)
 

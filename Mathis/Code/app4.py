@@ -8,7 +8,7 @@ import pandas as pd
 app = dash.Dash()
 
 df = pd.read_csv(
-    '/Users/mati/Desktop/Dashboard/Data/data_situation.csv')
+    '../Data/data_situation.csv')
 
 available_indicators = df['Indicator Name'].unique()
 
