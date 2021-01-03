@@ -5,17 +5,17 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 import plotly.express as px
-import plotly.graph_objects as go
+import plotly.graph_objs as go
 import geopandas as gp 
 import pandas as pd
+import json
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 # Testing
 df = pd.read_csv('data/technology_patents/Patents_Ready.csv')
-
-fig = px.scatter(df, x="Year", y="Value",
-                  size = "value", color="value", hover_name="Entity",
-                 log_x=True, size_max=60)
+world_path = 'data/custom.geo.json'
+with open (world_path) as f: 
+    geo_world = json.load(f)
 
 def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
@@ -49,7 +49,7 @@ def p3_updateLayout():
             [midSpace, html.Div(
                 # dash_core_components can be accessed trough their id's
                 # Testing
-                dcc.Graph(id='life-exp-vs-gdp',figure=fig), 
+                dcc.Graph(id = "chloropleth"), 
 
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
             )], className='col-8',style ={'padding':20}),
@@ -72,33 +72,23 @@ def p3_updateLayout():
             )], className='col-4', style ={'padding':20}),
             dbc.Col(
             [bot_rightSpace, html.Div(
-                dbc.Button('Information',
-                id = 'collapse-button1',
-                className = 'mb-3',
-                color = 'primary'),
-                dbc.Collapse(dbc.Card(dbc.CardBody(dcc.Markdown('''Test'''))), id = 'collapse1'),
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},)], className='col-4',style ={'padding':20})],
+                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},)], className='col-4',style ={'padding':20},
+                className='col-4', style ={'padding':20}),)],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
     
     return content
 
-# TODO: Render different stats depending on user selection 
-'''@app.callback(
-    Output("collapse1", "is_open"),
-    [Input("collapse-button1", "n_clicks")],
-    [State("collapse1", "is_open")],
-)
-def toggle_collapse(n, is_open):
+'''def toggle_collapse(n, is_open):
     if n:
         return not is_open
     return is_open'''
 
-'''def update_output():
+def display_chloropleth(): 
+    fig = px.choropleth_mapbox(
+        df, geojson=geo_world)
+    
+    fig.show()
 
-    world = geopandas.read_file(geopandas.datasets.get_path('naturalearth_lowres'))
-    print(world.head())
-    world.plot(column='gdp_per_cap', cmap='OrRd');
-   
-    return world'''
+    return fig
