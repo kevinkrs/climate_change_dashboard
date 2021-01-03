@@ -2,7 +2,8 @@ import dash
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
-from dash.dependencies import Input, Output
+from dash.dependencies import Input
+from dash.dependencies import Output
 from home import home_updateLayout
 from page1 import p1_updateLayout
 from page2 import p2_updateLayout
@@ -11,21 +12,9 @@ from page4 import p4_updateLayout
 from page5 import p5_updateLayout
 
 #Inititalise app    and it's style for the theme
-app = dash.Dash(external_stylesheets=[dbc.themes.LUX])
+app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 
 
-# the style arguments for the sidebar. We use position:fixed and a fixed width
-SIDEBAR_STYLE = {
-    "display" : "inline-block",
-    "float" : "left",
-    "top": 0,
-    "left": 0,
-    "bottom": 0,
-    "width": "16rem",
-    "height": "100vh",
-    "padding": "2rem 1rem",
-    "background-color": "#f8f9fa",
-}
 
 # the styles for the main content position it to the right of the sidebar and
 CONTENT_STYLE = {
@@ -33,7 +22,7 @@ CONTENT_STYLE = {
     "margin-right": "2rem",
     "padding": "2rem 1rem",
 }
-#Sidebar conaining the menu
+#Sidebar containing the menu
 sidebar = html.Div(
     [
         html.H2("Name", className="display-4"),
@@ -56,8 +45,9 @@ sidebar = html.Div(
             pills=True,
         ),
     ],
-    style=SIDEBAR_STYLE,
+    className='sidebar',
 )
+
 #Footer
 footer = dbc.Container(html.Div(dbc.Container("Footer", className='text-center p-3',),
     className='container-fluid',), className='fixed-bottom', )
@@ -86,6 +76,11 @@ def render_page_content(pathname):
             html.Hr(),
             html.P(f"The pathname {pathname} was not recognised..."),
         ])
+
+@app.callback(dash.dependencies.Output('home-content', 'children'),
+              [dash.dependencies.Input('home-dropdown', 'value')])
+def home_dropdown(value):
+    return 'You have selected "{}"'.format(value)
 
 if __name__ == "__main__":
     app.run_server()
