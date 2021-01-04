@@ -14,7 +14,7 @@ import geojson
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 # Testing
-df1 = pd.read_csv('data/technology_patents/epo_total_2018.csv', sep = ";")
+df1 = pd.read_csv('data/technology_patents/epo_total_2018_countries.csv', sep = ";")
 
 df1.head()
 def alpha3code(column): 
