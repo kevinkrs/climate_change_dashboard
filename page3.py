@@ -38,11 +38,12 @@ def p3_updateLayout():
                           {'label' : 'PCT', 'value' : 'pct'}],
                           placeholder = 'Select patent office', style = {'margin-bottom' : 10}),
                 html.Div(id='dropdown1-content'),
+                
                 dcc.Dropdown(id = 'dropdown2-left',
                 options =[{'label' : 'Total', 'value' : 'total' },
                           {'label' : 'Environmental-related', 'value' : 'env'}], 
                           placeholder = 'Select technology domain'),
-                html.Div(id='dropdown2-content'),],
+                html.Div(id='dropdown2-content')],
                 style={'width': '100%', 'height': 500, 'background-color' : '#33FFFC'},
             )],className='col-2', style ={'padding':20}),
             dbc.Col(

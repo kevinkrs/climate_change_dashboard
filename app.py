@@ -91,9 +91,8 @@ def render_page_content(pathname):
     dash.dependencies.Output('dropdown1-content', 'children'),
     dash.dependencies.Output('dropdown2-content', 'children'),
     [dash.dependencies.Input('dropdown1-left', 'value')],
-    [dash.dependencies.Input('dropdown2-left', 'value')]
-)
-
+    [dash.dependencies.Input('dropdown2-left', 'value')])
+    
 def home_dropdown(value):
     return 'You selected "{}"'.format(value)
 
