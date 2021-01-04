@@ -88,13 +88,23 @@ def render_page_content(pathname):
         ])
 
 @app.callback (
-    dash.dependencies.Output('dropdown1-content', 'children'),
-    dash.dependencies.Output('dropdown2-content', 'children'),
-    [dash.dependencies.Input('dropdown1-left', 'value')],
-    [dash.dependencies.Input('dropdown2-left', 'value')])
-    
-def home_dropdown(value):
+    Output('dropdown1-content', 'children'),
+    Input('dropdown1-left', 'value'),)
+def dropdown1_left (value):
     return 'You selected "{}"'.format(value)
+
+@app.callback (
+    Output('dropdown2-content', 'children'),
+    Input('dropdown2-left', 'value'))
+def dropdown2_left (value):
+     return f"You've selected {value}"
+
+@app.callback (
+    Output('map', 'children'),
+    Input('')
+)
+def load_map():
+    
 
 if __name__ == "__main__":
     app.run_server()

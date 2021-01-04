@@ -9,18 +9,45 @@ import plotly.graph_objs as go
 import geopandas as gp 
 import pandas as pd
 import json
+import pycountry
+import geojson
+import matplotlib.pyplot as plt
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 # Testing
-df = pd.read_csv('data/technology_patents/Patents_Ready.csv')
-# Reading geojson file for chloropleth map
-#world_map = json.load(open('/data/custom.geo.json', 'r'))
+df1 = pd.read_csv('data/technology_patents/epo_total_2018.csv', sep = ";")
+
+df1.head()
+def alpha3code(column): 
+    CODE = []
+    for country in column:
+        try: 
+            code = pycountry.countries.get(name=country).alpha_3
+            CODE.append(code)
+        except: 
+            CODE.append('None')
+    return CODE
+
+df1['CODE'] = alpha3code(df1.Country)
+print(df1.head())
+
+with open('data/custom.geo.json') as f: 
+    gj = geojson.load(f)
+
+fig = px.choropleth_mapbox(df1, geojson=gj, color="Value",
+                           locations="Country",
+                           center={"lat": 45.5517, "lon": -73.7073},        
+                           mapbox_style="carto-positron", zoom=9)
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+
+fig.show()
+
 
 def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div("Linker Space")
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div("World Map")
+    midSpace = html.Div("World Map") 
     rightSpace = html.Div("Rechter Space")
 
     bot_leftSpace = html.Div("Left Space")
@@ -33,23 +60,25 @@ def p3_updateLayout():
             dbc.Col(
             [leftSpace, html.Div([
                 dcc.Dropdown(id = 'dropdown1-left', 
-                options =[{'label' : 'EPO', 'value' : 'epo' },
-                          {'label' : 'USPTO', 'value' : 'uspto'},
-                          {'label' : 'PCT', 'value' : 'pct'}], 
-                          value = "epo",
+                options =[{'label' : 'EPO', 'value' : 'EPO' },
+                          {'label' : 'USPTO', 'value' : 'USPOT'},
+                          {'label' : 'PCT', 'value' : 'PCT'}], 
+                          value = 'EPO',
                           placeholder = 'Select patent office', style = {'margin-bottom' : 10, 'margin-top' : 10}),
                 html.Div(id='dropdown1-content'),
                 
                 dcc.Dropdown(id = 'dropdown2-left',
-                options =[{'label' : 'Total', 'value' : 'total' },
-                          {'label' : 'Environmental-related', 'value' : 'env'}],
-                          value = 'total' ,
+                options =[{'label' : 'Total', 'value' : 'Total' },
+                          {'label' : 'Environmental-related', 'value' : 'Enivornmental-related'}],
+                          value = 'Environmental-related',
                           placeholder = 'Select technology domain'),
                 html.Div(id='dropdown2-content')],
                 style={'width': '100%', 'height': 500, 'background-color' : '#33FFFC'},
             )],className='col-2', style ={'padding':20}),
             dbc.Col(
-            [midSpace, html.Div(
+            [midSpace, html.Div([
+                 dcc.Graph(id = 'map', style= {'height' : 500})
+            ],
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
             )], className='col-8',style ={'padding':20}),
             dbc.Col(
