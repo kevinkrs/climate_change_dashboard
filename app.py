@@ -87,5 +87,15 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ])
 
+@app.callback (
+    dash.dependencies.Output('dropdown1-content', 'children'),
+    dash.dependencies.Output('dropdown2-content', 'children'),
+    [dash.dependencies.Input('dropdown1-left', 'value')],
+    [dash.dependencies.Input('dropdown2-left', 'value')]
+)
+
+def home_dropdown(value):
+    return 'You selected "{}"'.format(value)
+
 if __name__ == "__main__":
     app.run_server()

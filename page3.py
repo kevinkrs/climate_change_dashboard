@@ -14,7 +14,7 @@ import json
 # Testing
 df = pd.read_csv('data/technology_patents/Patents_Ready.csv')
 # Reading geojson file for chloropleth map
-world_map = json.load(open('custom.geo.json', 'r'))
+#world_map = json.load(open('/data/custom.geo.json', 'r'))
 
 def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
@@ -31,52 +31,43 @@ def p3_updateLayout():
     content = html.Div(
         [dbc.Row( [
             dbc.Col(
-            [leftSpace, html.Div( children = [
-                dcc.Dropdown(id = 'dropdown1_left', 
+            [leftSpace, html.Div([
+                dcc.Dropdown(id = 'dropdown1-left', 
                 options =[{'label' : 'EPO', 'value' : 'epo' },
                           {'label' : 'USPTO', 'value' : 'uspto'},
                           {'label' : 'PCT', 'value' : 'pct'}],
                           placeholder = 'Select patent office', style = {'margin-bottom' : 10}),
-                dcc.Dropdown(id = 'dropdown2_left',
+                html.Div(id='dropdown1-content'),
+                dcc.Dropdown(id = 'dropdown2-left',
                 options =[{'label' : 'Total', 'value' : 'total' },
                           {'label' : 'Environmental-related', 'value' : 'env'}], 
-                          placeholder = 'Select technology domain')],
-                          style={'width': '100%', 'height': 500, 'background-color' : '#FF6400', 'padding' : 10})],
-                 className='col-2', style ={'padding':20}),
-            
+                          placeholder = 'Select technology domain'),
+                html.Div(id='dropdown2-content'),],
+                style={'width': '100%', 'height': 500, 'background-color' : '#33FFFC'},
+            )],className='col-2', style ={'padding':20}),
             dbc.Col(
             [midSpace, html.Div(
-                # dash_core_components can be accessed trough their id's
-                # Testing
-                dcc.Graph(id = "chloropleth"), 
-
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
             )], className='col-8',style ={'padding':20}),
-            
             dbc.Col(
             [rightSpace, html.Div(
-                dcc.Graph(id='time_plot'), style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
+                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
             )], className='col-2', style ={'padding':20}),],
             ),
-            
-            
             dbc.Row( [
             dbc.Col(
-            [bot_leftSpace, html.Div(
-                style={'width' : '100%', 'height' : 500, 'background-color' : '#888888'}
-            )], className='col-4', style ={'padding':20}),
+            bot_leftSpace,className='col-4'),
             dbc.Col(
             [bot_midSpace, html.Div(
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
             )], className='col-4', style ={'padding':20}),
             dbc.Col(
             [bot_rightSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},)], className='col-4',style ={'padding':20},
-                className='col-4', style ={'padding':20}),)],
+                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
+            )], className='col-4',style ={'padding':20}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
-    
-    
+
     return content
 
 '''def toggle_collapse(n, is_open):
