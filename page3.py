@@ -6,16 +6,15 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 import plotly.express as px
 import plotly.graph_objs as go
-import geopandas as gp 
 import pandas as pd
 import json
 import pycountry
 import geojson
-import matplotlib.pyplot as plt
+
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 # Testing
-df1 = pd.read_csv('data/technology_patents/epo_total_2018.csv', sep = ";")
+df1 = pd.read_csv('data/technology_patents/epo_total.csv', sep = ";")
 
 df1.head()
 def alpha3code(column): 
@@ -28,19 +27,24 @@ def alpha3code(column):
             CODE.append('None')
     return CODE
 
-df1['CODE'] = alpha3code(df1.Country)
+df1['iso_a3'] = alpha3code(df1.Country)
+df1['iso_a3']  = df1['iso_a3'].astype(str)
+
 print(df1.head())
 
 with open('data/custom.geo.json') as f: 
-    gj = geojson.load(f)
+    gj = json.load(f)
 
-fig = px.choropleth_mapbox(df1, geojson=gj, color="Value",
-                           locations="Country",
-                           center={"lat": 45.5517, "lon": -73.7073},        
-                           mapbox_style="carto-positron", zoom=9)
-fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+print(gj["features"][0])
 
-fig.show()
+world_map = go.Figure(go.Choroplethmapbox(geojson=gj, locations=df1.iso_a3, z=df1.Value,
+                                    colorscale="Viridis", zmin=0, zmax=12, featureidkey = 'properties.iso_3',
+                                    marker_opacity=0.5, marker_line_width=0))
+world_map.update_layout(mapbox_style="carto-positron",
+                  mapbox_zoom=1.6, mapbox_center = {"lat": 49.006871, "lon": 8.40342})
+
+world_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+
 
 
 def p3_updateLayout():
@@ -77,7 +81,7 @@ def p3_updateLayout():
             )],className='col-2', style ={'padding':20}),
             dbc.Col(
             [midSpace, html.Div([
-                 dcc.Graph(id = 'map', style= {'height' : 500})
+                dcc.Graph(figure=world_map, style = {'height' : 500})
             ],
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
             )], className='col-8',style ={'padding':20}),
@@ -107,10 +111,3 @@ def p3_updateLayout():
         return not is_open
     return is_open'''
 
-def display_chloropleth(): 
-    fig = px.choropleth_mapbox(
-        df, geojson=geo_world)
-    
-    fig.show()
-
-    return fig

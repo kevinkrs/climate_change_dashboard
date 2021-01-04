@@ -99,12 +99,7 @@ def dropdown1_left (value):
 def dropdown2_left (value):
      return f"You've selected {value}"
 
-@app.callback (
-    Output('map', 'children'),
-    Input('')
-)
-def load_map():
-    
+
 
 if __name__ == "__main__":
     app.run_server()
