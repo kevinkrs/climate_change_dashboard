@@ -13,9 +13,8 @@ import json
 
 # Testing
 df = pd.read_csv('data/technology_patents/Patents_Ready.csv')
-world_path = 'data/custom.geo.json'
-with open (world_path) as f: 
-    geo_world = json.load(f)
+# Reading geojson file for chloropleth map
+world_map = json.load(open('custom.geo.json', 'r'))
 
 def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
