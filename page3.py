@@ -10,11 +10,12 @@ import pandas as pd
 import json
 import pycountry
 import geojson
+import geopandas as gp
 
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 # Testing
-df1 = pd.read_csv('data/technology_patents/epo_total_2018_countries.csv', sep = ";")
+df1 = pd.read_csv('data/technology_patents/epo_total_2018.csv', sep = ";")
 
 df1.head()
 def alpha3code(column): 
@@ -27,7 +28,7 @@ def alpha3code(column):
             CODE.append('None')
     return CODE
 
-df1['iso_alpha'] = alpha3code(df1.Country)
+df1['iso_a3'] = alpha3code(df1.Country)
 #df1['iso_a3']  = df1['iso_a3'].astype(str)
 
 print(df1.head())
@@ -37,7 +38,7 @@ with open('data/custom.geo.json') as f:
 
 # print(gj["features"][5])
 
-'''world_map = go.Figure(go.Choroplethmapbox(geojson = gj, featureidkey = 'properties.iso_a3', locations = df1.iso_a3, z = df1.Value,
+'''world_map = go.Figure(go.Choroplethmapbox(geojson = gj, featureidkey = 'properties.iso_a3', locations = df1.Country, z = df1.Value,
                                     colorscale="Viridis", zmin=0, zmax=12,
                                     marker_opacity=0.5, marker_line_width=0))
 world_map.update_layout(mapbox_style="carto-positron",
@@ -50,7 +51,7 @@ world_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})'''
                     hover_name = "Country", 
                     color_continuous_scale='Viridis')'''
 
-world_map = px.choropleth_mapbox(df1, geojson=gj, locations='iso_alpha', color='Value',
+world_map = px.choropleth_mapbox(df1, geojson=gj, locations='iso_a3', color='Value',
             color_continuous_scale="Viridis",
             range_color=(0, 12),
             mapbox_style="carto-positron",
@@ -58,9 +59,20 @@ world_map = px.choropleth_mapbox(df1, geojson=gj, locations='iso_alpha', color='
             opacity=0.5,
             #labels={'Value':'Patents'}
             )
-#world_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+world_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
+'''geo_df = gp.GeoDataFrame.from_features(
+    gj["features"]
+).merge(df1, on="iso_a3").set_index("Country")
 
+world_map = px.choropleth_mapbox(geo_df,
+                           geojson=geo_df.geometry,
+                           locations=geo_df.index,
+                           color="Value",
+                           center={"lat": 45.5517, "lon": -73.7073},
+                           mapbox_style="open-street-map",
+                           zoom=8.5)
+world_map.show()'''
 
 def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
