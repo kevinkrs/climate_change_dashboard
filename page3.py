@@ -37,7 +37,7 @@ def p3_updateLayout():
                           {'label' : 'USPTO', 'value' : 'uspto'},
                           {'label' : 'PCT', 'value' : 'pct'}], 
                           value = "epo",
-                          placeholder = 'Select patent office', style = {'margin-bottom' : 10}),
+                          placeholder = 'Select patent office', style = {'margin-bottom' : 10, 'margin-top' : 10}),
                 html.Div(id='dropdown1-content'),
                 
                 dcc.Dropdown(id = 'dropdown2-left',
