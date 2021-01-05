@@ -40,21 +40,61 @@ def get_dropGDP():
             x='Date', y="value", color="variable", title='Percentage change in regional GDP due to selected climate change impacts', labels={'x':'Fund Type', 'y':'Pledge (USD mn)'})
     return graph
 
-
 def get_dropGDP_W():
         fig = px.choropleth(df3, locations="CODE",
                     color="value", # lifeExp is a column of gapminder
                     hover_name="variable", # column to add to hover information
                     color_continuous_scale='Inferno',
                     animation_frame='Date',
-                    color_continuous_midpoint = -0.9)
+                    color_continuous_midpoint = -0.9,
+                    range_color=[-4,0])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
         
         return fig
 
-
-# Variable time span : -
+# Variable time span : 2010-2060
 # Data published by : OECD
 # Link : https://www.oecd.org/statistics/climate-change-consequences-of-inaction.htm
+
+
+
+# %%
+# ### Damage dealt by floods in predic
+# Importing the dataset with Dmg Flood data 
+df1 = pd.read_excel('data\Economic_Impact\GDP\OECD Region.xlsx')
+
+df1 = df1.rename(columns={"variable": "Region"})
+df_dmg1= pd.read_excel('data\Economic_Impact\Impacts\Climate-related potential urban flood damages by region.xlsx')
+df_dmg1 = df_dmg1.groupby(['Region']).sum()
+df3=  pd.merge(df1, df_dmg1, on="Region")
+df3.columns = df3.columns.map(str)
+df3 = pd.melt(df3, id_vars=['CODE','Country','Region'],value_vars=['2010', '2030', '2080', '2080-GFDL','2080-IPSL', '2080-MIROC', '2080-NorESM'])
+
+
+#Map measures in percentage, so multiply with 100
+df3['value']=df3['value']*100
+
+print(df_dmg1)
+# PLot
+
+def get_dropGDP_W1():
+        fig = px.choropleth(df3, locations="CODE",
+                    color="value", # lifeExp is a column of gapminder
+                    hover_name="variable", # column to add to hover information
+                    color_continuous_scale='reds',
+                    animation_frame='variable',
+                    #color_continuous_midpoint = -0.9,
+                    range_color=[0,1000])
+
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
+        
+        return fig
+
+get_dropGDP_W1().show()
+
+# Variable time span : 2010-2060
+# Data published by : OECD
+# Link : https://www.oecd.org/statistics/climate-change-consequences-of-inaction.htm
+
 # %%
