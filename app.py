@@ -90,6 +90,5 @@ def dropdown2_left (value):
      return f"You've selected {value}"
 
 
-
 if __name__ == "__main__":
     app.run_server()

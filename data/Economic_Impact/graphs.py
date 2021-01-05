@@ -23,8 +23,8 @@ def get_iGreenBondData():
 # %%
 # ### Drop of GDP
 # Importing the dataset
-df1 = pd.read_excel('data\Economic_Impact\GDP\C_Percentage change in regional GDP.xlsx')
-df2 = pd.read_excel('data\Economic_Impact\GDP\OECD Region.xlsx')
+df1 = pd.read_excel('data/Economic_Impact/GDP/C_Percentage change in regional GDP.xlsx')
+df2 = pd.read_excel('data/Economic_Impact/GDP/OECD Region.xlsx')
 df1 = pd.melt(df1, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pacific', 'OECD America', 'Latin America',
        'World', 'Rest of Europe and Asia', 'Middle East and North Africa',
        'South and South-East Asia', 'Sub-Saharan Africa'])

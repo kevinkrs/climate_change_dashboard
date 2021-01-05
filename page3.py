@@ -9,7 +9,6 @@ import plotly.graph_objs as go
 import pandas as pd
 import json
 import geojson
-
 from data.technology_patents.graphs import get_map
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
@@ -23,43 +22,6 @@ from data.technology_patents.graphs import get_map
 
 # print(gj["features"][5])
 
-'''world_map = go.Figure(go.Choroplethmapbox(geojson = gj, featureidkey = 'properties.iso_a3', locations = df1.Country, z = df1.Value,
-                                    colorscale="Viridis", zmin=0, zmax=12,
-                                    marker_opacity=0.5, marker_line_width=0))
-world_map.update_layout(mapbox_style="carto-positron",
-                  mapbox_zoom=1.6, mapbox_center = {"lat": 49.006871, "lon": 8.40342})
-
-world_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})'''
-
-'''world_map = px.choropleth(df1, locations="iso_a3",
-                    color="Value",
-                    hover_name = "Country", 
-                    color_continuous_scale='Viridis',
-                    range_color=(0, 12),
-                    center = {"lat": 49.006871, "lon": 8.40342},)'''
-
-'''world_map = px.choropleth_mapbox(df1, geojson=gj, locations='iso_a3', color='Value',
-            color_continuous_scale="Viridis",
-            range_color=(0, 12),
-            mapbox_style="carto-positron",
-            zoom=1.6, center = {"lat": 49.006871, "lon": 8.40342},
-            opacity=0.5,
-            #labels={'Value':'Patents'}
-            )
-world_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})'''
-
-'''geo_df = gp.GeoDataFrame.from_features(
-    gj["features"]
-).merge(df1, on="iso_a3").set_index("Country")
-
-world_map = px.choropleth_mapbox(geo_df,
-                           geojson=geo_df.geometry,
-                           locations=geo_df.index,
-                           color="Value",
-                           center={"lat": 45.5517, "lon": -73.7073},
-                           mapbox_style="open-street-map",
-                           zoom=8.5)
-world_map.show()'''
 
 def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
@@ -94,10 +56,7 @@ def p3_updateLayout():
                 style={'width': '100%', 'height': 500, 'background-color' : '#33FFFC'},
             )],className='col-2', style ={'padding':20}),
             dbc.Col(
-            [midSpace, html.Div([
-                dcc.Graph(figure=world_map, style = {'height' : 500})
-            ],
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
+            [midSpace, html.Div(
             )], className='col-8',style ={'padding':20}),
             dbc.Col(
             [rightSpace, html.Div(
