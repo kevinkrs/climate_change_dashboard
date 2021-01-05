@@ -33,27 +33,25 @@ df1['iso_a3'] = alpha3code(df1.Country)
 
 print(df1.head())
 
-with open('data/custom.geo.json') as f: 
+with open('data/Worldmap shapes/custom.geo.json') as f: 
     gj = json.load(f)
 
 # print(gj["features"][5])
 
-world_map = go.Figure(go.Choroplethmapbox(geojson = gj, featureidkey = 'properties.iso_a3', locations = df1.Country, z = df1.Value,
+'''world_map = go.Figure(go.Choroplethmapbox(geojson = gj, featureidkey = 'properties.iso_a3', locations = df1.Country, z = df1.Value,
                                     colorscale="Viridis", zmin=0, zmax=12,
                                     marker_opacity=0.5, marker_line_width=0))
 world_map.update_layout(mapbox_style="carto-positron",
                   mapbox_zoom=1.6, mapbox_center = {"lat": 49.006871, "lon": 8.40342})
 
-world_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+world_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})'''
 
-'''world_map = px.choropleth(df1, locations="iso_a3",
+world_map = px.choropleth(df1, locations="iso_a3",
                     color="Value",
                     hover_name = "Country", 
                     color_continuous_scale='Viridis',
                     range_color=(0, 12),
-                    #mapbox_style="carto-positron",
-                    #zoom=1.6, 
-                    center = {"lat": 49.006871, "lon": 8.40342},)'''
+                    center = {"lat": 49.006871, "lon": 8.40342},)
 
 '''world_map = px.choropleth_mapbox(df1, geojson=gj, locations='iso_a3', color='Value',
             color_continuous_scale="Viridis",
