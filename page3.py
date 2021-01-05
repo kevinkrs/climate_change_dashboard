@@ -8,33 +8,18 @@ import plotly.express as px
 import plotly.graph_objs as go
 import pandas as pd
 import json
-import pycountry
 import geojson
-import geopandas as gp
 
+from data.technology_patents.graphs import get_map
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 # Testing
-df1 = pd.read_csv('data/technology_patents/epo_total_2018.csv', sep = ";")
 
-df1.head()
-def alpha3code(column): 
-    CODE = []
-    for country in column:
-        try: 
-            code = pycountry.countries.get(name=country).alpha_3
-            CODE.append(code)
-        except: 
-            CODE.append('None')
-    return CODE
-
-df1['iso_a3'] = alpha3code(df1.Country)
 #df1['iso_a3']  = df1['iso_a3'].astype(str)
 
-print(df1.head())
 
-with open('data/Worldmap shapes/custom.geo.json') as f: 
-    gj = json.load(f)
+#with open('data/Worldmap shapes/custom.geo.json') as f: 
+ #   gj = json.load(f)
 
 # print(gj["features"][5])
 
@@ -46,12 +31,12 @@ world_map.update_layout(mapbox_style="carto-positron",
 
 world_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})'''
 
-world_map = px.choropleth(df1, locations="iso_a3",
+'''world_map = px.choropleth(df1, locations="iso_a3",
                     color="Value",
                     hover_name = "Country", 
                     color_continuous_scale='Viridis',
                     range_color=(0, 12),
-                    center = {"lat": 49.006871, "lon": 8.40342},)
+                    center = {"lat": 49.006871, "lon": 8.40342},)'''
 
 '''world_map = px.choropleth_mapbox(df1, geojson=gj, locations='iso_a3', color='Value',
             color_continuous_scale="Viridis",
@@ -80,7 +65,7 @@ def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div("Linker Space")
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div("World Map") 
+    midSpace = html.Div(dcc.Graph(figure = get_map())) 
     rightSpace = html.Div("Rechter Space")
 
     bot_leftSpace = html.Div("Left Space")
