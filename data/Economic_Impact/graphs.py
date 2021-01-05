@@ -32,7 +32,7 @@ df1 = pd.melt(df1, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pacific', '
 df3=  pd.merge(df1, df2, on="variable")
 
 #Map measures in percentage, so multiply with 100
-#df3['value']=df3['value']*100
+df3['value']=df3['value']*100
 
 # PLot
 def get_dropGDP():
@@ -47,7 +47,7 @@ def get_dropGDP_W():
                     hover_name="variable", # column to add to hover information
                     color_continuous_scale='Inferno',
                     animation_frame='Date',
-                    color_continuous_midpoint = -0.09)
+                    color_continuous_midpoint = -0.9)
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
         
