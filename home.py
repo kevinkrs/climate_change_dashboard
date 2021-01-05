@@ -8,7 +8,14 @@ def home_updateLayout():
 #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div("Linker Space")
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div("Mid Space")
+    midSpace = html.Div([
+    html.H1('Home'),
+    dcc.Dropdown(
+        id='home-dropdown',
+        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
+        value='LA'
+    ),
+    html.Div(id='home-content')])
     rightSpace = html.Div("Rechter Space")
 
     #Including and external graph via iFrame
@@ -47,3 +54,4 @@ def home_updateLayout():
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
     return content
+
