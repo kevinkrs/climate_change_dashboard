@@ -1,8 +1,8 @@
 import plotly.express as px
 import pandas as pd
 
-df1 = pd.read_csv("C:/Users/Elève/Desktop/data2/worldwideattitude/FinaleDataAttitude.csv")
-df2 = pd.read_csv("C:/Users/Elève/Desktop/data2/worldwideattitude/test1.csv")
+df1 = pd.read_csv("data2/worldwideattitude/FinaleDataAttitude.csv")
+df2 = pd.read_csv("data2/worldwideattitude/test1.csv")
 
 df3=  pd.merge(df1, df2, on="ISO")
 
