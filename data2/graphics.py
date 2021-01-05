@@ -32,7 +32,7 @@ def map():
                             title='Public Opinion Worldwide',
                             color_continuous_scale=px.colors.sequential.Viridis,
                             )
-
+    return map
 
 def pie():
     colors1 = ['yellow', 'greenyellow', 'mediumseagreen', 'darkblue','indigo']
