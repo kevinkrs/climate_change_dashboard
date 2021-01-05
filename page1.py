@@ -18,9 +18,7 @@ def p1_updateLayout():
     content = html.Div(
         [dbc.Row( [
             dbc.Col(
-            [midSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-12',style ={'padding':20}),]),
+            midSpace, className='col-12',style ={'padding':20}),]),
             dbc.Row( [
             dbc.Col(
             bot_leftSpace,className='col-6',style ={'padding':20}),
