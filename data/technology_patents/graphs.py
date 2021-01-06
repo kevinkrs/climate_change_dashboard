@@ -15,13 +15,37 @@ df6 = pd.read_excel('data/technology_patents/files/pct_env_unity.xlsx')
 
 #print(df7.head())
 
-def get_world_graph():
+def get_world_graph_epo_total():
     graph  = px.line(df1, 
-            x='Year', y="Value", color="Country", title='Evolement EPO Total Patents by Groups', labels={'x':'Time', 'y':'Patents'})
+            x='Year', y="Value", color="Country", title='Growth Patents Worldwide ', labels={'x':'Time', 'y':'Patents'})
     return graph
 
-def get_world_graph2():
-    graph  = px.pie(df2, 
-            names='Country', values="Value", color="Country", title='Evolement EPO Total Patents by Groups')
+def get_world_graph_epo_env():
+    fig = px.scatter(df1, x="Year", y="Value", color="Country",
+                 size='Value', hover_data=['Value'])
+
+    return fig
+
+
+def get_world_graph_uspto_total():
+    graph  = px.line(df1, 
+            x='Year', y="Value", color="Country", title='Growth Patents Worldwide ', labels={'x':'Time', 'y':'Patents'})
     return graph
 
+def get_world_graph_uspto_env():
+    fig = px.scatter(df1, x="Year", y="Value", color="Country",
+                 size='Value', hover_data=['Value'])
+
+    return fig
+
+
+def get_world_graph_pct_total():
+    graph  = px.line(df1, 
+            x='Year', y="Value", color="Country", title='Growth Patents Worldwide ', labels={'x':'Time', 'y':'Patents'})
+    return graph
+
+def get_world_graph_pct_env():
+    fig = px.scatter(df1, x="Year", y="Value", color="Country",
+                 size='Value', hover_data=['Value'])
+
+    return fig

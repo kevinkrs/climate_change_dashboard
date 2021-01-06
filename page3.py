@@ -28,13 +28,13 @@ def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div("Linker Space")
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
-    #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_env())) 
+    #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
+    midSpace = html.Div(dcc.Graph(figure = get_world_map_uspto_total())) 
     #rightSpace = html.Div("Rechter Space")
 
-    bot_leftSpace = html.Div(dcc.Graph(figure = get_world_graph()))
-   # bot_midSpace = html.Div("Mid Space")
-    bot_rightSpace = html.Div(dcc.Graph(figure = get_world_graph2()))
+    bot_leftSpace = html.Div(dcc.Graph(figure = get_world_graph_epo_total()))
+    #bot_midSpace = html.Div("Mid Space")
+    bot_rightSpace = html.Div(dcc.Graph(figure = get_world_graph_epo_env()))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
@@ -56,22 +56,14 @@ def p3_updateLayout():
             )],className='col-2', style ={'padding':20}),
             dbc.Col(
             [midSpace, html.Div(
-            )], className='col-10',style ={'padding':20}),
-            dbc.Col(
-            [rightSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-2', style ={'padding':20}),],
+            )], className='col-10',style ={'padding':20}),],
             ),
+
             dbc.Row( [
             dbc.Col(
             bot_leftSpace,className='col-6'),
             dbc.Col(
-            [bot_midSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-4', style ={'padding':20}),
-            dbc.Col(
             [bot_rightSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
             )], className='col-6',style ={'padding':20}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
