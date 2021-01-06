@@ -1,6 +1,8 @@
 # %%
 import plotly.express as px
 import pandas as pd
+import plotly.graph_objects as go
+import statsmodels.api as sm
 
 # %%
 from pandas_datareader import data as pdr
@@ -39,7 +41,6 @@ def get_dropGDP():
     graph  = px.bar(df1, 
             x='Date', y="value", color="variable", title='Percentage change in regional GDP due to selected climate change impacts', labels={'x':'Fund Type', 'y':'Pledge (USD mn)'})
     return graph
-
 def get_dropGDP_W():
         fig = px.choropleth(df3, locations="CODE",
                     color="value", # lifeExp is a column of gapminder
@@ -57,8 +58,47 @@ def get_dropGDP_W():
 # Data published by : OECD
 # Link : https://www.oecd.org/statistics/climate-change-consequences-of-inaction.htm
 
+#######################################################################################################################################################################################
+
+# %%
+# ### Economic damage caused by weather and climate-related extreme events in Europe (1980-2019)
+# Importing the dataset
+df_eea = pd.read_csv('data/Economic_Impact/EU_DMG/natural-disasters-events-3.csv', sep=',')
+# PLot
+def get_dmgEU():
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+        x=df_eea['Year'],
+        #y=df_eea['Type']=='Geophysical events',
+        y=df_eea.loc[df_eea['Type'] == 'Geophysical events']['Value'],
+        name='Geophysical events',
+        marker_color='rgba(122, 166, 78)'
+        ))
+        fig.add_trace(go.Bar(
+        x=df_eea['Year'],
+        y=df_eea.loc[df_eea['Type'] == 'Climatological event']['Value'],
+        name='Climatological event',
+        marker_color='rgba(255, 200, 72)'
+        ))
+        fig.add_trace(go.Bar(
+        x=df_eea['Year'],
+        y=df_eea.loc[df_eea['Type'] == 'Hydrological event']['Value'],
+        name='Hydrological event',
+        marker_color='rgba(35, 132, 217)'
+        ))
+        fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of economic damage caused by weather <br>and climate-related extreme events in Europe '))
+
+        return [fig, fig_trend]
+
+# Variable time span : 1980-2019
+# Data published by : European Environment Agency
+# Link : https://www.eea.europa.eu/data-and-maps/daviz/natural-disasters-events-4#tab-googlechartid_chart_51
 
 
+
+
+##################################################################################################################################################################
+'''
 # %%
 # ### Damage dealt by floods in predic
 # Importing the dataset with Dmg Flood data 
@@ -97,4 +137,4 @@ get_dropGDP_W1().show()
 # Data published by : OECD
 # Link : https://www.oecd.org/statistics/climate-change-consequences-of-inaction.htm
 
-# %%
+'''

@@ -3,18 +3,31 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
-from data.Economic_Impact.graphs import get_iGreenBondData, get_dropGDP, get_dropGDP_W
+from data.Economic_Impact.graphs import get_iGreenBondData, get_dropGDP, get_dropGDP_W, get_dmgEU
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 def p4_updateLayout():
+
     #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div("Linker Space")
+
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     midSpace = html.Div(dcc.Graph(figure=get_dropGDP_W()))
+
     rightSpace = html.Div("Rechter Space")
 
-    bot_leftSpace = html.Iframe( src = "https://datahub.io/core/glacier-mass-balance/view/0", style ={'width' : "100%", 'overflow' : 'hidden', 'height' : 475, 'frameborder' :0,} )
+    bot_leftSpace = html.Div([dcc.RadioItems(
+        id='eu_fig_rb',
+        options=[
+            {'label': 'Full data', 'value': '0'},
+            {'label': 'Trend', 'value': '1'}
+        ],
+        value='0',
+        labelStyle={'display': 'inline-block'}),  
+        dcc.Graph(id='eu_fig')])
+
     bot_midSpace = html.Div(dcc.Graph(figure=get_dropGDP()))
+
     bot_rightSpace = html.Div(dcc.Graph(figure=get_iGreenBondData()))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin

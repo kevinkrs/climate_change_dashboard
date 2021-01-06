@@ -10,6 +10,7 @@ from page2 import p2_updateLayout
 from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
+from data.Economic_Impact.graphs import get_dmgEU
 
 #Inititalise app    and it's style for the theme
 app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
@@ -82,6 +83,13 @@ def render_page_content(pathname):
 def home_dropdown(value):
     return 'You have selected "{}"'.format(value)
 
+@app.callback(
+    Output('eu_fig', 'figure'),
+    Input('eu_fig_rb', 'value'))
+
+def update_figure(selection):
+    fig=get_dmgEU()[int(selection)]
+    return fig
 
 
 if __name__ == "__main__":
