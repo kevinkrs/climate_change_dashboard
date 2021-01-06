@@ -9,7 +9,8 @@ import plotly.graph_objs as go
 import pandas as pd
 import json
 import geojson
-from data.technology_patents.graphs import get_map
+from data.technology_patents.maps import *
+from data.technology_patents.graphs import *
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 # Testing
@@ -27,12 +28,13 @@ def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div("Linker Space")
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div(dcc.Graph(figure = get_map())) 
-    rightSpace = html.Div("Rechter Space")
+    midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
+    #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_env())) 
+    #rightSpace = html.Div("Rechter Space")
 
-    bot_leftSpace = html.Div("Left Space")
-    bot_midSpace = html.Div("Mid Space")
-    bot_rightSpace = html.Div("Rechter Space")
+    bot_leftSpace = html.Div(dcc.Graph(figure = get_world_graph()))
+   # bot_midSpace = html.Div("Mid Space")
+    bot_rightSpace = html.Div(dcc.Graph(figure = get_world_graph2()))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
@@ -45,19 +47,16 @@ def p3_updateLayout():
                           {'label' : 'PCT', 'value' : 'PCT'}], 
                           value = 'EPO',
                           placeholder = 'Select patent office', style = {'margin-bottom' : 10, 'margin-top' : 10}),
-                html.Div(id='dropdown1-content'),
-                
                 dcc.Dropdown(id ='dropdown2-left',
                 options =[{'label' : 'Total', 'value' : 'Total' },
                           {'label' : 'Environmental-related', 'value' : 'Enivornmental-related'}],
-                          value = 'Environmental-related',
-                          placeholder = 'Select technology domain'),
-                html.Div(id='dropdown2-content')],
+                          value = 'Env-related',
+                          placeholder = 'Select technology domain')],
                 style={'width': '100%', 'height': 500, 'background-color' : '#33FFFC'},
             )],className='col-2', style ={'padding':20}),
             dbc.Col(
             [midSpace, html.Div(
-            )], className='col-8',style ={'padding':20}),
+            )], className='col-10',style ={'padding':20}),
             dbc.Col(
             [rightSpace, html.Div(
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
@@ -65,7 +64,7 @@ def p3_updateLayout():
             ),
             dbc.Row( [
             dbc.Col(
-            bot_leftSpace,className='col-4'),
+            bot_leftSpace,className='col-6'),
             dbc.Col(
             [bot_midSpace, html.Div(
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
@@ -73,7 +72,7 @@ def p3_updateLayout():
             dbc.Col(
             [bot_rightSpace, html.Div(
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-4',style ={'padding':20}),],
+            )], className='col-6',style ={'padding':20}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
 

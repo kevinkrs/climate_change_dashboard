@@ -1,29 +1,27 @@
 import plotly.express as px
 import pandas as pd
-import pycountry
+import numpy as np
 
-df1 = pd.read_csv('data/technology_patents/files/epo_total.csv', sep = ";")
+df1 = pd.read_excel('data/technology_patents/files/epo_total_unity.xlsx')
+df2 = pd.read_excel('data/technology_patents/files/epo_env_unity.xlsx')
 
-df1.head()
-def alpha3code(column): 
-    CODE = []
-    for country in column:
-        try: 
-            code = pycountry.countries.get(name=country).alpha_3
-            CODE.append(code)
-        except: 
-            CODE.append('None')
-    return CODE
+df3 = pd.read_excel('data/technology_patents/files/uspto_total_unity.xlsx')
+df4 = pd.read_excel('data/technology_patents/files/uspto_env_unity.xlsx')
 
-df1['CODE'] = alpha3code(df1.Country)
+df5 = pd.read_excel('data/technology_patents/files/pct_total_unity.xlsx')
+df6 = pd.read_excel('data/technology_patents/files/pct_env_unity.xlsx')
 
-def get_map():
-        fig = px.choropleth(df1, locations="CODE",
-                    color="Value", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='Inferno',
-                    animation_frame='Year',
-                    color_continuous_midpoint = -0.009)
+#df7 = pd.merge(df1, df3, df5, on = "Country")
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Patents in technology domains',font_size=18)
-        return fig
+#print(df7.head())
+
+def get_world_graph():
+    graph  = px.line(df1, 
+            x='Year', y="Value", color="Country", title='Evolement EPO Total Patents by Groups', labels={'x':'Time', 'y':'Patents'})
+    return graph
+
+def get_world_graph2():
+    graph  = px.pie(df2, 
+            names='Country', values="Value", color="Country", title='Evolement EPO Total Patents by Groups')
+    return graph
+

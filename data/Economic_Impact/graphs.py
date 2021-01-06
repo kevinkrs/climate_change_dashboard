@@ -31,6 +31,7 @@ df1 = pd.melt(df1, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pacific', '
 
 df3=  pd.merge(df1, df2, on="variable")
 
+#print(df3.head())
 # PLot
 def get_dropGDP():
     graph  = px.bar(df1, 

@@ -77,17 +77,7 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ])
 
-@app.callback (
-    Output('dropdown1-content', 'children'),
-    Input('dropdown1-left', 'value'),)
-def dropdown1_left (value):
-    return 'You selected "{}"'.format(value)
 
-@app.callback (
-    Output('dropdown2-content', 'children'),
-    Input('dropdown2-left', 'value'))
-def dropdown2_left (value):
-     return f"You've selected {value}"
 
 
 if __name__ == "__main__":
