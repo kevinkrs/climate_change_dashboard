@@ -11,8 +11,8 @@ def p5_updateLayout():
 
     #Defining Spaces ==> Insert your plot into the spaces
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    up_leftSpace = html.Div(dcc.Graph(figure=maps))
-    up_rightSpace = html.Div(dcc.Graph(figure=heatmap))
+    up_leftSpace = html.Div(dcc.Graph(figure=maps), style={'height':400})
+    up_rightSpace = html.Div(dcc.Graph(figure=heatmap), style={'height':400})
 
 
     bot_leftSpace = html.Div(dcc.Graph(figure=piechart))
@@ -24,7 +24,7 @@ def p5_updateLayout():
             dbc.Col(
             up_leftSpace,className='col-6',style ={'padding':0}),
             dbc.Col(
-            up_rightSpace, className='col-6',style ={'padding':130}),]),
+            up_rightSpace, className='col-6',style ={'padding':0}),]),
             dbc.Row( [
             dbc.Col(
             bot_leftSpace,className='col-6',style ={'padding':20}),
