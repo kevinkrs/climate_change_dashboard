@@ -10,7 +10,7 @@ from page2 import p2_updateLayout
 from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
-from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP
+from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
 
 #Inititalise app    and it's style for the theme
 app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
@@ -99,6 +99,15 @@ def update_figure(selection):
 
 def update_figure(selection):
     fig=get_dropGDP()[int(selection)]
+    return fig
+
+#Callback Page 4 ==> WorldMap
+@app.callback(
+    Output('p4WorldMap', 'figure'),
+    Input('p4WorldMap_dm', 'value'))
+
+def update_output(selection):
+    fig=get_worldMaps()[int(selection)]
     return fig
 
 if __name__ == "__main__":

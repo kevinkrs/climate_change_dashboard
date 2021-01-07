@@ -9,10 +9,22 @@ from data.Economic_Impact.graphs import get_iGreenBondData, get_dropGDP_W
 def p4_updateLayout():
 
     #Defining Spaces ==> Insert your plot into the spaces
-    leftSpace = html.Div("Linker Space")
+    leftSpace = html.Div(
+        dcc.Dropdown(
+        id='p4WorldMap_dm',
+        options=[
+            {'label': 'GDP', 'value': '0'},
+            {'label': 'Risk 2018', 'value': '1'},
+            {'label': 'Risk 1999-2018', 'value': '2'}
+        ],
+        value='0',
+        #className='btn btn-success disabled',
+        #labelStyle={'display': 'inline-block', 'padding-right':'10px'}
+    ))
 
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div(dcc.Graph(figure=get_dropGDP_W()))
+    midSpace = html.Div(
+        dcc.Graph(id='p4WorldMap'))
 
     rightSpace = html.Div("Rechter Space")
 

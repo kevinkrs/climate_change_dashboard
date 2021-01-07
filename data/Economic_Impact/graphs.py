@@ -21,13 +21,14 @@ def get_iGreenBondData():
             x=iGreenBond.index, y="Adj Close", title='iShares Global Green Bond ETF', labels={'y':'Adjusted Close'})
     return graph
 
+#######################################################################################################################################################################################
 
 # %%
 # ### Drop of GDP
 # Importing the dataset with GDP Drop data and with created OECD Regions
 df1 = pd.read_excel('data\Economic_Impact\GDP\C_Percentage change in regional GDP.xlsx')
 df1_ols = pd.read_excel('data\Economic_Impact\GDP\C_Percentage change in regional GDP_ols.xlsx')
-df2 = pd.read_excel('data\Economic_Impact\GDP\OECD Region.xlsx')
+df2 = pd.read_excel('data\Economic_Impact\GDP\OECD Region.xlsx') #Datasheet with OECD Regions, Countries and country Codes
 df1 = pd.melt(df1, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pacific', 'OECD America', 'Latin America',
        'Rest of Europe and Asia', 'Middle East and North Africa',
        'South and South-East Asia', 'Sub-Saharan Africa'])
@@ -73,6 +74,57 @@ def get_dropGDP_W():
 
 #######################################################################################################################################################################################
 
+# %%
+# ### Climate Risk Assesment Drop in GDP 1999-2018
+# Importing the dataset with Climate Risk Assesment data 
+df1_gcr = pd.read_excel('data\Economic_Impact\GDP\Climate Risk Assesment\GLOBALCLIMATE RISKINDEX 2020_data concerning 1999-2018.xlsx')
+df2_gcr = pd.read_excel('data\Economic_Impact\GDP\Climate Risk Assesment\GLOBALCLIMATE RISKINDEX 2020_data concerning 2018.xlsx')
+df3_gcr = pd.read_excel('data\Economic_Impact\GDP\OECD Region.xlsx')   #Datasheet with OECD Regions, Countries and country Codes
+
+df1_gcr=  pd.merge(df1_gcr, df3_gcr, on="Country")
+df2_gcr=  pd.merge(df2_gcr, df3_gcr, on="Country")
+
+# PLot
+#Worldmap timespan 1999-2018
+def get_RiskindexWorldmap1():
+        fig_gcr = px.choropleth(df1_gcr, locations="CODE",
+                    color="Losses per unit GDP in % 1999-2018 (Rank)",
+                    #hover_name="Country ", # column to add to hover information
+                    color_continuous_scale='Inferno',
+                    #color_continuous_midpoint = -0.9,
+                    #range_color=[-4,0]
+                    )
+        fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Climate Risk Index for 1999-2018',font_size=18)
+
+        return fig_gcr
+
+#Worldmap timespan 2018
+def get_RiskindexWorldmap2():
+        fig_gcr = px.choropleth(df2_gcr, locations="CODE",
+                    color="Losses per unit GDP in % (Rank)", 
+                    #hover_name="Country", # column to add to hover information
+                    color_continuous_scale='Inferno',
+                    #color_continuous_midpoint = -0.9,
+                    #range_color=[-4,0]
+                    )
+        fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Climate Risk Index for 2018',font_size=18)
+        
+        return fig_gcr
+
+# Variable time span : 1999-2018
+# Data published by : Germanwatch
+# Link : https://www.germanwatch.org/fr/17307
+
+#######################################################################################################################################################################################
+
+
+#Collect all World Maps Figgures and return them according to drop down order
+
+def get_worldMaps():
+        return [get_dropGDP_W(),get_RiskindexWorldmap1(), get_RiskindexWorldmap2()]
+
+
+#######################################################################################################################################################################################
 # %%
 # ### Economic damage caused by weather and climate-related extreme events in Europe (1980-2019)
 # Importing the dataset
