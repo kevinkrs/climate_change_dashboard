@@ -23,7 +23,8 @@ def p4_updateLayout():
             {'label': 'Trend', 'value': '1'}
         ],
         value='0',
-        labelStyle={'display': 'inline-block'}),  
+        className='btn btn-success disabled',
+        labelStyle={'display': 'inline-block', 'padding-right':'10px'}), 
         dcc.Graph(id='eu_fig')])
 
     bot_midSpace = html.Div([dcc.RadioItems(
@@ -33,7 +34,9 @@ def p4_updateLayout():
             {'label': 'Trend', 'value': '1'}
         ],
         value='0',
-        labelStyle={'display': 'inline-block'}),  
+        className='btn btn-success disabled',
+        labelStyle={'display': 'inline-block', 'padding-right':'10px'}), 
+         
         dcc.Graph(id='gdp_fig')])
 
     bot_rightSpace = html.Div(dcc.Graph(figure=get_iGreenBondData()))

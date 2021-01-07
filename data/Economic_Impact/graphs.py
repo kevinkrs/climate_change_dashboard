@@ -99,7 +99,7 @@ def get_dmgEU():
         name='Hydrological event',
         marker_color='rgba(35, 132, 217)'
         ))
-        fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of economic damage caused by weather <br>and climate-related extreme events in Europe '))
+        fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of economic damage caused by weather and climate-related extreme events in Europe '))
 
         return [fig, fig_trend]
 
