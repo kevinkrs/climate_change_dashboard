@@ -26,21 +26,35 @@ def get_iGreenBondData():
 # ### Drop of GDP
 # Importing the dataset with GDP Drop data and with created OECD Regions
 df1 = pd.read_excel('data\Economic_Impact\GDP\C_Percentage change in regional GDP.xlsx')
+df1_ols = pd.read_excel('data\Economic_Impact\GDP\C_Percentage change in regional GDP_ols.xlsx')
 df2 = pd.read_excel('data\Economic_Impact\GDP\OECD Region.xlsx')
 df1 = pd.melt(df1, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pacific', 'OECD America', 'Latin America',
-       'World', 'Rest of Europe and Asia', 'Middle East and North Africa',
+       'Rest of Europe and Asia', 'Middle East and North Africa',
+       'South and South-East Asia', 'Sub-Saharan Africa'])
+df1_ols = pd.melt(df1_ols, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pacific', 'OECD America', 'Latin America',
+        'Rest of Europe and Asia', 'Middle East and North Africa',
        'South and South-East Asia', 'Sub-Saharan Africa'])
 
 df3=  pd.merge(df1, df2, on="variable")
 
 #Map measures in percentage, so multiply with 100
+df1['value']=df1['value']*100
+df1_ols['value']=df1_ols['value']*100
 df3['value']=df3['value']*100
 
 # PLot
 def get_dropGDP():
-    graph  = px.bar(df1, 
-            x='Date', y="value", color="variable", title='Percentage change in regional GDP due to selected climate change impacts', labels={'x':'Fund Type', 'y':'Pledge (USD mn)'})
-    return graph
+        #GDP Drop figgure Total Data
+        graph  = px.bar(df1, 
+            x='Date', y="value", color="variable", title='Percentage change in regional GDP due to selected climate change impacts', labels={'x':'Date', 'y':'GDP Drop'})
+        graph.update_yaxes(autorange="reversed")
+
+        #GDP Drop figgure for Trend
+        fig_trend= (px.scatter( x=df1_ols['Date'], y=df1_ols['value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of Percentage change in regional GDP due to selected climate change impacts'))
+        fig_trend.update_yaxes(autorange="reversed")
+        return [graph,fig_trend]
+
+
 def get_dropGDP_W():
         fig = px.choropleth(df3, locations="CODE",
                     color="value", # lifeExp is a column of gapminder
@@ -49,7 +63,6 @@ def get_dropGDP_W():
                     animation_frame='Date',
                     color_continuous_midpoint = -0.9,
                     range_color=[-4,0])
-
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
         
         return fig

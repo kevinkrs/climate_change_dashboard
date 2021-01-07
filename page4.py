@@ -3,7 +3,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
-from data.Economic_Impact.graphs import get_iGreenBondData, get_dropGDP, get_dropGDP_W, get_dmgEU
+from data.Economic_Impact.graphs import get_iGreenBondData, get_dropGDP_W
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 def p4_updateLayout():
@@ -26,7 +26,15 @@ def p4_updateLayout():
         labelStyle={'display': 'inline-block'}),  
         dcc.Graph(id='eu_fig')])
 
-    bot_midSpace = html.Div(dcc.Graph(figure=get_dropGDP()))
+    bot_midSpace = html.Div([dcc.RadioItems(
+        id='gdp_fig_rb',
+        options=[
+            {'label': 'Full data', 'value': '0'},
+            {'label': 'Trend', 'value': '1'}
+        ],
+        value='0',
+        labelStyle={'display': 'inline-block'}),  
+        dcc.Graph(id='gdp_fig')])
 
     bot_rightSpace = html.Div(dcc.Graph(figure=get_iGreenBondData()))
 
