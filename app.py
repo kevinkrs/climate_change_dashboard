@@ -10,7 +10,8 @@ from page2 import p2_updateLayout
 from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
-
+from data.technology_patents.maps import *
+from data.technology_patents.graphs import *
 #Inititalise app    and it's style for the theme
 app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 
@@ -78,6 +79,29 @@ def render_page_content(pathname):
         ])
 
 
+
+@app.callback(
+    Output('worldmap_patents', 'figure'),
+    Input('dropdown1-left', 'value'))
+def get_patent_map(selection):
+    fig = get_world_maps()[int(selection)]
+    return fig
+
+@app.callback(
+    Output('graph1_patents', 'figure'),
+    Input('dropdown1-left', 'value'))
+def get_patent_map(selection):
+    fig = get_world_lg()[int(selection)]
+    
+    return fig
+
+@app.callback(
+    Output('graph2_patents', 'figure'),
+    Input('dropdown1-left', 'value'))   
+def get_patent_map(selection):
+    fig = get_world_sg()[int(selection)]
+
+    return fig
 
 
 if __name__ == "__main__":

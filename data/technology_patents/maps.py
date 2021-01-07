@@ -4,7 +4,8 @@ import numpy as np
 import pycountry
 
 
-
+def get_world_maps():
+        return [get_world_map_epo_total(),get_world_map_uspto_env(), get_world_map_pct_env()]
 
 df1 = pd.read_excel('data/technology_patents/files/epo_total_c.xlsx')
 
