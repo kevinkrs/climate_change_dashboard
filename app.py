@@ -12,6 +12,7 @@ from page4 import p4_updateLayout
 from page5 import p5_updateLayout
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
+from data.technology_patents.histograms import *
 #Inititalise app    and it's style for the theme
 app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 
@@ -79,29 +80,75 @@ def render_page_content(pathname):
         ])
 
 
-
+# Callback for different patent worldmaps 
 @app.callback(
     Output('worldmap_patents', 'figure'),
-    Input('dropdown1-left', 'value'))
-def get_patent_map(selection):
-    fig = get_world_maps()[int(selection)]
-    return fig
+    Input('dropdown_po', 'value'),
+    Input('dropdown_number', 'value'))
+def get_patent_map(selection_x,selection_y):
+    if(selection_x == '0' and selection_y == '0'):
+        fig = get_maps_patent()[0]
+        return fig
 
-@app.callback(
-    Output('graph1_patents', 'figure'),
-    Input('dropdown1-left', 'value'))
-def get_patent_map(selection):
-    fig = get_world_lg()[int(selection)]
+    elif(selection_x == '1' and selection_y == '0'):
+        fig = get_maps_patent()[1]
+        return fig
     
-    return fig
+    elif(selection_x == '2' and selection_y == '0'):
+        fig = get_maps_patent()[2]
+        return fig
+
+    elif(selection_x == '0' and selection_y == '1'):
+        fig = get_maps_patent()[3]
+        return fig
+
+    elif(selection_x == '1' and selection_y == '1'):
+        fig = get_maps_patent()[4]
+        return fig
+
+    else:
+        fig = get_maps_patent()[5]
+        return fig 
+
+# Callback for different scatter plots on evrionmental related technology patents
+@app.callback(
+    Output('scatter_patents_env', 'figure'),
+    Input('dropdown_po', 'value'),
+    Input('dropdown_number', 'value'))   
+def get_graphs(selection_x, selection_y):
+    if(selection_x == '0' and selection_y == '0'):
+        fig =get_graphs_patent()[0]
+        return fig
+
+    elif(selection_x == '1' and selection_y == '0'):
+        fig = get_graphs_patent()[1]
+        return fig
+    
+    elif(selection_x == '2' and selection_y == '0'):
+        fig = get_graphs_patent()[2]
+        return fig
+
+    elif(selection_x == '0' and selection_y == '1'):
+        fig = get_graphs_patent()[3]
+        return fig
+
+    elif(selection_x == '1' and selection_y == '1'):
+        fig = get_graphs_patent()[4]
+        return fig
+
+    else:
+        fig = get_graphs_patent() [5]
+        return fig 
 
 @app.callback(
-    Output('graph2_patents', 'figure'),
-    Input('dropdown1-left', 'value'))   
-def get_patent_map(selection):
-    fig = get_world_sg()[int(selection)]
+    Output('histogram_total_env', 'figure'),
+    Input('dropdown_po', 'value'))
+def get_patent_hist(selection):
+    fig = get_hist_patents()[int(selection)]
 
     return fig
+
+
 
 
 if __name__ == "__main__":

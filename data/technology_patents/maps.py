@@ -4,8 +4,8 @@ import numpy as np
 import pycountry
 
 
-def get_world_maps():
-        return [get_world_map_epo_total(),get_world_map_uspto_env(), get_world_map_pct_env()]
+def get_maps_patent():
+        return [get_world_map_epo_env(),get_world_map_uspto_env(), get_world_map_pct_env(),get_world_map_epo_total(),get_world_map_uspto_total(), get_world_map_pct_total()]
 
 df1 = pd.read_excel('data/technology_patents/files/epo_total_c.xlsx')
 
@@ -28,13 +28,13 @@ def get_world_map_epo_total():
         fig = px.choropleth(df1, locations="CODE",
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
-                    color_continuous_scale="Inferno",
-                    labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
-                    hover_data = {'log_value' : False, 'Value' : 'Value' },
+                    color_continuous_scale='tempo',
+                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                    #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'EPO Patents total',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0), paper_bgcolor="#7ED6F0",height= 700,title_text = 'EPO patents total',font_size=18)
         return fig
 
 
@@ -50,13 +50,13 @@ def get_world_map_epo_env():
         fig = px.choropleth(df2, locations="CODE",
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
-                    color_continuous_scale="Inferno",
+                    color_continuous_scale='Greens',
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
-                    hover_data = {'log_value' : False, 'Value' : 'Value' },
+                    #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'EPO patents environmental-related technologies',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="#7ED6F0",height= 700,title_text = 'EPO patents on environmental-related technologies',font_size=18)
         return fig
 
 
@@ -72,13 +72,13 @@ def get_world_map_uspto_env():
         fig = px.choropleth(df3, locations="CODE",
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
-                    color_continuous_scale="Inferno",
+                    color_continuous_scale='Greens',
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
-                    hover_data = {'log_value' : False, 'Value' : 'Value' },
+                    #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'EPO patents environmental-related technologies',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="#7ED6F0",height= 700,title_text = 'USPTO patents on environmental-related technologies',font_size=18)
         return fig
 
 
@@ -94,13 +94,13 @@ def get_world_map_uspto_total():
         fig = px.choropleth(df4, locations="CODE",
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
-                    color_continuous_scale="Inferno",
+                    color_continuous_scale='tempo',
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
-                    hover_data = {'log_value' : False, 'Value' : 'Value' },
+                    #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'EPO patents environmental-related technologies',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="#7ED6F0",height= 700,title_text = 'USPTO patents total',font_size=18)
         return fig
 
 
@@ -115,13 +115,13 @@ def get_world_map_pct_env():
         fig = px.choropleth(df5, locations="CODE",
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
-                    color_continuous_scale="Inferno",
+                    color_continuous_scale='Greens',
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
-                    hover_data = {'log_value' : False, 'Value' : 'Value' },
+                    #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'EPO patents environmental-related technologies',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="#7ED6F0",height= 700,title_text = 'PCT patents on environmental-related technologies',font_size=18)
         return fig
 
 
@@ -136,11 +136,11 @@ def get_world_map_pct_total():
         fig = px.choropleth(df6, locations="CODE",
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
-                    color_continuous_scale="Inferno",
+                    color_continuous_scale='tempo',
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
-                    hover_data = {'log_value' : False, 'Value' : 'Value' },
+                    #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'EPO patents environmental-related technologies',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="#7ED6F0",height= 700,title_text = 'PCT patents total',font_size=18)
         return fig
