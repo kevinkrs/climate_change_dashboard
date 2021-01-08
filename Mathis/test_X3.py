@@ -14,15 +14,20 @@ try:
     import dash_html_components      as html
     import dash_bootstrap_components as dbc
     import dash_core_components      as dcc
-    
     from dash.dependencies import Input, Output
     
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
 
+########################################################################################################################################
+
+#Inititalise app    and it's style for the theme
+app = dash.Dash(external_stylesheets=[dbc.themes.LUX])
+
+
 
 def renewable():
-    dataset = pd.read_csv("/Users/" + os.environ["USER"] + "/Desktop/Dashboard/Archive2/Situation_renewable-share-energy.csv")
+    dataset = pd.read_csv("Mathis\Data\Situation_renewable-share-energy.csv")
     dataset.columns = ['Entity','Code','Year', 'Renewables']
     dataset["Indice"] = 0
     
@@ -54,7 +59,7 @@ def renewable():
 
 
 def world_map1():
-    df = pd.read_csv('/Users/mati/Desktop/Dashboard/Data/data_situation2.csv')
+    df = pd.read_csv('Mathis\Data\data_situation2.csv')
     fig = px.choropleth(df, locations="CODE",
                         color="CO2_emissions", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
@@ -65,7 +70,7 @@ def world_map1():
     return fig
 
 def world_map2():
-    df = pd.read_csv('/Users/mati/Desktop/Dashboard/Data/data_situation2.csv')
+    df = pd.read_csv('Mathis\Data\data_situation2.csv')
     fig = px.choropleth(df, locations="CODE",
                         color="Death_from_air_pollution", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
@@ -76,7 +81,7 @@ def world_map2():
     return fig
 
 def world_map3():
-    df = pd.read_csv('/Users/mati/Desktop/Dashboard/Data/data_situation2.csv')
+    df = pd.read_csv('Mathis\Data\data_situation2.csv')
     fig = px.choropleth(df, locations="CODE",
                         color="Ozone_concentration", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
@@ -93,7 +98,7 @@ def get_worldMaps():
 
 def temperature():
     
-    dataset = pd.read_csv("/Users/" + os.environ["USER"] + "/Desktop/Dashboard/Archive2/Situation_temperature-anomaly.csv")
+    dataset = pd.read_csv("Mathis\Data\Situation_temperature-anomaly.csv")
     dataset = dataset[(dataset.Entity == "Global")]
     dataset.columns = ['Entity','Year', 'Median', 'Upper_bound', 'Lower_bound']
 
@@ -182,8 +187,9 @@ def p1_updateLayout():
             value = '0',
             ))
     
+
     midSpace = html.Div(
-        dcc.Graph(id='p4WorldMap'))
+        dcc.Graph(id='p1WorldMap'))
     
     bot_leftSpace = html.Div(dcc.Graph(figure=temperature()))
     bot_rightSpace = html.Div(dcc.Graph(figure=renewable()))
@@ -388,11 +394,6 @@ def p5_updateLayout():
     
     return content
 
-########################################################################################################################################
-
-#Inititalise app    and it's style for the theme
-app = dash.Dash(external_stylesheets=[dbc.themes.LUX])
-
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {
@@ -468,11 +469,12 @@ def render_page_content(pathname):
         ])
 
 @app.callback(
-    Output('p4WorldMap', 'figure'),
-    Input('p4WorldMap_dm', 'value'))
+    Output('p1WorldMap', 'figure'),
+    Input('p1WorldMap_dm', 'value'))
 
-def update_figure(selection):
+def update_output(selection):
     fig = get_worldMaps()[int(selection)]
+    print(selection)
     return fig
 
 if __name__ == "__main__":
