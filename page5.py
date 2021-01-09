@@ -22,11 +22,11 @@ def p5_updateLayout():
     content = html.Div(
         [dbc.Row( [
             dbc.Col(
-            [leftSpace, html.Div(
+            [up_leftSpace, html.Div(
                 style={'width': '100%', 'height': 500, 'background-color' : '#F427EE'},
             )],className='col-2', style ={'padding':20}),
             dbc.Col(
-            [midSpace, html.Div(
+            [up_rightSpace, html.Div(
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
             )], className='col-8',style ={'padding':20}),
             dbc.Col(
