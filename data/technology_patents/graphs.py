@@ -23,21 +23,21 @@ def get_world_graph_epo_env():
     fig = px.line(df2, x="Year", y="Value", color="Country",
                   hover_data=['Value'], color_discrete_map= {'World' : '#3321BB', 'OECD' : '#B62DD5', 'BRIC' : '#28CDD0', 'European Union' : '#DBD831'}, 
                   title = 'Distribution of Patents regarding world oragnisations')
-    fig.update_layout(paper_bgcolor="#7ED6F0")
+   
 
     return fig
 
 def get_world_graph_uspto_env():
     fig = px.line(df4, x="Year", y="Value", color="Country", color_discrete_map= {'World' : '#3321BB', 'OECD' : '#B62DD5', 'BRIC' : '#28CDD0', 'European Union' : '#DBD831'},
                   hover_data=['Value'],title = 'Distribution of Patents regarding world oragnisations')
-    fig.update_layout(paper_bgcolor="#7ED6F0")
+    
 
     return fig
 
 def get_world_graph_pct_env():
     fig = px.line(df6, x="Year", y="Value", color="Country", color_discrete_map= {'World' : '#3321BB', 'OECD' : '#B62DD5', 'BRIC' : '#28CDD0', 'European Union' : '#DBD831'},
                   hover_data=['Value'], title = 'Distribution of Patents regarding world oragnisations')
-    fig.update_layout(paper_bgcolor="#7ED6F0")
+    
     
     return fig
 

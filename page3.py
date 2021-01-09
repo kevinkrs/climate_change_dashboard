@@ -41,6 +41,7 @@ def p3_updateLayout():
         [dbc.Row( [
             dbc.Col(
             [leftSpace, html.Div([
+                html.H2('Select patent'),
                 dcc.Dropdown(id = 'dropdown_po', 
                 options =[{'label' : 'EPO', 'value' : '0' },
                           {'label' : 'USPTO', 'value' : '1'},
@@ -52,8 +53,9 @@ def p3_updateLayout():
                         {'label' : 'Total', 'value' : '1' },],
                           value = '0',
                           placeholder = 'Select technology domain', style ={ 'width': '95%'})],
-                style={'width': '100%', 'height': 500, 'background-color' : '#75BB7F', 
+                style={'width': '100%', 'height': 500,  
                         'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'},
+                        
             )],className='col-2', style ={'padding':20}),
             dbc.Col(
             [midSpace, html.Div(
@@ -67,7 +69,7 @@ def p3_updateLayout():
             [bot_rightSpace, html.Div(
             )], className='col-6',style ={'padding':20}),],
             )],
-            style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden', 'background-color' : '#7ED6F0'},) # other nice color #AAD1B0
+            style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden',},) # other nice color #7ED6F0
 
     return content
 

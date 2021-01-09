@@ -27,7 +27,7 @@ CONTENT_STYLE = {
 #Sidebar containing the menu
 sidebar = html.Div(
     [
-        html.H2("Name", className="display-4"),
+        html.H2("Seminar", className="display-4"),
         html.Hr(),
         html.P(
             "Explanation", className="lead"
@@ -39,7 +39,7 @@ sidebar = html.Div(
                 dbc.NavLink("Home", href="/", active="exact"),
                 dbc.NavLink("Topic 1", href="/page1", active="exact"),
                 dbc.NavLink("Topic 2", href="/page2", active="exact"),
-                dbc.NavLink("Topic 3", href="/page3", active="exact"),
+                dbc.NavLink("Environmental related patents", href="/page3", active="exact"),
                 dbc.NavLink("Topic 4", href="/page4", active="exact"),
                 dbc.NavLink("Topic 5", href="/page5", active="exact"),
             ],
@@ -47,7 +47,7 @@ sidebar = html.Div(
             pills=True,
         ),
     ],
-    className='sidebar',
+    className='sidebar', style = {'background-color' : '#AAD1B0' , 'color' : 'white', 'href' : 'white'} 
 )
 
 #Footer
