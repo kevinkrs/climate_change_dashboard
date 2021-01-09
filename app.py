@@ -38,12 +38,12 @@ sidebar = html.Div(
         #Navbar containing the menu list
         dbc.Nav(
             [
-                dbc.NavLink("Home", href="/", active="exact"),
-                dbc.NavLink("Topic 1", href="/page1", active="exact"),
-                dbc.NavLink("Topic 2", href="/page2", active="exact"),
-                dbc.NavLink("Environmental related patents", href="/page3", active="exact"),
-                dbc.NavLink("Topic 4", href="/page4", active="exact"),
-                dbc.NavLink("Topic 5", href="/page5", active="exact"),
+                dbc.NavLink("Home", href="/", active="exact", className='nav-item'),
+                dbc.NavLink("Topic 1", href="/page1", active="exact", className='nav-item'),
+                dbc.NavLink("Topic 2", href="/page2", active="exact", className='nav-item'),
+                dbc.NavLink("Topic 3", href="/page3", active="exact", className='nav-item'),
+                dbc.NavLink("Topic 4", href="/page4", active="exact", className='nav-item'),
+                dbc.NavLink("Topic 5", href="/page5", active="exact", className='nav-item'),
             ],
             vertical=True,
             pills=True,
