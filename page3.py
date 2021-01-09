@@ -26,22 +26,10 @@ from data.technology_patents.graphs import *
 
 def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
-    leftSpace = html.Div(style = {'margin-top' : 50 })
-        #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
-    midSpace = html.Div(dcc.Graph(id = 'worldmap_patents')) 
-    #rightSpace = html.Div("Rechter Space")
-
-    bot_leftSpace = html.Div(dcc.Graph(id = 'scatter_patents_env'))
-    #bot_midSpace = html.Div("Mid Space")
-    bot_rightSpace = html.Div(dcc.Graph(id = 'histogram_total_env'))
-
-    #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
-    content = html.Div(
-        [dbc.Row( [
-            dbc.Col(
-            [leftSpace, html.Div([
-                html.H2('Select patent'),
+    leftSpace = html.Div([
+            dbc.Col([
+                dbc.Row([
+                html.H3('Select patent'),
                 dcc.Dropdown(id = 'dropdown_po', 
                 options =[{'label' : 'EPO', 'value' : '0' },
                           {'label' : 'USPTO', 'value' : '1'},
@@ -52,29 +40,40 @@ def p3_updateLayout():
                 options =[{'label' : 'Environmental-related', 'value' : '0'},
                         {'label' : 'Total', 'value' : '1' },],
                           value = '0',
-                          placeholder = 'Select technology domain', style ={ 'width': '95%'})],
+                          placeholder = 'Select technology domain', style ={ 'width': '95%'})]),
+                dbc.Row([
+                    html.H3('Information Box', style = {'background-color' : 'grey', 'padding' : '30px', 'margin-top' : '30px'})]
+                )])],
                 style={'width': '100%', 'height': 500,  
-                        'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'},
-                        
-            )],className='col-2', style ={'padding':20}),
+                        'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'})
+        #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
+    #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
+    midSpace = html.Div(dcc.Graph(id = 'worldmap_patents')) 
+    #rightSpace = html.Div("Rechter Space")
+
+    bot_leftSpace = html.Div(dcc.Graph(id = 'scatter_patents_env'))
+    #bot_midSpace = html.Div("Mid Space")
+    bot_rightSpace = html.Div(dcc.Graph(id = 'histogram_total_env'))
+
+    #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
+    content = html.Div([
+        dbc.Row( [
+            dbc.Col(
+            [leftSpace, html.Div([        
+            ])], className='col-2', style ={'padding':20}),
+
             dbc.Col(
             [midSpace, html.Div(
-            )], className='col-10',style ={'padding':20}),],
-            ),
+            )], className='col-10',style ={'padding':20}),]),
 
-            dbc.Row( [
+        dbc.Row( [
             dbc.Col(
-            bot_leftSpace,className='col-6'),
+            bot_leftSpace, className='col-6', style ={'padding':20}),
             dbc.Col(
             [bot_rightSpace, html.Div(
-            )], className='col-6',style ={'padding':20}),],
+            )], className='col-6',style ={'padding':20}),]
             )],
-            style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden',},) # other nice color #7ED6F0
+            style={ 'width' : 'auto',  'overflow' : 'hidden',},) # other nice color #7ED6F0
 
     return content
-
-'''def toggle_collapse(n, is_open):
-    if n:
-        return not is_open
-    return is_open'''
 
