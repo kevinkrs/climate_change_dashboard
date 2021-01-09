@@ -48,20 +48,20 @@ def get_world_graph_epo_total():
     fig = px.line(df1, x="Year", y="Value", color="Country",
                   hover_data=['Value'], color_discrete_map= {'World' : '#3321BB', 'OECD' : '#B62DD5', 'BRIC' : '#28CDD0', 'European Union' : '#DBD831'}, 
                   title = 'Distribution of Patents regarding world oragnisations')
-    fig.update_layout(paper_bgcolor="#7ED6F0")
+    
 
     return fig
 
 def get_world_graph_uspto_total():
     fig = px.line(df3, x="Year", y="Value", color="Country", color_discrete_map= {'World' : '#3321BB', 'OECD' : '#B62DD5', 'BRIC' : '#28CDD0', 'European Union' : '#DBD831'},
                   hover_data=['Value'],title = 'Distribution of Patents regarding world oragnisations')
-    fig.update_layout(paper_bgcolor="#7ED6F0")
+   
 
     return fig
 
 def get_world_graph_pct_total():
     fig = px.line(df5, x="Year", y="Value", color="Country", color_discrete_map= {'World' : '#3321BB', 'OECD' : '#B62DD5', 'BRIC' : '#28CDD0', 'European Union' : '#DBD831'},
                   hover_data=['Value'], title = 'Distribution of Patents regarding world oragnisations')
-    fig.update_layout(paper_bgcolor="#7ED6F0")
+    
     
     return fig
