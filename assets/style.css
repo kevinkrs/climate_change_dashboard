@@ -1,4 +1,6 @@
 .sidebar {
+    font-family: Roboto;
+    color: #fff;
     display: inline-block;
     float: left;
     top: 0;
@@ -7,7 +9,15 @@
     width: 16rem;
     height: 100vh;
     padding: 2rem 1rem;
-    /*background: rgb(151, 237, 138);
+    background: rgb(151, 237, 138);
     background: linear-gradient(159deg, rgba(151, 237, 138, 1) 0%, rgba(69, 191, 85, 1) 100%);
-    */
+    position: sticky
+}
+
+.innerFrame {
+    padding-left: 0;
+}
+
+.nav-item {
+    color: white;
 }
