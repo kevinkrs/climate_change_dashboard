@@ -12,7 +12,7 @@ except Exception as e:
 # %%
 # ### Funding by type
 # Importing the dataset
-dataset = pd.read_excel('data\Governmental_efforts\data/Fund_Status.xlsx')
+dataset = pd.read_excel('data/Governmental_efforts/data/Fund_Status.xlsx')
 dataset.columns = ['Fund','Fund Type', 'Fund Focus', 'Pledge (USD mn)', 'Deposit (USD mn)', 'Approval (USD mn)', 'Disbursement (USD mn)', 'Number of projects approved', 'Date reported', 'Date collected']
 dataset['Date reported']=pd.to_datetime(dataset['Date reported'],format="%m%Y")
 
@@ -31,7 +31,7 @@ def get_fundingGraph():
 # %%
 # ### Money pledged to spend on climate funds by countries
 # Importing the dataset
-dataset_pledges = pd.read_excel('data\Governmental_efforts\data\Governmental_efforts_climate funding_Pledges.xlsx')
+dataset_pledges = pd.read_excel('data/Governmental_efforts/data/Governmental_efforts_climate funding_Pledges.xlsx')
 dataset_pledges.columns = ['Fund','Fund Type', 'Fund Focus', 'Contributor', 'Country', 'Country Income Level','Region', 'Pledged (USD million current)', 'Deposited (USD million current)','test','test1']
 
 # PLot

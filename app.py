@@ -12,6 +12,9 @@ from page4 import p4_updateLayout
 from page5 import p5_updateLayout
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
 
+from data.technology_patents.maps import *
+from data.technology_patents.graphs import *
+from data.technology_patents.histograms import *
 #Inititalise app    and it's style for the theme
 app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 
@@ -26,7 +29,7 @@ CONTENT_STYLE = {
 #Sidebar containing the menu
 sidebar = html.Div(
     [
-        html.H2("Name", className="display-4"),
+        html.H2("Seminar", className="display-4"),
         html.Hr(),
         html.P(
             "Explanation", className="lead"
@@ -38,7 +41,7 @@ sidebar = html.Div(
                 dbc.NavLink("Home", href="/", active="exact"),
                 dbc.NavLink("Topic 1", href="/page1", active="exact"),
                 dbc.NavLink("Topic 2", href="/page2", active="exact"),
-                dbc.NavLink("Topic 3", href="/page3", active="exact"),
+                dbc.NavLink("Environmental related patents", href="/page3", active="exact"),
                 dbc.NavLink("Topic 4", href="/page4", active="exact"),
                 dbc.NavLink("Topic 5", href="/page5", active="exact"),
             ],
@@ -46,7 +49,7 @@ sidebar = html.Div(
             pills=True,
         ),
     ],
-    className='sidebar',
+    className='sidebar', style = {'background-color' : '#AAD1B0' , 'color' : 'white', 'href' : 'white'} 
 )
 
 #Footer
@@ -78,10 +81,77 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ])
 
-@app.callback(dash.dependencies.Output('home-content', 'children'),
-              [dash.dependencies.Input('home-dropdown', 'value')])
-def home_dropdown(value):
-    return 'You have selected "{}"'.format(value)
+
+# Callback for different patent worldmaps 
+@app.callback(
+    Output('worldmap_patents', 'figure'),
+    Input('dropdown_po', 'value'),
+    Input('dropdown_number', 'value'))
+def get_patent_map(selection_x,selection_y):
+    if(selection_x == '0' and selection_y == '0'):
+        fig = get_maps_patent()[0]
+        return fig
+
+    elif(selection_x == '1' and selection_y == '0'):
+        fig = get_maps_patent()[1]
+        return fig
+    
+    elif(selection_x == '2' and selection_y == '0'):
+        fig = get_maps_patent()[2]
+        return fig
+
+    elif(selection_x == '0' and selection_y == '1'):
+        fig = get_maps_patent()[3]
+        return fig
+
+    elif(selection_x == '1' and selection_y == '1'):
+        fig = get_maps_patent()[4]
+        return fig
+
+    else:
+        fig = get_maps_patent()[5]
+        return fig 
+
+# Callback for different scatter plots on evrionmental related technology patents
+@app.callback(
+    Output('scatter_patents_env', 'figure'),
+    Input('dropdown_po', 'value'),
+    Input('dropdown_number', 'value'))   
+def get_graphs(selection_x, selection_y):
+    if(selection_x == '0' and selection_y == '0'):
+        fig =get_graphs_patent()[0]
+        return fig
+
+    elif(selection_x == '1' and selection_y == '0'):
+        fig = get_graphs_patent()[1]
+        return fig
+    
+    elif(selection_x == '2' and selection_y == '0'):
+        fig = get_graphs_patent()[2]
+        return fig
+
+    elif(selection_x == '0' and selection_y == '1'):
+        fig = get_graphs_patent()[3]
+        return fig
+
+    elif(selection_x == '1' and selection_y == '1'):
+        fig = get_graphs_patent()[4]
+        return fig
+
+    else:
+        fig = get_graphs_patent() [5]
+        return fig 
+
+@app.callback(
+    Output('histogram_total_env', 'figure'),
+    Input('dropdown_po', 'value'))
+def get_patent_hist(selection):
+    fig = get_hist_patents()[int(selection)]
+
+    return fig
+
+
+
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
 @app.callback(

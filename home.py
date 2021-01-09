@@ -4,7 +4,6 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 
-
 def home_updateLayout():
 #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div("Linker Space")
