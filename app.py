@@ -62,17 +62,17 @@ app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), foot
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/":
-        return dbc.Col([sidebar,home_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, ),
+        return dbc.Col([sidebar,home_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame' ),
     elif pathname == "/page1":
-        return dbc.Col([sidebar,p1_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, ),
+        return dbc.Col([sidebar,p1_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page2":
-        return dbc.Col([sidebar,p2_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, ),
+        return dbc.Col([sidebar,p2_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page3":
-        return dbc.Col([sidebar,p3_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, ),
+        return dbc.Col([sidebar,p3_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page4":
-        return dbc.Col([sidebar,p4_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, ),
+        return dbc.Col([sidebar,p4_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page5":
-        return dbc.Col([sidebar,p5_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, ),
+        return dbc.Col([sidebar,p5_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [
