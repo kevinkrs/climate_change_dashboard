@@ -49,7 +49,7 @@ sidebar = html.Div(
             pills=True,
         ),
     ],
-    className='sidebar', style = {'background-color' : '#AAD1B0' , 'color' : 'white', 'href' : 'white'} 
+    className='sidebar', 
 )
 
 #Footer

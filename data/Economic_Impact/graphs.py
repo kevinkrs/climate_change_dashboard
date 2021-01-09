@@ -77,8 +77,8 @@ def get_dropGDP_W():
 # %%
 # ### Climate Risk Assesment Drop in GDP 1999-2018
 # Importing the dataset with Climate Risk Assesment data 
-df1_gcr = pd.read_excel('data/Economic_Impact/GDP/Climate Risk Assesment\GLOBALCLIMATE RISKINDEX 2020_data concerning 1999-2018.xlsx')
-df2_gcr = pd.read_excel('data/Economic_Impact/GDP/Climate Risk Assesment\GLOBALCLIMATE RISKINDEX 2020_data concerning 2018.xlsx')
+df1_gcr = pd.read_excel('data/Economic_Impact/GDP/Climate Risk Assesment/GLOBALCLIMATE RISKINDEX 2020_data concerning 1999-2018.xlsx')
+df2_gcr = pd.read_excel('data/Economic_Impact/GDP/Climate Risk Assesment/GLOBALCLIMATE RISKINDEX 2020_data concerning 2018.xlsx')
 df3_gcr = pd.read_excel('data/Economic_Impact/GDP/OECD Region.xlsx')   #Datasheet with OECD Regions, Countries and country Codes
 
 df1_gcr=  pd.merge(df1_gcr, df3_gcr, on="Country")
