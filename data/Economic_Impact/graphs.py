@@ -26,9 +26,9 @@ def get_iGreenBondData():
 # %%
 # ### Drop of GDP
 # Importing the dataset with GDP Drop data and with created OECD Regions
-df1 = pd.read_excel('data\Economic_Impact\GDP\C_Percentage change in regional GDP.xlsx')
-df1_ols = pd.read_excel('data\Economic_Impact\GDP\C_Percentage change in regional GDP_ols.xlsx')
-df2 = pd.read_excel('data\Economic_Impact\GDP\OECD Region.xlsx') #Datasheet with OECD Regions, Countries and country Codes
+df1 = pd.read_excel('data/Economic_Impact/GDP/C_Percentage change in regional GDP.xlsx')
+df1_ols = pd.read_excel('data/Economic_Impact/GDP/C_Percentage change in regional GDP_ols.xlsx')
+df2 = pd.read_excel('data/Economic_Impact/GDP/OECD Region.xlsx') #Datasheet with OECD Regions, Countries and country Codes
 df1 = pd.melt(df1, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pacific', 'OECD America', 'Latin America',
        'Rest of Europe and Asia', 'Middle East and North Africa',
        'South and South-East Asia', 'Sub-Saharan Africa'])
@@ -77,9 +77,9 @@ def get_dropGDP_W():
 # %%
 # ### Climate Risk Assesment Drop in GDP 1999-2018
 # Importing the dataset with Climate Risk Assesment data 
-df1_gcr = pd.read_excel('data\Economic_Impact\GDP\Climate Risk Assesment\GLOBALCLIMATE RISKINDEX 2020_data concerning 1999-2018.xlsx')
-df2_gcr = pd.read_excel('data\Economic_Impact\GDP\Climate Risk Assesment\GLOBALCLIMATE RISKINDEX 2020_data concerning 2018.xlsx')
-df3_gcr = pd.read_excel('data\Economic_Impact\GDP\OECD Region.xlsx')   #Datasheet with OECD Regions, Countries and country Codes
+df1_gcr = pd.read_excel('data/Economic_Impact/GDP/Climate Risk Assesment\GLOBALCLIMATE RISKINDEX 2020_data concerning 1999-2018.xlsx')
+df2_gcr = pd.read_excel('data/Economic_Impact/GDP/Climate Risk Assesment\GLOBALCLIMATE RISKINDEX 2020_data concerning 2018.xlsx')
+df3_gcr = pd.read_excel('data/Economic_Impact/GDP/OECD Region.xlsx')   #Datasheet with OECD Regions, Countries and country Codes
 
 df1_gcr=  pd.merge(df1_gcr, df3_gcr, on="Country")
 df2_gcr=  pd.merge(df2_gcr, df3_gcr, on="Country")
