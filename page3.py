@@ -44,7 +44,7 @@ def p3_updateLayout():
                 dbc.Row([
                     html.H3('Information Box', style = {'background-color' : 'grey', 'padding' : '30px', 'margin-top' : '30px'})]
                 )])],
-                style={'width': '100%', 'height': 500,  
+                style={'width': '100%', 'height': 500, 'margin-left' : '15px',  
                         'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
