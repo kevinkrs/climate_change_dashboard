@@ -104,7 +104,7 @@ def temperature():
                        xaxis_title='Year',
                        yaxis_title='Temperature change')
 
-   return fig
+    return fig
 
 def p1_updateLayout():
     leftSpace = html.Div(
