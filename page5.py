@@ -127,8 +127,8 @@ maps.update_layout(title = "Nation public opininon about"+'<br>'+"climate situat
                    title_x = 0.5, title_font_size = 15, coloraxis_showscale=False,
                     autosize=False,
                     paper_bgcolor="white",
-                    width=620,
-                    height=500)
+                    width=700,
+                    height=670)
 maps.add_annotation(text="World map displays the national level"+'<br>'+" of attention to the environnement."+'<br>'+" Greenest countries pay more attention.",
                     showarrow=False,
                     x = 0,
