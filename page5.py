@@ -28,9 +28,8 @@ def p5_updateLayout():
             dbc.Col(
             [up_rightSpace, html.Div(
                 style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-8',style ={'padding':20}),
-            dbc.Col(
-            up_rightSpace, className='col-6',style ={'padding':0}),]),
+            )], className='col-8',style ={'padding':20})
+            ,]),
             dbc.Row( [
             dbc.Col(
             bot_leftSpace,className='col-6',style ={'padding':20}),
