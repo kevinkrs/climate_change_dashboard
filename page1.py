@@ -1,7 +1,5 @@
-
-
 try:
-   
+    
     import dash
     
     import matplotlib.pyplot         as plt
@@ -19,9 +17,10 @@ try:
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
 
+# In[]: Graph function
 
 def renewable():
-    dataset = pd.read_csv("https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/Situation_renewable-share-energy.csv?token=AR4CLWSRBHN72M52JJEC4DDAARUFQ")
+    dataset = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/Situation_renewable-share-energy.csv?token=AR4CLWSNPLX7IFZBBJWUZYTAASQ7C')
     dataset.columns = ['Entity','Code','Year', 'Renewables']
     dataset["Indice"] = 0
     
@@ -51,10 +50,8 @@ def renewable():
         
     return histogram
 
-
-
 def world_map1():
-    df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUP4A67XQ7FN6LAMMTAARUII')
+    df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUYYAXAVMTY2SBZLBLAASRFA')
     fig = px.choropleth(df, locations="CODE",
                         color="CO2_emissions", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
@@ -63,7 +60,7 @@ def world_map1():
     return fig
 
 def world_map2():
-    df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUP4A67XQ7FN6LAMMTAARUII')
+    df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUYYAXAVMTY2SBZLBLAASRFA')
     fig = px.choropleth(df, locations="CODE",
                         color="Death_from_air_pollution", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
@@ -72,7 +69,7 @@ def world_map2():
     return fig
 
 def world_map3():
-    df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUP4A67XQ7FN6LAMMTAARUII')
+    df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUYYAXAVMTY2SBZLBLAASRFA')
     fig = px.choropleth(df, locations="CODE",
                         color="Ozone_concentration", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
@@ -80,11 +77,11 @@ def world_map3():
     fig.update_layout(title='Ozone concentration : 2019')
     return fig
 
-def get_worldMaps2():
+def get_worldMaps():
     return [world_map1(),world_map2(),world_map3()]
 
 def temperature():
-    dataset = pd.read_csv("https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/Situation_temperature-anomaly.csv?token=AR4CLWSOHWQSS7C2FCKMMFLAARUJW")
+    dataset = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/Situation_temperature-anomaly.csv?token=AR4CLWULQ3DHYHJ2YAKA22DAASRIS')
     dataset = dataset[(dataset.Entity == "Global")]
     dataset.columns = ['Entity','Year', 'Median', 'Upper_bound', 'Lower_bound']
     month = dataset['Year']
@@ -101,10 +98,10 @@ def temperature():
     fig.update_layout(title='Global average temperatures',
                        xaxis_title='Year',
                        yaxis_title='Temperature change')
-
     return fig
 
 def p1_updateLayout():
+
     leftSpace = html.Div(
         dcc.Dropdown(
             id = 'p1WorldMap_dm',
