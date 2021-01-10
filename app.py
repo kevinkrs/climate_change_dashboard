@@ -12,7 +12,7 @@ from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
-
+from page1 import get_worldMaps2
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
@@ -156,7 +156,7 @@ def get_patent_hist(selection):
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
 def update_output(selection):
-    fig = get_worldMaps()[int(selection)]
+    fig = get_worldMaps2()[int(selection)]
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
