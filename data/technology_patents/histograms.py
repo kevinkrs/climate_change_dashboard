@@ -7,8 +7,6 @@ df1 = pd.read_excel('data/technology_patents/files/epo_comparision.xlsx')
 df2 = pd.read_excel('data/technology_patents/files/uspto_comparision.xlsx')
 df3 = pd.read_excel('data/technology_patents/files/pct_comparision.xlsx')
 
-print(df1.head())
-
 def get_hist_patents():
     return [get_epo_comp(), get_uspto_comp(), get_pct_comp()]
 

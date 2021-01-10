@@ -13,15 +13,7 @@ from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
-# Testing
 
-#df1['iso_a3']  = df1['iso_a3'].astype(str)
-
-
-#with open('data/Worldmap shapes/custom.geo.json') as f: 
- #   gj = json.load(f)
-
-# print(gj["features"][5])
 
 
 def p3_updateLayout():
@@ -40,11 +32,13 @@ def p3_updateLayout():
                 options =[{'label' : 'Environmental-related', 'value' : '0'},
                         {'label' : 'Total', 'value' : '1' },],
                           value = '0',
-                          placeholder = 'Select technology domain', style ={ 'width': '100%'})]),
+                          placeholder = 'Select technology domain', style ={ 'width': '100%'})], 
+                    className = 'dropDownBox'),
+                    
                 dbc.Row([
-                    html.H4('Information Box', style = { 'margin' : '10px'}), 
+                    html.H3('Information Box', style = { 'margin' : '10px'}), 
 
-                    dbc.Button("Countries", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Countries", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}, className='infoButtons'),
                     dbc.Modal(
                         [
                             dbc.ModalHeader("Countries"),
@@ -54,7 +48,7 @@ def p3_updateLayout():
                     )],  id="patent_modal1",
                         scrollable = True),
 
-                    dbc.Button("Patents", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Patents", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}, className='infoButtons'),
                     dbc.Modal(
                         [
                             dbc.ModalHeader("Patents"),
@@ -64,7 +58,7 @@ def p3_updateLayout():
                     )], id="patent_modal2",
                         scrollable = True),
 
-                    dbc.Button("Reference Country", id="patent_open3", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Reference Country", id="patent_open3", style= {'margin' : '10px', 'width' : '95%'}, className='infoButtons'),
                     dbc.Modal(
                         [
                             dbc.ModalHeader("Reference Country"),
@@ -74,7 +68,7 @@ def p3_updateLayout():
                             )], id="patent_modal3",
                         scrollable = True),
 
-                    dbc.Button("Reference Date", id="patent_open4", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Reference Date", id="patent_open4", style= {'margin' : '10px', 'width' : '95%'}, className='infoButtons'),
                     dbc.Modal(
                         [
                             dbc.ModalHeader("Reference Date"),
@@ -84,7 +78,7 @@ def p3_updateLayout():
                             )], id="patent_modal4",
                         scrollable = True),
 
-                    dbc.Button("Technology domains and IPC", id="patent_open5", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Technology domains and IPC", id="patent_open5", style= {'margin' : '10px', 'width' : '95%'}, className='infoButtons'),
                     dbc.Modal(
                         [
                             dbc.ModalHeader("Technology domains and IPC (International Patent Clasification"),
@@ -93,11 +87,8 @@ def p3_updateLayout():
                                 dbc.Button("Close", id="patent_close5", className="ml-auto")
                             )], id="patent_modal5",
                             scrollable = True),
-            ],
-            style = {'background-color' : 'lightgrey', 'padding' : '30px', 'margin-top' : '30px'})])],
-
-                style={'width': '100%', 'height': 500, 'margin-left' : '15px', 'margin-top' : '15px',  
-                        'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'})
+                ],className = 'infobox')])],
+                className = 'leftSidebar')
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
     midSpace = html.Div(dcc.Graph(id = 'worldmap_patents')) 
