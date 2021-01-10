@@ -155,7 +155,7 @@ def get_patent_hist(selection):
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
 def update_output(selection):
-    fig = get_worldMaps()[int(selection)]
+    fig = get_worldMaps2()[int(selection)]
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
