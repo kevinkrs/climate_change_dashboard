@@ -3,70 +3,73 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
+
+
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 def p5_updateLayout():
 
     #Defining Spaces ==> Insert your plot into the spaces
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    up_leftSpace = html.Div(dcc.Graph(figure=maps), className = "align-middle")
-    up_rightSpace = html.Div(dcc.Graph(figure=heatmap), className = "align-middle")
-
-
-    bot_leftSpace = html.Div([dcc.Graph(figure = piechart)])
-    bot_rightSpace = html.Div(dcc.Graph(figure=histogram))
-    modal = html.Div(
-    [
-        dbc.Button("Informations", id="open"),
-        dbc.Modal(
-            [
-                dbc.ModalHeader("Major infos"),
-                dbc.ModalBody([html.Div("For each countries : 3 questions were asked to 2 thousands people."),
-                              html.Div("Question 1 : Do you consider we are living a climate change ?"),
-                              html.Div("            1 : Yes, of course"),
-                              html.Div("            2 : Yes, a little bit"),
-                              html.Div("            3 : Not really"),
-                              html.Div("            4 : Not at all"),
-                              html.Div("            5 : I don't know"),
-                              html.Div("Question 2 : Did you change your habits in order to improve climate situation ?"),
-                              html.Div("            1 : Yes, of course"),
-                              html.Div("            2 : Yes, a little bit"),
-                              html.Div("            3 : Not really"),
-                              html.Div("            4 : Not at all"),
-                              html.Div("            5 : I don't know"),
-                              html.Div("Question 3 : Who must fight in priority global warming"),
-                              html.Div("            1 : Scientists and technical progress"),
-                              html.Div("            2 : Ourselves, our behaviour and our habits"),
-                              html.Div("            3 : It is too late to stop global warming"),
-                              html.Div("            4 : I don't know")]
-                ),
-                dbc.ModalFooter(
-                    dbc.Button("Close", id="close", className="ml-auto")
-                ),
+    leftSpace = html.Div([
+            dbc.Col([
+                dbc.Row([
+                    html.H4('', style = { 'margin' : '10px'}),                    
+                    dbc.Button("Information Box", id="open"),
+                    dbc.Modal(
+                        [
+                            dbc.ModalHeader("Major infos"),
+                            dbc.ModalBody([html.Div("For each countries : 3 questions were asked to 2 thousands people."),
+                                        html.Div("Question 1 : Do you consider we are living a climate change ?"),
+                                        html.Div("            1 : Yes, of course"),
+                                        html.Div("            2 : Yes, a little bit"),
+                                        html.Div("            3 : Not really"),
+                                        html.Div("            4 : Not at all"),
+                                        html.Div("            5 : I don't know"),
+                                        html.Div("Question 2 : Did you change your habits in order to improve climate situation ?"),
+                                        html.Div("            1 : Yes, of course"),
+                                        html.Div("            2 : Yes, a little bit"),
+                                        html.Div("            3 : Not really"),
+                                        html.Div("            4 : Not at all"),
+                                        html.Div("            5 : I don't know"),
+                                        html.Div("Question 3 : Who must fight in priority global warming"),
+                                        html.Div("            1 : Scientists and technical progress"),
+                                        html.Div("            2 : Ourselves, our behaviour and our habits"),
+                                        html.Div("            3 : It is too late to stop global warming"),
+                                        html.Div("            4 : I don't know")]
+                            ),
+                            dbc.ModalFooter(
+                                dbc.Button("Close", id="close", className="ml-auto")
+                    ),
             ],
             id="modal",
             scrollable = True
-        ),
-        ]
-        )
+        ),],style = {'background-color' : 'lightgrey', 'padding' : '30px', 'margin-top' : '30px'})])],
+
+                style={'width': '100%', 'height': 500, 'margin-left' : '15px', 'margin-top' : '15px',  
+                        'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'})
+    up_leftSpace = html.Div(dcc.Graph(figure=maps), style={'height':600 })
+    up_rightSpace = html.Div(dcc.Graph(figure=heatmap))
 
 
-
+    bot_leftSpace = html.Div(dcc.Graph(figure=piechart))
+    bot_rightSpace = html.Div(dcc.Graph(figure=histogram))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
         [dbc.Row( [
-            dbc.Col(
-            up_leftSpace,className='col-6',style ={'padding':0}),
-            dbc.Col(
-            up_rightSpace, className='col-6',style ={'padding':130}),]),
-            dbc.Row( [
+            dbc.Col(html.Div(
+            leftSpace, className="row justify-content-center"),className='col-6', style ={'padding':20}),            
+            dbc.Col(html.Div(
+            up_leftSpace, className="row justify-content-center"),className='col-6', style ={'padding':20}),
+            ]),
+            dbc.Row( [            
+            dbc.Col(html.Div(
+            up_rightSpace, className="row justify-content-center"), className='col-6',style ={'padding':20}),
             dbc.Col(
             bot_leftSpace,className='col-6',style ={'padding':20}),
             dbc.Col(
-            bot_rightSpace, className='col-6',style ={'padding':20}),
-            modal
-            ],
+            bot_rightSpace, className='col-6',style ={'padding':20}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
@@ -78,10 +81,11 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objs as go
 
-df1 = pd.read_csv("data/worldwideattitude/FinaleDataAttitude.csv")
-df2 = pd.read_csv("data/worldwideattitude/test1.csv")
+df1 = pd.read_csv("data2/worldwideattitude/FinaleDataAttitude.csv")
+df2 = pd.read_csv("data2/worldwideattitude/test1.csv")
 
 df3=  pd.merge(df1, df2, on="ISO")
+
 
 
 histogram = px.histogram(df3, x = "COUNTRYR", y = "Q2_Do_You_Change_Your_Behaviour", histfunc='avg',
@@ -131,21 +135,18 @@ maps.add_annotation(text="World map displays the national level"+'<br>'+" of att
                     y = 0)
 
 
-heatmap = px.density_heatmap(df1,x ="Q2_Do_You_Change_Your_Behaviour", y = "Q3_How_Fight_CC", animation_frame="COUNTRYR",
+heatmap = px.density_heatmap(df1,x ="Q2_Do_You_Change_Your_Behaviour", y = "Q1_Consider_Living_CC", animation_frame="COUNTRYR",
                             color_continuous_scale=px.colors.sequential.YlGn,
 
                              )
-heatmap.update_layout(title = "Correlation between"+'<br>'+"behaviour and responsabilities",
+heatmap.update_layout(title = "Correlation between"+'<br>'+"behaviour and consideration",
                       title_x = 0.5, title_font_size = 15, coloraxis_showscale=False,
                       xaxis = {"title" : 'behaviour changement'},
-                      yaxis = {"title" : 'who must fight global warming '},
+                      yaxis = {"title" : 'climate change consideration'},
                       autosize=False,
                       width=400,
                       height=400,
                       paper_bgcolor="white",
                       sliders = [dict(currentvalue={"prefix": "Country : "})])
-heatmap.update_traces(hovertemplate = ' Do you consider living a climate change : %{x} <br> Who musgt fight global warming: %{y}<br> Number of person : %{z}')
-
-
-
+heatmap.update_traces(hovertemplate = ' Behaviour changement : %{x} <br> Climate change consideration: %{y}<br> Number of person : %{z}')
 
