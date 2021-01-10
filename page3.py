@@ -133,13 +133,16 @@ def p3_updateLayout():
 
 markdown_text1 = '''
 
-More than 100 countries worldwide are covered. Geographical aggregates are provided for the EU-28, the OECD total, and the World total.
+More than 100 countries worldwide are covered.
+
+Geographical aggregates are provided for the EU-28, the OECD total, and the World total.
 Fractional counts applied for patents with multiple inventors/applicants:
 When a patent was invented by several inventors from different countries, the respective contributions of each country is taken into account. This is done in order to eliminate multiple counting of such patents.
 For example, a patent co-invented by 1 French, 1 American and 2 German residents will be counted as:
-1/4th of a patent for France;
-1/4th for the USA;
-and ½ patent for Germany.
+
+- 1/4th of a patent for France
+- 1/4th for the USA
+- and ½ patent for Germany.
 
 
 '''
