@@ -150,12 +150,19 @@ def get_patent_hist(selection):
 
     return fig
 
-
 @app.callback(
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
-def update_output(selection):
-    fig = get_worldMaps2()[int(selection)]
+def update_output_page1_1(selection):
+    fig = get_worldMaps_page_1_1()[int(selection)]
+    return fig
+
+
+@app.callback(
+    Output('p1WorldMap2', 'figure'),
+    Input('p1WorldMap_dm2', 'value'))
+def update_output_page1_2(selection):
+    fig = get_worldMaps_page_1_2()[int(selection)]
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
