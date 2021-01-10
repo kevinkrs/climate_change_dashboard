@@ -63,13 +63,13 @@ def p5_updateLayout():
             dbc.Col(html.Div(
             up_leftSpace, className="row justify-content-center"),className='col-6', style ={'padding':20}),
             ]),
-            dbc.Row( [            
+         dbc.Row( [            
             dbc.Col(html.Div(
-            up_rightSpace, className="row justify-content-center"), className='col-6',style ={'padding':20}),
+            up_rightSpace, className="row justify-content-center"), className='col-4',style ={'padding':20}),
             dbc.Col(
-            bot_leftSpace,className='col-6',style ={'padding':20}),
+            bot_leftSpace,className='col-4',style ={'padding':20}),
             dbc.Col(
-            bot_rightSpace, className='col-6',style ={'padding':20}),],
+            bot_rightSpace, className='col-4',style ={'padding':20}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
