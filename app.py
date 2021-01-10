@@ -6,13 +6,13 @@ from dash.dependencies import Input
 from dash.dependencies import Output
 from dash.dependencies import State
 from home import home_updateLayout
-from page1 import p1_updateLayout
+from page1 import *
 from page2 import p2_updateLayout
 from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
-from page1 import get_worldMaps2
+
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
