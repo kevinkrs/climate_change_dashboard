@@ -4,6 +4,7 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input
 from dash.dependencies import Output
+from dash.dependencies import State
 from home import home_updateLayout
 from page1 import p1_updateLayout
 from page2 import p2_updateLayout
@@ -11,7 +12,7 @@ from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
-
+from page1 import get_worldMaps2
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
@@ -150,7 +151,12 @@ def get_patent_hist(selection):
     return fig
 
 
-
+@app.callback(
+    Output('p1WorldMap', 'figure'),
+    Input('p1WorldMap_dm', 'value'))
+def update_output(selection):
+    fig = get_worldMaps2()[int(selection)]
+    return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
 @app.callback(
@@ -178,6 +184,64 @@ def update_figure(selection):
 def update_output(selection):
     fig=get_worldMaps()[int(selection)]
     return fig
+
+
+#Call back for the pop up box
+@app.callback(
+    Output("patent_modal1", "is_open"),
+    [Input("patent_open1", "n_clicks"), 
+    Input("patent_close1", "n_clicks")],
+    [State("patent_modal1", "is_open")],
+)
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+
+@app.callback(
+    Output("patent_modal2", "is_open"),
+    [Input("patent_open2", "n_clicks"), 
+    Input("patent_close2", "n_clicks")],
+    [State("patent_modal2", "is_open")],
+)
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+
+@app.callback(
+    Output("patent_modal3", "is_open"),
+    [Input("patent_open3", "n_clicks"), 
+    Input("patent_close3", "n_clicks")],
+    [State("patent_modal3", "is_open")],
+)
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+
+@app.callback(
+    Output("patent_modal4", "is_open"),
+    [Input("patent_open4", "n_clicks"), 
+    Input("patent_close4", "n_clicks")],
+    [State("patent_modal4", "is_open")],
+)
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+
+@app.callback(
+    Output("patent_modal5", "is_open"),
+    [Input("patent_open5", "n_clicks"), 
+    Input("patent_close5", "n_clicks")],
+    [State("patent_modal5", "is_open")],
+)
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+
 
 if __name__ == "__main__":
     app.run_server()
