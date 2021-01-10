@@ -11,6 +11,7 @@ from page2 import p2_updateLayout
 from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
+from page5 import get_pie
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
 
 from data.technology_patents.maps import *
@@ -248,6 +249,13 @@ def toggle_modal(n1, n2, is_open):
     if n1 or n2:
         return not is_open
     return is_open
+
+@app.callback(
+    Output('p5pie', 'figure'),
+    Input('p5pie_dm', 'value'))
+def update_output(selection):
+    fig = get_pie()[int(selection)]
+    return fig
 
 
 if __name__ == "__main__":
