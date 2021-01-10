@@ -3,7 +3,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
-from data.Economic_Impact.graphs import get_iGreenBondData, get_dropGDP_W
+from data.Economic_Impact.graphs import get_iGreenBondData
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 def p4_updateLayout():
