@@ -6,7 +6,7 @@ from dash.dependencies import Input
 from dash.dependencies import Output
 from dash.dependencies import State
 from home import home_updateLayout
-from page1 import *
+from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
 from page2 import p2_updateLayout
 from page3 import p3_updateLayout
 from page4 import p4_updateLayout
