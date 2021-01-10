@@ -82,7 +82,7 @@ def world_map3():
     fig.update_layout(title='Ozone concentration : 2019')
     return fig
 
-def get_worldMaps():
+def get_worldMaps2():
     return [world_map1(),world_map2(),world_map3()]
 
 def temperature():
