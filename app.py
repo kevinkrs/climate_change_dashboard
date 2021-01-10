@@ -17,7 +17,7 @@ from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
 #Inititalise app    and it's style for the theme
-app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css','https://codepen.io/chriddyp/pen/bWLwgP.css'])
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 
 
 
@@ -38,12 +38,12 @@ sidebar = html.Div(
 
         #Navbar containing the menu list
         dbc.Nav(
-            [   dbc.Row([dbc.Col(dbc.NavLink("Home", href="/", active="exact", className='nav-item'),width=8), dbc.Col(html.I(className='fas fa-industry'),width=4),]),
-                dbc.Row([dbc.Col(dbc.NavLink("Topic 1", href="/page1", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-globe-europe'),width=4)]),
-                dbc.Row([dbc.Col(dbc.NavLink("Topic 2", href="/page2", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-university'),width=4)]),
-                dbc.Row([dbc.Col(dbc.NavLink("Topic 3", href="/page3", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-microscope'),width=4)]),
-                dbc.Row([dbc.Col(dbc.NavLink("Topic 4", href="/page4", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-industry'),width=4)]),
-                dbc.Row([dbc.Col(dbc.NavLink("Topic 5", href="/page5", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-group'),width=4)]),
+            [   dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-industry', style={'padding-right':20}), html.A("Home")], href="/", active="exact",className='nav')],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-globe-europe', style={'padding-right':20}), html.A("Topic 1")], href="/page1", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-university', style={'padding-right':20}), html.A("Topic 2")], href="/page2", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-microscope', style={'padding-right':20}), html.A("Topic 3")], href="/page3", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-industry', style={'padding-right':20}), html.A("Topic 4")], href="/page4", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fa fa-group', style={'padding-right':20}), html.A("Topic 5")], href="/page5", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
             ],
             vertical=True,
             pills=True,
@@ -62,17 +62,17 @@ app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), foot
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/":
-        return dbc.Col([sidebar,home_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame' ),
+        return dbc.Col([sidebar,html.Div(home_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame' ),
     elif pathname == "/page1":
-        return dbc.Col([sidebar,p1_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p1_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page2":
-        return dbc.Col([sidebar,p2_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p2_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page3":
-        return dbc.Col([sidebar,p3_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p3_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page4":
-        return dbc.Col([sidebar,p4_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p4_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page5":
-        return dbc.Col([sidebar,p5_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p5_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [
