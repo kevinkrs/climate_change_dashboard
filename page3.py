@@ -43,29 +43,11 @@ def p3_updateLayout():
                           placeholder = 'Select technology domain', style ={ 'width': '95%'})]),
                 dbc.Row([
                     html.H4('Information Box', style = { 'margin' : '10px'}),                    
-                    dbc.Button("Informations", id="open"),
+                    dbc.Button("Countries", id="open"),
                     dbc.Modal(
                         [
-                            dbc.ModalHeader("Major infos"),
-                            dbc.ModalBody([html.Div("For each countries : 3 questions were asked to 2 thousands people."),
-                                        html.Div("Question 1 : Do you consider we are living a climate change ?"),
-                                        html.Div("            1 : Yes, of course"),
-                                        html.Div("            2 : Yes, a little bit"),
-                                        html.Div("            3 : Not really"),
-                                        html.Div("            4 : Not at all"),
-                                        html.Div("            5 : I don't know"),
-                                        html.Div("Question 2 : Did you change your habits in order to improve climate situation ?"),
-                                        html.Div("            1 : Yes, of course"),
-                                        html.Div("            2 : Yes, a little bit"),
-                                        html.Div("            3 : Not really"),
-                                        html.Div("            4 : Not at all"),
-                                        html.Div("            5 : I don't know"),
-                                        html.Div("Question 3 : Who must fight in priority global warming"),
-                                        html.Div("            1 : Scientists and technical progress"),
-                                        html.Div("            2 : Ourselves, our behaviour and our habits"),
-                                        html.Div("            3 : It is too late to stop global warming"),
-                                        html.Div("            4 : I don't know")]
-                            ),
+                            dbc.ModalHeader("Countries"),
+                            dcc.Markdown(children = markdown_text1, style = {'padding' : '15px'}),
                             dbc.ModalFooter(
                                 dbc.Button("Close", id="close", className="ml-auto")
                     ),
@@ -107,3 +89,17 @@ def p3_updateLayout():
 
     return content
 
+
+
+markdown_text1 = '''
+
+More than 100 countries worldwide are covered. Geographical aggregates are provided for the EU-28, the OECD total, and the World total.
+Fractional counts applied for patents with multiple inventors/applicants:
+When a patent was invented by several inventors from different countries, the respective contributions of each country is taken into account. This is done in order to eliminate multiple counting of such patents.
+For example, a patent co-invented by 1 French, 1 American and 2 German residents will be counted as:
+1/4th of a patent for France;
+1/4th for the USA;
+and ½ patent for Germany.
+
+
+'''
