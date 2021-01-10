@@ -42,8 +42,38 @@ def p3_updateLayout():
                           value = '0',
                           placeholder = 'Select technology domain', style ={ 'width': '95%'})]),
                 dbc.Row([
-                    html.H3('Information Box', style = {'background-color' : 'grey', 'padding' : '30px', 'margin-top' : '30px'})]
-                )])],
+                    html.H4('Information Box', style = { 'margin' : '10px'),                    
+                    dbc.Button("Informations", id="open"),
+                    dbc.Modal(
+                        [
+                            dbc.ModalHeader("Major infos"),
+                            dbc.ModalBody([html.Div("For each countries : 3 questions were asked to 2 thousands people."),
+                                        html.Div("Question 1 : Do you consider we are living a climate change ?"),
+                                        html.Div("            1 : Yes, of course"),
+                                        html.Div("            2 : Yes, a little bit"),
+                                        html.Div("            3 : Not really"),
+                                        html.Div("            4 : Not at all"),
+                                        html.Div("            5 : I don't know"),
+                                        html.Div("Question 2 : Did you change your habits in order to improve climate situation ?"),
+                                        html.Div("            1 : Yes, of course"),
+                                        html.Div("            2 : Yes, a little bit"),
+                                        html.Div("            3 : Not really"),
+                                        html.Div("            4 : Not at all"),
+                                        html.Div("            5 : I don't know"),
+                                        html.Div("Question 3 : Who must fight in priority global warming"),
+                                        html.Div("            1 : Scientists and technical progress"),
+                                        html.Div("            2 : Ourselves, our behaviour and our habits"),
+                                        html.Div("            3 : It is too late to stop global warming"),
+                                        html.Div("            4 : I don't know")]
+                            ),
+                            dbc.ModalFooter(
+                                dbc.Button("Close", id="close", className="ml-auto")
+                    ),
+            ],
+            id="modal",
+            scrollable = True
+        ),],style = {'background-color' : 'lightgrey', 'padding' : '30px', 'margin-top' : '30px'})])],
+
                 style={'width': '100%', 'height': 500, 'margin-left' : '15px', 'margin-top' : '15px',  
                         'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
