@@ -11,7 +11,7 @@ def p5_updateLayout():
 
     #Defining Spaces ==> Insert your plot into the spaces
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    up_leftSpace = html.Div(dcc.Graph(figure=maps), style={'height':400})
+    up_leftSpace = html.Div(dcc.Graph(figure=maps), style={'height':400, })
     up_rightSpace = html.Div(dcc.Graph(figure=heatmap), style={'height':400})
 
 
@@ -21,10 +21,10 @@ def p5_updateLayout():
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
         [dbc.Row( [
-            dbc.Col(
-            up_leftSpace,className='col-6', style ={'padding':20}),
-            dbc.Col(
-            up_rightSpace, className='col-6',style ={'padding':20})
+            dbc.Col(html.Div(
+            up_leftSpace, className="row justify-content-center"),className='col-6', style ={'padding':20}),
+            dbc.Col(html.Div(
+            up_rightSpace, className="row justify-content-center"), className='col-6',style ={'padding':20})
             ,]),
             dbc.Row( [
             dbc.Col(
