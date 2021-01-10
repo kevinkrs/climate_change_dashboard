@@ -42,7 +42,7 @@ def p3_updateLayout():
                           value = '0',
                           placeholder = 'Select technology domain', style ={ 'width': '95%'})]),
                 dbc.Row([
-                    html.H4('Information Box', style = { 'margin' : '10px'),                    
+                    html.H4('Information Box', style = { 'margin' : '10px'}),                    
                     dbc.Button("Informations", id="open"),
                     dbc.Modal(
                         [
