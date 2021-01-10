@@ -32,7 +32,7 @@ sidebar = html.Div(
         html.H2("Seminar", className="display-4"),
         html.Hr(),
         html.P(
-            "Explanation", className="lead"
+            "Topics", className="lead"
         ),
 
         #Navbar containing the menu list
