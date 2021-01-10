@@ -9,6 +9,43 @@ def p5_updateLayout():
 
     #Defining Spaces ==> Insert your plot into the spaces
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
+    leftSpace = html.Div([
+            dbc.Col([
+                dbc.Row([
+                    html.H4('', style = { 'margin' : '10px'}),                    
+                    dbc.Button("Information Box", id="open"),
+                    dbc.Modal(
+                        [
+                            dbc.ModalHeader("Major infos"),
+                            dbc.ModalBody([html.Div("For each countries : 3 questions were asked to 2 thousands people."),
+                                        html.Div("Question 1 : Do you consider we are living a climate change ?"),
+                                        html.Div("            1 : Yes, of course"),
+                                        html.Div("            2 : Yes, a little bit"),
+                                        html.Div("            3 : Not really"),
+                                        html.Div("            4 : Not at all"),
+                                        html.Div("            5 : I don't know"),
+                                        html.Div("Question 2 : Did you change your habits in order to improve climate situation ?"),
+                                        html.Div("            1 : Yes, of course"),
+                                        html.Div("            2 : Yes, a little bit"),
+                                        html.Div("            3 : Not really"),
+                                        html.Div("            4 : Not at all"),
+                                        html.Div("            5 : I don't know"),
+                                        html.Div("Question 3 : Who must fight in priority global warming"),
+                                        html.Div("            1 : Scientists and technical progress"),
+                                        html.Div("            2 : Ourselves, our behaviour and our habits"),
+                                        html.Div("            3 : It is too late to stop global warming"),
+                                        html.Div("            4 : I don't know")]
+                            ),
+                            dbc.ModalFooter(
+                                dbc.Button("Close", id="close", className="ml-auto")
+                    ),
+            ],
+            id="modal",
+            scrollable = True
+        ),],style = {'background-color' : 'lightgrey', 'padding' : '30px', 'margin-top' : '30px'})])],
+
+                style={'width': '100%', 'height': 500, 'margin-left' : '15px', 'margin-top' : '15px',  
+                        'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'})
     up_leftSpace = html.Div(dcc.Graph(figure=maps), className = "align-middle")
     up_rightSpace = html.Div(dcc.Graph(figure=heatmap), className = "align-middle")
 
@@ -56,6 +93,8 @@ def p5_updateLayout():
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
         [dbc.Row( [
+            dbc.Col(html.Div(
+            leftSpace, className="row justify-content-center"),className='col-6', style ={'padding':20}),  
             dbc.Col(
             up_leftSpace,className='col-6',style ={'padding':0}),
             dbc.Col(
