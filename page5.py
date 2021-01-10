@@ -22,9 +22,9 @@ def p5_updateLayout():
     content = html.Div(
         [dbc.Row( [
             dbc.Col(
-            up_leftSpace,className='col-2', style ={'padding':20}),
+            up_leftSpace,className='col-6', style ={'padding':20}),
             dbc.Col(
-            up_rightSpace, className='col-8',style ={'padding':20})
+            up_rightSpace, className='col-6',style ={'padding':20})
             ,]),
             dbc.Row( [
             dbc.Col(
