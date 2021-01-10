@@ -105,9 +105,6 @@ def temperature():
                        yaxis_title='Temperature change')
     return fig
 
-
-def p1_updateLayout():
-
     leftSpace = html.Div(
         dcc.Dropdown(
             id = 'p1WorldMap_dm',
