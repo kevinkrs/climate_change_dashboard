@@ -131,7 +131,11 @@ def get_worldMaps():
 df_eea = pd.read_csv('data/Economic_Impact/EU_DMG/natural-disasters-events-3.csv', sep=',')
 # PLot
 def get_dmgEU():
-        fig = go.Figure()
+        fig = go.Figure(layout=go.Layout(
+        title=go.layout.Title(text="Damage dealt to the EU economy by natural disasters in millions")
+    ))
+        fig.update_xaxes(title='Date')
+        fig.update_yaxes(title='EUR in million')
         fig.add_trace(go.Bar(
         x=df_eea['Year'],
         #y=df_eea['Type']=='Geophysical events',
@@ -151,7 +155,7 @@ def get_dmgEU():
         name='Hydrological event',
         marker_color='rgba(35, 132, 217)'
         ))
-        fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of economic damage caused by weather and climate-related extreme events in Europe '))
+        fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of economic damage caused by<br> weather and climate-related extreme events in Europe'))
 
         return [fig, fig_trend]
 

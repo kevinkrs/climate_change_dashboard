@@ -16,7 +16,7 @@ from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
 #Inititalise app    and it's style for the theme
-app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css','https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
 
 
@@ -37,13 +37,12 @@ sidebar = html.Div(
 
         #Navbar containing the menu list
         dbc.Nav(
-            [
-                dbc.NavLink("Home", href="/", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 1", href="/page1", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 2", href="/page2", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 3", href="/page3", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 4", href="/page4", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 5", href="/page5", active="exact", className='nav-item'),
+            [   dbc.Row([dbc.Col(dbc.NavLink("Home", href="/", active="exact", className='nav-item'),width=8), dbc.Col(html.I(className='fas fa-industry'),width=4),]),
+                dbc.Row([dbc.Col(dbc.NavLink("Topic 1", href="/page1", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-globe-europe'),width=4)]),
+                dbc.Row([dbc.Col(dbc.NavLink("Topic 2", href="/page2", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-university'),width=4)]),
+                dbc.Row([dbc.Col(dbc.NavLink("Topic 3", href="/page3", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-microscope'),width=4)]),
+                dbc.Row([dbc.Col(dbc.NavLink("Topic 4", href="/page4", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-industry'),width=4)]),
+                dbc.Row([dbc.Col(dbc.NavLink("Topic 5", href="/page5", active="exact", className='nav-item'),width=8),dbc.Col(html.I(className='fas fa-group'),width=4)]),
             ],
             vertical=True,
             pills=True,

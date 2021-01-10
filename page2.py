@@ -14,7 +14,7 @@ def p2_updateLayout():
     midSpace = html.Div("Mid Space")
     rightSpace = html.Div("Rechter Space")
 
-    bot_leftSpace = html.Iframe( src = "https://datahub.io/core/glacier-mass-balance/view/0", style ={'width' : "100%", 'overflow' : 'hidden', 'height' : 475, 'frameborder' :0,} )
+    bot_leftSpace = html.Div("Left Bottom Space")
     bot_midSpace = html.Div(dcc.Graph(figure=get_pledgedGraph()))
     bot_rightSpace = html.Div(dcc.Graph(figure=get_fundingGraph()))
 

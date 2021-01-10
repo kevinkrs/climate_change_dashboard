@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 16rem;
+    width: 20rem;
     height: 100vh;
     padding: 2rem 1rem;
     background: rgb(151, 237, 138);
@@ -20,4 +20,5 @@
 
 .nav-item {
     color: white;
+    font-size: 14px;
 }
