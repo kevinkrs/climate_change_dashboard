@@ -4,6 +4,7 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input
 from dash.dependencies import Output
+from dash.dependencies import State
 from home import home_updateLayout
 from page1 import p1_updateLayout
 from page2 import p2_updateLayout
@@ -189,7 +190,8 @@ def update_output(selection):
 #Call back for the pop up box
 @app.callback(
     Output("modal", "is_open"),
-    [Input("open", "n_clicks"), Input("close", "n_clicks")],
+    [Input("open", "n_clicks"), 
+    Input("close", "n_clicks")],
     [State("modal", "is_open")],
 )
 def toggle_modal(n1, n2, is_open):
