@@ -59,9 +59,9 @@ def p5_updateLayout():
     content = html.Div(
         [dbc.Row( [
             dbc.Col(html.Div(
-            leftSpace, className="row justify-content-center"),className='col-6', style ={'padding':20}),            
+            leftSpace, className="row justify-content-center"),className='col-2', style ={'padding':20}),            
             dbc.Col(html.Div(
-            up_leftSpace, className="row justify-content-center"),className='col-6', style ={'padding':20}),
+            up_leftSpace, className="row justify-content-center"),className='col-10', style ={'padding':20}),
             ]),
          dbc.Row( [            
             dbc.Col(html.Div(
