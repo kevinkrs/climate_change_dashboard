@@ -47,17 +47,18 @@ def p5_updateLayout():
             scrollable = True
         ),],style = {'background-color' : 'lightgrey', 'padding' : '30px', 'margin-top' : '30px'})])],
 
-                style={'width': '100%', 'margin-left' : '15px', 'margin-top' : '15px',  
+                style={'width': '100%', 'height': 500, 'margin-left' : '15px', 'margin-top' : '15px',  
                         'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'})
-    up_midSpace = html.Div(dcc.Graph(figure=maps), style={'height':600 })
+    up_leftSpace = html.Div(dcc.Graph(figure=maps), style={'height':600 })
+    up_rightSpace = html.Div(dcc.Graph(figure=heatmap))
 
 
     bot_leftSpace = html.Div(dcc.Graph(id = 'p5pie'))
     bot_rightSpace = html.Div(dcc.Graph(figure=histogram))
     drop = html.Div(dcc.Dropdown(id = 'p5pie_dm',
-        options=[{'label': 'Homme', 'value': '0'},
-                 {'label': 'Femme', 'value': '1'}],
-        value='1'))
+        options=[{'label': 'Homme', 'value': 0},
+                 {'label': 'Femme', 'value': 1}],
+        value=0))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
@@ -67,7 +68,7 @@ def p5_updateLayout():
             dbc.Col(html.Div(
             up_leftSpace, className="row justify-content-center"),className='col-10', style ={'padding':20}),
             ]),
-        dbc.Row( [            
+            dbc.Row( [            
             dbc.Col(html.Div(
             up_rightSpace, className="row justify-content-center"), className='col-4',style ={'padding':20}),
             dbc.Col(
@@ -131,7 +132,7 @@ maps = px.choropleth(df2, locations="ISO",
                             )
 maps.update_layout(title = "Nation public opininon about"+'<br>'+"climate situation",
                    title_x = 0.5, title_font_size = 15, coloraxis_showscale=False,
-                    #autosize=False,
+                    autosize=False,
                     paper_bgcolor="white",
                     width=700,
                     height=670)
