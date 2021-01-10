@@ -51,7 +51,6 @@ def renewable():
         
     return histogram
 
-wide_df = px.data.medals_wide()
 
 
 def world_map1():
