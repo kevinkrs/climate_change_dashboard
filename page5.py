@@ -11,6 +11,7 @@ def p5_updateLayout():
 
     #Defining Spaces ==> Insert your plot into the spaces
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
+    
     leftSpace = html.Div([
             dbc.Col([
                 dbc.Row([
@@ -50,25 +51,31 @@ def p5_updateLayout():
                         'display' : 'flex', 'flex-direction' : 'column', 'align-items': 'center'})
     up_midSpace = html.Div(dcc.Graph(figure=maps), style={'height':600 })
 
-    bot_leftSpace = html.Div(dcc.Graph(figure=heatmap))
-    bot_midSpace = html.Div(dcc.Graph(figure=piechart))
+
+    bot_leftSpace = html.Div(dcc.Graph(id = 'p5pie'))
     bot_rightSpace = html.Div(dcc.Graph(figure=histogram))
+    drop = html.Div(dcc.Dropdown(id = 'p5pie_dm',
+        options=[{'label': 'Homme', 'value': '0'},
+                 {'label': 'Femme', 'value': '1'}],
+        value='1'))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
         [dbc.Row( [
             dbc.Col(html.Div(
-            leftSpace),className='col-2', style ={'padding':20}),            
+            leftSpace, className="row justify-content-center"),className='col-2', style ={'padding':20}),            
             dbc.Col(html.Div(
-            up_midSpace),className='col-10', style ={'padding':20}),
+            up_leftSpace, className="row justify-content-center"),className='col-10', style ={'padding':20}),
             ]),
         dbc.Row( [            
             dbc.Col(html.Div(
-            bot_leftSpace, className="row justify-content-center"), className='col-4',style ={'padding':20}),
+            up_rightSpace, className="row justify-content-center"), className='col-4',style ={'padding':20}),
             dbc.Col(
-            bot_midSpace,className='col-4',style ={'padding':20}),
+            bot_leftSpace,className='col-4',style ={'padding':20}),
             dbc.Col(
-            bot_rightSpace, className='col-4',style ={'padding':20}),],
+            bot_rightSpace, className='col-4',style ={'padding':20}),
+            dbc.Col(
+            drop, className='col-4',style ={'padding':20}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
@@ -80,8 +87,8 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objs as go
 
-df1 = pd.read_csv("data/worldwideattitude/FinaleDataAttitude.csv")
-df2 = pd.read_csv("data/worldwideattitude/test1.csv")
+df1 = pd.read_csv("data2/worldwideattitude/FinaleDataAttitude.csv")
+df2 = pd.read_csv("data2/worldwideattitude/test1.csv")
 
 df3=  pd.merge(df1, df2, on="ISO")
 
@@ -126,9 +133,8 @@ maps.update_layout(title = "Nation public opininon about"+'<br>'+"climate situat
                    title_x = 0.5, title_font_size = 15, coloraxis_showscale=False,
                     #autosize=False,
                     paper_bgcolor="white",
-                    #width=620,
-                    #height=500
-                    )
+                    width=700,
+                    height=670)
 maps.add_annotation(text="World map displays the national level"+'<br>'+" of attention to the environnement."+'<br>'+" Greenest countries pay more attention.",
                     showarrow=False,
                     x = 0,
@@ -150,3 +156,39 @@ heatmap.update_layout(title = "Correlation between"+'<br>'+"behaviour and consid
                       sliders = [dict(currentvalue={"prefix": "Country : "})])
 heatmap.update_traces(hovertemplate = ' Behaviour changement : %{x} <br> Climate change consideration: %{y}<br> Number of person : %{z}')
 
+def pie1():
+    
+    colors1 = ['forestgreen', 'limegreen', 'yellowgreen','greenyellow', 'white']
+    
+    # MEN
+    a1 = df1[df1['GENDERF'] == 1.0]
+    b1 = a1['Q1_Consider_Living_CC'].value_counts()
+
+    fig1 = go.Figure(data=[go.Pie(labels=['Yes, of course','Yes, a little','Not really','Not at all','Dont know'],
+                             values = b1)])
+    fig1.update_traces(hoverinfo='label+percent', textinfo='label',
+                  marker=dict(colors=colors1, line=dict(color='#000000', width=0.5)))
+    fig1.update_layout(title = "Do you consider we are living a Climate Change ?", title_font_size = 15, showlegend=False)
+
+    return fig1
+
+def pie2():
+    colors1 = ['forestgreen', 'limegreen', 'yellowgreen','greenyellow', 'white']
+
+
+                # WOMEN
+    a2 = df1[df1['GENDERF'] == 2.0]
+    b2 = a2['Q1_Consider_Living_CC'].value_counts()
+
+    fig2 = go.Figure(data=[go.Pie(labels=['Yes, of course','Yes, a little','Not really','Not at all','Dont know'],
+                             values = b2)])
+    fig2.update_traces(hoverinfo='label+percent', textinfo='label',
+                  marker=dict(colors=colors1, line=dict(color='#000000', width=0.5)))
+    fig2.update_layout(title = "Do you consider we are living a Climate Change ? ",title_font_size = 15, showlegend=False)
+
+
+
+    return fig2
+
+def get_pie():
+    return [pie1(), pie2()]

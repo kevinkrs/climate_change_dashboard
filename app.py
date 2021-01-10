@@ -6,11 +6,12 @@ from dash.dependencies import Input
 from dash.dependencies import Output
 from dash.dependencies import State
 from home import home_updateLayout
-from page1 import *
+from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
 from page2 import p2_updateLayout
 from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
+from page5 import get_pie
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
 
 from data.technology_patents.maps import *
@@ -150,12 +151,19 @@ def get_patent_hist(selection):
 
     return fig
 
-
 @app.callback(
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
-def update_output(selection):
-    fig = get_worldMaps2()[int(selection)]
+def update_output_page1_1(selection):
+    fig = get_worldMaps_page_1_1()[int(selection)]
+    return fig
+
+
+@app.callback(
+    Output('p1WorldMap2', 'figure'),
+    Input('p1WorldMap_dm2', 'value'))
+def update_output_page1_2(selection):
+    fig = get_worldMaps_page_1_2()[int(selection)]
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
@@ -241,6 +249,13 @@ def toggle_modal(n1, n2, is_open):
     if n1 or n2:
         return not is_open
     return is_open
+
+@app.callback(
+    Output('p5pie', 'figure'),
+    Input('p5pie_dm', 'value'))
+def update_output(selection):
+    fig = get_pie()[int(selection)]
+    return fig
 
 
 if __name__ == "__main__":

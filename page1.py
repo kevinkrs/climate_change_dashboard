@@ -50,7 +50,39 @@ def renewable():
         
     return histogram
 
-def world_map1():
+
+def energie():
+    dataset = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation3.csv?token=AR4CLWT7BSNH4Y6NHPMOCRLAASUVM')
+    dataset.columns = ['Number','Entity','Year','Oil', 'Coal', 'Gas']
+    dataset["Indice"] = 0
+    
+    for i in range(3087):
+        if dataset.iloc[i, 1] == "United States":
+            dataset.iloc[i, 1] = "US"
+        if dataset.iloc[i, 1] == "World":
+            dataset.iloc[i, 6] = 1
+     
+    df0 = dataset[dataset.Entity.isin(["World"])]
+    df1 = dataset[dataset.Entity.isin(["India"])]
+    df2 = dataset[dataset.Entity.isin(["Africa"])]
+    df3 = dataset[dataset.Entity.isin(["US"])]
+    df4 = dataset[dataset.Entity.isin(["China"])]
+    df5 = dataset[dataset.Entity.isin(["Europe"])]
+     
+    dataset = pd.concat([df0, df1,df2,df3, df4, df5], ignore_index=True)       
+    
+    fig_energie = px.bar(dataset, x="Entity", y=["Oil", "Coal", "Gas"], title="Long-Form Input", animation_frame="Year")
+    fig_energie.update_layout(yaxis_range=[0,300])
+    
+    fig_energie.update_layout(title = "Energy consumption per capita", title_x = 0.5, title_font_size = 15, showlegend=False)
+    fig_energie.update_layout(xaxis_title='Entity', yaxis_title='Energy')
+    return fig_energie
+
+def get_worldMaps_page_1_2():
+    return [renewable(),energie()]
+
+
+def world_map_page1_1():
     df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUYYAXAVMTY2SBZLBLAASRFA')
     fig = px.choropleth(df, locations="CODE",
                         color="CO2_emissions", # lifeExp is a column of gapminder
@@ -59,7 +91,7 @@ def world_map1():
     fig.update_layout(title='CO2 emission per capita : 2019')
     return fig
 
-def world_map2():
+def world_map_page1_2():
     df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUYYAXAVMTY2SBZLBLAASRFA')
     fig = px.choropleth(df, locations="CODE",
                         color="Death_from_air_pollution", # lifeExp is a column of gapminder
@@ -68,7 +100,7 @@ def world_map2():
     fig.update_layout(title='Death from air pollution : 2019')
     return fig
 
-def world_map3():
+def world_map_page1_3():
     df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUYYAXAVMTY2SBZLBLAASRFA')
     fig = px.choropleth(df, locations="CODE",
                         color="Ozone_concentration", # lifeExp is a column of gapminder
@@ -77,10 +109,10 @@ def world_map3():
     fig.update_layout(title='Ozone concentration : 2019')
     return fig
 
-def get_worldMaps():
-    return [world_map1(),world_map2(),world_map3()]
+def get_worldMaps_page_1_1():
+    return [world_map_page1_1(),world_map_page1_2(),world_map_page1_3()]
 
-def temperature():
+def temperature_page1():
     dataset = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/Situation_temperature-anomaly.csv?token=AR4CLWULQ3DHYHJ2YAKA22DAASRIS')
     dataset = dataset[(dataset.Entity == "Global")]
     dataset.columns = ['Entity','Year', 'Median', 'Upper_bound', 'Lower_bound']
@@ -100,31 +132,47 @@ def temperature():
                        yaxis_title='Temperature change')
     return fig
 
+    
+## PAGE 1 ##
+
 def p1_updateLayout():
 
-    leftSpace = html.Div(
-        dcc.Dropdown(
-            id = 'p1WorldMap_dm',
-            options = [
-                {'label' : 'CO2_emissions', 'value': '0'},
-                {'label' : 'Death_from_air_pollution', 'value' : '1'},
-                {'label' : 'Ozone_concentration', 'value' : '2'}
-            ],
-            value = '0',
-            ))
+    leftSpace = html.Div([
+        dbc.Col([
+            dbc.Row([
+                html.H4('Option'),
+                dcc.Dropdown(
+                    id = 'p1WorldMap_dm',
+                    options = [
+                        {'label' : 'CO2_emissions', 'value': '0'},
+                        {'label' : 'Death_from_air_pollution', 'value' : '1'},
+                        {'label' : 'Ozone_concentration', 'value' : '2'}
+                    ],
+                    value = '0',),
+                dcc.Dropdown(
+                    id = 'p1WorldMap_dm2',
+                    options = [
+                        {'label' : 'Renewable', 'value': '0'},
+                        {'label' : 'Energy', 'value' : '1'},
+                    ],
+                    value = '0',),
+                dbc.Button("Information Box", id="open")
+                ])])])
     
     midSpace = html.Div(
         dcc.Graph(id='p1WorldMap'))
     
-    bot_leftSpace = html.Div(dcc.Graph(figure=temperature()))
-    bot_rightSpace = html.Div(dcc.Graph(figure=renewable()))
-
+    bot_rightSpace = html.Div(
+        dcc.Graph(id='p1WorldMap2'))
+    
+    bot_leftSpace = html.Div(dcc.Graph(figure=temperature_page1()))
+    
     content = html.Div(
         [dbc.Row( [
             dbc.Col(
             leftSpace,className='col-2', style ={'padding':20}),
             dbc.Col(
-            midSpace, className='col-12',style ={'padding':20}),]),
+            midSpace, className='col-10',style ={'padding':20}),]),
             
             dbc.Row( [
             dbc.Col(
