@@ -21,7 +21,7 @@ except Exception as e:
 # In[]: Graph function
 
 def renewable():
-    dataset = pd.read_csv('data//World_Situation/Situation_renewable-share-energy.csv')
+    dataset = pd.read_csv('data/World_Situation/Situation_renewable-share-energy.csv')
     dataset.columns = ['Entity','Code','Year', 'Renewables']
     dataset["Indice"] = 0
     
@@ -53,7 +53,7 @@ def renewable():
 
 
 def energie():
-    dataset = pd.read_csv('data//World_Situation/data_situation3.csv')
+    dataset = pd.read_csv('data/World_Situation/data_situation3.csv')
     dataset.columns = ['Number','Entity','Year','Oil', 'Coal', 'Gas']
     dataset["Indice"] = 0
     
