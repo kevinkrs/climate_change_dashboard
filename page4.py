@@ -37,6 +37,7 @@ def p4_updateLayout():
         ],
         value='0',
         className='btn btn-success disabled',
+        style={'background-color':'#45bf55'},
         labelStyle={'display': 'inline-block', 'padding-right':'10px'}), 
         dcc.Graph(id='eu_fig')])
 
@@ -48,6 +49,7 @@ def p4_updateLayout():
         ],
         value='0',
         className='btn btn-success disabled',
+        style={'background-color':'#45bf55'},
         labelStyle={'display': 'inline-block', 'padding-right':'10px'}), 
          
         dcc.Graph(id='gdp_fig')])
