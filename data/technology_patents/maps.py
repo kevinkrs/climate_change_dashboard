@@ -34,7 +34,7 @@ def get_world_map_epo_total():
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'EPO patents total',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18)
         return fig
 
 
@@ -56,7 +56,7 @@ def get_world_map_epo_env():
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'EPO patents on environmental-related technologies',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to EPO',font_size=18)
         return fig
 
 
@@ -78,7 +78,7 @@ def get_world_map_uspto_env():
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'USPTO patents on environmental-related technologies',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to USPTO',font_size=18)
         return fig
 
 
@@ -100,7 +100,7 @@ def get_world_map_uspto_total():
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'USPTO patents total',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to USPTO',font_size=18)
         return fig
 
 
@@ -121,7 +121,7 @@ def get_world_map_pct_env():
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'PCT patents on environmental-related technologies',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to PCT',font_size=18)
         return fig
 
 
@@ -142,5 +142,5 @@ def get_world_map_pct_total():
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'PCT patents total',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to PCT',font_size=18)
         return fig

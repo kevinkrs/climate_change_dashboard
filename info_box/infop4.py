@@ -47,8 +47,8 @@ markdown_text5 = '''- Total count of patents: Provides the count of all patents 
 Patent counts are also presented according to the classes of the International Patent Classification (IPC) - 1 and 3 digits. Counts are based on the list of IPC codes that are given in each patent document, and use fractional counts.
 '''
 
-def get_infoBox(pathname):
-    infobox=    dbc.Row([
+def get_infoBox4(pathname):
+    infobox =   dbc.Row([
                     dbc.Row([html.I( className='fas fa-info', style={'padding-right':20}), html.A("Information Box")],className='infoHead'),
 
                     dbc.Button("Countries", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
@@ -101,7 +101,7 @@ def get_infoBox(pathname):
                             )], id="patent_modal5",
                             scrollable = True),
                 ],style={'margin':0},)
-                
+
     if pathname == "/page4":
         return infobox
 

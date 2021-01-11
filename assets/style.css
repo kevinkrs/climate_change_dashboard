@@ -1,3 +1,4 @@
+
 .sidebar {
     font-family: Roboto;
     position: fixed;
@@ -14,6 +15,16 @@
 
 .nav flex-column nav-pills {
     margin-left: 0;
+}
+
+ .lead{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.display-4 {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .sidebar-navigation {
@@ -107,29 +118,6 @@
     padding: 30px
 }
 
-.infoButtons {
-    background-color: rgb(43,55,70);
-}
-
-.leftSidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 500px;
-    margin-left: 15px;
-    margin-top: 15px;
-
-}
-
-.dropDownBox {
-    background-color: rgb(151, 237, 138);
-    color: white;
-    font-size: 14px;
-    width: 120px;
-}
-
 .infoFrame {
     padding-left: 20;
     padding-right: 20;
@@ -138,3 +126,4 @@
 .infoHead {
     margin-left: 20;
 }
+
