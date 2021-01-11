@@ -11,8 +11,6 @@ try:
     import dash_html_components      as html
     import dash_bootstrap_components as dbc
     import dash_core_components      as dcc
-    
-    from dash.dependencies           import Input, Output
     from info_box.infop1 import get_infoBox1
     
 except Exception as e:
