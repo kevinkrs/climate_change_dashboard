@@ -143,3 +143,8 @@
     margin-left: 20;
     font-size: 25px;
 }
+
+.btn-secondary {
+    background-color: #148C3F;
+    border-color: #148C3F;
+}
