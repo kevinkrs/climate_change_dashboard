@@ -9,8 +9,9 @@
     background: rgb(151, 237, 138);
     background: linear-gradient(159deg, rgba(151, 237, 138, 1) 0%, rgba(69, 191, 85, 1) 100%);
     color: #fff;
-    padding: 0;
     padding-top: 20;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .titleSidebar {
