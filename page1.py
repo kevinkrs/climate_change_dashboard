@@ -13,6 +13,7 @@ try:
     import dash_core_components      as dcc
     
     from dash.dependencies           import Input, Output
+    from info_box.infop1 import get_infoBox1
     
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
@@ -155,8 +156,7 @@ def p1_updateLayout():
                         {'label' : 'Renewable', 'value': '0'},
                         {'label' : 'Energy', 'value' : '1'},
                     ],
-                    value = '0',),
-                dbc.Button("Information Box", id="open")
+                    value = '0',)
                 ])])])
     
     midSpace = html.Div(
