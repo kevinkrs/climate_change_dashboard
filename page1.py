@@ -156,8 +156,7 @@ def p1_updateLayout():
                         {'label' : 'Renewable', 'value': '0'},
                         {'label' : 'Energy', 'value' : '1'},
                     ],
-                    value = '0',),
-                dbc.Button("Information Box", id="open")
+                    value = '0',)
                 ])])])
     
     midSpace = html.Div(
