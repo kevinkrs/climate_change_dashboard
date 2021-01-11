@@ -15,6 +15,7 @@ from page5 import get_pie
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
 from info_box.infop4 import get_infoBox
 from info_box.infop3 import get_infoBox3
+from info_box.infop5 import get_infoBox5 
 
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
@@ -52,6 +53,8 @@ sidebar = html.Div(
             pills=True,
                 ),
         html.Div(id='infoBox', className='infoFrame'),
+        html.Div(id='infoBox5', className='infoFrame'),
+
         
     ],
     className='sidebar', 
@@ -95,6 +98,13 @@ def callback_func(pathname):
     else:
         return get_infoBox3(pathname)
 
+
+
+@app.callback(
+    Output('infoBox5', 'children'),
+    [Input('url', 'pathname')])
+def callback_func5(pathname):
+    return get_infoBox5(pathname)
 
 # Callback for different patent worldmaps 
 @app.callback(
