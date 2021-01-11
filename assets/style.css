@@ -99,3 +99,12 @@
     font-size: 14px;
     width: 120px;
 }
+
+.infoFrame {
+    padding-left: 20;
+    padding-right: 20;
+}
+
+.infoHead {
+    margin-left: 20;
+}

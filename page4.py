@@ -2,14 +2,14 @@ import dash
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
-from dash.dependencies import Input, Output
 from data.Economic_Impact.graphs import get_iGreenBondData
+from info_box.infop4 import get_infoBox
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 def p4_updateLayout():
 
     #Defining Spaces ==> Insert your plot into the spaces
-    leftSpace = html.Div(
+    leftSpace = html.Div([
         dcc.Dropdown(
         id='p4WorldMap_dm',
         options=[
@@ -20,7 +20,9 @@ def p4_updateLayout():
         value='0',
         #className='btn btn-success disabled',
         #labelStyle={'display': 'inline-block', 'padding-right':'10px'}
-    ))
+        ),
+    ],)
+
 
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     midSpace = html.Div(
@@ -51,7 +53,7 @@ def p4_updateLayout():
          
         dcc.Graph(id='gdp_fig')])
 
-    bot_rightSpace = html.Div(dcc.Graph(figure=get_iGreenBondData()))
+    #bot_rightSpace = html.Div(dcc.Graph(figure=get_iGreenBondData()))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
@@ -68,12 +70,12 @@ def p4_updateLayout():
             ),
             dbc.Row( [
             dbc.Col(
-            bot_leftSpace,className='col-4'),
+            bot_leftSpace,className='col-6',style ={'padding':20}),
             dbc.Col(
-            bot_midSpace, className='col-4', style ={'padding':20}),
-            dbc.Col(
-            bot_rightSpace, className='col-4',style ={'padding':20}),],
-            )],
-            style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
-    
+            bot_midSpace, className='col-6', style ={'padding':20}),
+ #           dbc.Col(
+ #           bot_rightSpace, className='col-4',style ={'padding':20}),],
+ #            )
+            ])],
+            style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'})
     return content

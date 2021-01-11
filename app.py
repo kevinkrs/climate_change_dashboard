@@ -13,6 +13,7 @@ from page4 import p4_updateLayout
 from page5 import p5_updateLayout
 from page5 import get_pie
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
+from info_box.infop4 import get_infoBox
 
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
@@ -48,7 +49,9 @@ sidebar = html.Div(
             ],
             vertical=True,
             pills=True,
-        ),
+                ),
+        html.Div(id='infoBox', className='infoFrame'),
+        
     ],
     className='sidebar', 
 )
@@ -82,6 +85,11 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ])
 
+@app.callback(
+    Output('infoBox', 'children'),
+    [Input('url', 'pathname')])
+def callback_func(pathname):
+    return get_infoBox(pathname)
 
 # Callback for different patent worldmaps 
 @app.callback(
