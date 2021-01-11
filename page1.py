@@ -139,9 +139,9 @@ def temperature_page1():
 def p1_updateLayout():
 
     leftSpace = html.Div([
-        dbc.Col([
-            dbc.Row([
+        
                 html.H4('Option'),
+                dbc.Row([
                 dcc.Dropdown(
                     id = 'p1WorldMap_dm',
                     options = [
@@ -149,7 +149,8 @@ def p1_updateLayout():
                         {'label' : 'Death_from_air_pollution', 'value' : '1'},
                         {'label' : 'Ozone_concentration', 'value' : '2'}
                     ],
-                    value = '0',),
+                    value = '0',),]),
+            dbc.Row([
                 dcc.Dropdown(
                     id = 'p1WorldMap_dm2',
                     options = [
@@ -157,7 +158,8 @@ def p1_updateLayout():
                         {'label' : 'Energy', 'value' : '1'},
                     ],
                     value = '0',)
-                ])])])
+                ])
+                ])
     
     midSpace = html.Div(
         dcc.Graph(id='p1WorldMap'))
