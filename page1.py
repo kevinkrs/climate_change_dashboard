@@ -139,8 +139,6 @@ def temperature_page1():
 def p1_updateLayout():
 
     leftSpace = html.Div([
-        dbc.Col([
-            dbc.Row([
                 html.H4('Option'),
                 dcc.Dropdown(
                     id = 'p1WorldMap_dm',
@@ -157,7 +155,7 @@ def p1_updateLayout():
                         {'label' : 'Energy', 'value' : '1'},
                     ],
                     value = '0',)
-                ])])])
+                ])
     
     midSpace = html.Div(
         dcc.Graph(id='p1WorldMap'))
