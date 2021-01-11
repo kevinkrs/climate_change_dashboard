@@ -33,11 +33,13 @@
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
+    font-size: 25px;
 }
 
-.display-4 {
+.titleSidebar {
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 20px;
 }
 
 .sidebar-navigation {
@@ -137,5 +139,7 @@
 }
 
 .infoHead {
+    margin-top: 15px;
     margin-left: 20;
+    font-size: 25px;
 }
