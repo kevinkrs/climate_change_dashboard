@@ -14,6 +14,7 @@ from page5 import p5_updateLayout
 from page5 import get_pie
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
 from info_box.infop4 import get_infoBox
+from info_box.infop3 import get_infoBox3
 
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
@@ -89,13 +90,18 @@ def render_page_content(pathname):
     Output('infoBox', 'children'),
     [Input('url', 'pathname')])
 def callback_func(pathname):
-    return get_infoBox(pathname)
+    if(pathname == '/page4'):
+        return get_infoBox(pathname)
+    else:
+        return get_infoBox3(pathname)
+
 
 # Callback for different patent worldmaps 
 @app.callback(
     Output('worldmap_patents', 'figure'),
     Input('dropdown_po', 'value'),
     Input('dropdown_number', 'value'))
+
 def get_patent_map(selection_x,selection_y):
     if(selection_x == '0' and selection_y == '0'):
         fig = get_maps_patent()[0]
@@ -120,6 +126,7 @@ def get_patent_map(selection_x,selection_y):
     else:
         fig = get_maps_patent()[5]
         return fig 
+
 
 # Callback for different scatter plots on evrionmental related technology patents
 @app.callback(

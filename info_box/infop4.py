@@ -101,6 +101,7 @@ def get_infoBox(pathname):
                             )], id="patent_modal5",
                             scrollable = True),
                 ],style={'margin':0},)
+                
     if pathname == "/page4":
         return infobox
 
