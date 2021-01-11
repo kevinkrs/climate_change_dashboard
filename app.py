@@ -34,8 +34,7 @@ CONTENT_STYLE = {
 }
 #Sidebar containing the menu
 sidebar = html.Div(
-    [
-        html.H3("Climate Change", className='titleSidebar'),
+    [   html.Div(html.H3("Climate Change"),className='titleSidebar'),
         html.Hr(),
         html.P(
             "Topics", className="lead"
