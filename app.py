@@ -6,18 +6,20 @@ from dash.dependencies import Input
 from dash.dependencies import Output
 from dash.dependencies import State
 from home import home_updateLayout
-from page1 import p1_updateLayout
+from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
 from page2 import p2_updateLayout
 from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
+from page5 import get_pie
 from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
-from page1 import get_worldMaps2
+from info_box.infop4 import get_infoBox
+
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
 #Inititalise app    and it's style for the theme
-app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 
 
 
@@ -38,17 +40,18 @@ sidebar = html.Div(
 
         #Navbar containing the menu list
         dbc.Nav(
-            [
-                dbc.NavLink("Home", href="/", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 1", href="/page1", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 2", href="/page2", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 3", href="/page3", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 4", href="/page4", active="exact", className='nav-item'),
-                dbc.NavLink("Topic 5", href="/page5", active="exact", className='nav-item'),
+            [   dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-industry', style={'padding-right':20}), html.A("Home")], href="/", active="exact",className='nav')],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-globe-europe', style={'padding-right':20}), html.A("Topic 1")], href="/page1", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-university', style={'padding-right':20}), html.A("Topic 2")], href="/page2", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-microscope', style={'padding-right':20}), html.A("Topic 3")], href="/page3", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-industry', style={'padding-right':20}), html.A("Topic 4")], href="/page4", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fa fa-group', style={'padding-right':20}), html.A("Topic 5")], href="/page5", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
             ],
             vertical=True,
             pills=True,
-        ),
+                ),
+        html.Div(id='infoBox', className='infoFrame'),
+        
     ],
     className='sidebar', 
 )
@@ -63,17 +66,17 @@ app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), foot
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/":
-        return dbc.Col([sidebar,home_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame' ),
+        return dbc.Col([sidebar,html.Div(home_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame' ),
     elif pathname == "/page1":
-        return dbc.Col([sidebar,p1_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p1_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page2":
-        return dbc.Col([sidebar,p2_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p2_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page3":
-        return dbc.Col([sidebar,p3_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p3_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page4":
-        return dbc.Col([sidebar,p4_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p4_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page5":
-        return dbc.Col([sidebar,p5_updateLayout(),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p5_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [
@@ -82,6 +85,11 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ])
 
+@app.callback(
+    Output('infoBox', 'children'),
+    [Input('url', 'pathname')])
+def callback_func(pathname):
+    return get_infoBox(pathname)
 
 # Callback for different patent worldmaps 
 @app.callback(
@@ -151,12 +159,19 @@ def get_patent_hist(selection):
 
     return fig
 
-
 @app.callback(
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
-def update_output(selection):
-    fig = get_worldMaps2()[int(selection)]
+def update_output_page1_1(selection):
+    fig = get_worldMaps_page_1_1()[int(selection)]
+    return fig
+
+
+@app.callback(
+    Output('p1WorldMap2', 'figure'),
+    Input('p1WorldMap_dm2', 'value'))
+def update_output_page1_2(selection):
+    fig = get_worldMaps_page_1_2()[int(selection)]
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
@@ -242,6 +257,13 @@ def toggle_modal(n1, n2, is_open):
     if n1 or n2:
         return not is_open
     return is_open
+
+@app.callback(
+    Output('p5pie', 'figure'),
+    Input('p5pie_dm', 'value'))
+def update_output(selection):
+    fig = get_pie()[int(selection)]
+    return fig
 
 
 if __name__ == "__main__":

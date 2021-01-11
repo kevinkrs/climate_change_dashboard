@@ -47,7 +47,13 @@ df3['value']=df3['value']*100
 def get_dropGDP():
         #GDP Drop figgure Total Data
         graph  = px.bar(df1, 
-            x='Date', y="value", color="variable", title='Percentage change in regional GDP due to selected climate change impacts', labels={'x':'Date', 'y':'GDP Drop'})
+            x='Date', 
+            y="value", 
+            color="variable", 
+            title='Percentage change in regional GDP due to selected climate change impacts', 
+            labels={'x':'Date', 'y':'GDP Drop'},
+            color_continuous_scale='Greens',
+            )
         graph.update_yaxes(autorange="reversed")
 
         #GDP Drop figgure for Trend
@@ -131,7 +137,11 @@ def get_worldMaps():
 df_eea = pd.read_csv('data/Economic_Impact/EU_DMG/natural-disasters-events-3.csv', sep=',')
 # PLot
 def get_dmgEU():
-        fig = go.Figure()
+        fig = go.Figure(layout=go.Layout(
+        title=go.layout.Title(text="Damage dealt to the EU economy by natural disasters in millions")
+    ))
+        fig.update_xaxes(title='Date')
+        fig.update_yaxes(title='EUR in million')
         fig.add_trace(go.Bar(
         x=df_eea['Year'],
         #y=df_eea['Type']=='Geophysical events',
@@ -151,7 +161,7 @@ def get_dmgEU():
         name='Hydrological event',
         marker_color='rgba(35, 132, 217)'
         ))
-        fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of economic damage caused by weather and climate-related extreme events in Europe '))
+        fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of economic damage caused by<br> weather and climate-related extreme events in Europe'))
 
         return [fig, fig_trend]
 
