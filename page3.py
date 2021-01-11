@@ -28,11 +28,11 @@ def p3_updateLayout():
                           value = '0',
                           placeholder = 'Select patent office',  style = {'margin-bottom' : 10, 'margin-top' : 50, 'width': '100%'}),
                 dcc.Dropdown(id ='dropdown_number',
-                options =[{'label' : 'Environmental-related', 'value' : '0'},
+                options =[{'label' : 'Environmental', 'value' : '0'},
                         {'label' : 'Total', 'value' : '1' },],
                           value = '0',
                           placeholder = 'Select technology domain', style = {'width': '100%'})], 
-                    )], style = {'margin-top' : 200, 'margin-left' : 20, 'background-color' : 'lightgreen', 'padding' : 10, 'border-radius' : 5} )
+                    )], style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5} )
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
     midSpace = html.Div(dcc.Graph(id = 'worldmap_patents')) 
@@ -48,7 +48,7 @@ def p3_updateLayout():
             dbc.Col(
             [leftSpace, html.Div([        
             ])],
-             className='col-2', style ={'padding':20}),
+             className='col-2', style ={'padding' : 10}),
 
             dbc.Col(
             [midSpace, html.Div(
