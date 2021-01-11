@@ -43,9 +43,9 @@ sidebar = html.Div(
         #Navbar containing the menu list
         dbc.Nav(
             [   dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-globe-europe', style={'padding-right':20}), html.A("Topic 1")], href="/", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
-                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-university', style={'padding-right':20}), html.A("Topic 2")], href="/page2", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
-                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-microscope', style={'padding-right':20}), html.A("Topic 3")], href="/page3", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
-                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-industry', style={'padding-right':20}), html.A("Topic 4")], href="/page4", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-university', style={'padding-right':20}), html.A("Governmental efforts")], href="/page2", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-microscope', style={'padding-right':20}), html.A("Patents")], href="/page3", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-industry', style={'padding-right':20}), html.A("Economic Impact")], href="/page4", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
                 dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fa fa-group', style={'padding-right':20}), html.A("Topic 5")], href="/page5", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
             ],
             vertical=True,
