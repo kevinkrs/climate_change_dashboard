@@ -29,20 +29,20 @@ def get_infoBox1(pathname):
     infobox=    dbc.Row([
                     dbc.Row([html.I( className='fas fa-info', style={'padding-right':20}), html.A("Information Box")],className='infoHead'),
 
-                    dbc.Button("Countries", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("object", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(
                         [
-                            dbc.ModalHeader("Countries"),
+                            dbc.ModalHeader("object"),
                             dcc.Markdown(children = markdown_text1, style = {'padding' : '15px'}),
                             dbc.ModalFooter(
                             dbc.Button("Close", id="patent_close1", className="ml-auto")
                     )],  id="patent_modal1",
                         scrollable = True),
 
-                    dbc.Button("Survey", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("data", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(
                         [
-                            dbc.ModalHeader("Survey"),
+                            dbc.ModalHeader("data"),
                             dcc.Markdown(children = markdown_text2, style = {'padding' : '15px'}),
                             dbc.ModalFooter(
                             dbc.Button("Close", id="patent_close2", className="ml-auto")
