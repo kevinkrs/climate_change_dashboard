@@ -5,33 +5,21 @@ import dash_core_components as dcc
 
 markdown_text1 = '''
 
-A survey was conducted among 2 000 peoples over 29 worldwide countries.
-3 majors question were asked to determine the attention of the population for each country about climate change and global warming.
+Here is the first page of this dashboard. The objective is to give an overview of the situation and thanks to historical data also understand the trajectory.
+
+Our collective CO2 emissions can be expressed as a product of four factors and their relationship with each other :
+Population size, economics growth, energy intensity and emissions per energy unit produced.
+Here we focus on the last two, because this factors explain how we can stop that.
+
+Our data takes into account all countries and uses aggregation to summarize the situation.
 
 '''
 
-markdown_text2 = '''The 3 questions reflecting worldwide attitude about climate change and global warming attention :
+markdown_text2 = '''
 
-Question 1 : Do you consider we are living a climate change ?
-- Yes, of course
-- Yes, a little
-- Not really
-- Not at all
-- I don't know
+On these part, data come from OCDE data base, BP statistical review and Nasa Ozone.
+And all of our data are relative.
 
-Question 2 : Did you change your habits in order to improve climate situation ?
-- Yes, of course
-- Yes, a little
-- Not really
-- Not at all
-- I don't know
-
-
-Question 3 : Who must fight in priority global warming ?
-- Scientist, technical progress
-- Ourselves, our habits and behaviours
-- It is too late to stop global warming
-- I don't know
 '''
 
 
