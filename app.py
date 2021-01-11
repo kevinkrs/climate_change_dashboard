@@ -51,6 +51,7 @@ sidebar = html.Div(
             vertical=True,
             pills=True,
                 ),
+        html.Hr(),
         html.Div(id='infoBox', className='infoFrame'),
         
 
