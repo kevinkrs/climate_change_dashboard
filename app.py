@@ -53,7 +53,7 @@ sidebar = html.Div(
             pills=True,
                 ),
         html.Div(id='infoBox', className='infoFrame'),
-        html.Div(id='infoBox5', className='infoFrame'),
+        
 
         
     ],
@@ -95,16 +95,13 @@ def render_page_content(pathname):
 def callback_func(pathname):
     if(pathname == '/page4'):
         return get_infoBox(pathname)
-    else:
+    elif(pathname == '/page3'):
         return get_infoBox3(pathname)
+    elif(pathname == '/page5'):
+        return get_infoBox5(pathname)
 
 
 
-@app.callback(
-    Output('infoBox5', 'children'),
-    [Input('url', 'pathname')])
-def callback_func5(pathname):
-    return get_infoBox5(pathname)
 
 # Callback for different patent worldmaps 
 @app.callback(
