@@ -3,6 +3,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
+from info_box.infop5 import get_infoBox5
 
 
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
