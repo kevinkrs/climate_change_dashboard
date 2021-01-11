@@ -47,7 +47,13 @@ df3['value']=df3['value']*100
 def get_dropGDP():
         #GDP Drop figgure Total Data
         graph  = px.bar(df1, 
-            x='Date', y="value", color="variable", title='Percentage change in regional GDP due to selected climate change impacts', labels={'x':'Date', 'y':'GDP Drop'})
+            x='Date', 
+            y="value", 
+            color="variable", 
+            title='Percentage change in regional GDP due to selected climate change impacts', 
+            labels={'x':'Date', 'y':'GDP Drop'},
+            color_continuous_scale='Greens',
+            )
         graph.update_yaxes(autorange="reversed")
 
         #GDP Drop figgure for Trend
