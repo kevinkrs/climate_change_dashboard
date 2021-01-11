@@ -58,7 +58,8 @@ def p4_updateLayout():
     content = html.Div(
         [dbc.Row( [
             dbc.Col(
-            leftSpace,className='col-2', style ={'padding':20}),
+            leftSpace,
+            className='col-2', style ={'padding':20}),
             dbc.Col(
             midSpace,
             className='col-10',style ={'padding':20}),],
