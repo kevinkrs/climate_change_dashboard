@@ -28,7 +28,6 @@ def p4_updateLayout():
     midSpace = html.Div(
         dcc.Graph(id='p4WorldMap'))
 
-    rightSpace = html.Div("Rechter Space")
 
     bot_leftSpace = html.Div([dcc.RadioItems(
         id='eu_fig_rb',
@@ -62,11 +61,7 @@ def p4_updateLayout():
             leftSpace,className='col-2', style ={'padding':20}),
             dbc.Col(
             midSpace,
-            className='col-8',style ={'padding':20}),
-            dbc.Col(
-            [rightSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-2', style ={'padding':20}),],
+            className='col-10',style ={'padding':20}),],
             ),
             dbc.Row( [
             dbc.Col(
