@@ -16,6 +16,7 @@ from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
 from info_box.infop4 import get_infoBox
 from info_box.infop3 import get_infoBox3
 from info_box.infop5 import get_infoBox5 
+from info_box.infop1 import get_infoBox1
 
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
@@ -98,7 +99,9 @@ def callback_func(pathname):
     elif(pathname == '/page3'):
         return get_infoBox3(pathname)
     elif(pathname == '/page5'):
-        return get_infoBox5(pathname)
+        return get_infoBox5(pathname)    
+    elif(pathname == '/page1'):
+        return get_infoBox1(pathname)
 
 
 
