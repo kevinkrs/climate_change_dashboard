@@ -21,7 +21,7 @@ except Exception as e:
 # In[]: Graph function
 
 def renewable():
-    dataset = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/Situation_renewable-share-energy.csv?token=AR4CLWSNPLX7IFZBBJWUZYTAASQ7C')
+    dataset = pd.read_csv('data/World_Situation/Situation_renewable-share-energy.csv')
     dataset.columns = ['Entity','Code','Year', 'Renewables']
     dataset["Indice"] = 0
     
@@ -53,7 +53,7 @@ def renewable():
 
 
 def energie():
-    dataset = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation3.csv?token=AR4CLWT7BSNH4Y6NHPMOCRLAASUVM')
+    dataset = pd.read_csv('data/World_Situation/data_situation3.csv')
     dataset.columns = ['Number','Entity','Year','Oil', 'Coal', 'Gas']
     dataset["Indice"] = 0
     
@@ -84,7 +84,7 @@ def get_worldMaps_page_1_2():
 
 
 def world_map_page1_1():
-    df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUYYAXAVMTY2SBZLBLAASRFA')
+    df = pd.read_csv('data/World_Situation/data_situation2.csv')
     fig = px.choropleth(df, locations="CODE",
                         color="CO2_emissions", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
@@ -93,7 +93,7 @@ def world_map_page1_1():
     return fig
 
 def world_map_page1_2():
-    df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUYYAXAVMTY2SBZLBLAASRFA')
+    df = pd.read_csv('data/World_Situation/data_situation2.csv')
     fig = px.choropleth(df, locations="CODE",
                         color="Death_from_air_pollution", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
@@ -102,7 +102,7 @@ def world_map_page1_2():
     return fig
 
 def world_map_page1_3():
-    df = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/data_situation2.csv?token=AR4CLWUYYAXAVMTY2SBZLBLAASRFA')
+    df = pd.read_csv('data/World_Situation/data_situation2.csv')
     fig = px.choropleth(df, locations="CODE",
                         color="Ozone_concentration", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
@@ -114,7 +114,7 @@ def get_worldMaps_page_1_1():
     return [world_map_page1_1(),world_map_page1_2(),world_map_page1_3()]
 
 def temperature_page1():
-    dataset = pd.read_csv('https://raw.githubusercontent.com/kevinkrs7/dashboard_seminar20/main/Mathis/Data/Situation_temperature-anomaly.csv?token=AR4CLWULQ3DHYHJ2YAKA22DAASRIS')
+    dataset = pd.read_csv('data/World_Situation/Situation_temperature-anomaly.csv')
     dataset = dataset[(dataset.Entity == "Global")]
     dataset.columns = ['Entity','Year', 'Median', 'Upper_bound', 'Lower_bound']
     month = dataset['Year']
@@ -139,8 +139,6 @@ def temperature_page1():
 def p1_updateLayout():
 
     leftSpace = html.Div([
-        dbc.Col([
-            dbc.Row([
                 html.H4('Option'),
                 dcc.Dropdown(
                     id = 'p1WorldMap_dm',
@@ -156,9 +154,8 @@ def p1_updateLayout():
                         {'label' : 'Renewable', 'value': '0'},
                         {'label' : 'Energy', 'value' : '1'},
                     ],
-                    value = '0',),
-                dbc.Button("Information Box", id="open")
-                ])])])
+                    value = '0',)
+                ])
     
     midSpace = html.Div(
         dcc.Graph(id='p1WorldMap'))
