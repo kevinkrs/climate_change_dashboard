@@ -21,15 +21,15 @@ def p5_updateLayout():
     bot_leftSpace = html.Div(dcc.Graph(id = 'p5pie'))
     bot_rightSpace = html.Div(dcc.Graph(figure=histogram))
     drop = html.Div(dcc.Dropdown(id = 'p5pie_dm',
-        options=[{'label': 'Homme', 'value': 0},
-                 {'label': 'Femme', 'value': 1}],
+        options=[{'label': 'Men', 'value': 0},
+                 {'label': 'Women', 'value': 1}],
         value=0))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
         [dbc.Row( [           
             dbc.Col(html.Div(
-            up_leftSpace, className="row justify-content-center"),className='col-10', style ={'padding':20}),
+            up_leftSpace, className="row justify-content-center"),className='col-12', style ={'padding':20}),
             ]),
             dbc.Row([dbc.Col(drop, className = 'col-4', style = {"display": "block",
             "margin-left": "auto",
@@ -52,7 +52,7 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objs as go
 
-df1 = pd.read_csv("data/worldwideattitude/FinaleDataAttitude.csv")
+df1 = pd.read_csv("data/worldwideattitude/ntm.csv")
 df2 = pd.read_csv("data/worldwideattitude/test1.csv")
 
 df3=  pd.merge(df1, df2, on="ISO")
@@ -73,10 +73,17 @@ histogram.add_shape(type="line",
                 width=2,
                 dash="dashdot")
             )
-histogram.update_layout(yaxis_range=[0,5])
+histogram.update_layout(yaxis_title="Behaviour Changement",
+                            yaxis = dict(
+                            tickmode = 'array',
+                            tickvals = [1, 2, 3, 4],
+                            ticktext = ['Yes', 'A little', 'Not really', 'Not']),)
 histogram.update_layout(title = "Worldwide consideration of"+'<br>'+"behaviour changement by gender",
                         sliders = [dict(currentvalue={"prefix": "Gender : "})],
                         title_x = 0.5, title_font_size = 15, showlegend=False)
+histogram['layout']['updatemenus'][0]['pad']=dict(r= 10, t= 100)
+histogram['layout']['sliders'][0]['pad']=dict(r= 10, t= 100,)
+
 
 
 colors1 = ['forestgreen', 'limegreen', 'yellowgreen','aliceblue']
@@ -94,16 +101,21 @@ maps = px.choropleth(df2, locations="ISO",
                             hover_name="COUNTRY",
                             color_continuous_scale=px.colors.sequential.YlGn,
                             )
-maps.update_layout(title = "Nation public opininon about"+'<br>'+"climate situation",
+maps.update_layout(title={
+                        'text': "Nation public opinion about climate situation",
+                        'y':0.85,
+                        'x':0.5,
+                        'xanchor': 'center',
+                        'yanchor': 'top'},
                    title_x = 0.5, title_font_size = 15, coloraxis_showscale=False,
                     autosize=False,
                     paper_bgcolor="white",
-                    width=700,
-                    height=670)
-maps.add_annotation(text="World map displays the national level"+'<br>'+" of attention to the environnement."+'<br>'+" Greenest countries pay more attention.",
+                    width=1000,
+                    height=800,)
+maps.add_annotation(text="World map displays the national level of attention to the environnement. Greenest countries pay more attention.",
                     showarrow=False,
-                    x = 0,
-                    y = 0)
+                    x = 0.5,
+                    y = 0.88)
 
 
 heatmap = px.density_heatmap(df1,x ="Q2_Do_You_Change_Your_Behaviour", y = "Q1_Consider_Living_CC", animation_frame="COUNTRYR",
@@ -112,14 +124,26 @@ heatmap = px.density_heatmap(df1,x ="Q2_Do_You_Change_Your_Behaviour", y = "Q1_C
                              )
 heatmap.update_layout(title = "Correlation between"+'<br>'+"behaviour and consideration",
                       title_x = 0.5, title_font_size = 15, coloraxis_showscale=False,
-                      xaxis = {"title" : 'behaviour changement'},
-                      yaxis = {"title" : 'climate change consideration'},
+                      xaxis_title="Behaviour Changements",
+                      yaxis_title="Climate Change Consideration",
+                      xaxis = dict(
+                            tickmode = 'array',
+                            tickvals = [1, 2, 3, 4, 5],
+                            ticktext = ['Yes', 'A little', 'Not really', 'Not', 'Dont know']),
+                      yaxis = dict(
+                            tickmode = 'array',
+                            tickvals = [1, 2, 3, 4, 5],
+                            ticktext = ['Yes', 'A little', 'Not really', 'Not', 'Dont know']),
                       autosize=False,
                       width=400,
                       height=400,
                       paper_bgcolor="white",
                       sliders = [dict(currentvalue={"prefix": "Country : "})])
-heatmap.update_traces(hovertemplate = ' Behaviour changement : %{x} <br> Climate change consideration: %{y}<br> Number of person : %{z}')
+
+heatmap.update_traces(hovertemplate = ' Behaviour changements : %{x} <br> Climate change consideration: %{y}<br> Number of person : %{z}')
+heatmap['layout']['updatemenus'][0]['pad']=dict(r= 10, t= 100)
+heatmap['layout']['sliders'][0]['pad']=dict(r= 10, t= 100,)
+
 
 def pie1():
     
