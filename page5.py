@@ -13,6 +13,7 @@ def p5_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     
+
     up_leftSpace = html.Div(dcc.Graph(figure=maps), style={'height':600 })
     up_rightSpace = html.Div(dcc.Graph(figure=heatmap))
 
@@ -30,15 +31,16 @@ def p5_updateLayout():
             dbc.Col(html.Div(
             up_leftSpace, className="row justify-content-center"),className='col-10', style ={'padding':20}),
             ]),
+            dbc.Row([dbc.Col(drop, className = 'col-4', style = {"display": "block",
+            "margin-left": "auto",
+            "margin-right": "auto"})]),
             dbc.Row( [            
             dbc.Col(html.Div(
             up_rightSpace, className="row justify-content-center"), className='col-4',style ={'padding':20}),
             dbc.Col(
             bot_leftSpace,className='col-4',style ={'padding':20}),
             dbc.Col(
-            bot_rightSpace, className='col-4',style ={'padding':20}),
-            dbc.Col(
-            drop, className='col-4',style ={'padding':20}),],
+            bot_rightSpace, className='col-4',style ={'padding':20}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
@@ -121,33 +123,33 @@ heatmap.update_traces(hovertemplate = ' Behaviour changement : %{x} <br> Climate
 
 def pie1():
     
-    colors1 = ['forestgreen', 'limegreen', 'yellowgreen','greenyellow', 'white']
+    colors1 = ['forestgreen', 'limegreen', 'yellowgreen', 'white']
     
     # MEN
     a1 = df1[df1['GENDERF'] == 1.0]
-    b1 = a1['Q1_Consider_Living_CC'].value_counts()
+    b1 = a1['Q3_How_Fight_CC'].value_counts()
 
-    fig1 = go.Figure(data=[go.Pie(labels=['Yes, of course','Yes, a little','Not really','Not at all','Dont know'],
+    fig1 = go.Figure(data=[go.Pie(labels=['Scientists','Ourselves','Too late','Dont know'],
                              values = b1)])
     fig1.update_traces(hoverinfo='label+percent', textinfo='label',
                   marker=dict(colors=colors1, line=dict(color='#000000', width=0.5)))
-    fig1.update_layout(title = "Do you consider we are living a Climate Change ?", title_font_size = 15, showlegend=False)
+    fig1.update_layout(title = "Who must fight global warming ?", title_font_size = 15, showlegend=False)
 
     return fig1
 
 def pie2():
-    colors1 = ['forestgreen', 'limegreen', 'yellowgreen','greenyellow', 'white']
+    colors1 = ['forestgreen', 'limegreen', 'yellowgreen', 'white']
 
 
                 # WOMEN
     a2 = df1[df1['GENDERF'] == 2.0]
-    b2 = a2['Q1_Consider_Living_CC'].value_counts()
+    b2 = a2['Q3_How_Fight_CC'].value_counts()
 
-    fig2 = go.Figure(data=[go.Pie(labels=['Yes, of course','Yes, a little','Not really','Not at all','Dont know'],
+    fig2 = go.Figure(data=[go.Pie(labels=['Scientists','Ourselves','Too late','Dont know'],
                              values = b2)])
     fig2.update_traces(hoverinfo='label+percent', textinfo='label',
                   marker=dict(colors=colors1, line=dict(color='#000000', width=0.5)))
-    fig2.update_layout(title = "Do you consider we are living a Climate Change ? ",title_font_size = 15, showlegend=False)
+    fig2.update_layout(title = "Who must fight global warming ?",title_font_size = 15, showlegend=False)
 
 
 
@@ -155,3 +157,4 @@ def pie2():
 
 def get_pie():
     return [pie1(), pie2()]
+
