@@ -23,7 +23,7 @@ from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
 #Inititalise app    and it's style for the theme
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
-
+server = app.server
 
 
 # the styles for the main content position it to the right of the sidebar and
