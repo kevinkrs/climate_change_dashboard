@@ -52,7 +52,7 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objs as go
 
-df1 = pd.read_csv("data/worldwideattitude/ntm.csv")
+df1 = pd.read_csv("data/worldwideattitude/data.csv")
 df2 = pd.read_csv("data/worldwideattitude/test1.csv")
 
 df3=  pd.merge(df1, df2, on="ISO")
