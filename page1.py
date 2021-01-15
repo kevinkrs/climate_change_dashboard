@@ -88,7 +88,8 @@ def world_map_page1_1():
                         color="CO2_emissions", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
-    fig.update_layout(title='CO2 emission per capita : 2019')
+    #fig.update_layout(title='CO2 emission per capita : 2019')
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'CO2 emission per capita : 2019',font_size=18)
     return fig
 
 def world_map_page1_2():
