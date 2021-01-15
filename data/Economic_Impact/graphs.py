@@ -51,14 +51,14 @@ def get_dropGDP():
             y="value", 
             color="variable", 
             title='Percentage change in regional GDP due to selected climate change impacts', 
-            labels={'x':'Date', 'y':'GDP Drop'},
+            labels={'x':'Year', 'y':'Percentage change in regional GDP'},
             color_continuous_scale='Greens',
             )
-        graph.update_yaxes(autorange="reversed")
+        #graph.update_yaxes(autorange="reversed")
 
         #GDP Drop figgure for Trend
         fig_trend= (px.scatter( x=df1_ols['Date'], y=df1_ols['value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of Percentage change in regional GDP due to selected climate change impacts'))
-        fig_trend.update_yaxes(autorange="reversed")
+        #fig_trend.update_yaxes(autorange="reversed")
         return [graph,fig_trend]
 
 
@@ -66,10 +66,9 @@ def get_dropGDP_W():
         fig = px.choropleth(df3, locations="CODE",
                     color="value", # lifeExp is a column of gapminder
                     hover_name="variable", # column to add to hover information
-                    color_continuous_scale='Inferno',
+                    color_continuous_scale=px.colors.sequential .Inferno[::-1],
                     animation_frame='Date',
-                    color_continuous_midpoint = -0.9,
-                    range_color=[-4,0])
+                    range_color=[-4, 0])
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
         
         return fig
@@ -96,7 +95,7 @@ def get_RiskindexWorldmap1():
         fig_gcr = px.choropleth(df1_gcr, locations="CODE",
                     color="Losses per unit GDP in % 1999-2018 (Rank)",
                     #hover_name="Country ", # column to add to hover information
-                    color_continuous_scale='Inferno',
+                    color_continuous_scale=px.colors.sequential .Inferno[::-1],
                     #color_continuous_midpoint = -0.9,
                     #range_color=[-4,0]
                     )
@@ -109,9 +108,7 @@ def get_RiskindexWorldmap2():
         fig_gcr = px.choropleth(df2_gcr, locations="CODE",
                     color="Losses per unit GDP in % (Rank)", 
                     #hover_name="Country", # column to add to hover information
-                    color_continuous_scale='Inferno',
-                    #color_continuous_midpoint = -0.9,
-                    #range_color=[-4,0]
+                    color_continuous_scale=px.colors.sequential .Inferno[::-1],
                     )
         fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Climate Risk Index for 2018',font_size=18)
         
