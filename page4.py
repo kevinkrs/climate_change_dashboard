@@ -15,8 +15,8 @@ def p4_updateLayout():
         id='p4WorldMap_dm',
         options=[
             {'label': 'GDP', 'value': '0'},
-            {'label': 'Risk 2018', 'value': '1'},
-            {'label': 'Risk 1999-2018', 'value': '2'}
+            {'label': 'CRI 2018', 'value': '1'},
+            {'label': 'CRI 1999-2018', 'value': '2'}
         ],
         value='0',
         #className='btn btn-success disabled',

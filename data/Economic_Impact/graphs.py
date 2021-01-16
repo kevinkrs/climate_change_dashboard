@@ -3,13 +3,12 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objects as go
 import statsmodels.api as sm
-
+import json
 # %%
 from pandas_datareader import data as pdr
 
 import yfinance as yf
 
-# %%
 
 #Collecting and plotting Stock Market information on iShares Green Bond ETF
 yf.pdr_override() # Override pandas datareader
@@ -72,7 +71,6 @@ def get_dropGDP_W():
                     color_continuous_scale='Inferno',
                     animation_frame='Date',
                     range_color=[-4, 0])
-        
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
         
         return fig
@@ -97,7 +95,8 @@ df2_gcr=  pd.merge(df2_gcr, df3_gcr, on="Country")
 #Worldmap timespan 1999-2018
 def get_RiskindexWorldmap1():
         fig_gcr = px.choropleth(df1_gcr, locations="CODE",
-                    color="Losses per unit GDP in % 1999-2018 (Rank)",
+                    #color="Losses per unit GDP in % 1999-2018 (Rank)",
+                    color='CRI score',
                     #hover_name="Country ", # column to add to hover information
                     color_continuous_scale=px.colors.sequential .Inferno[::-1],
                     #color_continuous_midpoint = -0.9,
@@ -110,12 +109,12 @@ def get_RiskindexWorldmap1():
 #Worldmap timespan 2018
 def get_RiskindexWorldmap2():
         fig_gcr = px.choropleth(df2_gcr, locations="CODE",
-                    color="Losses per unit GDP in % (Rank)", 
+                    color="CRI score", 
                     #hover_name="Country", # column to add to hover information
                     color_continuous_scale=px.colors.sequential .Inferno[::-1],
                     )
         fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Climate Risk Index for 2018',font_size=18)
-        
+
         return fig_gcr
 
 # Variable time span : 1999-2018
@@ -138,30 +137,40 @@ def get_worldMaps():
 df_eea = pd.read_csv('data/Economic_Impact/EU_DMG/natural-disasters-events-3.csv', sep=',')
 # PLot
 def get_dmgEU():
+        df_eea2 = df_eea.loc[df_eea['Chart'] == 'EU-28']
         fig = go.Figure(layout=go.Layout(
         title=go.layout.Title(text="Damage dealt to the EU economy by natural disasters in millions")
-    ))
+        ))
+        fig.update_layout(barmode='stack')
         fig.update_xaxes(title='Year')
-        fig.update_yaxes(title='EUR in million')
+        fig.update_yaxes(title='EUR in millions')
         fig.add_trace(go.Bar(
-        x=df_eea['Year'],
+        x=df_eea2['Year'],
         #y=df_eea['Type']=='Geophysical events',
-        y=df_eea.loc[df_eea['Type'] == 'Geophysical events']['Value'],
+        y=df_eea2.loc[df_eea2['Type'] == 'Geophysical events']['Value'],
         name='Geophysical events',
         marker_color='#148C3F',
         ))
         fig.add_trace(go.Bar(
-        x=df_eea['Year'],
-        y=df_eea.loc[df_eea['Type'] == 'Climatological event']['Value'],
+        x=df_eea2['Year'],
+        y=df_eea2.loc[df_eea2['Type'] == 'Climatological event']['Value'],
         name='Climatological event',
         marker_color='#45bf55'
         ))
         fig.add_trace(go.Bar(
-        x=df_eea['Year'],
-        y=df_eea.loc[df_eea['Type'] == 'Hydrological event']['Value'],
+        x=df_eea2['Year'],
+        y=df_eea2.loc[df_eea2['Type'] == 'Hydrological event']['Value'],
         name='Hydrological event',
         marker_color='#97ed8a'
         ))
+        fig.add_trace(go.Bar(
+        x=df_eea2['Year'],
+        y=df_eea2.loc[df_eea2['Type'] == 'Meteorological events']['Value'],
+        name='Meteorological event',
+        marker_color='#0b6129'
+        ))
+
+        #fig = px.bar(df_eea.loc[df_eea['Chart']=='EU-28'], x="Year", y="Value", color="Type", title="Damage dealt to the EU economy by natural disasters in millions",labels={'x':'Year', 'y':'EUR in million'})
         fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'},color_discrete_sequence=["#148C3F"], title='Trend of economic damage caused by<br> weather and climate-related extreme events in Europe'))
 
         return [fig, fig_trend]
