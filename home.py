@@ -6,15 +6,15 @@ from dash.dependencies import Input, Output
 
 def home_updateLayout():
 #Defining Spaces ==> Insert your plot into the spaces
-    leftSpace = html.Div(dbc.NavItem([dbc.NavLink([html.I( className='fas fa-globe-europe'), html.A("Global Situation")], href="/page1", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    leftSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-globe-europe'), html.A("Global Situation")], href="/page1", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div(dbc.NavItem([dbc.NavLink([html.A("Global Climate Change Dashboard")], href="/", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
-    rightSpace = html.Div(dbc.NavItem([dbc.NavLink([html.I( className='fas fa-university'), html.A("Governmental efforts")], href="/page2", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    midSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H2("Global Climate Change Dashboard", style={'font-size':21})], href="/", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    rightSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-university'), html.A("Governmental efforts")], href="/page2", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
 
     #Including and external graph via iFrame
-    bot_leftSpace = html.Div(dbc.NavItem([dbc.NavLink([html.I( className='fas fa-microscope'), html.A("Patents on technology")], href="/page3", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
-    bot_midSpace = html.Div(dbc.NavItem([dbc.NavLink([html.I( className='fas fa-industry'), html.A("Economic Impact")], href="/page4", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
-    bot_rightSpace = html.Div(dbc.NavItem([dbc.NavLink([html.I( className='fa fa-group'), html.A("Population attitude")], href="/page5", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    bot_leftSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-microscope'), html.A("Patents on technology")], href="/page3", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    bot_midSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-industry'), html.A("Economic Impact")], href="/page4", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    bot_rightSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fa fa-group'), html.A("Population attitude")], href="/page5", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
