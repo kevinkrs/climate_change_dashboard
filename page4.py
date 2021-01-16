@@ -26,7 +26,7 @@ def p4_updateLayout():
 
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     midSpace = html.Div(
-        dcc.Graph(id='p4WorldMap'))
+        dcc.Graph(id='p4WorldMap'), style={'padding':30, 'background-color':'#FFFFFF'})
 
 
     bot_leftSpace = html.Div([dcc.RadioItems(
@@ -39,7 +39,7 @@ def p4_updateLayout():
         className='btn btn-success disabled',
         style={'background-color':'#45bf55', 'border-color' : '#148C3F'},
         labelStyle={'display': 'inline-block', 'padding-right':'10px'}), 
-        dcc.Graph(id='eu_fig')])
+        dcc.Graph(id='eu_fig')], style={'padding':30, 'background-color':'#FFFFFF'})
 
     bot_midSpace = html.Div([dcc.RadioItems(
         id='gdp_fig_rb',
@@ -52,7 +52,7 @@ def p4_updateLayout():
         style={'background-color':'#45bf55', 'border-color' : '#148C3F'},
         labelStyle={'display': 'inline-block', 'padding-right':'10px'}), 
          
-        dcc.Graph(id='gdp_fig')])
+        dcc.Graph(id='gdp_fig')], style={'padding':30, 'background-color':'#FFFFFF'})
 
     #bot_rightSpace = html.Div(dcc.Graph(figure=get_iGreenBondData()))
 
@@ -61,16 +61,16 @@ def p4_updateLayout():
         [dbc.Row( [
             dbc.Col(
             leftSpace,
-            className='col-2', style ={'padding':20}),
+            className='col-2', style ={'padding':15,'width':'100%', 'height':'100%'}),
             dbc.Col(
             midSpace,
-            className='col-10',style ={'padding':20}),],
+            className='col-10',style ={'padding':35}),],
             ),
             dbc.Row( [
             dbc.Col(
-            bot_leftSpace,className='col-6',style ={'padding':20}),
+            bot_leftSpace,className='col-6',style ={'padding':25}),
             dbc.Col(
-            bot_midSpace, className='col-6', style ={'padding':20}),
+            bot_midSpace, className='col-6', style ={'padding':25}),
  #           dbc.Col(
  #           bot_rightSpace, className='col-4',style ={'padding':20}),],
  #            )
