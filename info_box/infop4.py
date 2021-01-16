@@ -49,7 +49,7 @@ Patent counts are also presented according to the classes of the International P
 
 def get_infoBox4(pathname):
     infobox =   dbc.Row([
-                    dbc.Row([html.P("Information Box",className="lead"),],className='infoHead'),
+                    html.P("Information Box",className="lead", style={'width':'100%'}),
 
                     dbc.Button("Countries", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(

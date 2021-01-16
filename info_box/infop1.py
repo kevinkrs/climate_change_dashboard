@@ -26,7 +26,7 @@ On these part, data come from OCDE data base, BP statistical review and Nasa Ozo
 
 def get_infoBox1(pathname):
     infobox=    dbc.Row([
-                    dbc.Row([html.P("Information Box",className="lead"),],className='infoHead'),
+                    html.P("Information Box",className="lead", style={'width':'100%'}),
 
                     dbc.Button("Object", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(

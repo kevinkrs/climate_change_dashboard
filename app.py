@@ -42,7 +42,8 @@ sidebar = html.Div(
 
         #Navbar containing the menu list
         dbc.Nav(
-            [   dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-globe-europe', style={'padding-right':20}), html.A("Global Situation")], href="/", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+            [    dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-home', style={'padding-right':20}), html.A("Home")], href="/", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-globe-europe', style={'padding-right':20}), html.A("Global Situation")], href="/page1", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
                 dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-university', style={'padding-right':20}), html.A("Governmental efforts")], href="/page2", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
                 dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-microscope', style={'padding-right':20}), html.A("Patents on technology")], href="/page3", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
                 dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-industry', style={'padding-right':20}), html.A("Economic Impact")], href="/page4", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
@@ -70,6 +71,8 @@ app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), foot
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/":
+        return html.Div(home_updateLayout(),className='container-fluid'),
+    elif pathname == "/page1":
         return dbc.Col([sidebar,html.Div(p1_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page2":
         return dbc.Col([sidebar,html.Div(p2_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),

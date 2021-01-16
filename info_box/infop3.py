@@ -7,7 +7,7 @@ import dash_core_components as dcc
 def get_infoBox3(pathname):
     infobox = dbc.Row([
                        
-                        dbc.Row([html.P("Information Box",className="lead"),],className='infoHead'),
+                        html.P("Information Box",className="lead", style={'width':'100%'}),
 
                         dbc.Button("Countries", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
                         dbc.Modal(

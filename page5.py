@@ -14,7 +14,7 @@ def p5_updateLayout():
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     
 
-    up_leftSpace = html.Div(dcc.Graph(figure=maps), style={'height':600 })
+    up_leftSpace = html.Div(dcc.Graph(figure=maps),style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
     up_rightSpace = html.Div(dcc.Graph(figure=heatmap))
 
 
@@ -29,7 +29,7 @@ def p5_updateLayout():
     content = html.Div(
         [dbc.Row( [           
             dbc.Col(html.Div(
-            up_leftSpace, className="row justify-content-center"),className='col-12', style ={'padding':20}),
+            up_leftSpace),className='col-12', style ={'padding':20}),
             ]),
             dbc.Row([dbc.Col(drop, className = 'col-4', style = {"display": "block",
             "margin-left": "auto",
@@ -95,28 +95,14 @@ piechart.update_traces(hoverinfo='label+percent', textinfo='label',
 piechart.update_layout(title = "Worldwide consideration of who"+'<br>'+"must fight global warming", title_x = 0.5, title_font_size = 15, showlegend=False)
 
 
-
 maps = px.choropleth(df2, locations="ISO",
                             color="PUBLI_RATE",
                             hover_name="COUNTRY",
                             color_continuous_scale=px.colors.sequential.YlGn,
                             )
-maps.update_layout(title={
-                        'text': "Nation public opinion about climate situation",
-                        'y':0.85,
-                        'x':0.5,
-                        'xanchor': 'center',
-                        'yanchor': 'top'},
-                   title_x = 0.5, title_font_size = 15, coloraxis_showscale=False,
-                    autosize=False,
-                    paper_bgcolor="white",
-                    width=1000,
-                    height=800,)
-maps.add_annotation(text="World map displays the national level of attention to the environnement. Greenest countries pay more attention.",
-                    showarrow=False,
-                    x = 0.5,
-                    y = 0.88)
+maps.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Nation public opinion about climate situation',font_size=18, coloraxis_showscale=False,)
 
+#maps.add_annotation(text="World map displays the national level of attention to the environnement. Greenest countries pay more attention.", showarrow=False)
 
 heatmap = px.density_heatmap(df1,x ="Q2_Do_You_Change_Your_Behaviour", y = "Q1_Consider_Living_CC", animation_frame="COUNTRYR",
                             color_continuous_scale=px.colors.sequential.YlGn,
