@@ -20,18 +20,18 @@ def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div([
             dbc.Col([
-                html.H4('Options', style = {'color' : 'white'}),
+                html.H4('Indicators', style = {'color' : 'white','text-align' : 'center', 'margin-top' : 10}),
                 dcc.Dropdown(id = 'dropdown_po', 
                 options =[{'label' : 'EPO', 'value' : '0' },
                           {'label' : 'USPTO', 'value' : '1'},
                           {'label' : 'PCT', 'value' : '2'}], 
                           value = '0',
-                          placeholder = 'Select patent office',  style = {'margin-bottom' : 10, 'margin-top' : 50, 'width': '100%'}),
+                          placeholder = 'Select patent office',  style = {'margin-bottom' : 10, 'margin-top' : 20, 'width': '100%'}),
                 dcc.Dropdown(id ='dropdown_number',
                 options =[{'label' : 'Environmental', 'value' : '0'},
                         {'label' : 'Total', 'value' : '1' },],
                           value = '0',
-                          placeholder = 'Select technology domain', style = {'width': '100%'})], 
+                          placeholder = 'Select technology domain', style = {'width': '100%', 'margin-bottom' : 30})], 
                     )], style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5} )
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
