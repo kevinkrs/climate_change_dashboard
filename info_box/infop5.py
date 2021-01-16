@@ -39,7 +39,7 @@ Question 3 : Who must fight in priority global warming ?
 
 def get_infoBox5(pathname):
     infobox=    dbc.Row([
-                    dbc.Row([html.I( className='fas fa-info', style={'padding-right':20}), html.A("Information Box")],className='infoHead'),
+                    dbc.Row([html.P("Information Box",className="lead"),],className='infoHead'),
 
                     dbc.Button("Countries", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(

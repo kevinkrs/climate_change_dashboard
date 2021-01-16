@@ -115,11 +115,15 @@
 
 .innerFrame {
     padding-left: 0;
-    background-color: #F6F6F6;
+    background-color: #f8f7f7;
 }
 
 .rightFrame {
     margin-left: 20em;
+    border: 6px solid;
+    border-left: 0;
+    border-color: rgb(151, 237, 138);
+    border-color: linear-gradient(159deg, rgba(151, 237, 138, 1) 0%, #45bf55 100%);
 }
 
 .nav-item {
