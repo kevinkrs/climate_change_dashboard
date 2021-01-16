@@ -141,13 +141,13 @@ def temperature_page1():
 def p1_updateLayout():
 
     leftSpace = html.Div([
-                html.H4('Option'),
+                html.H4('Indicators', style = {'color' : 'white'}),
                 dcc.Dropdown(
                     id = 'p1WorldMap_dm',
                     options = [
-                        {'label' : 'CO2_emissions', 'value': '0'},
-                        {'label' : 'Death_from_air_pollution', 'value' : '1'},
-                        {'label' : 'Ozone_concentration', 'value' : '2'}
+                        {'label' : 'CO2 emissions', 'value': '0'},
+                        {'label' : 'Death from air pollution', 'value' : '1'},
+                        {'label' : 'Ozone concentration', 'value' : '2'}
                     ],
                     value = '0',),
                 dcc.Dropdown(
@@ -157,7 +157,7 @@ def p1_updateLayout():
                         {'label' : 'Energy', 'value' : '1'},
                     ],
                     value = '0',)
-                ])
+                ], style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5} )
     
     midSpace = html.Div(
         dcc.Graph(id='p1WorldMap'))

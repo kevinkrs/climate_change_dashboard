@@ -54,10 +54,13 @@ def get_dropGDP():
             labels={'x':'Year', 'y':'Percentage change in regional GDP'},
             color_continuous_scale='Greens',
             )
+
+        graph.update_xaxes(title='Year')
+        graph.update_yaxes(title='Change of GDP in %')
         #graph.update_yaxes(autorange="reversed")
 
         #GDP Drop figgure for Trend
-        fig_trend= (px.scatter( x=df1_ols['Date'], y=df1_ols['value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of Percentage change in regional GDP due to selected climate change impacts'))
+        fig_trend= (px.scatter( x=df1_ols['Date'], y=df1_ols['value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'},color_discrete_sequence=["#148C3F"], title='Trend of Percentage change in regional GDP due to selected climate change impacts'))
         #fig_trend.update_yaxes(autorange="reversed")
         return [graph,fig_trend]
 
@@ -69,6 +72,7 @@ def get_dropGDP_W():
                     color_continuous_scale='Inferno',
                     animation_frame='Date',
                     range_color=[-4, 0])
+        
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
         
         return fig
@@ -137,28 +141,28 @@ def get_dmgEU():
         fig = go.Figure(layout=go.Layout(
         title=go.layout.Title(text="Damage dealt to the EU economy by natural disasters in millions")
     ))
-        fig.update_xaxes(title='Date')
+        fig.update_xaxes(title='Year')
         fig.update_yaxes(title='EUR in million')
         fig.add_trace(go.Bar(
         x=df_eea['Year'],
         #y=df_eea['Type']=='Geophysical events',
         y=df_eea.loc[df_eea['Type'] == 'Geophysical events']['Value'],
         name='Geophysical events',
-        marker_color='rgba(122, 166, 78)'
+        marker_color='#148C3F',
         ))
         fig.add_trace(go.Bar(
         x=df_eea['Year'],
         y=df_eea.loc[df_eea['Type'] == 'Climatological event']['Value'],
         name='Climatological event',
-        marker_color='rgba(255, 200, 72)'
+        marker_color='#45bf55'
         ))
         fig.add_trace(go.Bar(
         x=df_eea['Year'],
         y=df_eea.loc[df_eea['Type'] == 'Hydrological event']['Value'],
         name='Hydrological event',
-        marker_color='rgba(35, 132, 217)'
+        marker_color='#97ed8a'
         ))
-        fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'}, title='Trend of economic damage caused by<br> weather and climate-related extreme events in Europe'))
+        fig_trend= (px.scatter( x=df_eea['Year'], y=df_eea['Value'], trendline="ols", labels={'x':'Year', 'y':'Regression Value'},color_discrete_sequence=["#148C3F"], title='Trend of economic damage caused by<br> weather and climate-related extreme events in Europe'))
 
         return [fig, fig_trend]
 
