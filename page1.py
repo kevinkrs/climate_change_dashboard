@@ -149,7 +149,7 @@ def p1_updateLayout():
                         {'label' : 'Death from air pollution', 'value' : '1'},
                         {'label' : 'Ozone concentration', 'value' : '2'}
                     ],
-                    value = '0',),
+                    value = '0',style = {'margin-bottom' : 10}),
                 dcc.Dropdown(
                     id = 'p1WorldMap_dm2',
                     options = [
