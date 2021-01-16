@@ -8,7 +8,7 @@ def home_updateLayout():
 #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div(dbc.NavItem([dbc.NavLink([html.I( className='fas fa-globe-europe'), html.A("Global Situation")], href="/page1", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div(dbc.NavItem([dbc.NavLink([html.A("Global Climate Chnage Dashboard")], href="/", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    midSpace = html.Div(dbc.NavItem([dbc.NavLink([html.A("Global Climate Change Dashboard")], href="/", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
     rightSpace = html.Div(dbc.NavItem([dbc.NavLink([html.I( className='fas fa-university'), html.A("Governmental efforts")], href="/page2", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
 
     #Including and external graph via iFrame
