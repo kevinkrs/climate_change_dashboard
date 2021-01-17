@@ -9,9 +9,17 @@ from data.Governmental_efforts.graphs import get_fundingGraph, get_fundingGraph,
 
 def p2_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
-    leftSpace = html.Div("Linker Space")
+    leftSpace = html.Div([
+        html.H4('Indicators', style = {'color' : 'white'}),
+            dcc.Dropdown(id = 'dropdown_po', 
+                    options =[{'label' : 'EPO', 'value' : '0' },
+                            {'label' : 'USPTO', 'value' : '1'},
+                            {'label' : 'PCT', 'value' : '2'}], 
+                            value = '0',
+                            placeholder = 'Select patent office',  style = {'margin-bottom' : 10})],
+                        style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div("Mid Space")
+    midSpace = html.Div(id = wmap_gov_eff)
     rightSpace = html.Div("Rechter Space")
 
     bot_leftSpace = html.Div("Left Bottom Space")

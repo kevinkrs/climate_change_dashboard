@@ -10,6 +10,8 @@ def get_maps_patent():
 df1 = pd.read_excel('data/technology_patents/files/epo_total_c.xlsx')
 
 
+
+
 def alpha3code(country):
     try:
         result = pycountry.countries.search_fuzzy(country)

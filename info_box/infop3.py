@@ -52,7 +52,7 @@ def get_infoBox3(pathname):
                         dbc.Button("Technology domains and IPC", id="patent_open5", style= {'margin' : '10px', 'width' : '95%'}),
                         dbc.Modal(
                             [
-                                dbc.ModalHeader("Technology domains and IPC (International Patent Clasification"),
+                                dbc.ModalHeader("Technology domains and IPC (International Patent Classification"),
                                 dcc.Markdown(children = markdown_text5, style = {'padding' : '15px'}),
                                 dbc.ModalFooter(
                                     dbc.Button("Close", id="patent_close5", className="ml-auto")

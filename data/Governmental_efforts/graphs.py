@@ -44,3 +44,19 @@ def get_pledgedGraph():
 # Variable time span : -
 # Data published by : Climate Funds Update - Heinrich Böll Stiftung
 # Link : https://climatefundsupdate.org/data-dashboard/#1541245664232-8e27b692-05c8
+
+
+'''def get_world_map():
+        #avg = df1['log_value'].mean()
+        fig = px.choropleth(df1, locations="CODE",
+                    color="log_value", # lifeExp is a column of gapminder
+                    hover_name="Country", # column to add to hover information
+                    color_continuous_scale='tempo',
+                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                    #hover_data = {'log_value' : False, 'Value' : 'Value' },
+                   # scope = "",
+                    animation_frame='Year',)
+
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18)
+        return fig'''
+
