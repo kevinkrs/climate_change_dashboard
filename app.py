@@ -19,6 +19,7 @@ from info_box.infop5 import get_infoBox5
 from info_box.infop1 import get_infoBox1
 
 from data.technology_patents.maps import *
+from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
 #Inititalise app    and it's style for the theme
@@ -133,8 +134,20 @@ def get_patent_map(selection_x,selection_y):
         fig = get_maps_patent()[4]
         return fig
 
-    else:
+    elif(selection_x == '2' and selection_y == '1'):
         fig = get_maps_patent()[5]
+        return fig 
+
+    elif(selection_x == '0' and selection_y == '2'):
+        fig = get_maps_patent_relative()[0]
+        return fig
+
+    elif(selection_x == '1' and selection_y == '2'):
+        fig = get_maps_patent_relative()[1]
+        return fig
+
+    elif(selection_x == '2' and selection_y == '2'):
+        fig = get_maps_patent_relative()[2]
         return fig 
 
 
@@ -274,6 +287,7 @@ def toggle_modal(n1, n2, is_open):
     if n1 or n2:
         return not is_open
     return is_open
+    
 
 @app.callback(
     Output('p5pie', 'figure'),

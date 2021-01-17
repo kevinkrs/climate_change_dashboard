@@ -26,9 +26,10 @@ def p3_updateLayout():
                             value = '0',
                             placeholder = 'Select patent office',  style = {'margin-bottom' : 10}),
             dcc.Dropdown(id ='dropdown_number',
-                    options =[{'label' : 'Environmental', 'value' : '0'},
-                            {'label' : 'Total', 'value' : '1' },],
-                            value = '0',
+                    options =[{'label' : 'Relative (%)', 'value' : '2'},
+                                {'label' : 'Environmental', 'value' : '0'},
+                                {'label' : 'Total', 'value' : '1' }],
+                            value = '2',
                             placeholder = 'Select technology domain')], 
                         style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)

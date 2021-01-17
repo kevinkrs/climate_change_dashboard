@@ -9,20 +9,20 @@ def get_infoBox3(pathname):
                        
                         html.P("Information Box",className="lead", style={'width':'100%'}),
 
-                        dbc.Button("Countries", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
+                        dbc.Button("Patents", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
                         dbc.Modal(
                             [
-                                dbc.ModalHeader("Countries"),
+                                dbc.ModalHeader("Patents"),
                                 dcc.Markdown(children = markdown_text1, style = {'padding' : '15px'}),
                                 dbc.ModalFooter(
                                     dbc.Button("Close", id="patent_close1", className="ml-auto")
                         )],  id="patent_modal1",
                             scrollable = True),
 
-                        dbc.Button("Patents", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
+                        dbc.Button("Countries", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
                         dbc.Modal(
                             [
-                                dbc.ModalHeader("Patents"),
+                                dbc.ModalHeader("Countries"),
                                 dcc.Markdown(children = markdown_text2, style = {'padding' : '15px'}),
                                 dbc.ModalFooter(
                                 dbc.Button("Close", id="patent_close2", className="ml-auto")
@@ -66,6 +66,25 @@ def get_infoBox3(pathname):
 
 markdown_text1 = '''
 
+The dataset provides data on patents counts by technology for:
+    	
+- Patent **applications** to the European Patent Office (EPO)
+- Patent **applications** to the US Patent and Trademark Office (USPTO)
+- Patents filed under the Patent Co-operation Treaty (PCT), at international phase, that designate the EPO
+
+
+The second dropdown lets you choose between follwing options: 
+
+- **Environmental**: ENV-TECH: Envivornmental-related Technology is a category defined by OECD and is drawing on more than 2000 classifications (logarithmic values base _e_)
+- **Relative**: The ratio between ENV-TECH and Total patent applications 
+- **Total**: Patent applications (logarithmic values base _e_)
+
+Series are derived from EPO's Worldwide Patent Statistical database (PATSTAT Global, Spring 2020). USPTO and Triadic patent families are mainly derived from PATSTAT biblio, while EPO and PCT patent counts are based on PATSTAT's EPO Register (Spring 2020).
+
+
+'''
+
+markdown_text2 = '''
 More than 100 countries worldwide are covered.
 
 Geographical aggregates are provided for the EU-28, the OECD total, and the World total.
@@ -77,16 +96,6 @@ For example, a patent co-invented by 1 French, 1 American and 2 German residents
 - 1/4th for the USA
 - and ½ patent for Germany.
 
-
-'''
-
-markdown_text2 = '''The dataset provides data on patents counts by technology for:
-    	
-- Patent **applications** to the European Patent Office (EPO)
-- Patent applications to the US Patent and Trademark Office (USPTO)
-- Patents filed under the Patent Co-operation Treaty (PCT), at international phase, that designate the EPO
-
-Series are derived from EPO's Worldwide Patent Statistical database (PATSTAT Global, Spring 2020). USPTO and Triadic patent families are mainly derived from PATSTAT biblio, while EPO and PCT patent counts are based on PATSTAT's EPO Register (Spring 2020).
 '''
 
 markdown_text3 = '''**Inventors’ country:**

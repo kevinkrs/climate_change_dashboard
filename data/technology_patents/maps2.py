@@ -4,8 +4,8 @@ import numpy as np
 import pycountry
 
 
-#def get_maps_patent(): 
-  #  return [get_world_map_epo(), get_world_map_uspto(), get_world_map_pct()]
+def get_maps_patent_relative(): 
+    return [get_world_map_epo(), get_world_map_uspto(), get_world_map_pct()]
 
 df1 = pd.read_excel('data/technology_patents/epo_compared.xlsx')
 df2 = pd.read_excel('data/technology_patents/uspto_compared.xlsx')
@@ -31,12 +31,12 @@ def get_world_map_epo():
                     color="Relative", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                    labels = {'Relative' : '%'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Environmental-technology patents filed to EPO',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'EPO: ENV-TECH relative to Total Patents',font_size=18)
         return fig
 
 
@@ -46,12 +46,12 @@ def get_world_map_uspto():
                     color="Relative", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                    labels = {'Relative' : 'in %'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Environmental-technology patents filed to USPTO',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'USPTO: ENV-TECH relative to Total Patents',font_size=18)
         return fig
 
 
@@ -61,10 +61,10 @@ def get_world_map_pct():
                     color="Relative", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                    labels = {'Relative' : 'in %'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Environmental-technology patents filed to PCT',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'PCT: ENV-TECH relative to Total Patents',font_size=18)
         return fig
