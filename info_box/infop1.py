@@ -5,20 +5,19 @@ import dash_core_components as dcc
 
 markdown_text1 = '''
 
-Here is the first page of this dashboard. The objective is to give an overview of the situation and thanks to historical data also understand the trajectory.
+Our collective CO2 emissions can be expressed as a product of four factors and their relationship with each other : 
+population size, economic growth, energy intensity and emissions per energy unit produced.
+Here we focus on energy intensity and emissions per energy unit produced, because this factors explain how we can stop that.
 
-Our collective CO2 emissions can be expressed as a product of four factors and their relationship with each other :
-Population size, economics growth, energy intensity and emissions per energy unit produced.
-Here we focus on the last two, because this factors explain how we can stop that.
-
-Our data takes into account all countries and uses aggregation to summarize the situation.
+On the graph we can see the evolution over time for the main economic actor
+So we can see the high carbon energy production, and the part of the renewable energy in the total production.
+The world map shows us the inequality of consequences with the numbers of deaths from air pollution, and the impact on ozone for each country. 
 
 '''
 
 markdown_text2 = '''
 
-On these part, data come from OCDE data base, BP statistical review and Nasa Ozone.
-And all of our data are relative.
+On these part, data come from OCDE data base, BP statistical review and Nasa Ozone since nineteen sixty-five to December twenty-nineteen.
 
 '''
 
@@ -27,22 +26,22 @@ And all of our data are relative.
 
 def get_infoBox1(pathname):
     infobox=    dbc.Row([
-                    dbc.Row([html.I( className='fas fa-info', style={'padding-right':20}), html.A("Information Box")],className='infoHead'),
+                    html.P("Information Box",className="lead", style={'width':'100%'}),
 
-                    dbc.Button("object", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Object", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(
                         [
-                            dbc.ModalHeader("object"),
+                            dbc.ModalHeader("Object"),
                             dcc.Markdown(children = markdown_text1, style = {'padding' : '15px'}),
                             dbc.ModalFooter(
                             dbc.Button("Close", id="patent_close1", className="ml-auto")
                     )],  id="patent_modal1",
                         scrollable = True),
 
-                    dbc.Button("data", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Data Source", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(
                         [
-                            dbc.ModalHeader("data"),
+                            dbc.ModalHeader("Data Source"),
                             dcc.Markdown(children = markdown_text2, style = {'padding' : '15px'}),
                             dbc.ModalFooter(
                             dbc.Button("Close", id="patent_close2", className="ml-auto")
