@@ -31,7 +31,7 @@ def get_world_map_epo():
                     color="Relative", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
-                    labels = {'Relative' : '%'},
+                    labels = {'Relative' : 'Relative'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
