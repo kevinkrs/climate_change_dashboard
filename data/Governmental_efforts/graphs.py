@@ -45,18 +45,26 @@ def get_pledgedGraph():
 # Data published by : Climate Funds Update - Heinrich Böll Stiftung
 # Link : https://climatefundsupdate.org/data-dashboard/#1541245664232-8e27b692-05c8
 
+# %%
+# ### Funding by type
+# Importing the dataset
+df_nzc = pd.read_csv('data/Governmental_efforts/ClimateWatch/net_zero_content.csv', sep=',')
+df3_gcr = pd.read_excel('data/Economic_Impact/GDP/OECD Region.xlsx')   #Datasheet with OECD Regions, Countries and country Codes
 
-'''def get_world_map():
-        #avg = df1['log_value'].mean()
-        fig = px.choropleth(df1, locations="CODE",
-                    color="log_value", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='tempo',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
-                    #hover_data = {'log_value' : False, 'Value' : 'Value' },
-                   # scope = "",
-                    animation_frame='Year',)
+df_nzc=  pd.merge(df_nzc, df3_gcr, on="Country")
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18)
-        return fig'''
+# PLot
+#Worldmap Net Zero Target Tracker
+def get_NetZeroTargetWM():
+        fig_nzc = px.choropleth(df_nzc, locations="CODE",
+                    #color="Losses per unit GDP in % 1999-2018 (Rank)",
+                    color='Value',
+                    color_continuous_scale='Greens',
+                    )
+        fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Net-Zero Tracker',font_size=18)
 
+        return fig_nzc
+
+# Variable time span : -
+# Data published by : Climate Watch
+# Link : https://www.climatewatchdata.org/data-explorer/net-zero-content?net-zero-content-categories=&net-zero-content-countries=All%20Selected&net-zero-content-indicators=nz_status&page=1

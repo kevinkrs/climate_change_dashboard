@@ -4,22 +4,24 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 from data.Economic_Impact.graphs import get_iGreenBondData
-from data.Governmental_efforts.graphs import get_fundingGraph, get_fundingGraph, get_pledgedGraph
+from data.Governmental_efforts.graphs import get_fundingGraph, get_fundingGraph, get_pledgedGraph, get_NetZeroTargetWM
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 def p2_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
-    leftSpace = html.Div([
-        html.H4('Indicators', style = {'color' : 'white'}),
-            dcc.Dropdown(id = 'dropdown_po', 
-                    options =[{'label' : 'EPO', 'value' : '0' },
-                            {'label' : 'USPTO', 'value' : '1'},
-                            {'label' : 'PCT', 'value' : '2'}], 
-                            value = '0',
-                            placeholder = 'Select patent office',  style = {'margin-bottom' : 10})],
-                        style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
+   #leftSpace = html.Div([
+    #    html.H4('Indicators', style = {'color' : 'white'}),
+     #       dcc.Dropdown(id = 'dropdown_po', 
+      #              options =[{'label' : 'EPO', 'value' : '0' },
+       #                     {'label' : 'USPTO', 'value' : '1'},
+        #                    {'label' : 'PCT', 'value' : '2'}], 
+         #                   value = '0',
+          #                  placeholder = 'Select patent office',  style = {'margin-bottom' : 10})],
+           #             style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div(id = wmap_gov_eff)
+
+    midSpace = html.Div(dcc.Graph(figure=get_NetZeroTargetWM()))
+
     rightSpace = html.Div("Rechter Space")
 
     bot_leftSpace = html.Div("Left Bottom Space")
@@ -29,14 +31,14 @@ def p2_updateLayout():
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
         [dbc.Row( [
+            #dbc.Col(
+            #leftSpace,className='col-2', style ={'padding':20}),
             dbc.Col(
-            leftSpace,className='col-2', style ={'padding':20}),
-            dbc.Col(
-            midSpace, className='col-10',style ={'padding':20, 'background-color':'#97ed8a','height' : '500'}),],
+            midSpace, className='col-12',style ={'padding':20}),],
             ),
             dbc.Row( [
             dbc.Col(
-            bot_leftSpace,className='col-4',style ={'padding':20, 'background-color':'#97ed8a'}),
+            bot_leftSpace,className='col-4',style ={'padding':20}),
             dbc.Col(
             bot_midSpace, className='col-4', style ={'padding':20}),
             dbc.Col(
