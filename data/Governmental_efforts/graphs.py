@@ -63,7 +63,7 @@ def get_pledgedGraph():
 # %%
 # ### Funding by type
 # Importing the dataset
-df_nzc = pd.read_csv('data\Governmental_efforts\ClimateWatch\net_zero_content.csv', sep=',')
+df_nzc = pd.read_csv('data/Governmental_efforts/ClimateWatch/net_zero_content.csv', sep=',')
 df3_gcr = pd.read_excel('data/Economic_Impact/GDP/OECD Region.xlsx')   #Datasheet with OECD Regions, Countries and country Codes
 
 df_nzc=  pd.merge(df_nzc, df3_gcr, on="Country")
