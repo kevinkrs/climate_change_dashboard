@@ -19,7 +19,7 @@ def p2_updateLayout():
                             placeholder = 'Select patent office',  style = {'margin-bottom' : 10})],
                         style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div(id = wmap_gov_eff)
+    midSpace = html.Div()
     rightSpace = html.Div("Rechter Space")
 
     bot_leftSpace = html.Div("Left Bottom Space")
