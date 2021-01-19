@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 from data.Economic_Impact.graphs import get_iGreenBondData
-from data.Governmental_efforts.graphs import get_fundingGraph, get_fundingGraph, get_pledgedGraph
+from data.Governmental_efforts.graphs import get_fundingGraph, get_fundingGraph, get_pledgedGraph, get_NetZeroTargetWM
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
 def p2_updateLayout():
@@ -19,7 +19,7 @@ def p2_updateLayout():
                             placeholder = 'Select patent office',  style = {'margin-bottom' : 10})],
                         style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div()
+    midSpace = html.Div(dcc.Graph(figure=get_NetZeroTargetWM()))
     rightSpace = html.Div("Rechter Space")
 
     bot_leftSpace = html.Div("Left Bottom Space")
