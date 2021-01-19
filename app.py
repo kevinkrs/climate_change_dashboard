@@ -17,6 +17,7 @@ from info_box.infop4 import get_infoBox4
 from info_box.infop3 import get_infoBox3
 from info_box.infop5 import get_infoBox5 
 from info_box.infop1 import get_infoBox1
+from info_box.infop2 import get_infoBox2
 
 from data.technology_patents.maps import *
 from data.technology_patents.maps2 import *
@@ -101,6 +102,8 @@ def callback_func(pathname):
         return get_infoBox3(pathname)
     elif(pathname == '/page5'):
         return get_infoBox5(pathname)    
+    elif(pathname == '/page2'):
+        return get_infoBox2(pathname)
     else:
         return get_infoBox1(pathname)
 
