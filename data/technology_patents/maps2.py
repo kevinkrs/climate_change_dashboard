@@ -32,6 +32,7 @@ def get_world_map_epo():
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
                     labels = {'Relative' : 'Relative'},
+                    range_color = [0,1],
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
@@ -47,6 +48,7 @@ def get_world_map_uspto():
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
                     labels = {'Relative' : 'in %'},
+                    range_color = [0,1],
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
@@ -62,6 +64,7 @@ def get_world_map_pct():
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
                     labels = {'Relative' : 'in %'},
+                    range_color = [0,1],
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
