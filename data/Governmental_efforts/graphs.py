@@ -74,14 +74,12 @@ def get_NetZeroTargetWM():
         fig_nzc = px.choropleth(df_nzc, locations="CODE",
                     #color="Losses per unit GDP in % 1999-2018 (Rank)",
                     color='Indicator name',
-                    #hover_name="Country ", # column to add to hover information
-                    color_continuous_scale=px.colors.sequential .Greens[::-1],
-                    #color_continuous_midpoint = -0.9,
+                    hover_name="Country ", # column to add to hover information
+                    color_continuous_scale='Greens',
                     )
         fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Net-Zero Tracker',font_size=18)
 
         return fig_nzc
-
 
 # Variable time span : -
 # Data published by : Climate Watch

@@ -19,7 +19,9 @@ def p2_updateLayout():
                             placeholder = 'Select patent office',  style = {'margin-bottom' : 10})],
                         style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
+
     midSpace = html.Div(dcc.Graph(figure=get_NetZeroTargetWM()))
+
     rightSpace = html.Div("Rechter Space")
 
     bot_leftSpace = html.Div("Left Bottom Space")
@@ -32,11 +34,11 @@ def p2_updateLayout():
             dbc.Col(
             leftSpace,className='col-2', style ={'padding':20}),
             dbc.Col(
-            midSpace, className='col-10',style ={'padding':20, 'background-color':'#97ed8a','height' : '500'}),],
+            midSpace, className='col-10',style ={'padding':20}),],
             ),
             dbc.Row( [
             dbc.Col(
-            bot_leftSpace,className='col-4',style ={'padding':20, 'background-color':'#97ed8a'}),
+            bot_leftSpace,className='col-4',style ={'padding':20}),
             dbc.Col(
             bot_midSpace, className='col-4', style ={'padding':20}),
             dbc.Col(
