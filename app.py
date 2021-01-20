@@ -19,11 +19,12 @@ from info_box.infop5 import get_infoBox5
 from info_box.infop1 import get_infoBox1
 
 from data.technology_patents.maps import *
+from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
 #Inititalise app    and it's style for the theme
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
-
+server = app.server
 
 
 # the styles for the main content position it to the right of the sidebar and
@@ -42,7 +43,8 @@ sidebar = html.Div(
 
         #Navbar containing the menu list
         dbc.Nav(
-            [   dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-globe-europe', style={'padding-right':20}), html.A("Global Situation")], href="/", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+            [    dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-home', style={'padding-right':20}), html.A("Home")], href="/", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
+                dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-globe-europe', style={'padding-right':20}), html.A("Global Situation")], href="/page1", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
                 dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-university', style={'padding-right':20}), html.A("Governmental efforts")], href="/page2", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
                 dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-microscope', style={'padding-right':20}), html.A("Patents on technology")], href="/page3", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
                 dbc.Row([dbc.NavItem(dbc.Col([dbc.NavLink([html.I( className='fas fa-industry', style={'padding-right':20}), html.A("Economic Impact")], href="/page4", active="exact",)],width=12),style={ 'width':'100%'}), ], className='sidebar-navigation'),
@@ -70,6 +72,8 @@ app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), foot
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/":
+        return html.Div(home_updateLayout(),className='container-fluid'),
+    elif pathname == "/page1":
         return dbc.Col([sidebar,html.Div(p1_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page2":
         return dbc.Col([sidebar,html.Div(p2_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
@@ -97,7 +101,7 @@ def callback_func(pathname):
         return get_infoBox3(pathname)
     elif(pathname == '/page5'):
         return get_infoBox5(pathname)    
-    elif(pathname == '/page1'):
+    else:
         return get_infoBox1(pathname)
 
 
@@ -130,8 +134,20 @@ def get_patent_map(selection_x,selection_y):
         fig = get_maps_patent()[4]
         return fig
 
-    else:
+    elif(selection_x == '2' and selection_y == '1'):
         fig = get_maps_patent()[5]
+        return fig 
+
+    elif(selection_x == '0' and selection_y == '2'):
+        fig = get_maps_patent_relative()[0]
+        return fig
+
+    elif(selection_x == '1' and selection_y == '2'):
+        fig = get_maps_patent_relative()[1]
+        return fig
+
+    elif(selection_x == '2' and selection_y == '2'):
+        fig = get_maps_patent_relative()[2]
         return fig 
 
 
@@ -271,6 +287,7 @@ def toggle_modal(n1, n2, is_open):
     if n1 or n2:
         return not is_open
     return is_open
+    
 
 @app.callback(
     Output('p5pie', 'figure'),
