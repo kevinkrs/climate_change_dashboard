@@ -6,22 +6,22 @@
     left: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    background: rgb(151, 237, 138);
+    background: #97ed8a;
     background: linear-gradient(159deg, rgba(151, 237, 138, 1) 0%, rgba(69, 191, 85, 1) 100%);
-    color: #fff;
+    color: #fcfcfc;
     padding-top: 20;
     padding-left: 0;
     padding-right: 0;
 }
 
 .titleSidebar {
-    color: #fff;
+    color: #fcfcfc;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
 }
 
 .titleSidebar h2 {
-    color: #fff;
+    color: #fcfcfc;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -30,6 +30,7 @@
 }
 
 .lead {
+    text-align: center;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
@@ -63,7 +64,7 @@
 
 .sidebar-navigation li a {
     display: inline-block;
-    color: #fff;
+    color: #fcfcfc;
 }
 
 .sidebar-navigation li .fa {
@@ -114,37 +115,91 @@
 
 .innerFrame {
     padding-left: 0;
+    background-color: #f8f7f7;
 }
 
 .rightFrame {
     margin-left: 20em;
+    border: 6px solid;
+    border-left: 0;
+    border-color: rgb(151, 237, 138);
+    border-color: linear-gradient(159deg, rgba(151, 237, 138, 1) 0%, #45bf55 100%);
 }
 
 .nav-item {
-    color: white;
+    color: #fcfcfc;
 }
 
 .infobox {
-    color: white;
+    color: #fcfcfc;
     background-color: #97ed8a;
     font-family: Roboto;
     border-radius: 5px;
     margin-top: 30px;
-    padding: 30px
+    padding: 30px;
 }
 
 .infoFrame {
     padding-left: 20;
     padding-right: 20;
+    text-align: center;
 }
 
 .infoHead {
+    width: 100%;
     margin-top: 15px;
     margin-left: 20;
     font-size: 25px;
+    text-align: center;
 }
 
 .btn-secondary {
     background-color: #148C3F;
     border-color: #148C3F;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):hover,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.btn-secondary:not(:disabled):not(.disabled).active,
+.show>.btn-secondary.dropdown-toggle {
+    background-color: #97ed8a;
+    border-color: #97ed8a;
+}
+
+.panel {
+    width: 100%;
+    height: 100%;
+    background: rgb(151, 237, 138);
+    background: linear-gradient(159deg, rgba(151, 237, 138, 1) 0%, #45bf55 100%);
+    display: table;
+}
+
+.nav-link :active,
+.li nav-item::marker,
+.panel li,
+.panel li ::marker,
+.panel li a:active,
+.panel li a:hover,
+.panel li a:focus {
+    list-style: none;
+    text-decoration: none;
+    outline: none;
+    background-color: none,
+}
+
+.panel li {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+.panel li a {
+    font-size: 25;
+    display: block;
+    color: #fcfcfc;
+}
+
+.panel li a i {
+    width: 20px;
+    color: #fcfcfc;
 }

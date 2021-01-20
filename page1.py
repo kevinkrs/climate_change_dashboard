@@ -12,7 +12,6 @@ try:
     import dash_bootstrap_components as dbc
     import dash_core_components      as dcc
     
-    from dash.dependencies           import Input, Output
     from info_box.infop1 import get_infoBox1
     
 except Exception as e:
@@ -89,7 +88,8 @@ def world_map_page1_1():
                         color="CO2_emissions", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
-    fig.update_layout(title='CO2 emission per capita : 2019')
+    #fig.update_layout(title='CO2 emission per capita : 2019')
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'CO2 emission per capita : 2019',font_size=18)
     return fig
 
 def world_map_page1_2():
@@ -98,7 +98,8 @@ def world_map_page1_2():
                         color="Death_from_air_pollution", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
-    fig.update_layout(title='Death from air pollution : 2019')
+    #fig.update_layout(title='Death from air pollution : 2019')
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Death from air pollution : 2019',font_size=18)
     return fig
 
 def world_map_page1_3():
@@ -107,7 +108,8 @@ def world_map_page1_3():
                         color="Ozone_concentration", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
-    fig.update_layout(title='Ozone concentration : 2019')
+    #fig.update_layout(title='Ozone concentration : 2019')
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Ozone concentration : 2019',font_size=18)
     return fig
 
 def get_worldMaps_page_1_1():
@@ -139,15 +141,15 @@ def temperature_page1():
 def p1_updateLayout():
 
     leftSpace = html.Div([
-                html.H4('Option'),
+                html.H4('Indicators', style = {'color' : 'white'}),
                 dcc.Dropdown(
                     id = 'p1WorldMap_dm',
                     options = [
-                        {'label' : 'CO2_emissions', 'value': '0'},
-                        {'label' : 'Death_from_air_pollution', 'value' : '1'},
-                        {'label' : 'Ozone_concentration', 'value' : '2'}
+                        {'label' : 'CO2 emissions', 'value': '0'},
+                        {'label' : 'Death from air pollution', 'value' : '1'},
+                        {'label' : 'Ozone concentration', 'value' : '2'}
                     ],
-                    value = '0',),
+                    value = '0',style = {'margin-bottom' : 10}),
                 dcc.Dropdown(
                     id = 'p1WorldMap_dm2',
                     options = [
@@ -155,15 +157,15 @@ def p1_updateLayout():
                         {'label' : 'Energy', 'value' : '1'},
                     ],
                     value = '0',)
-                ])
+                ], style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5} )
     
     midSpace = html.Div(
-        dcc.Graph(id='p1WorldMap'))
+        dcc.Graph(id='p1WorldMap'), style={'padding':30, 'background-color':'#FFFFFF'} )
     
     bot_rightSpace = html.Div(
-        dcc.Graph(id='p1WorldMap2'))
+        dcc.Graph(id='p1WorldMap2'),style={'padding':30, 'background-color':'#FFFFFF'})
     
-    bot_leftSpace = html.Div(dcc.Graph(figure=temperature_page1()))
+    bot_leftSpace = html.Div(dcc.Graph(figure=temperature_page1()),style={'padding':30, 'background-color':'#FFFFFF'})
     
     content = html.Div(
         [dbc.Row( [

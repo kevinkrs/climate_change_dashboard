@@ -6,50 +6,33 @@ from dash.dependencies import Input, Output
 
 def home_updateLayout():
 #Defining Spaces ==> Insert your plot into the spaces
-    leftSpace = html.Div("Linker Space")
+    leftSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-globe-europe'), html.A("Global Situation")], href="/page1", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div([
-    html.H1('Home'),
-    dcc.Dropdown(
-        id='home-dropdown',
-        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
-        value='LA'
-    ),
-    html.Div(id='home-content')])
-    rightSpace = html.Div("Rechter Space")
+    midSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H2("Global Climate Change Dashboard", style={'font-size':27, 'font-weight': 10})], href="/", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    rightSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-university'), html.A("Governmental efforts")], href="/page2", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
 
     #Including and external graph via iFrame
-    bot_leftSpace = html.Iframe( src = "https://datahub.io/core/glacier-mass-balance/view/0", style ={'width' : "100%", 'overflow' : 'hidden', 'height' : 475, 'frameborder' :0,} )
-    bot_midSpace = html.Div("Mid Space")
-    bot_rightSpace = html.Div("Rechter Space")
+    bot_leftSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-microscope'), html.A("Patents on technology")], href="/page3", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    bot_midSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-industry'), html.A("Economic Impact")], href="/page4", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    bot_rightSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fa fa-group'), html.A("Population attitude")], href="/page5", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
         [dbc.Row( [
             dbc.Col(
-            [leftSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#59FF00'},
-            )],className='col-2', style ={'padding':20}),
+            [leftSpace],className='col-4', style ={'padding':20, 'height':'45vh'}),
             dbc.Col(
-            [midSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-8',style ={'padding':20}),
+            [midSpace], className='col-4',style ={'padding':20, 'height':'45vh'}),
             dbc.Col(
-            [rightSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-2', style ={'padding':20}),],
+            [rightSpace], className='col-4', style ={'padding':20, 'height':'45vh'}),],
             ),
             dbc.Row( [
             dbc.Col(
-            bot_leftSpace,className='col-4'),
+            bot_leftSpace,className='col-4', style ={'padding':20, 'height':'45vh'}),
             dbc.Col(
-            [bot_midSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-4', style ={'padding':20}),
+            [bot_midSpace], className='col-4', style ={'padding':20, 'height':'45vh'}),
             dbc.Col(
-            [bot_rightSpace, html.Div(
-                style={'width': '100%', 'height': 500, 'background-color' : '#888888'},
-            )], className='col-4',style ={'padding':20}),],
+            [bot_rightSpace], className='col-4',style ={'padding':20, 'height':'45vh'}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
