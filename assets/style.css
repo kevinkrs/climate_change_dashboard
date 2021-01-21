@@ -7,7 +7,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     background: #97ed8a;
-    background: linear-gradient(159deg, rgba(151, 237, 138, 1) 0%, rgba(69, 191, 85, 1) 100%);
+    background: linear-gradient(159deg, rgba(151, 237, 138, 1) 0%, #45bf55 100%);
     color: #fcfcfc;
     padding-top: 20;
     padding-left: 0;

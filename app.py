@@ -33,9 +33,6 @@ from data.technology_patents.histograms import *
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 server = app.server
 
-
-
-
 '''
 conn = Redis(
 host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
@@ -90,7 +87,7 @@ app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), foot
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/":
-        return html.Div(home_updateLayout(),className='container-fluid'),
+        return html.Div(dcc.Loading(home_updateLayout(),type="default",fullscreen=True,color='#45bf55'),className='container-fluid'),
     elif pathname == "/page1":
         return dbc.Col([sidebar,html.Div(p1_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page2":
