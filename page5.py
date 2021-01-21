@@ -14,12 +14,12 @@ def p5_updateLayout():
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     
 
-    up_leftSpace = html.Div(dcc.Graph(figure=maps),style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
-    up_rightSpace = html.Div(dcc.Graph(figure=heatmap))
+    up_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=maps), type='default', className='pv6')],style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
+    up_rightSpace = html.Div([dcc.Loading(dcc.Graph(figure=heatmap), type='default', className='pv6')])
 
 
-    bot_leftSpace = html.Div(dcc.Graph(id = 'p5pie'))
-    bot_rightSpace = html.Div(dcc.Graph(figure=histogram))
+    bot_leftSpace = html.Div([dcc.Loading(dcc.Graph(id = 'p5pie'), type='default', className='pv6')])
+    bot_rightSpace = html.Div([dcc.Loading(dcc.Graph(figure=histogram), type='default', className='pv6')])
     drop = html.Div(dcc.Dropdown(id = 'p5pie_dm',
         options=[{'label': 'Men', 'value': 0},
                  {'label': 'Women', 'value': 1}],

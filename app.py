@@ -92,15 +92,15 @@ def render_page_content(pathname):
     if pathname == "/":
         return html.Div(home_updateLayout(),className='container-fluid'),
     elif pathname == "/page1":
-        return dbc.Col([sidebar,dcc.Loading(html.Div(p1_updateLayout(),className='rightFrame'), type='graph', className='pv6'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p1_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page2":
-        return dbc.Col([sidebar,dcc.Loading(html.Div(p2_updateLayout(),className='rightFrame'), type='graph', className='pv6'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p2_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page3":
-        return dbc.Col([sidebar,dcc.Loading(html.Div(p3_updateLayout(),className='rightFrame'), type='graph', className='pv6'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p3_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page4":
-        return dbc.Col([sidebar,dcc.Loading(html.Div(p4_updateLayout(),className='rightFrame'), type='graph', className='pv6'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p4_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page5":
-        return dbc.Col([sidebar,dcc.Loading(html.Div(p5_updateLayout(),className='rightFrame'), type='graph', className='pv6'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,html.Div(p5_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [

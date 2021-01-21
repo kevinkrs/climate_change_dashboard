@@ -156,12 +156,12 @@ def p1_updateLayout():
                 ], style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5} )
     
     midSpace = html.Div(
-        dcc.Graph(id='p1WorldMap'), style={'padding':30, 'background-color':'#FFFFFF'} )
+        dcc.Loading(dcc.Graph(id='p1WorldMap'), type='default', className='pv6'), style={'padding':30, 'background-color':'#FFFFFF'} )
     
     bot_rightSpace = html.Div(
-        dcc.Graph(id='p1WorldMap2'),style={'padding':30, 'background-color':'#FFFFFF'})
+        dcc.Loading(dcc.Graph(id='p1WorldMap2'), type='default', className='pv6'),style={'padding':30, 'background-color':'#FFFFFF'})
     
-    bot_leftSpace = html.Div(dcc.Graph(figure=temperature_page1()),style={'padding':30, 'background-color':'#FFFFFF'})
+    bot_leftSpace = html.Div(dcc.Loading(dcc.Graph(figure=temperature_page1()), type='default', className='pv6'),style={'padding':30, 'background-color':'#FFFFFF'})
     
     content = html.Div(
         [dbc.Row( [

@@ -27,7 +27,7 @@ def p4_updateLayout():
 
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     midSpace = html.Div(
-        dcc.Graph(id='p4WorldMap'), style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
+        dcc.Loading(dcc.Graph(id='p4WorldMap'), type='default', className='pv6'), style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
 
 
     bot_leftSpace = html.Div([dcc.RadioItems(
@@ -40,7 +40,7 @@ def p4_updateLayout():
         className='btn btn-success disabled',
         style={'background-color':'#45bf55', 'border-color' : '#148C3F'},
         labelStyle={'display': 'inline-block', 'padding-right':'10px'}), 
-        dcc.Graph(id='eu_fig')], style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 5})
+        dcc.Loading( dcc.Graph(id='eu_fig'), type='default', className='pv6')], style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 5})
 
     bot_midSpace = html.Div([dcc.RadioItems(
         id='gdp_fig_rb',
@@ -53,7 +53,7 @@ def p4_updateLayout():
         style={'background-color':'#45bf55', 'border-color' : '#148C3F'},
         labelStyle={'display': 'inline-block', 'padding-right':'10px'}), 
          
-        dcc.Graph(id='gdp_fig')], style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 5})
+        dcc.Loading(dcc.Graph(id='gdp_fig'), type='default', className='pv6')], style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 5})
 
     #bot_rightSpace = html.Div(dcc.Graph(figure=get_iGreenBondData()))
 

@@ -33,12 +33,12 @@ def p3_updateLayout():
                         style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
-    midSpace = html.Div(dcc.Graph(id = 'worldmap_patents'), style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10}) 
+    midSpace = html.Div(dcc.Loading(dcc.Graph(id = 'worldmap_patents'), type='default', className='pv6'), style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10}) 
     #rightSpace = html.Div("Rechter Space")
 
-    bot_leftSpace = html.Div(dcc.Graph(id = 'scatter_patents_env'))
+    bot_leftSpace = html.Div(dcc.Loading(dcc.Graph(id = 'scatter_patents_env'), type='default', className='pv6'))
     #bot_midSpace = html.Div("Mid Space")
-    bot_rightSpace = html.Div(dcc.Graph(id = 'histogram_total_env'))
+    bot_rightSpace = html.Div(dcc.Loading(dcc.Graph(id = 'histogram_total_env'), type='default', className='pv6'))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div([
