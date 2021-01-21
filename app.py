@@ -9,6 +9,7 @@ from dash.dependencies import State
 #Setup for Redis Queu ==> Handling long term processes
 from redis import Redis
 from rq import Worker, Queue, Connection
+from tasks import slow_loop
 #Setup for Layout, seperate pages, etc.
 from home import home_updateLayout
 from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
@@ -30,18 +31,18 @@ from data.technology_patents.histograms import *
 
 
 #Inititalise app    and it's style for the theme
-app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css', "https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"])
 server = app.server
 
 
-
+'''
 conn = Redis(
 host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
 port=18236,
 password='pyPwtLSWnxUGRLNWr8ISLkaUPU3KSlOb')
 
 queue = Queue(connection=conn)
-
+'''
 
 # the styles for the main content position it to the right of the sidebar and
 CONTENT_STYLE = {
@@ -90,7 +91,7 @@ def render_page_content(pathname):
     if pathname == "/":
         return html.Div(home_updateLayout(),className='container-fluid'),
     elif pathname == "/page1":
-        return dbc.Col([sidebar,html.Div(p1_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
+        return dbc.Col([sidebar,dcc.Loading(html.Div(p1_updateLayout(),className='rightFrame'), type='graph', className='pv6'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page2":
         return dbc.Col([sidebar,html.Div(p2_updateLayout(),className='rightFrame'),], style={ 'width' : '100%', 'height' : '100%',}, className='innerFrame', ),
     elif pathname == "/page3":
