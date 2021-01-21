@@ -244,14 +244,10 @@ def update_figure(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    '''
-    fig=q.enqueue(get_worldMaps,[int(selection)]).result
-    while fig is None:
-        print(fig)
-        time.sleep(2)
-    print(fig)
-    '''
+
     fig=get_worldMaps()[int(selection)]
+
+
     return fig
 
 
