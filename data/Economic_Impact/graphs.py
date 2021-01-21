@@ -70,7 +70,8 @@ def get_dropGDP_W():
                     hover_name="variable", # column to add to hover information
                     color_continuous_scale=px.colors.sequential .OrRd[::-1],
                     animation_frame='Date',
-                    range_color=[-4, 0])
+                    #range_color=[-4, 0]
+                    )
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
         
         return fig
@@ -129,7 +130,6 @@ def get_RiskindexWorldmap2():
 
 def get_worldMaps():
         return [get_dropGDP_W(),get_RiskindexWorldmap2(),get_RiskindexWorldmap1()]
-
 
 #######################################################################################################################################################################################
 # %%
