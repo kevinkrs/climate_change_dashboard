@@ -34,6 +34,7 @@ from data.technology_patents.histograms import *
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 server = app.server
 
+'''
 conn = Redis(
 host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
 port=18236,
@@ -46,6 +47,7 @@ listen = ['high', 'default', 'low']
 with Connection(conn):
     worker = Worker(map(Queue, listen))
     worker.work()
+'''
 
 # the styles for the main content position it to the right of the sidebar and
 CONTENT_STYLE = {
@@ -248,12 +250,14 @@ def update_figure(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
+    '''
     fig=q.enqueue(get_worldMaps,[int(selection)]).result
     while fig is None:
         print(fig)
         time.sleep(2)
     print(fig)
-#    fig=get_worldMaps()[int(selection)]
+    '''
+    fig=get_worldMaps()[int(selection)]
     return fig
 
 
