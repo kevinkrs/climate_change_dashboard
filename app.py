@@ -314,5 +314,5 @@ def update_output(selection):
 
 
 if __name__ == "__main__":
-    app.server.run(processes=4)
+    app.server.run(threaded=True)
 
