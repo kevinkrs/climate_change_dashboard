@@ -1,3 +1,4 @@
+#Setup for Dash and needed components
 import dash
 import dash_html_components as html
 import dash_bootstrap_components as dbc
@@ -5,6 +6,11 @@ import dash_core_components as dcc
 from dash.dependencies import Input
 from dash.dependencies import Output
 from dash.dependencies import State
+#Setup for Redis Queu ==> Handling long term processes
+from redis import Redis
+from rq import Worker, Queue, Connection
+import time
+#Setup for Layout, seperate pages, etc.
 from home import home_updateLayout
 from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
 from page2 import p2_updateLayout
@@ -17,15 +23,29 @@ from info_box.infop4 import get_infoBox4
 from info_box.infop3 import get_infoBox3
 from info_box.infop5 import get_infoBox5 
 from info_box.infop1 import get_infoBox1
-
 from data.technology_patents.maps import *
 from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
+
+
+
 #Inititalise app    and it's style for the theme
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 server = app.server
 
+conn = Redis(
+host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
+port=18236,
+password='pyPwtLSWnxUGRLNWr8ISLkaUPU3KSlOb')
+
+q = Queue(connection=conn)
+
+listen = ['high', 'default', 'low']
+
+with Connection(conn):
+    worker = Worker(map(Queue, listen))
+    worker.work()
 
 # the styles for the main content position it to the right of the sidebar and
 CONTENT_STYLE = {
@@ -228,7 +248,12 @@ def update_figure(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    fig=get_worldMaps()[int(selection)]
+    fig=q.enqueue(get_worldMaps,[int(selection)]).result
+    while fig is None:
+        print(fig)
+        time.sleep(2)
+    print(fig)
+#    fig=get_worldMaps()[int(selection)]
     return fig
 
 
@@ -299,3 +324,4 @@ def update_output(selection):
 
 if __name__ == "__main__":
     app.run_server()
+

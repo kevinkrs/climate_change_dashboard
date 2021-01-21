@@ -18,8 +18,8 @@ dataset['Date reported']=pd.to_datetime(dataset['Date reported'],format="%m%Y")
 
 # PLot
 def get_fundingGraph():
-    graph  = px.bar(dataset, 
-            x='Fund Type', y="Pledge (USD mn)", title='Funding', labels={'x':'Fund Type', 'y':'Pledge (USD mn)'})
+    graph  = px.graph(dataset, 
+            x='Fund Type', y="Pledge (USD mn)", title='Funding', color ='Country', labels={'x':'Fund Type', 'y':'Pledge (USD mn)'})
     return graph
 
 
@@ -48,17 +48,16 @@ def get_pledgedGraph():
 # %%
 # ### Funding by type
 # Importing the dataset
-df_nzc = pd.read_csv('data/Governmental_efforts/ClimateWatch/net_zero_content.csv', sep=',')
+df_nzc = pd.read_excel('data/Governmental_efforts/ClimateWatch/net_zero_content.xlsx')
 df3_gcr = pd.read_excel('data/Economic_Impact/GDP/OECD Region.xlsx')   #Datasheet with OECD Regions, Countries and country Codes
 
 df_nzc=  pd.merge(df_nzc, df3_gcr, on="Country")
-
 # PLot
 #Worldmap Net Zero Target Tracker
 def get_NetZeroTargetWM():
         fig_nzc = px.choropleth(df_nzc, locations="CODE",
                     #color="Losses per unit GDP in % 1999-2018 (Rank)",
-                    color='Value',
+                    color='Target Year',
                     color_continuous_scale='Greens',
                     )
         fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Net-Zero Tracker',font_size=18)

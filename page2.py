@@ -37,12 +37,12 @@ def p2_updateLayout():
             midSpace, className='col-12',style ={'padding':20}),],
             ),
             dbc.Row( [
+            #dbc.Col(
+            #bot_leftSpace,className='col-4',style ={'padding':20}),
             dbc.Col(
-            bot_leftSpace,className='col-4',style ={'padding':20}),
+            bot_midSpace, className='col-6', style ={'padding':20}),
             dbc.Col(
-            bot_midSpace, className='col-4', style ={'padding':20}),
-            dbc.Col(
-            bot_rightSpace, className='col-4',style ={'padding':20}),],
+            bot_rightSpace, className='col-6',style ={'padding':20}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
