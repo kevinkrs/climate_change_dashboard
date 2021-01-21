@@ -63,22 +63,24 @@ def get_dropGDP():
         #fig_trend.update_yaxes(autorange="reversed")
         return [graph,fig_trend]
 
+df3['value']=df3['value'].str.replace('%', '')
+df3['value']=df3['value'].str.replace(',', '.')
+df3['value'] = pd.to_numeric(df3['value'])
 
 def get_dropGDP_W():
         fig = px.choropleth(df3, locations="CODE",
-                    color='value',
-                    color_continuous_scale=px.colors.sequential.Reds[::-1],
-                    #range_color=[-4, 0],
-                    animation_frame='Date',
-                    range_color=[100,0]
-                    )
-
-
+                        color='value',
+                        animation_frame= 'Date',
+                        #hover_name="Country ", # column to add to hover information
+                        color_continuous_scale=px.colors.sequential.Reds[::-1],
+                        #color_continuous_midpoint = -0.9,
+                        range_color=[100,0]
+                        )
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
-        
         return fig
 
 
+get_dropGDP_W().show()
 
 # Variable time span : 2010-2060
 # Data published by : OECD
