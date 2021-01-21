@@ -245,10 +245,9 @@ def update_figure(selection):
     Output('p4WorldMap', 'figure'),
     Input('p4WorldMap_dm', 'value'))
 
+
 def update_output(selection):
-
     fig=get_worldMaps()[int(selection)]
-
     return fig
 
 
@@ -318,5 +317,5 @@ def update_output(selection):
 
 
 if __name__ == "__main__":
-    app.server.run( threaded=True)
+    app.server.run( )
 

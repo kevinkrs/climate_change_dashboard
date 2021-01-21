@@ -25,9 +25,10 @@ def get_iGreenBondData():
 # %%
 # ### Drop of GDP
 # Importing the dataset with GDP Drop data and with created OECD Regions
-df1 = pd.read_excel('data/Economic_Impact/GDP/C_Percentage change in regional GDP.xlsx')
+df1 = pd.read_csv('data/Economic_Impact/GDP/C_Percentage change in regional GDP.csv', sep=';')
 df1_ols = pd.read_excel('data/Economic_Impact/GDP/C_Percentage change in regional GDP_ols.xlsx')
 df2 = pd.read_excel('data/Economic_Impact/GDP/OECD Region.xlsx') #Datasheet with OECD Regions, Countries and country Codes
+
 df1 = pd.melt(df1, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pacific', 'OECD America', 'Latin America',
        'Rest of Europe and Asia', 'Middle East and North Africa',
        'South and South-East Asia', 'Sub-Saharan Africa'])
@@ -35,18 +36,16 @@ df1_ols = pd.melt(df1_ols, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pac
         'Rest of Europe and Asia', 'Middle East and North Africa',
        'South and South-East Asia', 'Sub-Saharan Africa'])
 
+
 df3=  pd.merge(df1, df2, on="variable")
 
-#Map measures in percentage, so multiply with 100
-df1['value']=df1['value']*100
+#Map measures in percentage, so multiply with 100 ==> not neccessary by .csv file
 df1_ols['value']=df1_ols['value']*100
-df3['value']=df3['value']*100
-
 
 # PLot
 def get_dropGDP():
         #GDP Drop figgure Total Data
-        graph  = px.bar(df1, 
+        graph  = px.bar(df1_ols, 
             x='Date', 
             y="value", 
             color="variable", 
@@ -67,16 +66,17 @@ def get_dropGDP():
 
 def get_dropGDP_W():
         fig = px.choropleth(df3, locations="CODE",
-                    color="value", # lifeExp is a column of gapminder
-                    hover_name="variable", # column to add to hover information
-                    color_continuous_scale=px.colors.sequential .OrRd[::-1],
+                    color='value',
+                    color_continuous_scale=px.colors.sequential.Reds[::-1],
+                    #range_color=[-4, 0],
                     animation_frame='Date',
-                    range_color=[-4, 0]
+                    range_color=[100,0]
                     )
+
+
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
         
         return fig
-
 
 
 
@@ -103,7 +103,7 @@ def get_RiskindexWorldmap1():
                     #color="Losses per unit GDP in % 1999-2018 (Rank)",
                     color='CRI score',
                     #hover_name="Country ", # column to add to hover information
-                    color_continuous_scale=px.colors.sequential .Reds[::-1],
+                    color_continuous_scale=px.colors.sequential.Reds[::-1],
                     #color_continuous_midpoint = -0.9,
                     range_color=[100,0]
                     )
@@ -116,7 +116,7 @@ def get_RiskindexWorldmap2():
         fig_gcr = px.choropleth(df2_gcr, locations="CODE",
                     color="CRI score", 
                     #hover_name="Country", # column to add to hover information
-                    color_continuous_scale=px.colors.sequential .Reds[::-1],
+                    color_continuous_scale=px.colors.sequential.Reds[::-1],
                     range_color=[100,0]
                     )
         fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Climate Risk Index for 2018',font_size=18)
@@ -133,7 +133,8 @@ def get_RiskindexWorldmap2():
 #Collect all World Maps Figgures and return them according to drop down order
 
 def get_worldMaps():
-        return [get_dropGDP_W(),get_RiskindexWorldmap2(),get_RiskindexWorldmap1()]
+       return [get_dropGDP_W(),get_RiskindexWorldmap2(),get_RiskindexWorldmap1()]
+
 
 #######################################################################################################################################################################################
 # %%
