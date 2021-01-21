@@ -42,6 +42,7 @@ df1['value']=df1['value']*100
 df1_ols['value']=df1_ols['value']*100
 df3['value']=df3['value']*100
 
+
 # PLot
 def get_dropGDP():
         #GDP Drop figgure Total Data
@@ -63,18 +64,22 @@ def get_dropGDP():
         #fig_trend.update_yaxes(autorange="reversed")
         return [graph,fig_trend]
 
+print(df3['Date'])
 
 def get_dropGDP_W():
         fig = px.choropleth(df3, locations="CODE",
                     color="value", # lifeExp is a column of gapminder
                     hover_name="variable", # column to add to hover information
-                    #color_continuous_scale=px.colors.sequential .OrRd[::-1],
+                    color_continuous_scale=px.colors.sequential .OrRd[::-1],
                     #animation_frame='Date',
-                    #range_color=[-4, 0]
+                    range_color=[-4, 0]
                     )
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
         
         return fig
+
+
+
 
 # Variable time span : 2010-2060
 # Data published by : OECD

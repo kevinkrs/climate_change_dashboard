@@ -9,7 +9,6 @@ from dash.dependencies import State
 #Setup for Redis Queu ==> Handling long term processes
 from redis import Redis
 from rq import Worker, Queue, Connection
-from tasks import slow_loop
 #Setup for Layout, seperate pages, etc.
 from home import home_updateLayout
 from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
@@ -31,8 +30,10 @@ from data.technology_patents.histograms import *
 
 
 #Inititalise app    and it's style for the theme
-app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css', "https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"])
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 server = app.server
+
+
 
 
 '''
@@ -248,7 +249,6 @@ def update_output(selection):
 
     fig=get_worldMaps()[int(selection)]
 
-
     return fig
 
 
@@ -318,5 +318,5 @@ def update_output(selection):
 
 
 if __name__ == "__main__":
-    app.server.run(debug=True, threaded=True)
+    app.server.run( threaded=True)
 

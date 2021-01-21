@@ -15,11 +15,10 @@ except Exception as e:
 dataset = pd.read_excel('data/Governmental_efforts/data/Fund_Status.xlsx')
 dataset.columns = ['Fund','Fund Type', 'Fund Focus', 'Pledge (USD mn)', 'Deposit (USD mn)', 'Approval (USD mn)', 'Disbursement (USD mn)', 'Number of projects approved', 'Date reported', 'Date collected']
 dataset['Date reported']=pd.to_datetime(dataset['Date reported'],format="%m%Y")
-
 # PLot
 def get_fundingGraph():
-    graph  = px.graph(dataset, 
-            x='Fund Type', y="Pledge (USD mn)", title='Funding', color ='Country', labels={'x':'Fund Type', 'y':'Pledge (USD mn)'})
+    graph  = px.bar(dataset, 
+            x='Fund Type', y="Pledge (USD mn)", title='Funding', labels={'x':'Fund Type', 'y':'Pledge (USD mn)'})
     return graph
 
 
