@@ -14,12 +14,12 @@ def p5_updateLayout():
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     
 
-    up_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=maps), type='default', className='pv6')],style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
-    up_rightSpace = html.Div([dcc.Loading(dcc.Graph(figure=heatmap), type='default', className='pv6')])
+    up_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=maps),color='#45bf55', type='default', className='pv6')],style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
+    up_rightSpace = html.Div([dcc.Loading(dcc.Graph(figure=heatmap),color='#45bf55', type='default', className='pv6')])
 
 
-    bot_leftSpace = html.Div([dcc.Loading(dcc.Graph(id = 'p5pie'), type='default', className='pv6')])
-    bot_rightSpace = html.Div([dcc.Loading(dcc.Graph(figure=histogram), type='default', className='pv6')])
+    bot_leftSpace = html.Div([dcc.Loading(dcc.Graph(id = 'p5pie'),color='#45bf55', type='default', className='pv6')])
+    bot_rightSpace = html.Div([dcc.Loading(dcc.Graph(figure=histogram),color='#45bf55', type='default', className='pv6')])
     drop = html.Div(dcc.Dropdown(id = 'p5pie_dm',
         options=[{'label': 'Men', 'value': 0},
                  {'label': 'Women', 'value': 1}],
