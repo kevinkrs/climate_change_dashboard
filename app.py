@@ -317,5 +317,5 @@ def update_output(selection):
 
 
 if __name__ == "__main__":
-    app.server.run( )
+    app.server.run( threaded=True)
 
