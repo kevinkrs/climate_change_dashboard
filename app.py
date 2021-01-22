@@ -19,6 +19,8 @@ from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
 
+import time
+
 #Inititalise app    and it's style for the theme
 app = dash.Dash(__name__, suppress_callback_exceptions=True,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 server = app.server
@@ -167,37 +169,56 @@ def get_patent_map(selection_x,selection_y):
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
         job= queue.enqueue(get_graphs_patent())
-        fig=job.result[0]
-        #fig =get_graphs_patent()[0]
+        if job.result == None:
+            time.sleep(2)
+        else:
+            fig=job.result[0]
+
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
         job= queue.enqueue(get_graphs_patent())
-        fig=job.result[1]
-        # fig = get_graphs_patent()[1]
+        if job.result == None:
+            time.sleep(2)
+        else:
+            fig=job.result[1]
+
         return fig
+        # fig = get_graphs_patent()[1]
     
     elif(selection_x == '2' and selection_y == '0'):
         job= queue.enqueue(get_graphs_patent())
-        fig=job.result[2]
+        if job.result == None:
+            time.sleep(2)
+        else:
+            fig=job.result[2]
         #fig = get_graphs_patent()[2]
         return fig
 
     elif(selection_x == '0' and selection_y == '1'):
         job= queue.enqueue(get_graphs_patent())
-        fig=job.result[3]
+        if job.result == None:
+            time.sleep(2)
+        else:
+            fig=job.result[3]
         #fig = get_graphs_patent()[3]
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
         job= queue.enqueue(get_graphs_patent())
-        fig=job.result[4]
+        if job.result == None:
+            time.sleep(2)
+        else:
+            fig=job.result[4]
         #fig = get_graphs_patent()[4]
         return fig
 
     else:
         job= queue.enqueue(get_graphs_patent())
-        fig=job.result[5]
+        if job.result == None:
+            time.sleep(2)
+        else:
+            fig=job.result[5]
 
         #fig = get_graphs_patent() [5]
         return fig 
@@ -207,6 +228,11 @@ def get_graphs(selection_x, selection_y):
     Input('dropdown_po', 'value'))
 def get_patent_hist(selection):
     job= queue.enqueue(get_hist_patents())
+    if job.result == None:
+        time.sleept(2)
+    else:
+        fig =get_graphs_patent()[0]
+
     fig=job.result[int(selection)] 
 
     #fig = get_hist_patents()[int(selection)]
