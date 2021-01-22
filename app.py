@@ -23,11 +23,12 @@ from info_box.infop4 import get_infoBox4
 from info_box.infop3 import get_infoBox3
 from info_box.infop5 import get_infoBox5 
 from info_box.infop1 import get_infoBox1
+'''
 from data.technology_patents.maps import *
 from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
-
+'''
 
 
 #Inititalise app    and it's style for the theme
