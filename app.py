@@ -38,7 +38,6 @@ conn = Redis(
 host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
 port=18236,
 password='pyPwtLSWnxUGRLNWr8ISLkaUPU3KSlOb')
-
 queue = Queue(connection=conn)
 
 
@@ -216,8 +215,7 @@ def update_output_page1_1(selection):
     Output('p1WorldMap2', 'figure'),
     Input('p1WorldMap_dm2', 'value'))
 def update_output_page1_2(selection):
-    #fig = get_worldMaps_page_1_2()[int(selection)]
-    fig=queue.enqueue(get_worldMaps_page_1_2)[int(selection)]
+    fig = get_worldMaps_page_1_2()[int(selection)]
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
