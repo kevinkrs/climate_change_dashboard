@@ -82,7 +82,7 @@ footer = dbc.Container(html.Div(dbc.Container("Footer", className='text-center p
     className='container-fluid',),  )
 
 app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), footer], style={ 'width' : '100%', 'height' : '100%',},) 
-
+'''
 #Routing for the mutiple pages
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
@@ -106,7 +106,7 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ])
 
-'''
+
 @app.callback(
     Output('infoBox', 'children'),
     [Input('url', 'pathname')])
