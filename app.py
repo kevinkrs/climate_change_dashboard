@@ -104,7 +104,7 @@ def render_page_content(pathname):
             html.Hr(),
             html.P(f"The pathname {pathname} was not recognised..."),
         ])
-
+'''
 @app.callback(
     Output('infoBox', 'children'),
     [Input('url', 'pathname')])
@@ -340,7 +340,7 @@ def update_output(selection):
     fig=job.result[int(selection)]
     return fig
 
-
+'''
 if __name__ == "__main__":
     app.server.run(threaded=True)
 
