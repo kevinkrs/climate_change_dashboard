@@ -1,8 +1,9 @@
 from lib.lib import *
-
+from app import app
 #Setup for Layout, seperate pages, etc.
 from home import home_updateLayout
-from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
+#from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
+from page1 import p1_updateLayout, get_worldMaps_page_1_2, get_worldMaps_page_1_1
 from page2 import p2_updateLayout
 from page3 import p3_updateLayout
 from page4 import p4_updateLayout
@@ -19,12 +20,13 @@ from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
 
-
-
 #Inititalise app    and it's style for the theme
-app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
+app = dash.Dash(__name__, suppress_callback_exceptions=True,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 server = app.server
 
+
+if __name__ == "__main__":
+    app.server.run(threaded=True)
 
 conn = Redis(
 host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
@@ -334,6 +336,5 @@ def update_output(selection):
     return fig
 
 
-if __name__ == "__main__":
-    app.server.run(threaded=True)
+
 

@@ -1,7 +1,6 @@
 try: 
     from lib.lib import *
     from info_box.infop1 import get_infoBox1
-    
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
 
