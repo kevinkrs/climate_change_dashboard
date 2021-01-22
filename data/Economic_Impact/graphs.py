@@ -1,7 +1,5 @@
 # %%
-import plotly.express as px
-import pandas as pd
-import plotly.graph_objects as go
+from lib.lib import *
 import statsmodels.api as sm
 import json
 # %%

@@ -1,8 +1,4 @@
-import dash
-import dash_html_components as html
-import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-from dash.dependencies import Input, Output
+from lib.lib import *
 from info_box.infop5 import get_infoBox5
 
 
@@ -48,9 +44,7 @@ def p5_updateLayout():
 
 
 
-import plotly.express as px
-import pandas as pd
-import plotly.graph_objs as go
+
 
 df1 = pd.read_csv("data/worldwideattitude/data.csv")
 df2 = pd.read_csv("data/worldwideattitude/test1.csv")

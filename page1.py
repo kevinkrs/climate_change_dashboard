@@ -1,13 +1,5 @@
 try: 
-    import dash
-    import pandas                    as pd
-    import plotly.express            as px
-    import pandas                    as pd
-    import plotly.graph_objects      as go
-    import dash_html_components      as html
-    import dash_bootstrap_components as dbc
-    import dash_core_components      as dcc
-    
+    from lib.lib import *
     from info_box.infop1 import get_infoBox1
     
 except Exception as e:

@@ -1,16 +1,5 @@
-#Setup for Dash and needed components
-import dash
-import dash_html_components as html
-import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-from dash.dependencies import Input
-from dash.dependencies import Output
-from dash.dependencies import State
-#Setup for Redis Queu ==> Handling long term processes
-from redis import Redis
-from rq import Worker, Queue, Connection
+from lib.lib import *
 
-'''
 #Setup for Layout, seperate pages, etc.
 from home import home_updateLayout
 from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
@@ -29,7 +18,7 @@ from data.technology_patents.maps import *
 from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
-'''
+
 
 
 #Inititalise app    and it's style for the theme
@@ -84,7 +73,7 @@ footer = dbc.Container(html.Div(dbc.Container("Footer", className='text-center p
     className='container-fluid',),  )
 
 app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), footer], style={ 'width' : '100%', 'height' : '100%',},) 
-'''
+
 #Routing for the mutiple pages
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
@@ -344,7 +333,7 @@ def update_output(selection):
     fig=job.result[int(selection)]
     return fig
 
-'''
+
 if __name__ == "__main__":
     app.server.run(threaded=True)
 

@@ -1,8 +1,4 @@
-import dash
-import dash_html_components as html
-import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-from dash.dependencies import Input, Output
+from lib.lib import *
 from data.Economic_Impact.graphs import get_iGreenBondData
 from data.Governmental_efforts.graphs import get_fundingGraph, get_fundingGraph, get_pledgedGraph, get_NetZeroTargetWM
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph

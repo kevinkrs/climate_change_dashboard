@@ -1,11 +1,4 @@
-import dash
-import dash_html_components as html
-import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-from dash.dependencies import Input, Output, State
-import plotly.express as px
-import plotly.graph_objs as go
-import pandas as pd
+from lib.lib import *
 import json
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
