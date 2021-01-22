@@ -1,5 +1,6 @@
 from lib.lib import *
 #Setup for Layout, seperate pages, etc.
+
 from home import home_updateLayout
 #from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
 from page1 import p1_updateLayout, get_worldMaps_page_1_2, get_worldMaps_page_1_1
@@ -18,16 +19,14 @@ from data.technology_patents.maps import *
 from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
-
 import time
 
 #Inititalise app    and it's style for the theme
-app = dash.Dash(__name__, suppress_callback_exceptions=True,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
 server = app.server
 
 
-if __name__ == "__main__":
-    app.server.run(threaded=True)
+
 
 conn = Redis(
 host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
@@ -74,6 +73,7 @@ sidebar = html.Div(
 #Footer
 footer = dbc.Container(html.Div(dbc.Container("Footer", className='text-center p-3',),
     className='container-fluid',),  )
+
 
 app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), footer], style={ 'width' : '100%', 'height' : '100%',},) 
 
@@ -168,8 +168,8 @@ def get_patent_map(selection_x,selection_y):
     Input('dropdown_number', 'value'))   
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent())
-        if job.result == None:
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
             time.sleep(2)
         else:
             fig=job.result[0]
@@ -177,8 +177,8 @@ def get_graphs(selection_x, selection_y):
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent())
-        if job.result == None:
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
             time.sleep(2)
         else:
             fig=job.result[1]
@@ -187,8 +187,8 @@ def get_graphs(selection_x, selection_y):
         # fig = get_graphs_patent()[1]
     
     elif(selection_x == '2' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent())
-        if job.result == None:
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
             time.sleep(2)
         else:
             fig=job.result[2]
@@ -196,8 +196,8 @@ def get_graphs(selection_x, selection_y):
         return fig
 
     elif(selection_x == '0' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent())
-        if job.result == None:
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
             time.sleep(2)
         else:
             fig=job.result[3]
@@ -205,8 +205,8 @@ def get_graphs(selection_x, selection_y):
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent())
-        if job.result == None:
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
             time.sleep(2)
         else:
             fig=job.result[4]
@@ -214,8 +214,8 @@ def get_graphs(selection_x, selection_y):
         return fig
 
     else:
-        job= queue.enqueue(get_graphs_patent())
-        if job.result == None:
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
             time.sleep(2)
         else:
             fig=job.result[5]
@@ -227,8 +227,8 @@ def get_graphs(selection_x, selection_y):
     Output('histogram_total_env', 'figure'),
     Input('dropdown_po', 'value'))
 def get_patent_hist(selection):
-    job= queue.enqueue(get_hist_patents())
-    if job.result == None:
+    job= queue.enqueue(get_hist_patents)
+    while job.is_queued == True:
         time.sleep(2)
     else:
         fig =job.result
@@ -243,8 +243,8 @@ def get_patent_hist(selection):
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
 def update_output_page1_1(selection):
-    job= queue.enqueue(get_worldMaps_page_1_1())
-    if job.result == None:
+    job= queue.enqueue(get_worldMaps_page_1_1)
+    while job.is_queued == True:
         time.sleep(2)
     else: 
         fig=job.result[int(selection)]   
@@ -257,8 +257,8 @@ def update_output_page1_1(selection):
     Output('p1WorldMap2', 'figure'),
     Input('p1WorldMap_dm2', 'value'))
 def update_output_page1_2(selection):
-    job= queue.enqueue(get_worldMaps_page_1_2())
-    if job.result == None:
+    job= queue.enqueue(get_worldMaps_page_1_2)
+    while job.is_queued == True:
         time.sleep(2)
     else: 
         fig=job.result[int(selection)]    
@@ -271,8 +271,8 @@ def update_output_page1_2(selection):
     Input('eu_fig_rb', 'value'))
 
 def update_figure(selection):
-    job= queue.enqueue(get_dmgEU())
-    if job.result == None:
+    job= queue.enqueue(get_dmgEU)
+    while job.is_queued == True:
         time.sleep(2)
     else: 
         fig=job.result[int(selection)]  
@@ -286,8 +286,8 @@ def update_figure(selection):
     Input('gdp_fig_rb', 'value'))
 
 def update_figure(selection):
-    job= queue.enqueue(get_dropGDP())
-    if job.result == None:
+    job= queue.enqueue(get_dropGDP)
+    while job.is_queued == True:
         time.sleep(2)
     else: 
         fig=job.result[int(selection)] 
@@ -300,8 +300,8 @@ def update_figure(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    job= queue.enqueue(get_worldMaps())
-    if job.result == None:
+    job= queue.enqueue(get_worldMaps)
+    while job.is_queued == True:
         time.sleep(2)
     else: 
         fig=job.result[int(selection)] 
@@ -371,13 +371,14 @@ def toggle_modal(n1, n2, is_open):
     Input('p5pie_dm', 'value'))
 def update_output(selection):
     #fig = get_pie()[int(selection)]
-    job= queue.enqueue(get_pie())
-    if job.result == None:
+    job= queue.enqueue(get_pie)
+    while job.is_queued == True:
         time.sleep(2)
     else: 
+        job.result
         fig=job.result[int(selection)] 
     return fig
 
 
-
-
+if __name__ == "__main__":
+    app.server.run(threaded=True, debug=True)
