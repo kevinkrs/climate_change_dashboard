@@ -241,9 +241,9 @@ def update_figure(selection):
     Output('p4WorldMap', 'figure'),
     Input('p4WorldMap_dm', 'value'))
 
-
 def update_output(selection):
-    fig = queue.enqueue(get_worldMaps())[int(selection)]
+    wmP4= queue.enqueue(get_worldMaps())
+    fig=wmP4.result[int(selection)]
    # fig=get_worldMaps()[int(selection)]
     return fig
 
