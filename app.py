@@ -229,9 +229,9 @@ def get_graphs(selection_x, selection_y):
 def get_patent_hist(selection):
     job= queue.enqueue(get_hist_patents())
     if job.result == None:
-        time.sleept(2)
+        time.sleep(2)
     else:
-        fig =get_graphs_patent()[0]
+        fig =job.result
 
     fig=job.result[int(selection)] 
 
@@ -244,7 +244,10 @@ def get_patent_hist(selection):
     Input('p1WorldMap_dm', 'value'))
 def update_output_page1_1(selection):
     job= queue.enqueue(get_worldMaps_page_1_1())
-    fig=job.result[int(selection)]   
+    if job.result == None:
+        time.sleep(2)
+    else: 
+        fig=job.result[int(selection)]   
 
     #fig = get_worldMaps_page_1_1()[int(selection)]
     return fig
@@ -255,7 +258,10 @@ def update_output_page1_1(selection):
     Input('p1WorldMap_dm2', 'value'))
 def update_output_page1_2(selection):
     job= queue.enqueue(get_worldMaps_page_1_2())
-    fig=job.result[int(selection)]    
+    if job.result == None:
+        time.sleep(2)
+    else: 
+        fig=job.result[int(selection)]    
     #fig = get_worldMaps_page_1_2()[int(selection)]
     return fig
 
@@ -266,7 +272,10 @@ def update_output_page1_2(selection):
 
 def update_figure(selection):
     job= queue.enqueue(get_dmgEU())
-    fig=job.result[int(selection)]
+    if job.result == None:
+        time.sleep(2)
+    else: 
+        fig=job.result[int(selection)]  
 
     #fig=get_dmgEU()[int(selection)]
     return fig
@@ -278,7 +287,10 @@ def update_figure(selection):
 
 def update_figure(selection):
     job= queue.enqueue(get_dropGDP())
-    fig=job.result[int(selection)]
+    if job.result == None:
+        time.sleep(2)
+    else: 
+        fig=job.result[int(selection)] 
     #fig=get_dropGDP()[int(selection)]
     return fig
 
@@ -289,7 +301,10 @@ def update_figure(selection):
 
 def update_output(selection):
     job= queue.enqueue(get_worldMaps())
-    fig=job.result[int(selection)]
+    if job.result == None:
+        time.sleep(2)
+    else: 
+        fig=job.result[int(selection)] 
    # fig=get_worldMaps()[int(selection)]
     return fig
 
@@ -357,7 +372,10 @@ def toggle_modal(n1, n2, is_open):
 def update_output(selection):
     #fig = get_pie()[int(selection)]
     job= queue.enqueue(get_pie())
-    fig=job.result[int(selection)]
+    if job.result == None:
+        time.sleep(2)
+    else: 
+        fig=job.result[int(selection)] 
     return fig
 
 
