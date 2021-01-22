@@ -10,6 +10,7 @@ from dash.dependencies import State
 from redis import Redis
 from rq import Worker, Queue, Connection
 
+'''
 #Setup for Layout, seperate pages, etc.
 from home import home_updateLayout
 from page1 import p1_updateLayout, renewable, energie, get_worldMaps_page_1_2, world_map_page1_1, world_map_page1_2, world_map_page1_3, get_worldMaps_page_1_1, temperature_page1
@@ -23,7 +24,7 @@ from info_box.infop4 import get_infoBox4
 from info_box.infop3 import get_infoBox3
 from info_box.infop5 import get_infoBox5 
 from info_box.infop1 import get_infoBox1
-'''
+
 from data.technology_patents.maps import *
 from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
