@@ -243,7 +243,8 @@ def update_figure(selection):
 
 
 def update_output(selection):
-    fig=get_worldMaps()[int(selection)]
+    fig = queue.enqueue(get_worldMaps())[int(selection)]
+   # fig=get_worldMaps()[int(selection)]
     return fig
 
 
