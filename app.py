@@ -233,7 +233,9 @@ def update_figure(selection):
     Input('gdp_fig_rb', 'value'))
 
 def update_figure(selection):
-    fig=get_dropGDP()[int(selection)]
+    job= queue.enqueue(get_dropGDP())
+    fig=job.result[int(selection)]
+    #fig=get_dropGDP()[int(selection)]
     return fig
 
 #Callback Page 4 ==> WorldMap
@@ -242,8 +244,8 @@ def update_figure(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    wmP4= queue.enqueue(get_worldMaps())
-    fig=wmP4.result[int(selection)]
+    job= queue.enqueue(get_worldMaps())
+    fig=job.result[int(selection)]
    # fig=get_worldMaps()[int(selection)]
     return fig
 
