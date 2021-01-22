@@ -172,34 +172,50 @@ def get_patent_map(selection_x,selection_y):
     Input('dropdown_number', 'value'))   
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
-        fig =get_graphs_patent()[0]
+        job= queue.enqueue(get_graphs_patent())
+        fig=job.result[0]
+        #fig =get_graphs_patent()[0]
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
-        fig = get_graphs_patent()[1]
+        job= queue.enqueue(get_graphs_patent())
+        fig=job.result[1]
+        # fig = get_graphs_patent()[1]
         return fig
     
     elif(selection_x == '2' and selection_y == '0'):
-        fig = get_graphs_patent()[2]
+        job= queue.enqueue(get_graphs_patent())
+        fig=job.result[2]
+        #fig = get_graphs_patent()[2]
         return fig
 
     elif(selection_x == '0' and selection_y == '1'):
-        fig = get_graphs_patent()[3]
+        job= queue.enqueue(get_graphs_patent())
+        fig=job.result[3]
+        #fig = get_graphs_patent()[3]
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
-        fig = get_graphs_patent()[4]
+        job= queue.enqueue(get_graphs_patent())
+        fig=job.result[4]
+        #fig = get_graphs_patent()[4]
         return fig
 
     else:
-        fig = get_graphs_patent() [5]
+        job= queue.enqueue(get_graphs_patent())
+        fig=job.result[5]
+
+        #fig = get_graphs_patent() [5]
         return fig 
 
 @app.callback(
     Output('histogram_total_env', 'figure'),
     Input('dropdown_po', 'value'))
 def get_patent_hist(selection):
-    fig = get_hist_patents()[int(selection)]
+    job= queue.enqueue(get_hist_patents())
+    fig=job.result[int(selection)] 
+
+    #fig = get_hist_patents()[int(selection)]
 
     return fig
 
@@ -207,7 +223,10 @@ def get_patent_hist(selection):
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
 def update_output_page1_1(selection):
-    fig = get_worldMaps_page_1_1()[int(selection)]
+    job= queue.enqueue(get_worldMaps_page_1_1())
+    fig=job.result[int(selection)]   
+
+    #fig = get_worldMaps_page_1_1()[int(selection)]
     return fig
 
 
@@ -215,7 +234,9 @@ def update_output_page1_1(selection):
     Output('p1WorldMap2', 'figure'),
     Input('p1WorldMap_dm2', 'value'))
 def update_output_page1_2(selection):
-    fig = get_worldMaps_page_1_2()[int(selection)]
+    job= queue.enqueue(get_worldMaps_page_1_2())
+    fig=job.result[int(selection)]    
+    #fig = get_worldMaps_page_1_2()[int(selection)]
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
@@ -224,7 +245,10 @@ def update_output_page1_2(selection):
     Input('eu_fig_rb', 'value'))
 
 def update_figure(selection):
-    fig=get_dmgEU()[int(selection)]
+    job= queue.enqueue(get_dmgEU())
+    fig=job.result[int(selection)]
+
+    #fig=get_dmgEU()[int(selection)]
     return fig
 
 #Callback Page 4 ==> GDP Graph (Mid Bottom)
@@ -311,7 +335,9 @@ def toggle_modal(n1, n2, is_open):
     Output('p5pie', 'figure'),
     Input('p5pie_dm', 'value'))
 def update_output(selection):
-    fig = get_pie()[int(selection)]
+    #fig = get_pie()[int(selection)]
+    job= queue.enqueue(get_pie())
+    fig=job.result[int(selection)]
     return fig
 
 
