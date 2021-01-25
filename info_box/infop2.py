@@ -10,20 +10,20 @@ def get_infoBox2(pathname):
     infobox=    dbc.Row([
                     html.P("Information Box",className="lead", style={'width':'100%'}),
 
-                    dbc.Button("In Policy Document", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Net-Zero Tracker", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(
                         [
-                            dbc.ModalHeader("In Policy Document"),
+                            dbc.ModalHeader("Net-Zero Tracker"),
                             dcc.Markdown(children = markdown_text1, style = {'padding' : '15px'}),
                             dbc.ModalFooter(
                             dbc.Button("Close", id="patent_close1", className="ml-auto")
                     )],  id="patent_modal1",
                         scrollable = True),
 
-                    dbc.Button("In Law", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Funding", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(
                         [
-                            dbc.ModalHeader("In Law"),
+                            dbc.ModalHeader("Funding"),
                             dcc.Markdown(children = markdown_text2, style = {'padding' : '15px'}),
                             dbc.ModalFooter(
                             dbc.Button("Close", id="patent_close2", className="ml-auto")
@@ -38,13 +38,21 @@ def get_infoBox2(pathname):
 
 
 markdown_text1 = '''
+<b>Net-Zero Energy</b> is a goal to saturate a countries energy consumption only with renewable energy sources.
 
-
+The data for Net-Zero Tracker was provided by climatewatch.org and gives information about countries with Net-Zero target and the aimed year to achieve the goal. 
+Unfortunately there's not many countries with such a goal already set, hence we're only able to display the given dataset with Net-Zero.
 
 '''
 
 markdown_text2 = '''
+<b> Multilateral</b>
+...
 
+<b> Multi Donor National </b>
+...
 
+<b> Multi Donor Regional </b>
+...
 
 '''
