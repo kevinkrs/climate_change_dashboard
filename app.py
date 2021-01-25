@@ -318,8 +318,8 @@ def update_figure(selection):
 
 def update_figure(selection):
     job= queue.enqueue(get_dropGDP)
-    while job.is_queued == True:
-        time.sleep(0.5)
+    while job.is_finished != True :
+        time.sleep(0.1)
     else: 
         fig=job.result[int(selection)] 
         print(fig)
@@ -334,8 +334,8 @@ def update_figure(selection):
 
 def update_output(selection):
     job= queue.enqueue(get_worldMaps)
-    while job.is_queued == True:
-        time.sleep(0.5)
+    while job.is_finished != True:
+        time.sleep(0.1)
     else: 
         fig=job.result[int(selection)] 
         return fig
