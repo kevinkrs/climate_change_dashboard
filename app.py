@@ -322,6 +322,7 @@ def update_figure(selection):
         time.sleep(0.5)
     else: 
         fig=job.result[int(selection)] 
+        print(fig)
         return fig
     #fig=get_dropGDP()[int(selection)]
     
