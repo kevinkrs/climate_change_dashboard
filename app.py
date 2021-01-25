@@ -14,6 +14,7 @@ from info_box.infop4 import get_infoBox4
 from info_box.infop3 import get_infoBox3
 from info_box.infop5 import get_infoBox5 
 from info_box.infop1 import get_infoBox1
+from info_box.infop2 import get_infoBox2
 
 from data.technology_patents.maps import *
 from data.technology_patents.maps2 import *
@@ -110,7 +111,9 @@ def callback_func(pathname):
     elif(pathname == '/page3'):
         return get_infoBox3(pathname)
     elif(pathname == '/page5'):
-        return get_infoBox5(pathname)    
+        return get_infoBox5(pathname)  
+    elif(pathname == '/page2'):
+        return get_infoBox2(pathname)
     else:
         return get_infoBox1(pathname)
 
@@ -213,12 +216,39 @@ def get_graphs(selection_x, selection_y):
         #fig = get_graphs_patent()[4]
         return fig
 
-    else:
+    elif(selection_x == '2' and selection_y == '1'):
         job= queue.enqueue(get_graphs_patent)
         while job.is_queued == True:
             time.sleep(0.5)
         else:
             fig=job.result[5]
+        #fig = get_graphs_patent()[4]
+        return fig
+    
+    elif(selection_x == '0' and selection_y == '2'):
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
+            time.sleep(2)
+        else:
+            fig=job.result[6]
+        #fig = get_graphs_patent()[4]
+        return fig
+    
+    elif(selection_x == '1' and selection_y == '2'):
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
+            time.sleep(2)
+        else:
+            fig=job.result[7]
+        #fig = get_graphs_patent()[4]
+        return fig
+    
+    else:
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
+            time.sleep(2)
+        else:
+            fig=job.result[8]
 
         #fig = get_graphs_patent() [5]
         return fig 

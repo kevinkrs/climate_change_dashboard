@@ -17,7 +17,7 @@ dataset.columns = ['Fund','Fund Type', 'Fund Focus', 'Pledge (USD mn)', 'Deposit
 dataset['Date reported']=pd.to_datetime(dataset['Date reported'],format="%m%Y")
 # PLot
 def get_fundingGraph():
-    graph  = px.bar(dataset, 
+    graph  = px.bar(dataset, color = 'Fund Type', 
             x='Fund Type', y="Pledge (USD mn)", title='Funding', labels={'x':'Fund Type', 'y':'Pledge (USD mn)'})
     return graph
 
@@ -36,7 +36,7 @@ dataset_pledges.columns = ['Fund','Fund Type', 'Fund Focus', 'Contributor', 'Cou
 # PLot
 # PLot
 def get_pledgedGraph():
-    graph  = px.bar(dataset_pledges.nlargest(10, 'Pledged (USD million current)'), 
+    graph  = px.bar(dataset_pledges.nlargest(10, 'Pledged (USD million current)'), color= 'Country',
             x='Country', y="Pledged (USD million current)", title='Money pledged to give to climate funds by countries', labels={'x':'Country', 'y':'Pledged (USD million current)'})
     return graph
 
