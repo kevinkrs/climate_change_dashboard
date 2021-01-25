@@ -213,12 +213,39 @@ def get_graphs(selection_x, selection_y):
         #fig = get_graphs_patent()[4]
         return fig
 
-    else:
+    elif(selection_x == '2' and selection_y == '1'):
         job= queue.enqueue(get_graphs_patent)
         while job.is_queued == True:
             time.sleep(2)
         else:
             fig=job.result[5]
+        #fig = get_graphs_patent()[4]
+        return fig
+    
+    elif(selection_x == '0' and selection_y == '2'):
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
+            time.sleep(2)
+        else:
+            fig=job.result[6]
+        #fig = get_graphs_patent()[4]
+        return fig
+    
+    elif(selection_x == '1' and selection_y == '2'):
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
+            time.sleep(2)
+        else:
+            fig=job.result[7]
+        #fig = get_graphs_patent()[4]
+        return fig
+    
+    else:
+        job= queue.enqueue(get_graphs_patent)
+        while job.is_queued == True:
+            time.sleep(2)
+        else:
+            fig=job.result[8]
 
         #fig = get_graphs_patent() [5]
         return fig 
