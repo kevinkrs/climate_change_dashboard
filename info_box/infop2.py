@@ -10,7 +10,7 @@ def get_infoBox2(pathname):
     infobox =    dbc.Row([
                     html.P("Information Box",className="lead", style={'width':'100%'}),
 
-                    dbc.Button("Net-Zero Tracker", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Net-Zero Tracker", id="patent_open1", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(
                         [
                             dbc.ModalHeader("Net-Zero Tracker"),
@@ -38,7 +38,7 @@ def get_infoBox2(pathname):
 
 
 markdown_text1 = '''
-<b>Net-Zero Energy</b> is a goal to saturate a countries energy consumption only with renewable energy sources.
+**Net-Zero Energy** is a goal to saturate a countries energy consumption only with renewable energy sources.
 
 The data for Net-Zero Tracker was provided by climatewatch.org and gives information about countries with Net-Zero target and the aimed year to achieve the goal. 
 Unfortunately there's not many countries with such a goal already set, hence we're only able to display the given dataset with Net-Zero.
@@ -46,13 +46,13 @@ Unfortunately there's not many countries with such a goal already set, hence we'
 '''
 
 markdown_text2 = '''
-<b> Multilateral</b>
+**Multilateral**
 ...
 
-<b> Multi Donor National </b>
+**Multi Donor National**
 ...
 
-<b> Multi Donor Regional </b>
+**Multi Donor Regional**
 ...
 
 '''

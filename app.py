@@ -111,7 +111,9 @@ def callback_func(pathname):
     elif(pathname == '/page3'):
         return get_infoBox3(pathname)
     elif(pathname == '/page5'):
-        return get_infoBox5(pathname)    
+        return get_infoBox5(pathname)  
+    elif(pathname == '/page2'):
+        return get_infoBox2(pathname)
     else:
         return get_infoBox1(pathname)
 
