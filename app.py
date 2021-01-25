@@ -306,6 +306,7 @@ def update_figure(selection):
         time.sleep(0.5)
     else: 
         fig=job.result[int(selection)]  
+        return fig
 
     #fig=get_dmgEU()[int(selection)]
     return fig
@@ -321,8 +322,9 @@ def update_figure(selection):
         time.sleep(0.5)
     else: 
         fig=job.result[int(selection)] 
+        return fig
     #fig=get_dropGDP()[int(selection)]
-    return fig
+    
 
 #Callback Page 4 ==> WorldMap
 @app.callback(
@@ -335,8 +337,9 @@ def update_output(selection):
         time.sleep(0.5)
     else: 
         fig=job.result[int(selection)] 
+        return fig
    # fig=get_worldMaps()[int(selection)]
-    return fig
+    
 
 
 #Call back for the pop up box
