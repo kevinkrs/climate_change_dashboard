@@ -7,7 +7,7 @@ import dash_core_components as dcc
 
 
 def get_infoBox2(pathname):
-    infobox=    dbc.Row([
+    infobox =    dbc.Row([
                     html.P("Information Box",className="lead", style={'width':'100%'}),
 
                     dbc.Button("Net-Zero Tracker", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),

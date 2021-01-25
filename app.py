@@ -14,6 +14,7 @@ from info_box.infop4 import get_infoBox4
 from info_box.infop3 import get_infoBox3
 from info_box.infop5 import get_infoBox5 
 from info_box.infop1 import get_infoBox1
+from info_box.infop2 import get_infoBox2
 
 from data.technology_patents.maps import *
 from data.technology_patents.maps2 import *
