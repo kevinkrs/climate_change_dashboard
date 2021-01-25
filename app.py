@@ -172,8 +172,8 @@ def get_patent_map(selection_x,selection_y):
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
         job= queue.enqueue(get_graphs_patent)
-        while job.is_queued == True:
-            time.sleep(0.5)
+        while job.is_finished != True:
+            time.sleep(0.1)
         else:
             fig=job.result[0]
 
@@ -181,8 +181,8 @@ def get_graphs(selection_x, selection_y):
 
     elif(selection_x == '1' and selection_y == '0'):
         job= queue.enqueue(get_graphs_patent)
-        while job.is_queued == True:
-            time.sleep(0.5)
+        while job.is_finished != True:
+            time.sleep(0.1)
         else:
             fig=job.result[1]
 
@@ -191,8 +191,8 @@ def get_graphs(selection_x, selection_y):
     
     elif(selection_x == '2' and selection_y == '0'):
         job= queue.enqueue(get_graphs_patent)
-        while job.is_queued == True:
-            time.sleep(0.5)
+        while job.is_finished != True:
+            time.sleep(0.1)
         else:
             fig=job.result[2]
         #fig = get_graphs_patent()[2]
@@ -200,8 +200,8 @@ def get_graphs(selection_x, selection_y):
 
     elif(selection_x == '0' and selection_y == '1'):
         job= queue.enqueue(get_graphs_patent)
-        while job.is_queued == True:
-            time.sleep(0.5)
+        while job.is_finished != True:
+            time.sleep(0.1)
         else:
             fig=job.result[3]
         #fig = get_graphs_patent()[3]
@@ -209,8 +209,8 @@ def get_graphs(selection_x, selection_y):
 
     elif(selection_x == '1' and selection_y == '1'):
         job= queue.enqueue(get_graphs_patent)
-        while job.is_queued == True:
-            time.sleep(0.5)
+        while job.is_finished != True:
+            time.sleep(0.1)
         else:
             fig=job.result[4]
         #fig = get_graphs_patent()[4]
@@ -218,8 +218,8 @@ def get_graphs(selection_x, selection_y):
 
     elif(selection_x == '2' and selection_y == '1'):
         job= queue.enqueue(get_graphs_patent)
-        while job.is_queued == True:
-            time.sleep(0.5)
+        while job.is_finished != True:
+            time.sleep(0.1)
         else:
             fig=job.result[5]
         #fig = get_graphs_patent()[4]
@@ -227,8 +227,8 @@ def get_graphs(selection_x, selection_y):
     
     elif(selection_x == '0' and selection_y == '2'):
         job= queue.enqueue(get_graphs_patent)
-        while job.is_queued == True:
-            time.sleep(2)
+        while job.is_finished != True:
+            time.sleep(0.1)
         else:
             fig=job.result[6]
         #fig = get_graphs_patent()[4]
@@ -236,8 +236,8 @@ def get_graphs(selection_x, selection_y):
     
     elif(selection_x == '1' and selection_y == '2'):
         job= queue.enqueue(get_graphs_patent)
-        while job.is_queued == True:
-            time.sleep(2)
+        while job.is_finished != True:
+            time.sleep(0.1)
         else:
             fig=job.result[7]
         #fig = get_graphs_patent()[4]
@@ -245,8 +245,8 @@ def get_graphs(selection_x, selection_y):
     
     else:
         job= queue.enqueue(get_graphs_patent)
-        while job.is_queued == True:
-            time.sleep(2)
+        while job.is_finished != True:
+            time.sleep(0.1)
         else:
             fig=job.result[8]
 
@@ -258,8 +258,8 @@ def get_graphs(selection_x, selection_y):
     Input('dropdown_po', 'value'))
 def get_patent_hist(selection):
     job= queue.enqueue(get_hist_patents)
-    while job.is_queued == True:
-        time.sleep(0.5)
+    while job.is_finished != True:
+        time.sleep(0.1)
     else:
         fig =job.result
 
@@ -274,8 +274,8 @@ def get_patent_hist(selection):
     Input('p1WorldMap_dm', 'value'))
 def update_output_page1_1(selection):
     job= queue.enqueue(get_worldMaps_page_1_1)
-    while job.is_queued == True:
-        time.sleep(0.5)
+    while job.is_finished != True:
+        time.sleep(0.1)
     else: 
         fig=job.result[int(selection)]   
 
@@ -288,8 +288,8 @@ def update_output_page1_1(selection):
     Input('p1WorldMap_dm2', 'value'))
 def update_output_page1_2(selection):
     job= queue.enqueue(get_worldMaps_page_1_2)
-    while job.is_queued == True:
-        time.sleep(0.5)
+    while job.is_finished != True:
+        time.sleep(0.1)
     else: 
         fig=job.result[int(selection)]    
     #fig = get_worldMaps_page_1_0.5()[int(selection)]
@@ -302,8 +302,8 @@ def update_output_page1_2(selection):
 
 def update_figure(selection):
     job= queue.enqueue(get_dmgEU)
-    while job.is_queued == True:
-        time.sleep(0.5)
+    while job.is_finished != True:
+        time.sleep(0.1)
     else: 
         fig=job.result[int(selection)]  
         return fig
@@ -406,8 +406,8 @@ def toggle_modal(n1, n2, is_open):
 def update_output(selection):
     #fig = get_pie()[int(selection)]
     job= queue.enqueue(get_pie)
-    while job.is_queued == True:
-        time.sleep(0.5)
+    while job.is_finished != True:
+        time.sleep(0.1)
     else: 
         job.result
         fig=job.result[int(selection)] 
