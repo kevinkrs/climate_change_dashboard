@@ -83,6 +83,7 @@ footer = dbc.Container(html.Div(dbc.Container("Footer", className='text-center p
 app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), footer], style={ 'width' : '100%', 'height' : '100%',},) 
 
 #Routing for the mutiple pages
+@cache.memoize(timeout=timeout) 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/":
@@ -303,7 +304,6 @@ def update_output_page1_2(selection):
 @app.callback(
     Output('eu_fig', 'figure'),
     Input('eu_fig_rb', 'value'))
-@cache.memoize(timeout=timeout) 
 def update_figure(selection):
     job= queue.enqueue(get_dmgEU)
     while job.is_finished != True:
@@ -318,8 +318,7 @@ def update_figure(selection):
 #Callback Page 4 ==> GDP Graph (Mid Bottom)
 @app.callback(
     Output('gdp_fig', 'figure'),
-    Input('gdp_fig_rb', 'value'))
-@cache.memoize(timeout=timeout) 
+    Input('gdp_fig_rb', 'value')) 
 def update_figure(selection):
     job= queue.enqueue(get_dropGDP)
     while job.is_finished != True :
@@ -335,7 +334,7 @@ def update_figure(selection):
 @app.callback(
     Output('p4WorldMap', 'figure'),
     Input('p4WorldMap_dm', 'value'))
-@cache.memoize(timeout=timeout) 
+
 def update_output(selection):
     job= queue.enqueue(get_worldMaps)
     while job.is_finished != True:
