@@ -1,11 +1,7 @@
 from lib.lib import *
 from info_box.infop5 import get_infoBox5
-from app import get_cache
 
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
-cache = get_cache()
-
-@cache.memoize(timeout=0) 
 def p5_updateLayout():
 
     #Defining Spaces ==> Insert your plot into the spaces

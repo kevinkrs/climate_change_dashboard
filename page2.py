@@ -1,13 +1,9 @@
 from lib.lib import *
 from data.Economic_Impact.graphs import get_iGreenBondData
 from data.Governmental_efforts.graphs import get_fundingGraph, get_fundingGraph, get_pledgedGraph, get_NetZeroTargetWM
-from app import get_cache
 
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
-cache = get_cache()
-
-@cache.memoize(timeout=0) 
 def p2_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
    #leftSpace = html.Div([
