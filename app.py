@@ -30,7 +30,7 @@ cache = Cache(app.server, config={
     'CACHE_TYPE': 'filesystem',
     'CACHE_DIR': 'cache-directory'
 })
-timeout = 0  #Cache has no expiry 
+
 
 
 conn = Redis(
@@ -84,8 +84,7 @@ app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), foot
 
 #Routing for the mutiple pages
 
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-@cache.memoize(timeout=0) 
+@app.callback(Output("page-content", "children"), [Input("url", "pathname")]) 
 def render_page_content(pathname):
     if pathname == "/":
         return html.Div(dcc.Loading(home_updateLayout(),type="default",fullscreen=True,color='#45bf55'),className='container-fluid'),
@@ -262,6 +261,8 @@ def get_graphs(selection_x, selection_y):
 @app.callback(
     Output('histogram_total_env', 'figure'),
     Input('dropdown_po', 'value'))
+
+@cache.memoize(timeout=0)
 def get_patent_hist(selection):
     job= queue.enqueue(get_hist_patents)
     while job.is_finished != True:
@@ -270,14 +271,13 @@ def get_patent_hist(selection):
         fig =job.result
 
     fig=job.result[int(selection)] 
-
-    #fig = get_hist_patents()[int(selection)]
-
     return fig
 
 @app.callback(
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
+
+@cache.memoize(timeout=0)    
 def update_output_page1_1(selection):
     job= queue.enqueue(get_worldMaps_page_1_1)
     while job.is_finished != True:
@@ -292,6 +292,8 @@ def update_output_page1_1(selection):
 @app.callback(
     Output('p1WorldMap2', 'figure'),
     Input('p1WorldMap_dm2', 'value'))
+
+@cache.memoize(timeout=0)
 def update_output_page1_2(selection):
     job= queue.enqueue(get_worldMaps_page_1_2)
     while job.is_finished != True:
@@ -305,7 +307,9 @@ def update_output_page1_2(selection):
 @app.callback(
     Output('eu_fig', 'figure'),
     Input('eu_fig_rb', 'value'))
-def update_figure(selection):
+
+@cache.memoize(timeout=0)
+def update_figure_euDMG(selection):
     job= queue.enqueue(get_dmgEU)
     while job.is_finished != True:
         time.sleep(0.1)
@@ -320,7 +324,9 @@ def update_figure(selection):
 @app.callback(
     Output('gdp_fig', 'figure'),
     Input('gdp_fig_rb', 'value')) 
-def update_figure(selection):
+
+@cache.memoize(timeout=0)
+def update_figure_gdp(selection):
     job= queue.enqueue(get_dropGDP)
     while job.is_finished != True :
         time.sleep(0.1)
@@ -335,7 +341,7 @@ def update_figure(selection):
 @app.callback(
     Output('p4WorldMap', 'figure'),
     Input('p4WorldMap_dm', 'value'))
-
+@cache.memoize(timeout=0)
 def update_output(selection):
     job= queue.enqueue(get_worldMaps)
     while job.is_finished != True:
@@ -407,7 +413,9 @@ def toggle_modal(n1, n2, is_open):
 @app.callback(
     Output('p5pie', 'figure'),
     Input('p5pie_dm', 'value'))
-def update_output(selection):
+
+@cache.memoize(timeout=0)
+def update_outputPie(selection):
     #fig = get_pie()[int(selection)]
     job= queue.enqueue(get_pie)
     while job.is_finished != True:
