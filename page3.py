@@ -2,11 +2,13 @@ from lib.lib import *
 import json
 from data.technology_patents.maps import *
 from data.technology_patents.graphs import *
+from app import get_cache
+
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
+cache = get_cache()
 
-
-
+@cache.memoize(timeout=0) 
 def p3_updateLayout():
     #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div([

@@ -1,8 +1,12 @@
 from lib.lib import *
 from data.Economic_Impact.graphs import get_iGreenBondData
 from info_box.infop4 import get_infoBox4
-#==> import external method from .py file from folder /data,  wwhich is plotting the graph
+from app import get_cache
 
+#==> import external method from .py file from folder /data,  wwhich is plotting the graph
+cache = get_cache()
+
+@cache.memoize(timeout=0) 
 def p4_updateLayout():
 
     #Defining Spaces ==> Insert your plot into the spaces

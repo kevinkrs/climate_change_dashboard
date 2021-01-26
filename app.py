@@ -32,6 +32,8 @@ cache = Cache(app.server, config={
 })
 timeout = 0  #Cache has no expiry 
 
+def get_cache():
+    return cache
 
 conn = Redis(
 host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
@@ -83,7 +85,6 @@ footer = dbc.Container(html.Div(dbc.Container("Footer", className='text-center p
 app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), footer], style={ 'width' : '100%', 'height' : '100%',},) 
 
 #Routing for the mutiple pages
-@cache.memoize(timeout=timeout) 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/":

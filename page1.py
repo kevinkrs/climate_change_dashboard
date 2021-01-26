@@ -1,10 +1,13 @@
 try: 
     from lib.lib import *
     from info_box.infop1 import get_infoBox1
+    from app import get_cache
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
-
+    
+cache = get_cache()
 # In[]: Graph function
+
 
 def renewable():
     dataset = pd.read_csv('data/World_Situation/Situation_renewable-share-energy.csv')
@@ -124,7 +127,7 @@ def temperature_page1():
 
     
 ## PAGE 1 ##
-
+@cache.memoize(timeout=0) 
 def p1_updateLayout():
 
     leftSpace = html.Div([
