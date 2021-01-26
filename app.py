@@ -83,8 +83,9 @@ footer = dbc.Container(html.Div(dbc.Container("Footer", className='text-center p
 app.layout = html.Div([dcc.Location(id="url"), html.Div(id='page-content'), footer], style={ 'width' : '100%', 'height' : '100%',},) 
 
 #Routing for the mutiple pages
-@cache.memoize(timeout=0) 
+
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+@cache.memoize(timeout=0) 
 def render_page_content(pathname):
     if pathname == "/":
         return html.Div(dcc.Loading(home_updateLayout(),type="default",fullscreen=True,color='#45bf55'),className='container-fluid'),
