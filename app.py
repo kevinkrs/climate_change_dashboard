@@ -76,7 +76,7 @@ sidebar = html.Div(
 )
 
 #Footer
-footer = dbc.Container(html.Div(dbc.Container("This app is an university project resulting from a Franco-German cross-border collaboration.", className='text-center p-3',),
+footer = dbc.Container(html.Div(dbc.Container("This app is an university project resulting from a Franco-German (University of Strasbourg, Karlsruher Institute for Technology) cross-border collaboration.", className='text-center p-3',),
     className='container-fluid',),  )
 
 
