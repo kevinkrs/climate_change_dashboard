@@ -207,6 +207,6 @@
 
 .panel:hover{
         outline: lightgrey;
-        transform: scale(0.7);
+        transform: scale(1.05);
     
     }
