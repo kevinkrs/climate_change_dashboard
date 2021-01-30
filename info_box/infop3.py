@@ -72,11 +72,12 @@ The dataset provides data on patents counts by technology for:
 - Patent **applications** to the US Patent and Trademark Office (USPTO)
 - Patents filed under the Patent Co-operation Treaty (PCT), at international phase, that designate the EPO
 
+IMPORTANT NOTE: The patent offices are solely the places where the application got issued. The world map shows the *country of residence* of the applicant. 
 
 The second dropdown lets you choose between follwing options: 
 
-- **Environmental**: ENV-TECH: Envivornmental-related Technology is a category defined by OECD and is drawing on more than 2000 classifications (logarithmic values base _e_)
 - **Relative**: The ratio between ENV-TECH and Total patent applications 
+- **Environmental**: ENV-TECH: Envivornmental-related Technology is a category defined by OECD and is drawing on more than 2000 classifications (logarithmic values base _e_)
 - **Total**: Patent applications (logarithmic values base _e_)
 
 Series are derived from EPO's Worldwide Patent Statistical database (PATSTAT Global, Spring 2020). USPTO and Triadic patent families are mainly derived from PATSTAT biblio, while EPO and PCT patent counts are based on PATSTAT's EPO Register (Spring 2020).

@@ -132,39 +132,39 @@ def callback_func(pathname):
     Input('dropdown_number', 'value'))
 
 def get_patent_map(selection_x,selection_y):
-    if(selection_x == '0' and selection_y == '0'):
+    if(selection_x == '0' and selection_y == '1'):
         fig = get_maps_patent()[0]
         return fig
 
-    elif(selection_x == '1' and selection_y == '0'):
+    elif(selection_x == '1' and selection_y == '1'):
         fig = get_maps_patent()[1]
         return fig
     
-    elif(selection_x == '2' and selection_y == '0'):
+    elif(selection_x == '2' and selection_y == '1'):
         fig = get_maps_patent()[2]
         return fig
 
-    elif(selection_x == '0' and selection_y == '1'):
+    elif(selection_x == '0' and selection_y == '2'):
         fig = get_maps_patent()[3]
         return fig
 
-    elif(selection_x == '1' and selection_y == '1'):
+    elif(selection_x == '1' and selection_y == '2'):
         fig = get_maps_patent()[4]
         return fig
 
-    elif(selection_x == '2' and selection_y == '1'):
+    elif(selection_x == '2' and selection_y == '2'):
         fig = get_maps_patent()[5]
         return fig 
 
-    elif(selection_x == '0' and selection_y == '2'):
+    elif(selection_x == '0' and selection_y == '0'):
         fig = get_maps_patent_relative()[0]
         return fig
 
-    elif(selection_x == '1' and selection_y == '2'):
+    elif(selection_x == '1' and selection_y == '0'):
         fig = get_maps_patent_relative()[1]
         return fig
 
-    elif(selection_x == '2' and selection_y == '2'):
+    elif(selection_x == '2' and selection_y == '0'):
         fig = get_maps_patent_relative()[2]
         return fig 
 
