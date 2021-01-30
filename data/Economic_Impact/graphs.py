@@ -36,7 +36,6 @@ df1_ols = pd.melt(df1_ols, id_vars=['Date'],value_vars=['OECD Europe', 'OECD Pac
 
 
 df3=  pd.merge(df1, df2, on="variable")
-
 #Map measures in percentage, so multiply with 100 ==> not neccessary by .csv file
 df1_ols['value']=df1_ols['value']*100
 
@@ -69,14 +68,40 @@ def get_dropGDP_W():
         fig = px.choropleth(df3, locations="CODE",
                         color='value',
                         animation_frame= 'Date',
+                        hover_name= 'variable',
+                        animation_group= 'variable',
                         #hover_name="Country ", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Reds[::-1],
-                        #color_continuous_midpoint = -0.9,
-                        range_color=[100,0]
+                        color_continuous_midpoint = -0.9,
+                        projection='equirectangular',
+                        labels=dict(Date='Year', value='GDP in %')
+
                         )
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Percentage change in regional GDP due to selected climate change impacts',font_size=18)
+                        
+        fig.update_layout(
+                margin=dict(l=20,r=0,b=0,t=70,pad=0),
+                paper_bgcolor="white",
+                height= 700,
+                title_text='Percentage change in regional GDP due to selected climate change impacts',
+                font_size=18,
+                geo=dict(
+                        showframe=False,
+                        showcoastlines=False,
+                        projection_type='equirectangular'
+                ),
+                annotations = [dict(
+                        x=0.55,
+                        y=0.1,
+                        xref='paper',
+                        yref='paper',
+                        text='Source: <a href="https://www.oecd.org/environment/indicators-modelling-outlooks/modelling.htm">\
+                        OECD</a>',
+                        showarrow = False
+                )]
+                        )
         return fig
 
+get_dropGDP_W().show()
 
 # Variable time span : 2010-2060
 # Data published by : OECD
