@@ -176,7 +176,7 @@ def get_patent_map(selection_x,selection_y):
     Input('dropdown_number', 'value'))   
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent)
+        job= queue.enqueue(get_graphs_patent, 0)
         while job.is_finished != True:
             time.sleep(0.1)
         else:
@@ -185,7 +185,7 @@ def get_graphs(selection_x, selection_y):
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent)
+        job= queue.enqueue(get_graphs_patent, 1)
         while job.is_finished != True:
             time.sleep(0.1)
         else:
@@ -195,7 +195,7 @@ def get_graphs(selection_x, selection_y):
         # fig = get_graphs_patent()[1]
     
     elif(selection_x == '2' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent)
+        job= queue.enqueue(get_graphs_patent, 2)
         while job.is_finished != True:
             time.sleep(0.1)
         else:
@@ -204,7 +204,7 @@ def get_graphs(selection_x, selection_y):
         return fig
 
     elif(selection_x == '0' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent)
+        job= queue.enqueue(get_graphs_patent, 3)
         while job.is_finished != True:
             time.sleep(0.1)
         else:
@@ -213,7 +213,7 @@ def get_graphs(selection_x, selection_y):
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent)
+        job= queue.enqueue(get_graphs_patent, 4)
         while job.is_finished != True:
             time.sleep(0.1)
         else:
@@ -222,7 +222,7 @@ def get_graphs(selection_x, selection_y):
         return fig
 
     elif(selection_x == '2' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent)
+        job= queue.enqueue(get_graphs_patent, 5)
         while job.is_finished != True:
             time.sleep(0.1)
         else:
@@ -231,7 +231,7 @@ def get_graphs(selection_x, selection_y):
         return fig
     
     elif(selection_x == '0' and selection_y == '2'):
-        job= queue.enqueue(get_graphs_patent)
+        job= queue.enqueue(get_graphs_patent, 6)
         while job.is_finished != True:
             time.sleep(0.1)
         else:
@@ -240,7 +240,7 @@ def get_graphs(selection_x, selection_y):
         return fig
     
     elif(selection_x == '1' and selection_y == '2'):
-        job= queue.enqueue(get_graphs_patent)
+        job= queue.enqueue(get_graphs_patent, 7)
         while job.is_finished != True:
             time.sleep(0.1)
         else:
@@ -249,7 +249,7 @@ def get_graphs(selection_x, selection_y):
         return fig
     
     else:
-        job= queue.enqueue(get_graphs_patent)
+        job= queue.enqueue(get_graphs_patent, 8)
         while job.is_finished != True:
             time.sleep(0.1)
         else:
