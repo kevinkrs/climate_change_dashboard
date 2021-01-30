@@ -34,7 +34,8 @@ def get_world_map_epo_total():
                     labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
-                    animation_frame='Year',)
+                    animation_frame='Year',
+                    range_color = [-2,11])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18)
         return fig
@@ -56,7 +57,8 @@ def get_world_map_epo_env():
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
-                    animation_frame='Year',)
+                    animation_frame='Year',
+                    range_color = [-2,8])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to EPO',font_size=18)
         return fig
@@ -78,7 +80,8 @@ def get_world_map_uspto_env():
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
-                    animation_frame='Year',)
+                    animation_frame='Year',
+                    range_color = [-2,8])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to USPTO',font_size=18)
         return fig
@@ -100,7 +103,8 @@ def get_world_map_uspto_total():
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
-                    animation_frame='Year',)
+                    animation_frame='Year',
+                    range_color = [-2,11])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to USPTO',font_size=18)
         return fig
@@ -121,7 +125,8 @@ def get_world_map_pct_env():
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
-                    animation_frame='Year',)
+                    animation_frame='Year',
+                    range_color = [-2,8])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to PCT',font_size=18)
         return fig
@@ -142,7 +147,8 @@ def get_world_map_pct_total():
                     labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
-                    animation_frame='Year',)
+                    animation_frame='Year',
+                    range_color = [-2,11])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to PCT',font_size=18)
         return fig
