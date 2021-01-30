@@ -18,7 +18,8 @@ def home_updateLayout():
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
-        [dbc.Row(html.H3('This dashboard combines and visualizes data on global climate change to illustrate its impact and evolution in recent years and in the future.')),
+        [
+            #dbc.Row(html.H3('This dashboard combines and visualizes data on global climate change to illustrate its impact and evolution in recent years and in the future.')),
             dbc.Row( [
             dbc.Col(
             [leftSpace],className='col-4', style ={'padding':20, 'height':'45vh'}),
