@@ -37,13 +37,6 @@ def get_world_graph_epo_env():
 
     return fig
 
-def get_world_graph_epo_relative():
-    fig = px.line(df2, x="Year", y="Relative", color="Country",
-                  hover_data=['Relative'], color_discrete_map= {'World' : '#3321BB', 'OECD' : '#B62DD5', 'BRIC' : '#28CDD0', 'European Union' : '#DBD831'}, 
-                  title = 'Distribution of Patents regarding world organisations')
-   
-
-    return fig
 
 def get_world_graph_uspto_env():
     fig = px.line(df4, x="Year", y="Value", color="Country", color_discrete_map= {'World' : '#3321BB', 'OECD' : '#B62DD5', 'BRIC' : '#28CDD0', 'European Union' : '#DBD831'},
@@ -101,7 +94,7 @@ def get_world_graph_uspto_relative():
 
 def get_world_graph_pct_relative():
     fig = px.line(df9, x="Year", y="Relative", color="Country", color_discrete_map= {'World' : '#3321BB'},
-                  hover_data=['Value'], title = 'Ratio between Worldwide Environmental-Related applications and Worldwide Total applications ')
+                  hover_data=['Relative'], title = 'Ratio between Worldwide Environmental-Related applications and Worldwide Total applications ')
     
     
     return fig
