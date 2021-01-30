@@ -61,7 +61,7 @@ def get_infoBox4(pathname):
                     )],  id="patent_modal1",
                         scrollable = True),
 
-                    dbc.Button("Prediction Models", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Data Models", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(
                         [
                             dbc.ModalHeader("Prediction Models"),
