@@ -8,8 +8,8 @@ def home_updateLayout():
 #Defining Spaces ==> Insert your plot into the spaces
     leftSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-globe-europe'), html.A("Global Situation")], href="/page1", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
-    midSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H2("Global Climate Change Dashboard", style={'font-size':27, 'font-weight': 10})], href="/", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
-    rightSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-university'), html.A("Governmental efforts")], href="/page2", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
+    midSpace = html.Div([dbc.NavItem([dbc.NavLink([html.H2("Global Climate Change Dashboard", style={'font-size':27, 'font-weight': 10})], href="/", active="exact",)],style={ 'width':'100%','text-align': 'center'}),html.P('This dashboard combines and visualizes data on global climate change to illustrate its impact and evolution in recent years and in the future.'),], className="panel")
+    rightSpace = html.Div(dbc.NavItem(dbc.NavLink([html.H3( className='fas fa-university'), html.A("Governmental efforts")], href="/page2", active="exact",),style={ 'width':'100%','text-align': 'center'}),className="panel")
 
     #Including and external graph via iFrame
     bot_leftSpace = html.Div(dbc.NavItem([dbc.NavLink([html.H3( className='fas fa-microscope'), html.A("Patents on technology")], href="/page3", active="exact",)],style={ 'width':'100%','text-align': 'center'}), className="panel")
