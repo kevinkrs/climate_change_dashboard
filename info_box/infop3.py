@@ -73,6 +73,7 @@ The dataset provides data on patents counts by technology for:
 - Patents filed under the Patent Co-operation Treaty (PCT), at international phase, that designate the EPO
 
 IMPORTANT NOTE: The patent offices are solely the places where the application got issued. The world map shows the *country of residence* of the applicant. 
+More on that topic inside the _Reference Country_ information box.
 
 The second dropdown lets you choose between follwing options: 
 
@@ -99,12 +100,13 @@ For example, a patent co-invented by 1 French, 1 American and 2 German residents
 
 '''
 
-markdown_text3 = '''**Inventors’ country:**
+markdown_text3 = '''**Inventors country:**
 
 Counting patents according to the inventor’s country of residence is the most relevant for measuring the technological innovativeness of researchers and laboratories located in a given country.
 '''
 
-markdown_text4 = '''An inventor seeking protection files a first application (the priority) generally in his/her country of residence. Then, he/she has a 12-months legal delay for applying or not for protection of the original invention in other countries (application). The application is published at least 18 months after the priority date. And finally, it can take three to ten years for a patent to be granted.
+markdown_text4 = '''The Patent office is only the place where the applications has been issued. The world map displayed shows the *country of applicant residence* and not the country the patent got granted. 
+An inventor seeking protection files a first application (the priority) generally in his/her country of residence. Then, he/she has a 12-months legal delay for applying or not for protection of the original invention in other countries (application). The application is published at least 18 months after the priority date. And finally, it can take three to ten years for a patent to be granted.
 
 - *Priority date*: it corresponds to the first filing worldwide and therefore closest to the invention date.
 To measure inventive activity, patent should be counted according to the priority date (in the case of patent families, the priority date corresponds to the earliest priority among the set of patents)
