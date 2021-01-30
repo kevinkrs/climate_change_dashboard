@@ -80,7 +80,7 @@ def get_world_graph_pct_total():
 
 def get_world_graph_epo_relative():
     fig = px.line(df7, x="Year", y="Relative", color="Country", color_discrete_map= {'World' : '#3321BB'},
-                  hover_data=['Relative'], title = 'Ratio between Worldwide Environmental-Related applications and Worldwide Total applications ')
+                  hover_data=['Relative'], title = 'Ratio between Worldwide Environmental-Related and Total applications ')
     
     
     return fig
