@@ -21,7 +21,7 @@ def p3_updateLayout():
                     options =[{'label' : 'Relative (%)', 'value' : '0'},
                                 {'label' : 'Environmental', 'value' : '1'},
                                 {'label' : 'Total', 'value' : '2' }],
-                            value = '2',
+                            value = '0',
                             placeholder = 'Select technology domain')], 
                         style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
