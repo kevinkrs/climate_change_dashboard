@@ -101,7 +101,7 @@ def get_dropGDP_W():
                         )
         return fig
 
-get_dropGDP_W().show()
+
 
 # Variable time span : 2010-2060
 # Data published by : OECD
