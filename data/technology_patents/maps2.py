@@ -47,7 +47,7 @@ def get_world_map_uspto():
                     color="Relative", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
-                    labels = {'Relative' : 'in %'},
+                    labels = {'Relative' : 'Relative'},
                     range_color = [0,1],
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
@@ -63,7 +63,7 @@ def get_world_map_pct():
                     color="Relative", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
-                    labels = {'Relative' : 'in %'},
+                    labels = {'Relative' : 'Relative'},
                     range_color = [0,1],
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
