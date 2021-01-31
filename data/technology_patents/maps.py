@@ -54,7 +54,7 @@ def get_world_map_epo_env():
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
-                    labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
+                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',
@@ -77,7 +77,7 @@ def get_world_map_uspto_env():
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
-                    labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
+                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',
@@ -100,7 +100,7 @@ def get_world_map_uspto_total():
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='tempo',
-                    labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
+                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',
@@ -122,7 +122,7 @@ def get_world_map_pct_env():
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='Greens',
-                    labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
+                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',
@@ -144,7 +144,7 @@ def get_world_map_pct_total():
                     color="log_value", # lifeExp is a column of gapminder
                     hover_name="Country", # column to add to hover information
                     color_continuous_scale='tempo',
-                    labels = {'log_value' : 'logarithmic values', 'CODE' : 'Code'},
+                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',

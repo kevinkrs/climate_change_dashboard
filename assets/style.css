@@ -179,7 +179,8 @@
 .panel li,
 .panel li ::marker,
 .panel li a:active,
-.panel li a:hover,
+.panel li a:hover
+
 .panel li a:focus {
     list-style: none;
     text-decoration: none;
@@ -203,3 +204,9 @@
     width: 20px;
     color: #fcfcfc;
 }
+
+.panel:hover{
+        outline: lightgrey;
+        transform: scale(1.05);
+    
+    }
