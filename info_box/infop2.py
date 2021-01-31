@@ -40,7 +40,8 @@ def get_infoBox2(pathname):
 markdown_text1 = '''
 **Net-Zero Energy** is a goal to saturate a countries energy consumption only with renewable energy sources.
 
-**Pledged** refers to money that has been pledged as a donation to a specific fund but has not yet necessarily arrived at the fund. A transaction of the complete promised amount is not necessarily safe.
+**Pledged** refers to money that has been pledged as a donation to a specific fund but has not yet necessarily arrived at the fund.
+A transaction of the complete promised amount is not necessarily safe.
 **Deposited** refers to money which has been donated by a contributor and is now owned by a fund.
 
 '''
