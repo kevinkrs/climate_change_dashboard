@@ -9,11 +9,10 @@ def p5_updateLayout():
     
 
     up_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=maps),color='#45bf55', type='default', className='pv6')],style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
-    up_rightSpace = html.Div([dcc.Loading(dcc.Graph(figure=heatmap),color='#45bf55', type='default', className='pv6')])
+    up_rightSpace = html.Div([dcc.Loading(dcc.Graph(id = 'p5pie'),color='#45bf55', type='default', className='pv6')])
 
-
-    bot_leftSpace = html.Div([dcc.Loading(dcc.Graph(id = 'p5pie'),color='#45bf55', type='default', className='pv6')])
-    bot_rightSpace = html.Div([dcc.Loading(dcc.Graph(figure=histogram),color='#45bf55', type='default', className='pv6')])
+    bot_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=heatmap),color='#45bf55', type='default', className='pv6')])
+    #bot_rightSpace = html.Div([dcc.Loading(dcc.Graph(figure=histogram),color='#45bf55', type='default', className='pv6')])
     drop = html.Div(dcc.Dropdown(id = 'p5pie_dm',
         options=[{'label': 'Men', 'value': 0},
                  {'label': 'Women', 'value': 1}],
@@ -30,9 +29,9 @@ def p5_updateLayout():
             "margin-right": "auto"})]),
             dbc.Row( [            
             dbc.Col(html.Div(
-            up_rightSpace, className="row justify-content-center"), className='col-4',style ={'padding':20}),
+            up_rightSpace, className="row justify-content-center"), className='col-6',style ={'padding':20}),
             dbc.Col(
-            bot_leftSpace,className='col-4',style ={'padding':20}),
+            bot_leftSpace,className='col-6',style ={'padding':20}),
             dbc.Col(
             bot_rightSpace, className='col-4',style ={'padding':20}),],
             )],
@@ -100,10 +99,10 @@ heatmap = px.density_heatmap(df1,x ="Q2_Do_You_Change_Your_Behaviour", y = "Q1_C
                             color_continuous_scale=px.colors.sequential.YlGn,
 
                              )
-heatmap.update_layout(title = "Correlation between"+'<br>'+"behaviour and consideration",
+heatmap.update_layout(title = "Heatmap of beahviour"+'<br>'+"change and climate change impact",
                       title_x = 0.5, title_font_size = 15, coloraxis_showscale=False,
-                      xaxis_title="Behaviour Changements",
-                      yaxis_title="Climate Change Consideration",
+                      xaxis_title="Changes in behavior",
+                      yaxis_title="Climate Change Impact",
                       xaxis = dict(
                             tickmode = 'array',
                             tickvals = [1, 2, 3, 4, 5],
@@ -118,7 +117,7 @@ heatmap.update_layout(title = "Correlation between"+'<br>'+"behaviour and consid
                       paper_bgcolor="white",
                       sliders = [dict(currentvalue={"prefix": "Country : "})])
 
-heatmap.update_traces(hovertemplate = ' Behaviour changements : %{x} <br> Climate change consideration: %{y}<br> Number of person : %{z}')
+heatmap.update_traces(hovertemplate = ' Behaviour changes : %{x} <br> Climate change impact: %{y}<br> Number of person : %{z}')
 heatmap['layout']['updatemenus'][0]['pad']=dict(r= 10, t= 100)
 heatmap['layout']['sliders'][0]['pad']=dict(r= 10, t= 100,)
 
