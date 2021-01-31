@@ -46,7 +46,7 @@ markdown_text1 = '''
 '''
 
 markdown_text2 = '''
-**Climate Funds update** is an organisation supported by the Heinrich Böll Stiftung and provides an managed database for instituts and organisations to submit information about the funding of climate funds which basically support the mititgation of climate change related events.
+**Climate Funds update** is an organisation supported by the Heinrich Böll Stiftung and provides a managed database for institutes and organisations to submit information about the funding of climate funds which basically support the mititgation of climate change related events.
 
 The data, for most funds, is up to date as of February 2020.
 
