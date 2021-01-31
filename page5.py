@@ -31,7 +31,7 @@ def p5_updateLayout():
             dbc.Col(
             bot_leftSpace,className='col-6',style ={'padding':20}),
             dbc.Col(
-            bot_rightSpace, className='col-4',style ={'padding':20}),],
+            bot_rightSpace, className='col-6',style ={'padding':20}),],
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
@@ -110,8 +110,8 @@ heatmap.update_layout(title = "Heatmap of beahviour"+'<br>'+"change and climate 
                             tickvals = [1, 2, 3, 4, 5],
                             ticktext = ['Yes', 'A little', 'Not really', 'Not', 'Dont know']),
                       autosize=False,
-                      width=400,
-                      height=400,
+                      width=700,
+                      height=450,
                       paper_bgcolor="white",
                       sliders = [dict(currentvalue={"prefix": "Country : "})])
 
