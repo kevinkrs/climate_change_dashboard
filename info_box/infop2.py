@@ -20,10 +20,10 @@ def get_infoBox2(pathname):
                     )],  id="patent_modal1",
                         scrollable = True),
 
-                    dbc.Button("Funding", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
+                    dbc.Button("Funding by Countries", id="patent_open2", style= {'margin' : '10px', 'width' : '95%'}),
                     dbc.Modal(
                         [
-                            dbc.ModalHeader("Funding"),
+                            dbc.ModalHeader("Funding by Countries"),
                             dcc.Markdown(children = markdown_text2, style = {'padding' : '15px'}),
                             dbc.ModalFooter(
                             dbc.Button("Close", id="patent_close2", className="ml-auto")
@@ -40,19 +40,15 @@ def get_infoBox2(pathname):
 markdown_text1 = '''
 **Net-Zero Energy** is a goal to saturate a countries energy consumption only with renewable energy sources.
 
-The data for Net-Zero Tracker was provided by climatewatch.org and gives information about countries with Net-Zero target and the aimed year to achieve the goal. 
-Unfortunately there's not many countries with such a goal already set, hence we're only able to display the given dataset with Net-Zero.
+**Pledged** refers to money that has been pledged as a donation to a specific fund but has not yet necessarily arrived at the fund. A transaction of the complete promised amount is not necessarily safe.
+**Deposited** refers to money which has been donated by a contributor and is now owned by a fund.
 
 '''
 
 markdown_text2 = '''
-**Multilateral**
-...
+**Climate Funds update** is an organisation supported by the Heinrich Böll Stiftung and provides an managed database for instituts and organisations to submit information about the funding of climate funds which basically support the mititgation of climate change related events.
 
-**Multi Donor National**
-...
+The data, for most funds, is up to date as of February 2020.
 
-**Multi Donor Regional**
-...
 
 '''
