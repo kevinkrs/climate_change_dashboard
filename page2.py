@@ -18,12 +18,7 @@ def p2_updateLayout():
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
 
     midSpace = html.Div(dcc.Graph(figure=get_NetZeroTargetWM()))
-
-    rightSpace = html.Div("Rechter Space")
-
-    bot_leftSpace = html.Div("Left Bottom Space")
-    bot_midSpace = html.Div(dcc.Graph(figure=get_pledgedGraph()))
-    bot_rightSpace = html.Div(dcc.Graph(figure=get_fundingGraph()))
+    botSpace = html.Div(dcc.Graph(figure=get_fundingGraph()))
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
@@ -33,14 +28,10 @@ def p2_updateLayout():
             dbc.Col(
             midSpace, className='col-12',style ={'padding':20}),],
             ),
-            dbc.Row( [
-            #dbc.Col(
-            #bot_leftSpace,className='col-4',style ={'padding':20}),
+        dbc.Row( 
             dbc.Col(
-            bot_midSpace, className='col-6', style ={'padding':20}),
-            dbc.Col(
-            bot_rightSpace, className='col-6',style ={'padding':20}),],
-            )],
+            botSpace, className='col-6', style ={'padding':20}),
+            ),],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
     return content
