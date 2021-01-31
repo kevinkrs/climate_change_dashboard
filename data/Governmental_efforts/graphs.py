@@ -5,7 +5,6 @@ try:
     import plotly.express   as px
     import plotly.graph_objs as go
     import pandas              as pd
-    import dash_leaflet as dl
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
 
@@ -83,15 +82,15 @@ df_nzc = pd.read_csv('data/Governmental_efforts/Net Zero Tracker/countries.csv')
 def get_NetZeroTargetWM():
         fig_nzc = px.choropleth(df_nzc, locations="Abbreviation",
                     color='Target Status',
+                    featureidkey="properties.iso_alpha3",
                     hover_name='Title',
                     hover_data=['Target Year'],
-                    mapbox_style="open-street-map"
                     )
         fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Net-Zero Tracker',font_size=18)
         
         return fig_nzc
 
-
+get_NetZeroTargetWM().show()
 # Variable time span : -
 # Data published by : Climate Watch
 # Link : https://www.climatewatchdata.org/data-explorer/net-zero-content?net-zero-content-categories=&net-zero-content-countries=All%20Selected&net-zero-content-indicators=nz_status&page=1
