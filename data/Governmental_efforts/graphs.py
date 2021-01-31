@@ -85,13 +85,13 @@ def get_NetZeroTargetWM():
                     color='Target Status',
                     hover_name='Title',
                     hover_data=['Target Year'],
+                    mapbox_style="open-street-map"
                     )
         fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Net-Zero Tracker',font_size=18)
-        fig_nzc.update_layout(mapbox_style="open-street-map")
         
         return fig_nzc
 
-get_NetZeroTargetWM().show()
+
 # Variable time span : -
 # Data published by : Climate Watch
 # Link : https://www.climatewatchdata.org/data-explorer/net-zero-content?net-zero-content-categories=&net-zero-content-countries=All%20Selected&net-zero-content-indicators=nz_status&page=1
