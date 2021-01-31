@@ -42,8 +42,7 @@ def p3_updateLayout():
              className='col-2', style ={'padding':20,'width':'100%', 'height':'100%'}),
 
             dbc.Col(
-            [midSpace, html.Div(
-            )], className='col-10',style ={'padding':30}),]),
+            [midSpace], className='col-10',style ={'padding':30}),]),
 
         dbc.Row( [
             dbc.Col(

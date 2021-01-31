@@ -26,7 +26,7 @@ def p2_updateLayout():
             #dbc.Col(
             #leftSpace,className='col-2', style ={'padding':20}),
             dbc.Col(
-            midSpace, className='col-12',style ={'padding':20}),],
+            midSpace, className='col-12',style ={'padding':35}),],
             ),
         dbc.Row( 
             dbc.Col(
