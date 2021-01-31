@@ -16,7 +16,7 @@ except Exception as e:
 dataset_pledges = pd.read_excel('data/Governmental_efforts/data/Governmental_efforts_climate funding_Pledges.xlsx')
 dataset_pledges.columns = ['Fund','Fund Type', 'Fund Focus', 'Contributor', 'Country', 'Country Income Level','Region', 'Pledged (USD million current)', 'Deposited (USD million current)','test','test1']
 dataset_pledges=dataset_pledges.groupby(by=["Country"])['Pledged (USD million current)', 'Deposited (USD million current)'].sum().reset_index()
-dataset_pledges = dataset_pledges.nlargest(15, 'Pledged (USD million current)')
+dataset_pledges = dataset_pledges.nlargest(20, 'Pledged (USD million current)')
 # PLot
 def get_fundingGraph():
     fig = go.Figure()

@@ -30,7 +30,7 @@ def p2_updateLayout():
             ),
         dbc.Row( 
             dbc.Col(
-            botSpace, className='col-6', style ={'padding':20}),
+            botSpace, className='col-12', style ={'padding':20}),
             ),],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
