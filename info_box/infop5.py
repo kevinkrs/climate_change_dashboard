@@ -5,21 +5,21 @@ import dash_core_components as dcc
 
 markdown_text1 = '''
 
-A survey was conducted among 2 000 peoples over 29 worldwide countries.
+A survey was conducted among 2000 peoples over 29 worldwide countries.
 3 majors question were asked to determine the attention of the population for each country about climate change and global warming.
 
 '''
 
-markdown_text2 = '''The 3 questions reflecting worldwide attitude about climate change and global warming attention :
+markdown_text2 = '''The 3 questions reflecting worldwide attitude about climate change and global warming attention:
 
-Question 1 : Do you consider we are living a climate change ?
+Question 1:  Do you consider that climate change impacts your life?
 - Yes, of course
 - Yes, a little
 - Not really
 - Not at all
 - I don't know
 
-Question 2 : Did you change your habits in order to improve climate situation ?
+Question 2: Do you change your behavior in order to improve the global situation?
 - Yes, of course
 - Yes, a little
 - Not really
@@ -27,7 +27,7 @@ Question 2 : Did you change your habits in order to improve climate situation ?
 - I don't know
 
 
-Question 3 : Who must fight in priority global warming ?
+Question 3: Who should we fight global warming?
 - Scientist, technical progress
 - Ourselves, our habits and behaviours
 - It is too late to stop global warming

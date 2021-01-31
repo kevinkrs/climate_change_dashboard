@@ -5,7 +5,7 @@ import dash_core_components as dcc
 
 markdown_text1 = '''
 
-Our collective CO2 emissions can be expressed as a product of four factors and their relationship with each other : 
+Our collective CO2 emissions can be expressed as a product of four factors and their relationship with each other: 
 population size, economic growth, energy intensity and emissions per energy unit produced.
 Here we focus on energy intensity and emissions per energy unit produced, because this factors explain how we can stop that.
 
@@ -17,7 +17,7 @@ The world map shows us the inequality of consequences with the numbers of deaths
 
 markdown_text2 = '''
 
-On these part, data come from OCDE data base, BP statistical review and Nasa Ozone since nineteen sixty-five to December twenty-nineteen.
+For this topic data is used from from OCDE data base, BP statistical review and Nasa Ozone from 1965 to December 2019.
 
 '''
 
