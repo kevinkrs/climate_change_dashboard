@@ -1,6 +1,6 @@
 from lib.lib import *
 from data.Economic_Impact.graphs import get_iGreenBondData
-from data.Governmental_efforts.graphs import get_fundingGraph, get_fundingGraph, get_pledgedGraph, get_NetZeroTargetWM
+from data.Governmental_efforts.graphs import get_fundingGraph, get_fundingGraph, get_NetZeroTargetWM
 
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
 
