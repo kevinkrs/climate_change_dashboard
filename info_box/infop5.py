@@ -10,7 +10,7 @@ A survey was conducted among 2000 peoples over 29 worldwide countries.
 
 '''
 
-markdown_text2 = '''The 3 questions reflecting worldwide attitude about climate change and global warming attention:
+markdown_text2 = '''The 3 questions reflecting worldwide attitude towards climate change and global warming attention:
 
 Question 1:  Do you consider that climate change impacts your life?
 - Yes, of course
