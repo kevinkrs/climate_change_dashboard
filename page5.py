@@ -24,9 +24,7 @@ def p5_updateLayout():
             dbc.Col(html.Div(
             up_leftSpace),className='col-12', style ={'padding':20}),
             ]),
-            dbc.Row([dbc.Col(drop, className = 'col-4', style = {"display": "block",
-            "margin-left": "auto",
-            "margin-right": "auto"})]),
+            dbc.Row([dbc.Col(drop, className = 'col-4')]),
             dbc.Row( [            
             dbc.Col(html.Div(
             up_rightSpace, className="row justify-content-center"), className='col-6',style ={'padding':20}),
