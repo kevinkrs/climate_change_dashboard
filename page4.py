@@ -1,5 +1,4 @@
 from lib.lib import *
-from data.Economic_Impact.graphs import get_iGreenBondData
 from info_box.infop4 import get_infoBox4
 
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
