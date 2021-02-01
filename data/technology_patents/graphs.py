@@ -16,17 +16,6 @@ df8 = pd.read_excel('data/technology_patents/uspto_world_relative.xlsx')
 df9 = pd.read_excel('data/technology_patents/pct_world_relative.xlsx')
 
 
-def get_graphs_patent_total(): 
-
-    return [get_world_graph_epo_total(), get_world_graph_uspto_total(), get_world_graph_pct_total()]
-
-def get_graphs_patent_relative():
-
-    return [get_world_graph_epo_relative(), get_world_graph_uspto_relative(),get_world_graph_pct_relative()]
-
-def get_graphs_patent_env():
-
-    return [get_world_graph_epo_env(), get_world_graph_uspto_env(), get_world_graph_pct_env()]
 
 # Environmental-related patents
 def get_world_graph_epo_env():

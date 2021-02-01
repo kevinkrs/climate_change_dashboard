@@ -18,7 +18,7 @@ from info_box.infop2 import get_infoBox2
 
 from data.technology_patents.maps import *
 from data.technology_patents.maps2 import *
-from data.technology_patents.graphs import *
+from data.technology_patents.graphs import get_world_graph_epo_env, get_world_graph_uspto_env, get_world_graph_pct_env, get_world_graph_epo_relative, get_world_graph_uspto_relative, get_world_graph_pct_relative, get_world_graph_epo_total, get_world_graph_uspto_total, get_world_graph_pct_total
 from data.technology_patents.histograms import *
 import time
 
@@ -146,39 +146,39 @@ def callback_func(pathname):
 @cache.memoize(timeout=0)
 def get_patent_map(selection_x,selection_y):
     if(selection_x == '0' and selection_y == '1'):
-        fig = get_maps_patent()[0]
+        fig = get_world_graph_epo_env()
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
-        fig = get_maps_patent()[1]
+        fig = get_world_graph_uspto_env()
         return fig
     
     elif(selection_x == '2' and selection_y == '1'):
-        fig = get_maps_patent()[2]
+        fig = get_world_graph_pct_env()
         return fig
 
     elif(selection_x == '0' and selection_y == '2'):
-        fig = get_maps_patent()[3]
+        fig = get_world_graph_epo_total()
         return fig
 
     elif(selection_x == '1' and selection_y == '2'):
-        fig = get_maps_patent()[4]
+        fig = get_world_graph_uspto_total()
         return fig
 
     elif(selection_x == '2' and selection_y == '2'):
-        fig = get_maps_patent()[5]
+        fig = get_world_graph_pct_total()
         return fig 
 
     elif(selection_x == '0' and selection_y == '0'):
-        fig = get_maps_patent_relative()[0]
+        fig = get_world_graph_epo_relative()
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
-        fig = get_maps_patent_relative()[1]
+        fig = get_world_graph_uspto_relative()
         return fig
 
     elif(selection_x == '2' and selection_y == '0'):
-        fig = get_maps_patent_relative()[2]
+        fig = get_world_graph_pct_relative()
         return fig 
 
 '''
