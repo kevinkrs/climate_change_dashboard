@@ -38,17 +38,17 @@ def get_world_map_epo():
         fig = px.choropleth_mapbox(df1, geojson = geojson, locations="CODE",
                 mapbox_style="carto-positron",
                 featureidkey="properties.iso_a3",
-                color="log_value", # lifeExp is a column of gapminder
+                color="Relative", # lifeExp is a column of gapminder
                 hover_name="Country", # column to add to hover information
-                color_continuous_scale='tempo',
-                labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                color_continuous_scale='Greens',
+                labels = {'Relative' : 'Relativ'},
                 zoom=1,
                 opacity=0.8,
                 center = {"lat": 50.958427, "lon": 10.436234},
                 #hover_data = {'log_value' : False, 'Value' : 'Value' },
                 # scope = "",
                 animation_frame='Year',
-                range_color = [-2,11])
+                range_color = [0,1])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18, paper_bgcolor="#DFDEDE")
         return fig

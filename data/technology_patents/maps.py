@@ -40,7 +40,7 @@ def get_world_map_epo_total():
                 featureidkey="properties.iso_a3",
                 color="log_value", # lifeExp is a column of gapminder
                 hover_name="Country", # column to add to hover information
-                color_continuous_scale='tempo',
+                color_continuous_scale='Tempo',
                 labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
                 zoom=1,
                 opacity=0.8,
