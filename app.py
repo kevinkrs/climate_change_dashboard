@@ -9,7 +9,7 @@ from page3 import p3_updateLayout
 from page4 import p4_updateLayout
 from page5 import p5_updateLayout
 from page5 import get_pie
-from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_worldMaps
+from data.Economic_Impact.graphs import get_dmgEU, get_dropGDP, get_dropGDP_W ,get_RiskindexWorldmap2, get_RiskindexWorldmap1
 from info_box.infop4 import get_infoBox4
 from info_box.infop3 import get_infoBox3
 from info_box.infop5 import get_infoBox5 
@@ -381,7 +381,12 @@ def update_figure_gdp(selection):
     Input('p4WorldMap_dm', 'value'))
 @cache.memoize(timeout=0)
 def update_output(selection):
-    fig = get_worldMaps()[int(selection)]
+    if selection == 0:
+        fig = get_dropGDP_W()
+    elif selection == 1:
+        fig = get_RiskindexWorldmap2()
+    else: 
+        fig = get_RiskindexWorldmap1()
     return fig
 
 
