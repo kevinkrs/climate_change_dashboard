@@ -34,7 +34,7 @@ with open('data/Worldmap shapes/custom.geo.json') as f:
 
 def get_world_map_epo_total():
         #avg = df1['log_value'].mean()
-        fig = px.choropleth_mapbox(df1, geojson = geojson locations="CODE",
+        fig = px.choropleth_mapbox(df1, geojson = geojson, locations="CODE",
                 mapbox_style="carto-positron",
                 featureidkey="properties.sov_a3",
                 color="log_value", # lifeExp is a column of gapminder
