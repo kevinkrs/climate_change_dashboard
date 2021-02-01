@@ -240,7 +240,7 @@ def get_patent_hist(selection):
 def update_output_page1_1(selection):
     jobP1_1= queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
     job = Job.fetch('WM1_1', connection=conn)
-    fig = job.result()[int(selection)] 
+    fig = job.result[int(selection)] 
 
     #fig = get_worldMaps_page_1_1()[int(selection)]
     return fig
@@ -253,7 +253,7 @@ def update_output_page1_1(selection):
 def update_output_page1_2(selection):
     jobP1_2= queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
     job = Job.fetch('WM1_2', connection=conn)
-    fig = job.result()[int(selection)]
+    fig = job.result[int(selection)]
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
@@ -286,7 +286,7 @@ def update_figure_gdp(selection):
 def update_output(selection):
     jobP4_WMs = queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
     job = Job.fetch('WMs4', connection=conn)
-    fig = job.result()[int(selection)]
+    fig = job.result[int(selection)]
     return fig
 
 
