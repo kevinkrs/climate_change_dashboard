@@ -32,7 +32,7 @@ def get_world_map_epo_rel():
                 color="Relative", # lifeExp is a column of gapminder
                 hover_name="Country", # column to add to hover information
                 color_continuous_scale=px.colors.sequential.YlGn,
-                labels = {'Relative' : 'Relativ'},
+                labels = {'Relative' : 'Relative'},
                 zoom=1,
                 opacity=0.8,
                 center = {"lat": 50.958427, "lon": 10.436234},
@@ -53,7 +53,7 @@ def get_world_map_uspto_rel():
                 color="Relative", # lifeExp is a column of gapminder
                 hover_name="Country", # column to add to hover information
                 color_continuous_scale=px.colors.sequential.YlGn,
-                labels = {'Relative' : 'Relativ'},
+                labels = {'Relative' : 'Relative'},
                 zoom=1,
                 opacity=0.8,
                 center = {"lat": 50.958427, "lon": 10.436234},
@@ -73,7 +73,7 @@ def get_world_map_pct_rel():
                 color="Relative", # lifeExp is a column of gapminder
                 hover_name="Country", # column to add to hover information
                 color_continuous_scale=px.colors.sequential.YlGn,
-                labels = {'Relative' : 'Relativ'},
+                labels = {'Relative' : 'Relative'},
                 zoom=1,
                 opacity=0.8,
                 center = {"lat": 50.958427, "lon": 10.436234},

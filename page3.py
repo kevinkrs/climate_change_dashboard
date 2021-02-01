@@ -1,7 +1,4 @@
 from lib.lib import *
-import json
-from data.technology_patents.maps import *
-from data.technology_patents.graphs import *
 
 
 #==> import external method from .py file from folder /data,  wwhich is plotting the graph
@@ -18,7 +15,7 @@ def p3_updateLayout():
                             value = '0',
                             placeholder = 'Select patent office',  style = {'margin-bottom' : 10}),
             dcc.Dropdown(id ='dropdown_number',
-                    options =[{'label' : 'Relative (%)', 'value' : '0'},
+                    options =[{'label' : 'Relative (ENV/total)', 'value' : '0'},
                                 {'label' : 'Environmental', 'value' : '1'},
                                 {'label' : 'Total', 'value' : '2' }],
                             value = '0',
@@ -49,7 +46,7 @@ def p3_updateLayout():
             bot_leftSpace, className='col-6', style ={'padding':20}),
             dbc.Col(
             [bot_rightSpace, html.Div(
-            )], className='col-6',style ={'padding':20}),]
+            )], className='col-6',style ={'padding':20, 'background-color' : '#FFFFF'}),]
             )],
             style={ 'width' : 'auto',  'overflow' : 'hidden', 'padding' : '30'}) # other nice color #7ED6F0
 
