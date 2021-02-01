@@ -87,7 +87,7 @@ def get_NetZeroTargetWM():
         fig_nzc = px.choropleth_mapbox(df_nzc, geojson=geojson, locations="Abbreviation",
                     color='Target Status',
                     mapbox_style="carto-positron",
-                    featureidkey="properties.sov_a3",
+                    featureidkey="properties.iso_a3",
                     hover_name='Title',
                     hover_data=['Target Year'],
                     zoom=1,
