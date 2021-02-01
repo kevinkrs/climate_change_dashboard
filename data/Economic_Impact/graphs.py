@@ -1,14 +1,11 @@
 # %%
 from lib.lib import *
 import statsmodels.api as sm
-import json
 # %%
 from pandas_datareader import data as pdr
 
 '''
 import yfinance as yf
-
-
 #Collecting and plotting Stock Market information on iShares Green Bond ETF
 yf.pdr_override() # Override pandas datareader
 
