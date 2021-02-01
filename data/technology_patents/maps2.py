@@ -1,10 +1,13 @@
 try:
-    import plotly.express   as px
-    import plotly.graph_objs as go
-    import pandas              as pd
-    import json
+        import plotly.express as px
+        import pandas as pd
+        import numpy as np
+        import pycountry
+        import pandas              as pd
+        import json
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
+
 
 def get_maps_patent_relative(): 
     return [get_world_map_epo(), get_world_map_uspto(), get_world_map_pct()]
