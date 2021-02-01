@@ -5,6 +5,7 @@ import json
 # %%
 from pandas_datareader import data as pdr
 
+'''
 import yfinance as yf
 
 
@@ -17,6 +18,7 @@ def get_iGreenBondData():
     graph  = px.line(iGreenBond, 
             x=iGreenBond.index, y="Adj Close", title='iShares Global Green Bond ETF', labels={'y':'Adjusted Close'})
     return graph
+'''
 
 #######################################################################################################################################################################################
 
@@ -122,13 +124,17 @@ df2_gcr=  pd.merge(df2_gcr, df3_gcr, on="Country")
 # PLot
 #Worldmap timespan 1999-2018
 def get_RiskindexWorldmap1():
-        fig_gcr = px.choropleth(df1_gcr, locations="CODE",
-                    #color="Losses per unit GDP in % 1999-2018 (Rank)",
+        fig_gcr = px.choropleth_mapbox(df1_gcr, geojson=geojson, locations="CODE",
                     color='CRI score',
-                    #hover_name="Country ", # column to add to hover information
+                    mapbox_style="carto-positron",
+                    featureidkey="properties.iso_a3",
                     color_continuous_scale=px.colors.sequential.Reds[::-1],
-                    #color_continuous_midpoint = -0.9,
-                    range_color=[100,0]
+                    hover_name='CRI',
+                    hover_data=['Country'],
+                    zoom=1,
+                    opacity=0.8,
+                    center = {"lat": 50.958427, "lon": 10.436234},
+                    range_color=[100,0],
                     )
         fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Climate Risk Index for 1999-2018',font_size=18)
 
@@ -136,11 +142,17 @@ def get_RiskindexWorldmap1():
 
 #Worldmap timespan 2018
 def get_RiskindexWorldmap2():
-        fig_gcr = px.choropleth(df2_gcr, locations="CODE",
-                    color="CRI score", 
-                    #hover_name="Country", # column to add to hover information
+        fig_gcr = px.choropleth_mapbox(df2_gcr, geojson=geojson, locations="CODE",
+                    color='CRI score',
+                    mapbox_style="carto-positron",
+                    featureidkey="properties.iso_a3",
                     color_continuous_scale=px.colors.sequential.Reds[::-1],
-                    range_color=[100,0]
+                    hover_name='CRI',
+                    hover_data=['Country'],
+                    zoom=1,
+                    opacity=0.8,
+                    center = {"lat": 50.958427, "lon": 10.436234},
+                    range_color=[100,0],
                     )
         fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Climate Risk Index for 2018',font_size=18)
 
