@@ -37,7 +37,7 @@ def get_world_map_epo_total():
         #avg = df1['log_value'].mean()
         fig = px.choropleth_mapbox(df1, geojson = geojson, locations="CODE",
                 mapbox_style="carto-positron",
-                featureidkey="properties.sov_a3",
+                featureidkey="properties.iso_a3",
                 color="log_value", # lifeExp is a column of gapminder
                 hover_name="Country", # column to add to hover information
                 color_continuous_scale='tempo',
