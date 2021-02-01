@@ -122,6 +122,7 @@ def render_page_content(pathname):
 @app.callback(
     Output('infoBox', 'children'),
     [Input('url', 'pathname')])
+@cache.memoize(timeout=0)
 def callback_func(pathname):
     if(pathname == '/page4'):
         return get_infoBox4(pathname)
@@ -142,7 +143,7 @@ def callback_func(pathname):
     Output('worldmap_patents', 'figure'),
     Input('dropdown_po', 'value'),
     Input('dropdown_number', 'value'))
-
+@cache.memoize(timeout=0)
 def get_patent_map(selection_x,selection_y):
     if(selection_x == '0' and selection_y == '1'):
         fig = get_maps_patent()[0]
@@ -232,7 +233,8 @@ def get_patent_map(selection_x,selection_y):
 @app.callback(
     Output('scatter_patents_env', 'figure'),
     Input('dropdown_po', 'value'),
-    Input('dropdown_number', 'value'))   
+    Input('dropdown_number', 'value'))  
+@cache.memoize(timeout=0) 
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
         fig = get_graphs_patent_relative()[0]
@@ -332,7 +334,7 @@ def get_patent_hist(selection):
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
 
- 
+@cache.memoize(timeout=0)
 def update_output_page1_1(selection):
     #jobP1_1= queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
     fig = get_worldMaps_page_1_1()[int(selection)] 
@@ -345,7 +347,7 @@ def update_output_page1_1(selection):
 @app.callback(
     Output('p1WorldMap2', 'figure'),
     Input('p1WorldMap_dm2', 'value'))
-
+@cache.memoize(timeout=0)
 def update_output_page1_2(selection):
     #jobP1_2= queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
     fig = get_worldMaps_page_1_2()[int(selection)]
@@ -377,13 +379,9 @@ def update_figure_gdp(selection):
 @app.callback(
     Output('p4WorldMap', 'figure'),
     Input('p4WorldMap_dm', 'value'))
-
+@cache.memoize(timeout=0)
 def update_output(selection):
-    job = queue.enqueue(get_worldMaps)
-    while job.result == None:
-        time.sleep(0.1)
-    #fig = get_worldMaps()[int(selection)]
-    fig = job.result[int(selection)]
+    fig = get_worldMaps()[int(selection)]
     return fig
 
 
