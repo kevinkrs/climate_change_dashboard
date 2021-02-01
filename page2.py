@@ -17,8 +17,8 @@ def p2_updateLayout():
            #             style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
 
-    midSpace = html.Div(dcc.Graph(figure=get_NetZeroTargetWM()))
-    botSpace = html.Div(dcc.Graph(figure=get_fundingGraph()))
+    midSpace = html.Div(dcc.Loading(dcc.Graph(figure=get_NetZeroTargetWM()),color='#45bf55', type='graph', className='pv6'),style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
+    botSpace = html.Div(dcc.Loading(dcc.Graph(figure=get_fundingGraph()),color='#45bf55', type='graph', className='pv6'),style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 5})
 
     #In "content" the grid gets initialised and styled via HTML and CSS ==> If your graph doesent get displayed the right way you can adjust the styling or text Konstantin
     content = html.Div(
