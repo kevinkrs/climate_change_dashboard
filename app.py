@@ -39,10 +39,6 @@ port=18236,
 password='pyPwtLSWnxUGRLNWr8ISLkaUPU3KSlOb')
 queue = Queue(connection=conn)
 
-#Pre plott all big figgures
-job= queue.enqueue(get_worldMaps, job_id='worldMapP4')
-job= queue.enqueue(get_worldMaps_page_1_1, job_id='worldMapP1_1')
-job= queue.enqueue(get_worldMaps_page_1_2, job_id='worldMapP1_2')
 
 # the styles for the main content position it to the right of the sidebar and
 CONTENT_STYLE = {
@@ -232,8 +228,8 @@ def get_patent_hist(selection):
 
 @cache.memoize(timeout=0)    
 def update_output_page1_1(selection):
-    job = Job.fetch('worldMapP1_1', connection=conn)
-    while job.is_finished != True:
+    job= queue.enqueue(get_worldMaps_page_1_1)
+    while job.result == None:
         time.sleep(0.1)
     else: 
         fig=job.result[int(selection)]   
@@ -248,8 +244,8 @@ def update_output_page1_1(selection):
 
 @cache.memoize(timeout=0)
 def update_output_page1_2(selection):
-    job = Job.fetch('worldMapP1_2', connection=conn)
-    while job.is_finished != True:
+    job= queue.enqueue(get_worldMaps_page_1_2)
+    while job.result == None:
         time.sleep(0.1)
     else: 
         fig=job.result[int(selection)]    
@@ -284,8 +280,8 @@ def update_figure_gdp(selection):
     Input('p4WorldMap_dm', 'value'))
 @cache.memoize(timeout=0)
 def update_output(selection):
-    job = Job.fetch('worldMapP4', connection=conn)
-    while job.is_finished != True:
+    job= queue.enqueue(get_worldMaps, job_id='worldMapP4')
+    while job.result == None:
         time.sleep(0.1)
     else: 
         fig=job.result[int(selection)] 
