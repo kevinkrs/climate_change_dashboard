@@ -92,15 +92,7 @@ def get_dropGDP_W():
                         showcoastlines=False,
                         projection_type='equirectangular'
                 ),
-                annotations = [dict(
-                        x=0.55,
-                        y=0.1,
-                        xref='paper',
-                        yref='paper',
-                        text='Source: <a href="https://www.oecd.org/environment/indicators-modelling-outlooks/modelling.htm">\
-                        OECD</a>',
-                        showarrow = False
-                )]
+                
                         )
         return fig
 
