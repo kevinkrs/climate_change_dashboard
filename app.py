@@ -353,13 +353,7 @@ def toggle_modal(n1, n2, is_open):
 
 @cache.memoize(timeout=0)
 def update_outputPie(selection):
-    #fig = get_pie()[int(selection)]
-    job= queue.enqueue(get_pie)
-    while job.is_finished != True:
-        time.sleep(0.1)
-    else: 
-        job.result
-        fig=job.result[int(selection)] 
+    fig = get_pie()[int(selection)] 
     return fig
 
 
