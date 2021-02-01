@@ -280,7 +280,7 @@ def update_figure_gdp(selection):
 
 def update_output(selection):
     job= queue.enqueue(get_worldMaps, job_id='worldMapP4')
-    jon = Job.fetch('worldMapP4', connection=conn)
+    job = Job.fetch('worldMapP4', connection=conn)
     while job.result == None:
         time.sleep(0.1)
     else: 
