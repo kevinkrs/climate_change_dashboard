@@ -84,10 +84,15 @@ piechart.update_traces(hoverinfo='label+percent', textinfo='label',
 piechart.update_layout(title = "Worldwide consideration of who"+'<br>'+"must fight global warming", title_x = 0.5, title_font_size = 15, showlegend=False)
 
 
-maps = px.choropleth(df2, locations="ISO",
+maps = px.choropleth_mapbox(df2, geojson = geojson, locations="ISO",
+                            mapbox_style="carto-positron",
+                            featureidkey="properties.iso_a3",
                             color="PUBLI_RATE",
                             hover_name="COUNTRY",
                             color_continuous_scale=px.colors.sequential.YlGn,
+                            zoom=1,
+                            opacity=0.8,
+                            center = {"lat": 50.958427, "lon": 10.436234},
                             )
 maps.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Nation public opinion about climate situation',font_size=18, coloraxis_showscale=False,)
 

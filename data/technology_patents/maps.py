@@ -1,10 +1,5 @@
 try:
-        import plotly.express as px
-        import pandas as pd
-        import numpy as np
-        import pycountry
-        import pandas              as pd
-        import json
+        from lib.lib import *
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
 

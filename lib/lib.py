@@ -14,3 +14,9 @@ from redis import Redis
 from rq import Worker, Queue, Connection
 from rq.job import Job
 from flask_caching import Cache
+import gejson
+import numpy as np
+import pycountry
+
+with open('data/Worldmap shapes/custom.geo.json') as f:
+  geojson = json.load(f)

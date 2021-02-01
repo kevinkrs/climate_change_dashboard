@@ -1,10 +1,5 @@
 try:
-        import plotly.express as px
-        import pandas as pd
-        import numpy as np
-        import pycountry
-        import pandas              as pd
-        import json
+        from lib.lib import *
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
 
@@ -30,8 +25,6 @@ df1["CODE"] = df1["Country"].map(iso_map)
 df2["CODE"] = df2["Country"].map(iso_map)
 df3["CODE"] = df3["Country"].map(iso_map)
 
-with open('data/Worldmap shapes/custom.geo.json') as f:
-  geojson = json.load(f)
 
 def get_world_map_epo():
         #avg = df1['log_value'].mean()
@@ -50,7 +43,7 @@ def get_world_map_epo():
                 animation_frame='Year',
                 range_color = [0,1])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'EPO: ENV-TECH relative to Total Patents',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'EPO: ENV-TECH relative to Total Patents',font_size=18, paper_bgcolor='#f8f7f7')
         return fig
 
 
