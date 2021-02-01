@@ -85,7 +85,7 @@ def get_NetZeroTargetWM():
                     color='Target Status',
                     hover_name='Title',
                     hover_data=['Target Year'],
-                    mapbox_style="open-street-map"
+                    #mapbox_style="open-street-map"
                     )
         fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Net-Zero Tracker',font_size=18)
         
