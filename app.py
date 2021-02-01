@@ -355,4 +355,4 @@ def update_outputPie(selection):
 
 
 if __name__ == "__main__":
-    app.server.run(threaded=True, debug=True)
+    app.server.run(threaded=True, debug=False)
