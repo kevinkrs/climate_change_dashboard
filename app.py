@@ -228,11 +228,7 @@ def get_patent_hist(selection):
 
  
 def update_output_page1_1(selection):
-    job= queue.enqueue(get_worldMaps_page_1_1)
-    while job.result == None:
-        time.sleep(0.5)
-    else: 
-        fig=job.result[int(selection)]   
+    fig = get_worldMaps_page_1_1()[int(selection)]  
 
     #fig = get_worldMaps_page_1_1()[int(selection)]
     return fig
@@ -243,12 +239,7 @@ def update_output_page1_1(selection):
     Input('p1WorldMap_dm2', 'value'))
 
 def update_output_page1_2(selection):
-    job= queue.enqueue(get_worldMaps_page_1_2)
-    while job.result == None:
-        time.sleep(0.5)
-    else: 
-        fig=job.result[int(selection)]    
-    #fig = get_worldMaps_page_1_0.5()[int(selection)]
+    fig = get_worldMaps_page_1_2()[int(selection)] 
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
