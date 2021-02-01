@@ -303,6 +303,7 @@ def update_output_page1_2(selection):
     #fig = get_worldMaps_page_1_0.5()[int(selection)]
     return fig
 
+'''
 #Callback Page 4 ==> EU Graph (Left Bottom)
 @app.callback(
     Output('eu_fig', 'figure'),
@@ -324,6 +325,7 @@ def update_figure_euDMG(selection):
 @app.callback(
     Output('gdp_fig', 'figure'),
     Input('gdp_fig_rb', 'value')) 
+
 
 @cache.memoize(timeout=0)
 def update_figure_gdp(selection):
@@ -350,8 +352,43 @@ def update_output(selection):
         fig=job.result[int(selection)] 
         return fig
    # fig=get_worldMaps()[int(selection)]
+'''
+#Callback Page 4 ==> EU Graph (Left Bottom)
+@app.callback(
+    Output('eu_fig', 'figure'),
+    Input('eu_fig_rb', 'value'))
+
+@cache.memoize(timeout=0)
+def update_figure_euDMG(selection):
+(selection)]  
+    fig = get_dmgEU()[int(selection)]
+    #fig=get_dmgEU()[int(selection)]
+    return fig
+
+#Callback Page 4 ==> GDP Graph (Mid Bottom)
+@app.callback(
+    Output('gdp_fig', 'figure'),
+    Input('gdp_fig_rb', 'value')) 
+
+
+@cache.memoize(timeout=0)
+def update_figure_gdp(selection):
+    fig = get_dropGDP()[int(selection)]
+
+    return fig
+    #fig=get_dropGDP()[int(selection)]
     
 
+#Callback Page 4 ==> WorldMap
+@app.callback(
+    Output('p4WorldMap', 'figure'),
+    Input('p4WorldMap_dm', 'value'))
+@cache.memoize(timeout=0)
+def update_output(selection):
+    fig = get_worldMaps()[int(selection)]
+
+    return fig
+   # fig=get_worldMaps()[int(selection)]
 
 #Call back for the pop up box
 @app.callback(
