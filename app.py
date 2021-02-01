@@ -40,7 +40,7 @@ def enqueue_jobs_init():
     queue.enqueue(get_maps_patent_relative, id='WM3_rel', result_ttl=86400)
     #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
     #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
-    #print(queue.finished_job_registry.get_job_ids())
+
 
 
 
@@ -389,5 +389,4 @@ def update_outputPie(selection):
 
 
 if __name__ == "__main__":
-    enqueue_jobs_init()
     app.server.run(threaded=True, debug=False)
