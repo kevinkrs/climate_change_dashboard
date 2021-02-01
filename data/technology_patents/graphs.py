@@ -87,14 +87,14 @@ def get_world_graph_epo_relative():
 
 def get_world_graph_uspto_relative():
     fig = px.line(df8, x="Year", y="Relative", color="Country", color_discrete_map= {'Worldwide' : '#24B33F'},
-                  hover_data=['Relative'], title = 'Ratio between Worldwide Environmental-Related applications and Worldwide Total applications ')
+                  hover_data=['Relative'], title = 'Ratio between Worldwide Environmental-Related and Total applications')
     
     
     return fig
 
 def get_world_graph_pct_relative():
     fig = px.line(df9, x="Year", y="Relative", color="Country", color_discrete_map= {'Worldwide' : '#24B33F'},
-                  hover_data=['Relative'], title = 'Ratio between Worldwide Environmental-Related applications and Worldwide Total applications ')
+                  hover_data=['Relative'], title = 'Ratio between Worldwide Environmental-Related and Total applications')
     
     
     return fig

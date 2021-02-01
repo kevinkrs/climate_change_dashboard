@@ -45,7 +45,7 @@ def get_world_map_epo_total():
                 animation_frame='Year',
                 range_color = [-2,11])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18, paper_bgcolor="#DFDEDE")
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18,paper_bgcolor = '#f8f7f7')
         return fig
 
 
@@ -73,7 +73,7 @@ def get_world_map_epo_env():
                     animation_frame='Year',
                     range_color = [-2,8])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to EPO',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,paper_bgcolor = '#f8f7f7',title_text = 'Patents on environmental-related technologies filed to EPO',font_size=18)
         return fig
 
 
@@ -101,7 +101,7 @@ def get_world_map_uspto_env():
                     animation_frame='Year',
                     range_color = [-2,8])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700, title_text = 'Patents on environmental-related technologies filed to USPTO',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700, paper_bgcolor = '#f8f7f7',title_text = 'Patents on environmental-related technologies filed to USPTO',font_size=18)
         return fig
 
 
@@ -129,7 +129,7 @@ def get_world_map_uspto_total():
                     animation_frame='Year',
                     range_color = [-2,11])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700, title_text = 'Patents on technology filed to USPTO',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700, paper_bgcolor = '#f8f7f7',title_text = 'Patents on technology filed to USPTO',font_size=18)
         return fig
 
 
@@ -156,7 +156,7 @@ def get_world_map_pct_env():
                     animation_frame='Year',
                     range_color = [-2,8])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700, title_text = 'Patents on environmental-related technologies filed to PCT',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700, paper_bgcolor = '#f8f7f7',title_text = 'Patents on environmental-related technologies filed to PCT',font_size=18)
         return fig
 
 
@@ -183,5 +183,5 @@ def get_world_map_pct_total():
                     animation_frame='Year',
                     range_color = [-2,11])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0), height= 700,title_text = 'Patents on technology filed to PCT',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0), height= 700,paper_bgcolor = '#f8f7f7',title_text = 'Patents on technology filed to PCT',font_size=18)
         return fig
