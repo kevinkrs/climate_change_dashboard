@@ -379,7 +379,11 @@ def update_figure_gdp(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    fig = get_worldMaps()[int(selection)]
+    job = queue.enqueue(get_worldMaps, job_id='WMs4')
+    while job.result == None:
+        time.sleep(0.1)
+    #fig = get_worldMaps()[int(selection)]
+    fig = job.result[int(selection)]
     return fig
 
 
