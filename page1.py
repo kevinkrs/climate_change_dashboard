@@ -73,7 +73,13 @@ def get_worldMaps_page_1_2():
 
 def world_map_page1_1():
     df = pd.read_csv('data/World_Situation/data_situation2.csv')
-    fig = px.choropleth(df, locations="CODE",
+    fig = px.choropleth_mapbox(df, locations="CODE",
+                        geojson = geojson,
+                        mapbox_style="carto-positron",
+                        featureidkey="properties.iso_a3",
+                        zoom=1,
+                        opacity=0.8,
+                        center = {"lat": 50.958427, "lon": 10.436234},
                         color="CO2_emissions", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
@@ -84,6 +90,12 @@ def world_map_page1_1():
 def world_map_page1_2():
     df = pd.read_csv('data/World_Situation/data_situation2.csv')
     fig = px.choropleth(df, locations="CODE",
+                        geojson = geojson,
+                        mapbox_style="carto-positron",
+                        featureidkey="properties.iso_a3",
+                        zoom=1,
+                        opacity=0.8,
+                        center = {"lat": 50.958427, "lon": 10.436234},
                         color="Death_from_air_pollution", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)

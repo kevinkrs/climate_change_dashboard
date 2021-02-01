@@ -14,7 +14,7 @@ from redis import Redis
 from rq import Worker, Queue, Connection
 from rq.job import Job
 from flask_caching import Cache
-import geojson
+import json
 import numpy as np
 import pycountry
 
