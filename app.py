@@ -110,6 +110,8 @@ def render_page_content(pathname):
 @app.callback(
     Output('infoBox', 'children'),
     [Input('url', 'pathname')])
+    
+@cache.memoize(timeout=0)
 def callback_func(pathname):
     if(pathname == '/page4'):
         return get_infoBox4(pathname)
@@ -131,6 +133,7 @@ def callback_func(pathname):
     Input('dropdown_po', 'value'),
     Input('dropdown_number', 'value'))
 
+@cache.memoize(timeout=0)
 def get_patent_map(selection_x,selection_y):
     if(selection_x == '0' and selection_y == '1'):
         fig = get_maps_patent()[0]
@@ -174,6 +177,8 @@ def get_patent_map(selection_x,selection_y):
     Output('scatter_patents_env', 'figure'),
     Input('dropdown_po', 'value'),
     Input('dropdown_number', 'value'))   
+
+@cache.memoize(timeout=0)
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
         job= queue.enqueue(get_graphs_patent_relative)
@@ -264,13 +269,7 @@ def get_graphs(selection_x, selection_y):
 
 @cache.memoize(timeout=0)
 def get_patent_hist(selection):
-    job= queue.enqueue(get_hist_patents)
-    while job.is_finished != True:
-        time.sleep(0.1)
-    else:
-        fig =job.result
-
-    fig=job.result[int(selection)] 
+    fig = get_hist_patents()[int(selection)]
     return fig
 
 @app.callback(
@@ -303,7 +302,7 @@ def update_output_page1_2(selection):
     #fig = get_worldMaps_page_1_0.5()[int(selection)]
     return fig
 
-'''
+
 #Callback Page 4 ==> EU Graph (Left Bottom)
 @app.callback(
     Output('eu_fig', 'figure'),
@@ -352,7 +351,7 @@ def update_output(selection):
         fig=job.result[int(selection)] 
         return fig
    # fig=get_worldMaps()[int(selection)]
-'''
+
 #Callback Page 4 ==> EU Graph (Left Bottom)
 @app.callback(
     Output('eu_fig', 'figure'),
@@ -377,17 +376,6 @@ def update_figure_gdp(selection):
     return fig
     #fig=get_dropGDP()[int(selection)]
     
-
-#Callback Page 4 ==> WorldMap
-@app.callback(
-    Output('p4WorldMap', 'figure'),
-    Input('p4WorldMap_dm', 'value'))
-@cache.memoize(timeout=0)
-def update_output(selection):
-    fig = get_worldMaps()[int(selection)]
-
-    return fig
-   # fig=get_worldMaps()[int(selection)]
 
 #Call back for the pop up box
 @app.callback(
