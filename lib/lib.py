@@ -12,4 +12,5 @@ import plotly.express as px
 #Setup for Redis Queu ==> Handling long term processes
 from redis import Redis
 from rq import Worker, Queue, Connection
+from rq.job import Job
 from flask_caching import Cache
