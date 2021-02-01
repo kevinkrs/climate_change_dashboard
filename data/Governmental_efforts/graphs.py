@@ -90,7 +90,7 @@ def get_NetZeroTargetWM():
                     featureidkey="properties.sov_a3",
                     hover_name='Title',
                     hover_data=['Target Year'],
-                    zoom=1,
+                    zoom=2,
                     opacity=0.8,
                     center = {"lat": 50.958427, "lon": 10.436234},
                     )
