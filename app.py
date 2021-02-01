@@ -33,9 +33,11 @@ def enqueue_jobs_init():
     queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
     queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
     queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
-    queue.enqueue(get_graphs_patent_relative, id='WM3_rel', result_ttl=86400)
-    queue.enqueue(get_graphs_patent_env, id='WM3_env', result_ttl=86400)
-    queue.enqueue(get_graphs_patent_total, id='WM3_tot', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_relative, id='G_rel', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_env, id='G_env', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_total, id='G_tot', result_ttl=86400)
+    queue.enqueue(get_maps_patent, id='WM3_tot', result_ttl=86400)
+    queue.enqueue(get_maps_patent_relative, id='WM3_rel', result_ttl=86400)
     #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
     #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
 
@@ -152,39 +154,48 @@ def callback_func(pathname):
 
 def get_patent_map(selection_x,selection_y):
     if(selection_x == '0' and selection_y == '1'):
-        fig = get_maps_patent()[0]
+        job = Job.fetch('WM3_tot', connection=conn)
+        fig = job.result[0]
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
-        fig = get_maps_patent()[1]
+        job = Job.fetch('WM3_tot', connection=conn)
+        fig = job.result[1]
         return fig
     
     elif(selection_x == '2' and selection_y == '1'):
-        fig = get_maps_patent()[2]
+        job = Job.fetch('WM3_tot', connection=conn)
+        fig = job.result[2]
         return fig
 
     elif(selection_x == '0' and selection_y == '2'):
-        fig = get_maps_patent()[3]
+        job = Job.fetch('WM3_tot', connection=conn)
+        fig = job.result[3]
         return fig
 
     elif(selection_x == '1' and selection_y == '2'):
-        fig = get_maps_patent()[4]
+        job = Job.fetch('WM3_tot', connection=conn)
+        fig = job.result[4]
         return fig
 
     elif(selection_x == '2' and selection_y == '2'):
-        fig = get_maps_patent()[5]
+        job = Job.fetch('WM3_tot', connection=conn)
+        fig = job.result[5]
         return fig 
 
     elif(selection_x == '0' and selection_y == '0'):
-        fig = get_maps_patent_relative()[0]
+        job = Job.fetch('WM3_rel', connection=conn)
+        fig = job.result[0]
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
-        fig = get_maps_patent_relative()[1]
+        job = Job.fetch('WM3_rel', connection=conn)
+        fig = job.result[1]
         return fig
 
     elif(selection_x == '2' and selection_y == '0'):
-        fig = get_maps_patent_relative()[2]
+        job = Job.fetch('WM3_rel', connection=conn)
+        fig = job.result[2]
         return fig 
 
 
@@ -195,49 +206,49 @@ def get_patent_map(selection_x,selection_y):
     Input('dropdown_number', 'value'))   
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
-        job = Job.fetch('WM3_rel', connection=conn)
+        job = Job.fetch('G_rel', connection=conn)
         fig = job.result[0]
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
-        job = Job.fetch('WM3_rel', connection=conn)
+        job = Job.fetch('G_rel', connection=conn)
         fig = job.result[1]
         return fig
         # fig = get_graphs_patent()[1]
     
     elif(selection_x == '2' and selection_y == '0'):
-        job = Job.fetch('WM3_rel', connection=conn)
+        job = Job.fetch('G_rel', connection=conn)
         fig = job.result[2]
         return fig
 
     elif(selection_x == '0' and selection_y == '1'):
-        job = Job.fetch('WM3_env', connection=conn)
+        job = Job.fetch('G_env', connection=conn)
         fig = job.result[0]
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
-        job = Job.fetch('WM3_env', connection=conn)
+        job = Job.fetch('G_env', connection=conn)
         fig = job.result[1]
         return fig
 
     elif(selection_x == '2' and selection_y == '1'):
-        job = Job.fetch('WM3_env', connection=conn)
+        job = Job.fetch('G_env', connection=conn)
         fig = job.result[2]
         return fig
     
     elif(selection_x == '0' and selection_y == '2'):
         job= queue.enqueue(get_graphs_patent_total)
-        job = Job.fetch('WM3_tot', connection=conn)
+        job = Job.fetch('G_tot', connection=conn)
         fig = job.result[0]
         return fig
     
     elif(selection_x == '1' and selection_y == '2'):
-        job = Job.fetch('WM3_tot', connection=conn)
+        job = Job.fetch('G_tot', connection=conn)
         fig = job.result[1]
         return fig
     
     else:
-        job = Job.fetch('WM3_tot', connection=conn)
+        job = Job.fetch('G_tot', connection=conn)
         fig = job.result[2]
         return fig 
 
