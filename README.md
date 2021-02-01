@@ -1,4 +1,4 @@
-# dashboard_seminar20
+# World Climate Change Dashbooard (University Project WS20/21) 
 ## Dashboard tackling environmental issue awareness around the globe
 
 ### Install requirements
