@@ -8,7 +8,7 @@ def p5_updateLayout():
     #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     
 
-    up_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=maps),color='#45bf55', type='default', className='pv6')],style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
+    up_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=maps),color='#45bf55', type='default', className='pv6')],style={'padding':30, 'background-color':'#f8f7f7', 'border-radius': 10})
     up_rightSpace = html.Div([dcc.Loading(dcc.Graph(id = 'p5pie'),color='#45bf55', type='default', className='pv6')])
 
     bot_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=heatmap),color='#45bf55', type='default', className='pv6')])
@@ -94,7 +94,7 @@ maps = px.choropleth_mapbox(df2, geojson = geojson, locations="ISO",
                             opacity=0.8,
                             center = {"lat": 50.958427, "lon": 10.436234},
                             )
-maps.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Nation public opinion about climate situation',font_size=18, coloraxis_showscale=False,)
+maps.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="#f8f7f7",height= 700,title_text = 'Nation public opinion about climate situation',font_size=18, coloraxis_showscale=False,)
 
 #maps.add_annotation(text="World map displays the national level of attention to the environnement. Greenest countries pay more attention.", showarrow=False)
 
