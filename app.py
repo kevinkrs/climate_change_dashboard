@@ -24,9 +24,9 @@ import time
 
 
 conn = Redis(
-host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
-port=18236,
-password='pyPwtLSWnxUGRLNWr8ISLkaUPU3KSlOb')
+host='redis-14803.c239.us-east-1-2.ec2.cloud.redislabs.com',
+port=14803,
+password='Q0v0ws9bfxdBzOx6c21miQL7ur9zqEYP')
 queue = Queue(connection=conn)
 
 def enqueue_jobs_init():
