@@ -17,12 +17,6 @@ import yfinance as yf
             x=iGreenBond.index, y="Adj Close", title='iShares Global Green Bond ETF', labels={'y':'Adjusted Close'})
     return graph
 '''
-=======
-    #iGreenBond = pdr.get_data_yahoo("BGRN")
-    #graph  = px.line(iGreenBond, 
-      #      x=iGreenBond.index, y="Adj Close", title='iShares Global Green Bond ETF', labels={'y':'Adjusted Close'})
-   # return graph
->>>>>>> ef6755eb4df991a3b9878c11621d9650ecbf626b
 
 #######################################################################################################################################################################################
 
