@@ -2,6 +2,10 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 import pycountry
+import pandas              as pd
+    import json
+except Exception as e:
+    print("Failed to load libraries :\n" + str(e))
 
 
 def get_maps_patent():
@@ -25,17 +29,22 @@ iso_map = {country: alpha3code(country) for country in df1["Country"].unique()}
 df1["CODE"] = df1["Country"].map(iso_map)
 df1['log_value'] = np.log(df1['Value'])
 
+with open('data/Worldmap shapes/custom.geo.json') as f:
+  geojson = json.load(f)
+
 def get_world_map_epo_total():
         #avg = df1['log_value'].mean()
-        fig = px.choropleth(df1, locations="CODE",
-                    color="log_value", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='tempo',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
-                    #hover_data = {'log_value' : False, 'Value' : 'Value' },
-                   # scope = "",
-                    animation_frame='Year',
-                    range_color = [-2,11])
+        fig = px.choropleth_mapbox(df1, geojson = geojson locations="CODE",
+                mapbox_style="carto-positron",
+                featureidkey="properties.sov_a3"
+                color="log_value", # lifeExp is a column of gapminder
+                hover_name="Country", # column to add to hover information
+                color_continuous_scale='tempo',
+                labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                #hover_data = {'log_value' : False, 'Value' : 'Value' },
+                # scope = "",
+                animation_frame='Year',
+                range_color = [-2,11])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18)
         return fig
