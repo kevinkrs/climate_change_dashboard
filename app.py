@@ -33,12 +33,13 @@ queue = Queue(connection=conn)
 jobP4_WMs = queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
 jobP1_1= queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
 jobP1_2= queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
-
-#print(queue.finished_job_registry.get_job_ids())
-
 #jobP3= queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
 #jobP4= queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
 #jobP5= queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
+
+#print(queue.finished_job_registry.get_job_ids())
+
+
 
 
 #Inititalise app    and it's style for the theme

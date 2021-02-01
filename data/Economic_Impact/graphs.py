@@ -65,18 +65,21 @@ df3['value']=df3['value'].str.replace(',', '.')
 df3['value'] = pd.to_numeric(df3['value'])
 
 def get_dropGDP_W():
-        fig = px.choropleth(df3, locations="CODE",
-                        color='value',
-                        animation_frame= 'Date',
-                        hover_name= 'variable',
-                        animation_group= 'variable',
-                        #hover_name="Country ", # column to add to hover information
-                        color_continuous_scale=px.colors.sequential.Reds[::-1],
-                        color_continuous_midpoint = -0.9,
-                        projection='equirectangular',
-                        labels=dict(Date='Year', value='GDP in %')
-
-                        )
+        fig = px.choropleth_mapbox(df3, geojson=geojson, locations="CODE",
+                    color='value',
+                    animation_frame= 'Date',
+                    mapbox_style="carto-positron",
+                    featureidkey="properties.iso_a3",
+                    color_continuous_scale=px.colors.sequential.Reds[::-1],
+                    color_continuous_midpoint = -0.9,
+                    hover_name= 'variable',
+                    hover_data=['Country'],
+                    zoom=1,
+                    opacity=0.8,
+                    center = {"lat": 50.958427, "lon": 10.436234},
+                    labels=dict(Date='Year', value='GDP in %'),
+                    range_color=[int(-4),0]
+                    )
                         
         fig.update_layout(
                 margin=dict(l=20,r=0,b=0,t=70,pad=0),
@@ -101,7 +104,7 @@ def get_dropGDP_W():
                         )
         return fig
 
-
+get_dropGDP_W().show()
 
 # Variable time span : 2010-2060
 # Data published by : OECD
