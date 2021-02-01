@@ -230,7 +230,7 @@ def get_patent_hist(selection):
 def update_output_page1_1(selection):
     job= queue.enqueue(get_worldMaps_page_1_1)
     while job.result == None:
-        time.sleep(0.1)
+        time.sleep(0.5)
     else: 
         fig=job.result[int(selection)]   
 
@@ -245,7 +245,7 @@ def update_output_page1_1(selection):
 def update_output_page1_2(selection):
     job= queue.enqueue(get_worldMaps_page_1_2)
     while job.result == None:
-        time.sleep(0.1)
+        time.sleep(0.5)
     else: 
         fig=job.result[int(selection)]    
     #fig = get_worldMaps_page_1_0.5()[int(selection)]
@@ -279,15 +279,12 @@ def update_figure_gdp(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    job= queue.enqueue(get_worldMaps, job_id='worldMapP4')
-    job = Job.fetch('worldMapP4', connection=conn)
+    job= queue.enqueue(get_worldMaps)
     while job.result == None:
-        time.sleep(0.1)
+        time.sleep(0.5)
     else: 
         fig=job.result[int(selection)] 
         return fig
-   # fig=get_worldMaps()[int(selection)]
-    
 
 
 #Call back for the pop up box
@@ -358,4 +355,4 @@ def update_outputPie(selection):
 
 
 if __name__ == "__main__":
-    app.server.run(threaded=True, debug=True)
+    app.server.run(threaded=True, debug=False)
