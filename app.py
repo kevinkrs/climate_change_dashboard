@@ -39,6 +39,10 @@ port=18236,
 password='pyPwtLSWnxUGRLNWr8ISLkaUPU3KSlOb')
 queue = Queue(connection=conn)
 
+#Pre plott all big figgures
+job= queue.enqueue(get_worldMaps, job_id='worldMapP4')
+job= queue.enqueue(get_worldMaps_page_1_1, job_id='worldMapP1_1')
+job= queue.enqueue(get_worldMaps_page_1_2, job_id='worldMapP1_2')
 
 # the styles for the main content position it to the right of the sidebar and
 CONTENT_STYLE = {
@@ -176,86 +180,41 @@ def get_patent_map(selection_x,selection_y):
     Input('dropdown_number', 'value'))   
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent_relative)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[0]
-
+        fig = get_graphs_patent_relative()[0]
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent_relative)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[1]
-
+        fig = get_graphs_patent_relative()[1]
         return fig
         # fig = get_graphs_patent()[1]
     
     elif(selection_x == '2' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent_relative)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[2]
-        #fig = get_graphs_patent()[2]
+        fig = get_graphs_patent_relative()[2]
         return fig
 
     elif(selection_x == '0' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent_env)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[0]
-        #fig = get_graphs_patent()[3]
+        fig = get_graphs_patent_env()[0]
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent_env)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[1]
-        #fig = get_graphs_patent()[4]
+        fig = get_graphs_patent_env()[1]
         return fig
 
     elif(selection_x == '2' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent_env)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[2]
-        #fig = get_graphs_patent()[4]
+        fig = get_graphs_patent_env()[2]
         return fig
     
     elif(selection_x == '0' and selection_y == '2'):
         job= queue.enqueue(get_graphs_patent_total)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[0]
-        #fig = get_graphs_patent()[4]
+        fig = get_graphs_patent_total()[0]
         return fig
     
     elif(selection_x == '1' and selection_y == '2'):
-        job= queue.enqueue(get_graphs_patent_total)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[1]
-        #fig = get_graphs_patent()[4]
+        fig = get_graphs_patent_total()[1]
         return fig
     
     else:
-        job= queue.enqueue(get_graphs_patent_total)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[2]
-
-        #fig = get_graphs_patent() [5]
+        fig = get_graphs_patent_total()[2]
         return fig 
 
 @app.callback(
@@ -264,13 +223,7 @@ def get_graphs(selection_x, selection_y):
 
 @cache.memoize(timeout=0)
 def get_patent_hist(selection):
-    job= queue.enqueue(get_hist_patents)
-    while job.is_finished != True:
-        time.sleep(0.1)
-    else:
-        fig =job.result
-
-    fig=job.result[int(selection)] 
+    fig = get_hist_patents()[int(selection)] 
     return fig
 
 @app.callback(
@@ -279,7 +232,7 @@ def get_patent_hist(selection):
 
 @cache.memoize(timeout=0)    
 def update_output_page1_1(selection):
-    job= queue.enqueue(get_worldMaps_page_1_1)
+    job = Job.fetch('worldMapP1_1', connection=conn)
     while job.is_finished != True:
         time.sleep(0.1)
     else: 
@@ -295,7 +248,7 @@ def update_output_page1_1(selection):
 
 @cache.memoize(timeout=0)
 def update_output_page1_2(selection):
-    job= queue.enqueue(get_worldMaps_page_1_2)
+    job = Job.fetch('worldMapP1_2', connection=conn)
     while job.is_finished != True:
         time.sleep(0.1)
     else: 
@@ -303,56 +256,6 @@ def update_output_page1_2(selection):
     #fig = get_worldMaps_page_1_0.5()[int(selection)]
     return fig
 
-'''
-#Callback Page 4 ==> EU Graph (Left Bottom)
-@app.callback(
-    Output('eu_fig', 'figure'),
-    Input('eu_fig_rb', 'value'))
-
-@cache.memoize(timeout=0)
-def update_figure_euDMG(selection):
-    job= queue.enqueue(get_dmgEU)
-    while job.is_finished != True:
-        time.sleep(0.1)
-    else: 
-        fig=job.result[int(selection)]  
-        return fig
-
-    #fig=get_dmgEU()[int(selection)]
-    return fig
-
-#Callback Page 4 ==> GDP Graph (Mid Bottom)
-@app.callback(
-    Output('gdp_fig', 'figure'),
-    Input('gdp_fig_rb', 'value')) 
-
-
-@cache.memoize(timeout=0)
-def update_figure_gdp(selection):
-    job= queue.enqueue(get_dropGDP)
-    while job.is_finished != True :
-        time.sleep(0.1)
-    else: 
-        fig=job.result[int(selection)] 
-        print(fig)
-        return fig
-    #fig=get_dropGDP()[int(selection)]
-    
-
-#Callback Page 4 ==> WorldMap
-@app.callback(
-    Output('p4WorldMap', 'figure'),
-    Input('p4WorldMap_dm', 'value'))
-@cache.memoize(timeout=0)
-def update_output(selection):
-    job= queue.enqueue(get_worldMaps)
-    while job.is_finished != True:
-        time.sleep(0.1)
-    else: 
-        fig=job.result[int(selection)] 
-        return fig
-   # fig=get_worldMaps()[int(selection)]
-'''
 #Callback Page 4 ==> EU Graph (Left Bottom)
 @app.callback(
     Output('eu_fig', 'figure'),
@@ -361,7 +264,6 @@ def update_output(selection):
 @cache.memoize(timeout=0)
 def update_figure_euDMG(selection):
     fig = get_dmgEU()[int(selection)]
-    #fig=get_dmgEU()[int(selection)]
     return fig
 
 #Callback Page 4 ==> GDP Graph (Mid Bottom)
@@ -369,11 +271,9 @@ def update_figure_euDMG(selection):
     Output('gdp_fig', 'figure'),
     Input('gdp_fig_rb', 'value')) 
 
-
 @cache.memoize(timeout=0)
 def update_figure_gdp(selection):
     fig = get_dropGDP()[int(selection)]
-
     return fig
     #fig=get_dropGDP()[int(selection)]
     
@@ -384,10 +284,15 @@ def update_figure_gdp(selection):
     Input('p4WorldMap_dm', 'value'))
 @cache.memoize(timeout=0)
 def update_output(selection):
-    fig = get_worldMaps()[int(selection)]
-
-    return fig
+    job = Job.fetch('worldMapP4', connection=conn)
+    while job.is_finished != True:
+        time.sleep(0.1)
+    else: 
+        fig=job.result[int(selection)] 
+        return fig
    # fig=get_worldMaps()[int(selection)]
+    
+
 
 #Call back for the pop up box
 @app.callback(
@@ -452,13 +357,7 @@ def toggle_modal(n1, n2, is_open):
 
 @cache.memoize(timeout=0)
 def update_outputPie(selection):
-    #fig = get_pie()[int(selection)]
-    job= queue.enqueue(get_pie)
-    while job.is_finished != True:
-        time.sleep(0.1)
-    else: 
-        job.result
-        fig=job.result[int(selection)] 
+    fig = get_pie()[int(selection)] 
     return fig
 
 
