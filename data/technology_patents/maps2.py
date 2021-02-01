@@ -63,7 +63,7 @@ def get_world_map_uspto():
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'USPTO: ENV-TECH relative to Total Patents',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'USPTO: ENV-TECH relative to Total Patents',paper_bgcolor = '#f8f7f7', font_size=18)
         return fig
 
 
@@ -83,5 +83,5 @@ def get_world_map_pct():
                    # scope = "",
                     animation_frame='Year',)
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'PCT: ENV-TECH relative to Total Patents',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,paper_bgcolor = '#f8f7f7',title_text = 'PCT: ENV-TECH relative to Total Patents',font_size=18)
         return fig

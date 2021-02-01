@@ -84,7 +84,7 @@ def world_map_page1_1():
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
     fig.update_layout(title='CO2 emission per capita : 2019 (in tons)')
-    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'CO2 emission per capita : 2019',font_size=18)
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor='#f8f7f7',height= 700,title_text = 'CO2 emission per capita : 2019',font_size=18)
     return fig
 
 def world_map_page1_2():
@@ -100,7 +100,7 @@ def world_map_page1_2():
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
     fig.update_layout(title='Death from air pollution : 2019 (per 100 000)')
-    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Death from air pollution : 2019',font_size=18)
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor='#f8f7f7',height= 700,title_text = 'Death from air pollution : 2019',font_size=18)
     return fig
 
 def world_map_page1_3():
@@ -116,7 +116,7 @@ def world_map_page1_3():
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
     fig.update_layout(title='Ozone concentration : 2019')
-    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Ozone concentration : 2019',font_size=18)
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor='#f8f7f7',height= 700,title_text = 'Ozone concentration : 2019',font_size=18)
     return fig
 
 def get_worldMaps_page_1_1():
@@ -167,7 +167,7 @@ def p1_updateLayout():
                 ], style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5} )
     
     midSpace = html.Div(
-        dcc.Loading(dcc.Graph(id='p1WorldMap'),color='#45bf55', type='default', className='pv6'), style={'padding':30, 'background-color':'#FFFFFF'} )
+        dcc.Loading(dcc.Graph(id='p1WorldMap'),color='#45bf55', type='default', className='pv6'), style={'padding':30, 'background-color':'#f8f7f7'} )
     
     bot_rightSpace = html.Div(
         dcc.Loading(dcc.Graph(id='p1WorldMap2'),color='#45bf55', type='default', className='pv6'),style={'padding':30, 'background-color':'#FFFFFF'})
@@ -186,6 +186,7 @@ def p1_updateLayout():
             bot_leftSpace,className='col-6',style ={'padding':20}),
             dbc.Col(
             bot_rightSpace, className='col-6',style ={'padding':20}),],
+            stlye = {'background-color' : '#FFFFFF'}
             )],
         
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)

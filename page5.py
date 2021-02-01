@@ -9,9 +9,9 @@ def p5_updateLayout():
     
 
     up_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=maps),color='#45bf55', type='default', className='pv6')],style={'padding':30, 'background-color':'#f8f7f7', 'border-radius': 10})
-    up_rightSpace = html.Div([dcc.Loading(dcc.Graph(id = 'p5pie'),color='#45bf55', type='default', className='pv6')])
+    up_rightSpace = html.Div([dcc.Loading(dcc.Graph(id = 'p5pie'),color='#45bf55', type='default', className='pv6', style={'border-radius' : 5})])
 
-    bot_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=heatmap),color='#45bf55', type='default', className='pv6')])
+    bot_leftSpace = html.Div([dcc.Loading(dcc.Graph(figure=heatmap),color='#45bf55', type='default', className='pv6', style={'border-radius' : 5})])
     bot_rightSpace = html.Div()
     drop = html.Div(dcc.Dropdown(id = 'p5pie_dm',
         options=[{'label': 'Men', 'value': 0},
@@ -32,6 +32,7 @@ def p5_updateLayout():
             bot_leftSpace,className='col-6',style ={'padding':20}),
             dbc.Col(
             bot_rightSpace, className='col-6',style ={'padding':20}),],
+            style = {'background-color' : '#FFFFFF'}
             )],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
     
@@ -90,7 +91,7 @@ maps = px.choropleth_mapbox(df2, geojson = geojson, locations="ISO",
                             color="PUBLI_RATE",
                             hover_name="COUNTRY",
                             color_continuous_scale=px.colors.sequential.YlGn,
-                            zoom=1,
+                            zoom=1.3,
                             opacity=0.8,
                             center = {"lat": 50.958427, "lon": 10.436234},
                             )

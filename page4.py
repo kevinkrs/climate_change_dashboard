@@ -24,7 +24,7 @@ def p4_updateLayout():
 
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     midSpace = html.Div(
-        dcc.Loading(dcc.Graph(id='p4WorldMap'),color='#45bf55', type='default', className='pv6'), style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10})
+        dcc.Loading(dcc.Graph(id='p4WorldMap'),color='#45bf55', type='default', className='pv6'), style={'padding':30, 'background-color':'#f8f7f7', 'border-radius': 10})
 
 
     bot_leftSpace = html.Div([dcc.RadioItems(
@@ -72,6 +72,6 @@ def p4_updateLayout():
  #           dbc.Col(
  #           bot_rightSpace, className='col-4',style ={'padding':20}),],
  #            )
-            ])],
+            ],style = {'background-color' : '#FFFFFF'})],
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'})
     return content
