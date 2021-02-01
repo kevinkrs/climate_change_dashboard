@@ -16,8 +16,8 @@ from info_box.infop5 import get_infoBox5
 from info_box.infop1 import get_infoBox1
 from info_box.infop2 import get_infoBox2
 
-from data.technology_patents.maps import *
-from data.technology_patents.maps2 import *
+from data.technology_patents.maps import get_world_map_pct_total, get_world_map_uspto_total, get_world_map_epo_total, get_world_map_pct_env,get_world_map_uspto_env, get_world_map_epo_env
+from data.technology_patents.maps2 import get_world_map_epo_rel, get_world_map_uspto_rel, get_world_map_pct_rel
 from data.technology_patents.graphs import get_world_graph_epo_env, get_world_graph_uspto_env, get_world_graph_pct_env, get_world_graph_epo_relative, get_world_graph_uspto_relative, get_world_graph_pct_relative, get_world_graph_epo_total, get_world_graph_uspto_total, get_world_graph_pct_total
 from data.technology_patents.histograms import *
 import time
@@ -140,9 +140,9 @@ def callback_func(pathname):
 
 # Callback for different patent worldmaps 
 @app.callback(
-    Output('worldmap_patents', 'figure'),
+    Output('scatter_patents_env', 'figure'),
     Input('dropdown_po', 'value'),
-    Input('dropdown_number', 'value'))
+    Input('dropdown_number', 'value'))  
 @cache.memoize(timeout=0)
 def get_patent_map(selection_x,selection_y):
     if(selection_x == '0' and selection_y == '1'):
@@ -231,46 +231,46 @@ def get_patent_map(selection_x,selection_y):
 ''' 
 # Callback for different scatter plots on evrionmental related technology patents
 @app.callback(
-    Output('scatter_patents_env', 'figure'),
+    Output('worldmap_patents', 'figure'),
     Input('dropdown_po', 'value'),
-    Input('dropdown_number', 'value'))  
+    Input('dropdown_number', 'value'))
 @cache.memoize(timeout=0) 
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
-        fig = get_graphs_patent_relative()[0]
+        fig = get_world_map_epo_rel()
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
-        fig = get_graphs_patent_relative()[1]
+        fig = get_world_map_uspto_rel()
         return fig
         # fig = get_graphs_patent()[1]
     
     elif(selection_x == '2' and selection_y == '0'):
-        fig = get_graphs_patent_relative()[2]
+        fig = get_world_map_pct_rel()
         return fig
 
     elif(selection_x == '0' and selection_y == '1'):
-        fig = get_graphs_patent_env()[0]
+        fig = get_world_map_epo_env()
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
-        fig = get_graphs_patent_env()[1]
+        fig = get_world_map_uspto_env()
         return fig
 
     elif(selection_x == '2' and selection_y == '1'):
-        fig = get_graphs_patent_env()[2]
+        fig = get_world_map_pct_env()
         return fig
     
     elif(selection_x == '0' and selection_y == '2'):
-        fig = get_graphs_patent_total()[0]
+        fig = get_world_map_epo_total()
         return fig
     
     elif(selection_x == '1' and selection_y == '2'):
-        fig = get_graphs_patent_total()[1]
+        fig = get_world_map_uspto_total()
         return fig
     
     else:
-        fig = get_graphs_patent_total()[2]
+        fig = get_world_map_pct_total()
         return fig 
 '''
 def get_graphs(selection_x, selection_y):

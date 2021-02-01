@@ -4,8 +4,6 @@ except Exception as e:
     print("Failed to load libraries :\n" + str(e))
 
 
-def get_maps_patent_relative(): 
-    return [get_world_map_epo(), get_world_map_uspto(), get_world_map_pct()]
 
 df1 = pd.read_excel('data/technology_patents/epo_compared.xlsx')
 df2 = pd.read_excel('data/technology_patents/uspto_compared.xlsx')
@@ -26,7 +24,7 @@ df2["CODE"] = df2["Country"].map(iso_map)
 df3["CODE"] = df3["Country"].map(iso_map)
 
 
-def get_world_map_epo():
+def get_world_map_epo_rel():
         #avg = df1['log_value'].mean()
         fig = px.choropleth_mapbox(df1, geojson = geojson, locations="CODE",
                 mapbox_style="carto-positron",
@@ -47,7 +45,7 @@ def get_world_map_epo():
         return fig
 
 
-def get_world_map_uspto():
+def get_world_map_uspto_rel():
         #avg = df1['log_value'].mean()
         fig = px.choropleth_mapbox(df2, geojson = geojson, locations="CODE",
                 mapbox_style="carto-positron",
@@ -67,7 +65,7 @@ def get_world_map_uspto():
         return fig
 
 
-def get_world_map_pct():
+def get_world_map_pct_rel():
         #avg = df1['log_value'].mean()
         fig = px.choropleth_mapbox(df3, geojson = geojson, locations="CODE",
                 mapbox_style="carto-positron",
