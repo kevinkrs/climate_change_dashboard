@@ -21,6 +21,21 @@ from data.technology_patents.maps2 import *
 from data.technology_patents.graphs import *
 from data.technology_patents.histograms import *
 import time
+conn = Redis(
+host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
+port=18236,
+password='pyPwtLSWnxUGRLNWr8ISLkaUPU3KSlOb')
+queue = Queue(connection=conn)
+
+jobP1_1= queue.enqueue(get_worldMaps_page_1_1, id='WM1_1', result_ttl=86400)
+jobP1_2= queue.enqueue(get_worldMaps_page_1_2, id='WM1_2', result_ttl=86400)
+jobP4_WMs = queue.enqueue(get_worldMaps, id='WMs4', result_ttl=86400)
+
+
+#jobP3= queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
+#jobP4= queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
+#jobP5= queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
+
 
 #Inititalise app    and it's style for the theme
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
@@ -33,11 +48,7 @@ cache = Cache(app.server, config={
 
 
 
-conn = Redis(
-host='redis-18236.c11.us-east-1-2.ec2.cloud.redislabs.com',
-port=18236,
-password='pyPwtLSWnxUGRLNWr8ISLkaUPU3KSlOb')
-queue = Queue(connection=conn)
+
 
 
 # the styles for the main content position it to the right of the sidebar and
@@ -228,7 +239,8 @@ def get_patent_hist(selection):
 
  
 def update_output_page1_1(selection):
-    fig = get_worldMaps_page_1_1()[int(selection)]  
+    job = Job.fetch('WM1_1', connection=conn)
+    fig = job.result()[int(selection)] 
 
     #fig = get_worldMaps_page_1_1()[int(selection)]
     return fig
@@ -239,7 +251,8 @@ def update_output_page1_1(selection):
     Input('p1WorldMap_dm2', 'value'))
 
 def update_output_page1_2(selection):
-    fig = get_worldMaps_page_1_2()[int(selection)] 
+    job = Job.fetch('WM1_2', connection=conn)
+    fig = job.result()[int(selection)]
     return fig
 
 #Callback Page 4 ==> EU Graph (Left Bottom)
@@ -270,12 +283,9 @@ def update_figure_gdp(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    job= queue.enqueue(get_worldMaps)
-    while job.result == None:
-        time.sleep(0.5)
-    else: 
-        fig=job.result[int(selection)] 
-        return fig
+    job = Job.fetch('WMs4', connection=conn)
+    fig = job.result()[int(selection)]
+    return fig
 
 
 #Call back for the pop up box
@@ -346,4 +356,4 @@ def update_outputPie(selection):
 
 
 if __name__ == "__main__":
-    app.server.run(threaded=True, debug=False)
+    app.server.run(threaded=True, debug=True)
