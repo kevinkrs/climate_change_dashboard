@@ -41,9 +41,15 @@ cache = Cache(app.server, config={
     'CACHE_DIR': 'cache-directory'
 })
 
-
-
-
+'''
+    queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
+    queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_relative, id='G_rel', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_env, id='G_env', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_total, id='G_tot', result_ttl=86400)
+    queue.enqueue(get_maps_patent, id='WM3_tot', result_ttl=86400)
+    queue.enqueue(get_maps_patent_relative, id='WM3_rel', result_ttl=86400)
+'''
 
 
 # the styles for the main content position it to the right of the sidebar and
@@ -299,7 +305,7 @@ def update_figure_gdp(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    #jobP4_WMs = queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
+    jobP4_WMs = queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
     job = Job.fetch('WMs4', connection=conn)
     fig = job.result[int(selection)]
     return fig
@@ -373,4 +379,6 @@ def update_outputPie(selection):
 
 
 if __name__ == "__main__":
+    print(queue.failed_job_registry)
     app.server.run(threaded=True, debug=False)
+    
