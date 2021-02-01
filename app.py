@@ -360,7 +360,6 @@ def update_output(selection):
 
 @cache.memoize(timeout=0)
 def update_figure_euDMG(selection):
-(selection)]  
     fig = get_dmgEU()[int(selection)]
     #fig=get_dmgEU()[int(selection)]
     return fig
