@@ -29,16 +29,6 @@ port=14803,
 password='Q0v0ws9bfxdBzOx6c21miQL7ur9zqEYP')
 queue = Queue(connection=conn)
 
-
-
-
-
-
-#Inititalise app    and it's style for the theme
-app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
-server = app.server
-
-
 def enqueue_jobs_init():
     queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
     queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
@@ -50,9 +40,17 @@ def enqueue_jobs_init():
     queue.enqueue(get_maps_patent_relative, id='WM3_rel', result_ttl=86400)
     #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
     #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
+    print(queue.finished_job_registry.get_job_ids())
 
-enqueue_jobs_init()
-print(queue.finished_job_registry.get_job_ids())
+
+
+
+
+
+#Inititalise app    and it's style for the theme
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.FLATLY, '/assets/style.css'])
+server = app.server
+
 
 cache = Cache(app.server, config={
     'CACHE_TYPE': 'filesystem',
@@ -391,4 +389,5 @@ def update_outputPie(selection):
 
 
 if __name__ == "__main__":
+    enqueue_jobs_init()
     app.server.run(threaded=True, debug=False)
