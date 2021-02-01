@@ -143,7 +143,6 @@ def callback_func(pathname):
     Output('scatter_patents_env', 'figure'),
     Input('dropdown_po', 'value'),
     Input('dropdown_number', 'value'))  
-@cache.memoize(timeout=0)
 def get_patent_map(selection_x,selection_y):
     if(selection_x == '0' and selection_y == '1'):
         fig = get_world_graph_epo_env()
@@ -234,7 +233,6 @@ def get_patent_map(selection_x,selection_y):
     Output('worldmap_patents', 'figure'),
     Input('dropdown_po', 'value'),
     Input('dropdown_number', 'value'))
-@cache.memoize(timeout=0) 
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
         fig = get_world_map_epo_rel()
@@ -334,7 +332,6 @@ def get_patent_hist(selection):
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
 
-@cache.memoize(timeout=0)
 def update_output_page1_1(selection):
     #jobP1_1= queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
     fig = get_worldMaps_page_1_1()[int(selection)] 
@@ -347,7 +344,7 @@ def update_output_page1_1(selection):
 @app.callback(
     Output('p1WorldMap2', 'figure'),
     Input('p1WorldMap_dm2', 'value'))
-@cache.memoize(timeout=0)
+
 def update_output_page1_2(selection):
     #jobP1_2= queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
     fig = get_worldMaps_page_1_2()[int(selection)]
@@ -358,7 +355,7 @@ def update_output_page1_2(selection):
     Output('eu_fig', 'figure'),
     Input('eu_fig_rb', 'value'))
 
-@cache.memoize(timeout=0)
+
 def update_figure_euDMG(selection):
     fig = get_dmgEU()[int(selection)]
     return fig
@@ -368,7 +365,7 @@ def update_figure_euDMG(selection):
     Output('gdp_fig', 'figure'),
     Input('gdp_fig_rb', 'value')) 
 
-@cache.memoize(timeout=0)
+
 def update_figure_gdp(selection):
     fig = get_dropGDP()[int(selection)]
     return fig
@@ -379,16 +376,20 @@ def update_figure_gdp(selection):
 @app.callback(
     Output('p4WorldMap', 'figure'),
     Input('p4WorldMap_dm', 'value'))
-@cache.memoize(timeout=0)
 def update_output(selection):
-    if selection == 0:
+    if selection == '0':
         fig = get_dropGDP_W()
-    elif selection == 1:
-        fig = get_RiskindexWorldmap2()
-    else: 
-        fig = get_RiskindexWorldmap1()
-    return fig
+        return fig
 
+    elif selection == '1':
+        fig = get_RiskindexWorldmap2()
+        return fig
+
+    elif selection == '2': 
+        fig = get_RiskindexWorldmap1()
+        return fig
+
+    
 
 #Call back for the pop up box
 @app.callback(
@@ -451,7 +452,7 @@ def toggle_modal(n1, n2, is_open):
     Output('p5pie', 'figure'),
     Input('p5pie_dm', 'value'))
 
-@cache.memoize(timeout=0)
+
 def update_outputPie(selection):
     fig = get_pie()[int(selection)] 
     return fig
