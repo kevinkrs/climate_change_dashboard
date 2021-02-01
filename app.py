@@ -217,7 +217,7 @@ def get_graphs(selection_x, selection_y):
     Output('histogram_total_env', 'figure'),
     Input('dropdown_po', 'value'))
 
-@cache.memoize(timeout=0)
+
 def get_patent_hist(selection):
     fig = get_hist_patents()[int(selection)] 
     return fig
@@ -226,7 +226,7 @@ def get_patent_hist(selection):
     Output('p1WorldMap', 'figure'),
     Input('p1WorldMap_dm', 'value'))
 
-@cache.memoize(timeout=0)    
+ 
 def update_output_page1_1(selection):
     job= queue.enqueue(get_worldMaps_page_1_1)
     while job.result == None:
@@ -242,7 +242,6 @@ def update_output_page1_1(selection):
     Output('p1WorldMap2', 'figure'),
     Input('p1WorldMap_dm2', 'value'))
 
-@cache.memoize(timeout=0)
 def update_output_page1_2(selection):
     job= queue.enqueue(get_worldMaps_page_1_2)
     while job.result == None:
@@ -278,7 +277,7 @@ def update_figure_gdp(selection):
 @app.callback(
     Output('p4WorldMap', 'figure'),
     Input('p4WorldMap_dm', 'value'))
-@cache.memoize(timeout=0)
+
 def update_output(selection):
     job= queue.enqueue(get_worldMaps, job_id='worldMapP4')
     while job.result == None:
