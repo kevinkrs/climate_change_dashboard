@@ -42,9 +42,12 @@ def get_world_map_epo_total():
                 hover_name="Country", # column to add to hover information
                 color_continuous_scale='tempo',
                 labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                zoom=1,
+                opacity=0.8,
+                center = {"lat": 50.958427, "lon": 10.436234},
                 #hover_data = {'log_value' : False, 'Value' : 'Value' },
                 # scope = "",
-                animation_frame='Year',
+                #animation_frame='Year',
                 range_color = [-2,11])
 
         fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18)
