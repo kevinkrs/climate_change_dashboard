@@ -238,7 +238,7 @@ def get_patent_hist(selection):
 
  
 def update_output_page1_1(selection):
-    jobP1_1= queue.enqueue(get_worldMaps_page_1_1, id='WM1_1', result_ttl=86400)
+    jobP1_1= queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
     job = Job.fetch('WM1_1', connection=conn)
     fig = job.result()[int(selection)] 
 
@@ -251,7 +251,7 @@ def update_output_page1_1(selection):
     Input('p1WorldMap_dm2', 'value'))
 
 def update_output_page1_2(selection):
-    jobP1_2= queue.enqueue(get_worldMaps_page_1_2, id='WM1_2', result_ttl=86400)
+    jobP1_2= queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
     job = Job.fetch('WM1_2', connection=conn)
     fig = job.result()[int(selection)]
     return fig
@@ -284,7 +284,7 @@ def update_figure_gdp(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    jobP4_WMs = queue.enqueue(get_worldMaps, id='WMs4', result_ttl=86400)
+    jobP4_WMs = queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
     job = Job.fetch('WMs4', connection=conn)
     fig = job.result()[int(selection)]
     return fig
