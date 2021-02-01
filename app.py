@@ -22,7 +22,7 @@ from data.technology_patents.graphs import get_world_graph_epo_env, get_world_gr
 from data.technology_patents.histograms import *
 import time
 
-
+#Redis Server for Worker Queue  ==> BG BOOStING
 conn = Redis(
 host='redis-14803.c239.us-east-1-2.ec2.cloud.redislabs.com',
 port=14803,
