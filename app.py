@@ -379,12 +379,17 @@ def update_figure_gdp(selection):
 def update_output(selection):
     if selection == 0:
         fig = get_dropGDP_W()
+        return fig
+
     elif selection == 1:
         fig = get_RiskindexWorldmap2()
+        return fig
+
     elif selection == 2: 
         fig = get_RiskindexWorldmap1()
-    return fig
+        return fig
 
+    
 
 #Call back for the pop up box
 @app.callback(
