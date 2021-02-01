@@ -94,7 +94,7 @@ def get_NetZeroTargetWM():
                     opacity=0.8,
                     center = {"lat": 50.958427, "lon": 10.436234},
                     )
-        fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Net-Zero Tracker',font_size=18)
+        fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="#f8f7f7",height= 700,title_text = 'Net-Zero Tracker',font_size=18)
         
         return fig_nzc
 

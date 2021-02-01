@@ -134,7 +134,7 @@ def get_RiskindexWorldmap1():
                     center = {"lat": 50.958427, "lon": 10.436234},
                     range_color=[100,0],
                     )
-        fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Climate Risk Index for 1999-2018',font_size=18)
+        fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="#f8f7f7",height= 700,title_text = 'Climate Risk Index for 1999-2018',font_size=18)
 
         return fig_gcr
 
@@ -152,7 +152,7 @@ def get_RiskindexWorldmap2():
                     center = {"lat": 50.958427, "lon": 10.436234},
                     range_color=[100,0],
                     )
-        fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Climate Risk Index for 2018',font_size=18)
+        fig_gcr.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="#f8f7f7",height= 700,title_text = 'Climate Risk Index for 2018',font_size=18)
 
         return fig_gcr
 

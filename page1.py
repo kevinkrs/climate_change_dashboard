@@ -186,7 +186,7 @@ def p1_updateLayout():
             bot_leftSpace,className='col-6',style ={'padding':20}),
             dbc.Col(
             bot_rightSpace, className='col-6',style ={'padding':20}),],
-            stlye = {'background-color' : '#FFFFFF'}
+            style = {'background-color' : '#FFFFFF'}
             )],
         
             style={ 'width' : 'auto', 'padding' : 30, 'overflow' : 'hidden'},)
