@@ -5,6 +5,7 @@ try:
     import plotly.express   as px
     import plotly.graph_objs as go
     import pandas              as pd
+    import json
 except Exception as e:
     print("Failed to load libraries :\n" + str(e))
 
@@ -77,24 +78,25 @@ def get_NetZeroTargetWM():
 # Importing the dataset
 df_nzc = pd.read_csv('data/Governmental_efforts/Net Zero Tracker/countries.csv')
 
+with open('data/Worldmap shapes/custom.geo.json') as f:
+  geojson = json.load(f)
+print(geojson)
 # PLot
 #Worldmap Net Zero Target Tracker
 def get_NetZeroTargetWM():
-        fig_nzc = px.choropleth(df_nzc, locations="Abbreviation",
+        fig_nzc = px.choropleth_mapbox(df_nzc, geojson=geojson, locations="Abbreviation",
                     color='Target Status',
-                    featureidkey="properties.iso_alpha3",
+                    mapbox_style="carto-positron",
+                    featureidkey="properties.sov_a3",
                     hover_name='Title',
                     hover_data=['Target Year'],
-<<<<<<< HEAD
-=======
-                    #mapbox_style="open-street-map"
->>>>>>> dea1d0075fe4f7b1ee858fa837df6d53e1a1bf52
+                    zoom=1,
+                    center = {"lat": 50.958427, "lon": 10.436234},
                     )
         fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Net-Zero Tracker',font_size=18)
         
         return fig_nzc
 
-get_NetZeroTargetWM().show()
 # Variable time span : -
 # Data published by : Climate Watch
 # Link : https://www.climatewatchdata.org/data-explorer/net-zero-content?net-zero-content-categories=&net-zero-content-countries=All%20Selected&net-zero-content-indicators=nz_status&page=1
