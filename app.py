@@ -30,17 +30,17 @@ password='Q0v0ws9bfxdBzOx6c21miQL7ur9zqEYP')
 queue = Queue(connection=conn)
 
 def enqueue_jobs_init():
-    job =queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
-    job =queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
-    job =queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
-    job =queue.enqueue(get_graphs_patent_relative, id='G_rel', result_ttl=86400)
-    job =queue.enqueue(get_graphs_patent_env, id='G_env', result_ttl=86400)
-    job =queue.enqueue(get_graphs_patent_total, id='G_tot', result_ttl=86400)
-    job =queue.enqueue(get_maps_patent, id='WM3_tot', result_ttl=86400)
-    job =queue.enqueue(get_maps_patent_relative, id='WM3_rel', result_ttl=86400)
+    queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
+    queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
+    queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_relative, id='G_rel', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_env, id='G_env', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_total, id='G_tot', result_ttl=86400)
+    queue.enqueue(get_maps_patent, id='WM3_tot', result_ttl=86400)
+    queue.enqueue(get_maps_patent_relative, id='WM3_rel', result_ttl=86400)
     #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
     #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
-    print(queue.finished_job_registry.get_job_ids())
+    #print(queue.finished_job_registry.get_job_ids())
 
 
 
