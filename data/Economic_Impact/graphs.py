@@ -8,14 +8,14 @@ from pandas_datareader import data as pdr
 
 
 #Collecting and plotting Stock Market information on iShares Green Bond ETF
-yf.pdr_override() # Override pandas datareader
+#yf.pdr_override() # Override pandas datareader
 
-def get_iGreenBondData():
+#def get_iGreenBondData():
     # download dataframe
-    iGreenBond = pdr.get_data_yahoo("BGRN")
-    graph  = px.line(iGreenBond, 
-            x=iGreenBond.index, y="Adj Close", title='iShares Global Green Bond ETF', labels={'y':'Adjusted Close'})
-    return graph
+    #iGreenBond = pdr.get_data_yahoo("BGRN")
+    #graph  = px.line(iGreenBond, 
+      #      x=iGreenBond.index, y="Adj Close", title='iShares Global Green Bond ETF', labels={'y':'Adjusted Close'})
+   # return graph
 
 #######################################################################################################################################################################################
 
