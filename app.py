@@ -110,7 +110,7 @@ def render_page_content(pathname):
 @app.callback(
     Output('infoBox', 'children'),
     [Input('url', 'pathname')])
-    
+
 @cache.memoize(timeout=0)
 def callback_func(pathname):
     if(pathname == '/page4'):
@@ -181,86 +181,41 @@ def get_patent_map(selection_x,selection_y):
 @cache.memoize(timeout=0)
 def get_graphs(selection_x, selection_y):
     if(selection_x == '0' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent_relative)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[0]
-
+        fig = get_graphs_patent_relative()[0]
         return fig
 
     elif(selection_x == '1' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent_relative)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[1]
-
+        fig = get_graphs_patent_relative()[1]
         return fig
         # fig = get_graphs_patent()[1]
     
     elif(selection_x == '2' and selection_y == '0'):
-        job= queue.enqueue(get_graphs_patent_relative)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[2]
-        #fig = get_graphs_patent()[2]
+        fig = get_graphs_patent_relative()[2]
         return fig
 
     elif(selection_x == '0' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent_env)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[0]
-        #fig = get_graphs_patent()[3]
+        fig = get_graphs_patent_env()[0]
         return fig
 
     elif(selection_x == '1' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent_env)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[1]
-        #fig = get_graphs_patent()[4]
+        fig = get_graphs_patent_env()[1]
         return fig
 
     elif(selection_x == '2' and selection_y == '1'):
-        job= queue.enqueue(get_graphs_patent_env)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[2]
-        #fig = get_graphs_patent()[4]
+        fig = get_graphs_patent_env()[2]
         return fig
     
     elif(selection_x == '0' and selection_y == '2'):
-        job= queue.enqueue(get_graphs_patent_total)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[0]
-        #fig = get_graphs_patent()[4]
+        fig = get_graphs_patent_total()[0]
         return fig
     
     elif(selection_x == '1' and selection_y == '2'):
-        job= queue.enqueue(get_graphs_patent_total)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[1]
-        #fig = get_graphs_patent()[4]
+        fig = get_graphs_patent_total()[1]
         return fig
     
     else:
-        job= queue.enqueue(get_graphs_patent_total)
-        while job.is_finished != True:
-            time.sleep(0.1)
-        else:
-            fig=job.result[2]
+        fig = get_graphs_patent_total()[2]
 
-        #fig = get_graphs_patent() [5]
         return fig 
 
 @app.callback(
