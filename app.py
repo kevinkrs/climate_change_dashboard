@@ -305,7 +305,11 @@ def update_figure_gdp(selection):
     Input('p4WorldMap_dm', 'value'))
 
 def update_output(selection):
-    jobP4_WMs = queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
+    try:
+        job = Job.fetch('WMs4', connection=conn)
+    except:
+        job = queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
+        time.sleep(2)
     job = Job.fetch('WMs4', connection=conn)
     fig = job.result[int(selection)]
     return fig
@@ -379,6 +383,5 @@ def update_outputPie(selection):
 
 
 if __name__ == "__main__":
-    print(queue.failed_job_registry)
     app.server.run(threaded=True, debug=False)
     
