@@ -29,16 +29,17 @@ port=18236,
 password='pyPwtLSWnxUGRLNWr8ISLkaUPU3KSlOb')
 queue = Queue(connection=conn)
 
+def enqueue_jobs_init():
+    queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
+    queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
+    queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_relative, id='WM3_rel', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_env, id='WM3_env', result_ttl=86400)
+    queue.enqueue(get_graphs_patent_total, id='WM3_tot', result_ttl=86400)
+    #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
+    #queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
 
-jobP4_WMs = queue.enqueue(get_worldMaps, job_id='WMs4', result_ttl=86400)
-jobP1_1= queue.enqueue(get_worldMaps_page_1_1, job_id='WM1_1', result_ttl=86400)
-jobP1_2= queue.enqueue(get_worldMaps_page_1_2, job_id='WM1_2', result_ttl=86400)
-jobP3_Rel= queue.enqueue(get_graphs_patent_relative, id='WM3_rel', result_ttl=86400)
-jobP3_Env= queue.enqueue(get_graphs_patent_env, id='WM3_env', result_ttl=86400)
-jobP3_Tot= queue.enqueue(get_graphs_patent_total, id='WM3_tot', result_ttl=86400)
-#jobP4= queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
-#jobP5= queue.enqueue(get_worldMaps, id='my_job_id', result_ttl=86400)
-
+enqueue_jobs_init()
 #print(queue.finished_job_registry.get_job_ids())
 
 
@@ -376,4 +377,4 @@ def update_outputPie(selection):
 
 
 if __name__ == "__main__":
-    app.server.run(threaded=True, debug=True)
+    app.server.run(threaded=True, debug=False)
