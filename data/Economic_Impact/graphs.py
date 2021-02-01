@@ -47,8 +47,8 @@ def get_dropGDP():
             y="value", 
             color="variable", 
             title='Percentage change in regional GDP due to selected climate change impacts', 
-            labels={'x':'Year', 'y':'Percentage change in regional GDP'},
             color_continuous_scale='Greens',
+            labels=dict(variable='Regions', x ='Year', y ='Percentage change in regional GDP'),
             )
 
         graph.update_xaxes(title='Year')
