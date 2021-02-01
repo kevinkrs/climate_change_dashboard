@@ -85,6 +85,10 @@ def get_NetZeroTargetWM():
                     featureidkey="properties.iso_alpha3",
                     hover_name='Title',
                     hover_data=['Target Year'],
+<<<<<<< HEAD
+=======
+                    #mapbox_style="open-street-map"
+>>>>>>> dea1d0075fe4f7b1ee858fa837df6d53e1a1bf52
                     )
         fig_nzc.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor="white",height= 700,title_text = 'Net-Zero Tracker',font_size=18)
         
