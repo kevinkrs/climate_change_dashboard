@@ -80,7 +80,7 @@ df_nzc = pd.read_csv('data/Governmental_efforts/Net Zero Tracker/countries.csv')
 
 with open('data/Worldmap shapes/custom.geo.json') as f:
   geojson = json.load(f)
-print(geojson)
+
 # PLot
 #Worldmap Net Zero Target Tracker
 def get_NetZeroTargetWM():
