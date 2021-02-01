@@ -7,15 +7,22 @@ from pandas_datareader import data as pdr
 '''
 import yfinance as yf
 #Collecting and plotting Stock Market information on iShares Green Bond ETF
-yf.pdr_override() # Override pandas datareader
+#yf.pdr_override() # Override pandas datareader
 
-def get_iGreenBondData():
+#def get_iGreenBondData():
     # download dataframe
+<<<<<<< HEAD
     iGreenBond = pdr.get_data_yahoo("BGRN")
     graph  = px.line(iGreenBond, 
             x=iGreenBond.index, y="Adj Close", title='iShares Global Green Bond ETF', labels={'y':'Adjusted Close'})
     return graph
 '''
+=======
+    #iGreenBond = pdr.get_data_yahoo("BGRN")
+    #graph  = px.line(iGreenBond, 
+      #      x=iGreenBond.index, y="Adj Close", title='iShares Global Green Bond ETF', labels={'y':'Adjusted Close'})
+   # return graph
+>>>>>>> ef6755eb4df991a3b9878c11621d9650ecbf626b
 
 #######################################################################################################################################################################################
 
