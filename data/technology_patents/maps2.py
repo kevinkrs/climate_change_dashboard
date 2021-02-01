@@ -50,18 +50,22 @@ def get_world_map_epo():
                 animation_frame='Year',
                 range_color = [0,1])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to EPO',font_size=18, paper_bgcolor="#DFDEDE")
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'EPO: ENV-TECH relative to Total Patents',font_size=18)
         return fig
 
 
 def get_world_map_uspto():
         #avg = df1['log_value'].mean()
-        fig = px.choropleth(df2, locations="CODE",
-                    color="Relative", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='Greens',
-                    labels = {'Relative' : 'Relative'},
-                    range_color = [0,1],
+        fig = px.choropleth_mapbox(df2, geojson = geojson, locations="CODE",
+                mapbox_style="carto-positron",
+                featureidkey="properties.iso_a3",
+                color="Relative", # lifeExp is a column of gapminder
+                hover_name="Country", # column to add to hover information
+                color_continuous_scale='Greens',
+                labels = {'Relative' : 'Relativ'},
+                zoom=1,
+                opacity=0.8,
+                center = {"lat": 50.958427, "lon": 10.436234},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)
@@ -72,12 +76,16 @@ def get_world_map_uspto():
 
 def get_world_map_pct():
         #avg = df1['log_value'].mean()
-        fig = px.choropleth(df1, locations="CODE",
-                    color="Relative", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='Greens',
-                    labels = {'Relative' : 'Relative'},
-                    range_color = [0,1],
+        fig = px.choropleth_mapbox(df3, geojson = geojson, locations="CODE",
+                mapbox_style="carto-positron",
+                featureidkey="properties.iso_a3",
+                color="Relative", # lifeExp is a column of gapminder
+                hover_name="Country", # column to add to hover information
+                color_continuous_scale='Greens',
+                labels = {'Relative' : 'Relativ'},
+                zoom=1,
+                opacity=0.8,
+                center = {"lat": 50.958427, "lon": 10.436234},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',)

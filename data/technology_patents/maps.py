@@ -62,19 +62,23 @@ df2['log_value'] = np.log(df2['Value'])
 #print(df2.head())
 
 def get_world_map_epo_env():
-        #avg = df1['log_value'].mean()
-        fig = px.choropleth(df2, locations="CODE",
-                    color="log_value", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='Greens',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+        
+        fig = px.choropleth_mapbox(df2, geojson = geojson, locations="CODE",
+                mapbox_style="carto-positron",
+                featureidkey="properties.iso_a3",
+                color="log_value", # lifeExp is a column of gapminder
+                hover_name="Country", # column to add to hover information
+                color_continuous_scale='Greens',
+                labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                zoom=1,
+                opacity=0.8,
+                center = {"lat": 50.958427, "lon": 10.436234},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',
                     range_color = [-2,8])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to EPO',font_size=18, 
-        paper_bgcolor="#DFDEDE")
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to EPO',font_size=18)
         return fig
 
 
@@ -87,17 +91,22 @@ df3['log_value'] = np.log(df3['Value'])
 
 def get_world_map_uspto_env():
         #avg = df1['log_value'].mean()
-        fig = px.choropleth(df3, locations="CODE",
-                    color="log_value", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='Greens',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+        fig = px.choropleth_mapbox(df3, geojson = geojson, locations="CODE",
+                mapbox_style="carto-positron",
+                featureidkey="properties.iso_a3",
+                color="log_value", # lifeExp is a column of gapminder
+                hover_name="Country", # column to add to hover information
+                color_continuous_scale='Greens',
+                labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                zoom=1,
+                opacity=0.8,
+                center = {"lat": 50.958427, "lon": 10.436234},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',
                     range_color = [-2,8])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to USPTO',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700, title_text = 'Patents on environmental-related technologies filed to USPTO',font_size=18)
         return fig
 
 
@@ -110,17 +119,22 @@ df4['log_value'] = np.log(df4['Value'])
 
 def get_world_map_uspto_total():
         #avg = df1['log_value'].mean()
-        fig = px.choropleth(df4, locations="CODE",
-                    color="log_value", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='tempo',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+        fig = px.choropleth_mapbox(df4, geojson = geojson, locations="CODE",
+                mapbox_style="carto-positron",
+                featureidkey="properties.iso_a3",
+                color="log_value", # lifeExp is a column of gapminder
+                hover_name="Country", # column to add to hover information
+                color_continuous_scale='Tempo',
+                labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                zoom=1,
+                opacity=0.8,
+                center = {"lat": 50.958427, "lon": 10.436234},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',
                     range_color = [-2,11])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to USPTO',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700, title_text = 'Patents on technology filed to USPTO',font_size=18)
         return fig
 
 
@@ -132,17 +146,22 @@ df5['log_value'] = np.log(df5['Value'])
 
 def get_world_map_pct_env():
         #avg = df1['log_value'].mean()
-        fig = px.choropleth(df5, locations="CODE",
-                    color="log_value", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='Greens',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+        fig = px.choropleth_mapbox(df5, geojson = geojson, locations="CODE",
+                mapbox_style="carto-positron",
+                featureidkey="properties.iso_a3",
+                color="log_value", # lifeExp is a column of gapminder
+                hover_name="Country", # column to add to hover information
+                color_continuous_scale='Greens',
+                labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                zoom=1,
+                opacity=0.8,
+                center = {"lat": 50.958427, "lon": 10.436234},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',
                     range_color = [-2,8])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on environmental-related technologies filed to PCT',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700, title_text = 'Patents on environmental-related technologies filed to PCT',font_size=18)
         return fig
 
 
@@ -154,15 +173,20 @@ df6['log_value'] = np.log(df6['Value'])
 
 def get_world_map_pct_total():
         #avg = df1['log_value'].mean()
-        fig = px.choropleth(df6, locations="CODE",
-                    color="log_value", # lifeExp is a column of gapminder
-                    hover_name="Country", # column to add to hover information
-                    color_continuous_scale='tempo',
-                    labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+        fig = px.choropleth_mapbox(df6, geojson = geojson, locations="CODE",
+                mapbox_style="carto-positron",
+                featureidkey="properties.iso_a3",
+                color="log_value", # lifeExp is a column of gapminder
+                hover_name="Country", # column to add to hover information
+                color_continuous_scale='Tempo',
+                labels = {'log_value' : 'Patent count (log)', 'CODE' : 'Code'},
+                zoom=1,
+                opacity=0.8,
+                center = {"lat": 50.958427, "lon": 10.436234},
                     #hover_data = {'log_value' : False, 'Value' : 'Value' },
                    # scope = "",
                     animation_frame='Year',
                     range_color = [-2,11])
 
-        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),height= 700,title_text = 'Patents on technology filed to PCT',font_size=18)
+        fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0), height= 700,title_text = 'Patents on technology filed to PCT',font_size=18)
         return fig

@@ -26,7 +26,7 @@ def p3_updateLayout():
                         style = {'margin-top' : 200, 'padding' : 10, 'margin-left' : 10, 'background-color' : 'lightgreen', 'border-radius' : 5})
         #Example : leftSpace = html.Div(Call_method_of_plotted_graph)
     #midSpace = html.Div(dcc.Graph(figure = get_world_map_epo_total())) 
-    midSpace = html.Div(dcc.Loading(dcc.Graph(id = 'worldmap_patents'),color='#45bf55', type='default', className='pv6'), style={'padding':30, 'background-color':'#FFFFFF', 'border-radius': 10}) 
+    midSpace = html.Div(dcc.Loading(dcc.Graph(id = 'worldmap_patents'),color='#45bf55', type='default', className='pv6'), style={'padding':30, 'background-color':'#f8f7f7', 'border-radius': 10}) 
     #rightSpace = html.Div("Rechter Space")
 
     bot_leftSpace = html.Div(dcc.Loading(dcc.Graph(id = 'scatter_patents_env'),color='#45bf55', type='default', className='pv6'))
