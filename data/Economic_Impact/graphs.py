@@ -83,7 +83,7 @@ def get_dropGDP_W():
                         
         fig.update_layout(
                 margin=dict(l=20,r=0,b=0,t=70,pad=0),
-                paper_bgcolor="white",
+                paper_bgcolor="#f8f7f7",
                 height= 700,
                 title_text='Percentage change in regional GDP due to selected climate change impacts',
                 font_size=18,
