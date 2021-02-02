@@ -47,7 +47,7 @@ def p3_updateLayout():
             dbc.Col(
             [bot_rightSpace, html.Div(
             )], className='col-6',style ={'padding':20}),],
-            style = {'background-color' : '#FFFFF'})],
+            style = {'background-color' : '#FFFFFF'})],
             style={ 'width' : 'auto',  'overflow' : 'hidden', 'padding' : '30'}) # other nice color #7ED6F0
 
     return content
