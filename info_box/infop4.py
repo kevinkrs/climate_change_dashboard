@@ -37,7 +37,7 @@ markdown_text4 = '''The Global Climate Risk Index indicates a level of exposure 
 CRI score goes from 0 until 120. The lower the score is, the higher the vulnerability and exposure to extreme weather events is.
 '''
 
-markdown_text5 = '''Climate related ecents are parted into 4 groups.
+markdown_text5 = '''Climate related events shown in the bottom left graph are parted into 4 groups.
 
 - Meterological events
 - Hydrological events
