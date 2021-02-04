@@ -84,7 +84,7 @@ def world_map_page1_1():
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
     fig.update_layout(title='CO2 emission per capita : 2019 (in tons)')
-    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor='#f8f7f7',height= 700,title_text = 'CO2 emission per capita : 2019',font_size=18)
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor='#f8f7f7',height= 700,title_text = 'CO2 emission per capita : 2019 (in tons)',font_size=18)
     return fig
 
 def world_map_page1_2():
@@ -99,8 +99,8 @@ def world_map_page1_2():
                         color="Death_from_air_pollution", # lifeExp is a column of gapminder
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
-    fig.update_layout(title='Death from air pollution : 2019 (per 100 000)')
-    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor='#f8f7f7',height= 700,title_text = 'Death from air pollution : 2019',font_size=18)
+    fig.update_layout(title='Death from air pollution : 2019 (per 100 000 citizens)')
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor='#f8f7f7',height= 700,title_text = 'Death from air pollution : 2019 (per 100 000 citizens)',font_size=18)
     return fig
 
 def world_map_page1_3():
@@ -116,7 +116,7 @@ def world_map_page1_3():
                         hover_name="COUNTRY", # column to add to hover information
                         color_continuous_scale=px.colors.sequential.Plasma)
     fig.update_layout(title='Ozone concentration : 2019')
-    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor='#f8f7f7',height= 700,title_text = 'Ozone concentration : 2019',font_size=18)
+    fig.update_layout(margin=dict(l=20,r=0,b=0,t=70,pad=0),paper_bgcolor='#f8f7f7',height= 700, title_text = 'Ozone concentration : 2019',font_size=18)
     return fig
 
 def get_worldMaps_page_1_1():
